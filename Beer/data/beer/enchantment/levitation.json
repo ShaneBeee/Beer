@@ -4,7 +4,6 @@
     "color": "#FFFF33"
   },
   "supported_items": "#minecraft:axes",
-  "primary_items": "#minecraft:axes",
   "weight": 1,
   "max_level": 1,
   "min_cost": {

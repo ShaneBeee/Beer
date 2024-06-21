@@ -4,7 +4,6 @@
     "color": "#33FFC7"
   },
   "supported_items": "#minecraft:enchantable/mining_loot",
-  "primary_items": "#minecraft:enchantable/mining_loot",
   "weight": 5,
   "max_level": 3,
   "min_cost": {
