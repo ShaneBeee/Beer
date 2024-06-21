@@ -3,6 +3,7 @@
     "text": "Feller",
     "color": "#FFAF33"
   },
+  "exclusive_set": "minecraft:efficiency",
   "supported_items": "#minecraft:axes",
   "weight": 10,
   "max_level": 5,
