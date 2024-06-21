@@ -6,7 +6,7 @@
   "exclusive_set": "minecraft:efficiency",
   "supported_items": "#minecraft:axes",
   "weight": 10,
-  "max_level": 5,
+  "max_level": 1,
   "min_cost": {
     "base": 1,
     "per_level_above_first": 10
