@@ -1,0 +1,31 @@
+{
+  "description": {
+    "text": "Climbing",
+    "color": "#16EE9C"
+  },
+  "supported_items": "#minecraft:foot_armor",
+  "weight": 1,
+  "max_level": 1,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 10,
+    "per_level_above_first": 10
+  },
+  "anvil_cost": 1,
+  "slots": [
+    "feet"
+  ],
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "id": "beer:boot_mod",
+        "attribute": "minecraft:generic.step_height",
+        "amount": 0.5,
+        "operation": "add_value"
+      }
+    ]
+  }
+}
