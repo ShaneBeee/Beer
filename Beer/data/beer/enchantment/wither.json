@@ -3,7 +3,7 @@
     "text": "Wither",
     "color": "#8A4C0E"
   },
-  "supported_items": "#minecraft:enchantable/sharp_weapon",
+  "supported_items": "#minecraft:enchantable/weapon",
   "weight": 10,
   "max_level": 5,
   "min_cost": {
@@ -26,11 +26,11 @@
         "effect": {
           "type": "minecraft:apply_mob_effect",
           "to_apply": "minecraft:wither",
-          "min_duration": 1.5,
+          "min_duration": 5,
           "max_duration": {
             "type": "minecraft:linear",
-            "base": 1.5,
-            "per_level_above_first": 0.5
+            "base": 5,
+            "per_level_above_first": 2
           },
           "min_amplifier": 0,
           "max_amplifier": 0
