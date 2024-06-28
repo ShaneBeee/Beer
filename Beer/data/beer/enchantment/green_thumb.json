@@ -1,0 +1,21 @@
+{
+  "description": {
+    "text": "Green Thumb",
+    "color": "#41FE35"
+  },
+  "supported_items": "#minecraft:hoes",
+  "weight": 10,
+  "max_level": 1,
+  "min_cost": {
+    "base": 0,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 10,
+    "per_level_above_first": 15
+  },
+  "anvil_cost": 1,
+  "slots": [
+    "hand"
+  ]
+}
