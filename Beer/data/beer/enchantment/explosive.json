@@ -1,7 +1,7 @@
 {
   "description": {
     "text": "Explosive",
-    "color": "#33FFC7"
+    "color": "#FE3E35"
   },
   "supported_items": "#minecraft:enchantable/mining_loot",
   "weight": 5,
