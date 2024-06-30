@@ -3,7 +3,7 @@
     "text": "Explosive",
     "color": "#FE3E35"
   },
-  "supported_items": "#minecraft:enchantable/mining_loot",
+  "supported_items": "#minecraft:pickaxes",
   "weight": 5,
   "max_level": 3,
   "min_cost": {
