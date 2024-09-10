@@ -1,0 +1,21 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation group: 'org.zeroturnaround', name: 'zt-zip', version: '1.17'
+}
