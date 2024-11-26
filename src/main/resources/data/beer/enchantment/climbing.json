@@ -1,32 +1,32 @@
 {
   "description": {
-    "text": "Reach",
-    "color": "#FE3590"
+    "text": "Climbing",
+    "color": "#16EE9C"
   },
-  "supported_items": "minecraft:breeze_rod",
-  "weight": 20,
-  "max_level": 5,
+  "supported_items": "#minecraft:foot_armor",
+  "weight": 1,
+  "max_level": 2,
   "min_cost": {
     "base": 1,
     "per_level_above_first": 10
   },
   "max_cost": {
-    "base": 51,
+    "base": 10,
     "per_level_above_first": 10
   },
   "anvil_cost": 1,
   "slots": [
-    "offhand"
+    "feet"
   ],
   "effects": {
     "minecraft:attributes": [
       {
-        "id": "beer:better_reach",
-        "attribute": "minecraft:player.block_interaction_range",
+        "id": "beer:boot_mod",
+        "attribute": "minecraft:step_height",
         "amount": {
           "type": "minecraft:linear",
-          "base": 5,
-          "per_level_above_first": 5
+          "base": 0.5,
+          "per_level_above_first": 1
         },
         "operation": "add_value"
       }

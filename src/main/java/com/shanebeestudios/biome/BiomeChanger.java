@@ -15,6 +15,9 @@ import java.io.IOException;
 @SuppressWarnings("ResultOfMethodCallIgnored")
 public class BiomeChanger {
 
+    /**
+     * Default values for some effects
+     */
     public enum Effects {
         FOG(12638463),
         WATER(4159204),
@@ -27,6 +30,9 @@ public class BiomeChanger {
         }
     }
 
+    /**
+     * Seasonal adjustments for biomes
+     */
     public enum Season {
         SPRING("spring",
             -0.2f,
@@ -38,7 +44,7 @@ public class BiomeChanger {
             new Color(0x77CB4E)),
         SUMMER("summer",
             0.5f,
-            -0.5),
+            -0.25),
         FALL("fall",
             0.2f,
             -0.2,
@@ -48,8 +54,8 @@ public class BiomeChanger {
             new Color(14316854),
             new Color(-7168948)),
         WINTER("winter",
-            -2f,
-            0);
+            -1.84f,
+        0.2f);
 
         private final boolean hasEffects;
         private final String name;
@@ -102,24 +108,24 @@ public class BiomeChanger {
         }
     }
 
-    public static void generateBiomes() {
-        System.out.println("Adjusting biomes");
-        adjustBiomes("minecraft");
-        adjustBiomes("wythers");
-    }
-
     @SuppressWarnings("DataFlowIssue")
-    public static void adjustBiomes(String namespace) {
-        String biomePath = "biomes/" + namespace + "/worldgen/biome/";
-        File biomesDir = new File(biomePath);
-        if (!biomesDir.exists() || !biomesDir.isDirectory()) return;
+    public static void generateBiomes() {
+        for (File namespaceDirectory : new File("biomes").listFiles()) {
+            if (namespaceDirectory.getName().contains("DS_Store") || !namespaceDirectory.isDirectory()) continue;
 
-        // Loop each biome and adjust
-        for (File file : biomesDir.listFiles()) {
-            if (!file.getName().contains(".json")) continue;
-            // Adjust for each season
-            for (Season season : Season.values()) {
-                adjustBiomeForSeason(season, file);
+            System.out.println("Adjusting biomes for namespace: '" + namespaceDirectory.getName() + "'");
+            String biomePath = namespaceDirectory.getPath() + "/worldgen/biome/";
+            File biomeDirectory = new File(biomePath);
+            if (!biomeDirectory.exists() || !biomeDirectory.isDirectory()) return;
+
+            // Loop each biome and adjust
+            for (File biomeFile : biomeDirectory.listFiles()) {
+                if (!biomeFile.getName().contains(".json")) continue;
+                System.out.println(" - Adjusting biome: '" + namespaceDirectory.getName() + ":" + biomeFile.getName() + "'");
+                // Adjust for each season
+                for (Season season : Season.values()) {
+                    adjustBiomeForSeason(season, biomeFile);
+                }
             }
         }
     }
@@ -134,7 +140,7 @@ public class BiomeChanger {
             // Adjust biome
             double temperature = json.get("temperature").getAsDouble();
             double newTemp = temperature + season.temp;
-            json.addProperty("temperature", Math.clamp(newTemp, 0.0, 2.0));
+            json.addProperty("temperature", Math.clamp(newTemp, -1.0, 2.0));
             if (newTemp < 1.5f) {
                 json.addProperty("has_precipitation", true);
             }
@@ -171,9 +177,9 @@ public class BiomeChanger {
             // Write new seasonal json to file
             String newPath = file.getPath().replace(file.getName(), season.name + "/");
             newPath = newPath.replace("biomes/", "Beer/data/");
-            File newFile = new File(newPath + "/");
-            newFile.mkdirs();
-            newFile = new File(newPath + "/" + file.getName());
+            File newDir = new File(newPath + "/");
+            newDir.mkdirs();
+            File newFile = new File(newPath + "/" + file.getName());
             JsonWriter jsonWriter = new JsonWriter(new FileWriter(newFile));
             jsonWriter.setFormattingStyle(FormattingStyle.PRETTY);
             gson.toJson(json, jsonWriter);
