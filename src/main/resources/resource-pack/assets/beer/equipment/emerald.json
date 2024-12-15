@@ -3,7 +3,7 @@
     "horse_body": [
       {
         "dyeable": {
-          "color_when_undyed": -6265536
+          "color_when_undyed": 6724661
         },
         "texture": "minecraft:diamond"
       }
@@ -11,7 +11,7 @@
     "humanoid": [
       {
         "dyeable": {
-          "color_when_undyed": -6265536
+          "color_when_undyed": 6724661
         },
         "texture": "minecraft:diamond"
       }
@@ -19,7 +19,7 @@
     "humanoid_leggings": [
       {
         "dyeable": {
-          "color_when_undyed": -6265536
+          "color_when_undyed": 6724661
         },
         "texture": "minecraft:diamond"
       }
