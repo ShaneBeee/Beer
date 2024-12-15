@@ -5,77 +5,143 @@
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_quartz_trim"
+          "model": "minecraft:item/diamond_chestplate_quartz_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:quartz"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_iron_trim"
+          "model": "minecraft:item/diamond_chestplate_iron_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:iron"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_netherite_trim"
+          "model": "minecraft:item/diamond_chestplate_netherite_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:netherite"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_redstone_trim"
+          "model": "minecraft:item/diamond_chestplate_redstone_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:redstone"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_copper_trim"
+          "model": "minecraft:item/diamond_chestplate_copper_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:copper"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_gold_trim"
+          "model": "minecraft:item/diamond_chestplate_gold_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:gold"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_emerald_trim"
+          "model": "minecraft:item/diamond_chestplate_emerald_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:emerald"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_diamond_trim"
+          "model": "minecraft:item/diamond_chestplate_diamond_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:diamond"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_lapis_trim"
+          "model": "minecraft:item/diamond_chestplate_lapis_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:lapis"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_amethyst_trim"
+          "model": "minecraft:item/diamond_chestplate_amethyst_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:amethyst"
       },
       {
         "model": {
           "type": "minecraft:model",
-          "model": "minecraft:item/diamond_chestplate_resin_trim"
+          "model": "minecraft:item/diamond_chestplate_resin_trim",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": 25087
+            }
+          ]
         },
         "when": "minecraft:resin"
       }
