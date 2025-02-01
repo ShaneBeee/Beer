@@ -1,0 +1,60 @@
+{
+  "has_precipitation": false,
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "effects": {
+    "music_volume": 1.0,
+    "sky_color": 5634012,
+    "foliage_color": 442658,
+    "grass_color": 6017902,
+    "fog_color": 16564102,
+    "water_color": 6003155,
+    "water_fog_color": 8846572
+  },
+  "carvers": [],
+  "features": [
+    [
+      "wythers:terrain/placed_random_patch/diorite_cliffs",
+      "beer:terrain/grass_to_sand",
+      "beer:delta/beach_delta"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+    ],
+    [],
+    [],
+    [
+      "beer:tree/palm_beach_palm",
+      "minecraft:patch_waterlily",
+      "beer:vegetation/patch_small_dripleaf"
+    ]
+  ],
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:frog",
+        "weight": 15,
+        "minCount": 2,
+        "maxCount": 2
+      }
+    ],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {}
+}

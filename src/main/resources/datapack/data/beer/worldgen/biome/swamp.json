@@ -1,0 +1,62 @@
+{
+  "has_precipitation": true,
+  "temperature": 0.8,
+  "downfall": 0.2,
+  "effects": {
+    "music_volume": 1.0,
+    "grass_color_modifier": "swamp",
+    "sky_color": 7907327,
+    "foliage_color": 6975545,
+    "fog_color": 12638463,
+    "water_color": 6388580,
+    "water_fog_color": 2302743
+  },
+  "carvers": [],
+  "features": [
+    [
+      "beer:terrain/stone_cliff",
+      "beer:delta/swamp_delta"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+    ],
+    [],
+    [],
+    [
+      "minecraft:trees_swamp",
+      "minecraft:flower_swamp",
+      "minecraft:patch_grass_normal",
+      "minecraft:patch_dead_bush",
+      "minecraft:patch_waterlily",
+      "minecraft:seagrass_swamp"
+    ]
+  ],
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:frog",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {}
+}

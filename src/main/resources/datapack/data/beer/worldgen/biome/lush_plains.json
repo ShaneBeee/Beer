@@ -1,0 +1,76 @@
+{
+  "has_precipitation": true,
+  "temperature": 0.8,
+  "downfall": 0.5,
+  "effects": {
+    "music_volume": 1.0,
+    "sky_color": 7907327,
+    "fog_color": 12638463,
+    "water_color": 4159204,
+    "water_fog_color": 329011
+  },
+  "carvers": [],
+  "features": [
+    [
+      "beer:terrain/stone_cliff"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+    ],
+    [],
+    [],
+    [
+      "wythers:terrain/placed_random_patch/cliff_grass",
+      "wythers:terrain/disk_sand_shore",
+      "beer:tree/tall_stripped_pale_oak",
+      "minecraft:flower_plains",
+      "minecraft:patch_grass_plain",
+      "minecraft:patch_waterlily",
+      "minecraft:patch_sugar_cane",
+      "beer:vegetation/patch_hay_bale",
+      "beer:vegetation/patch_cherry_petals",
+      "beer:vegetation/rooted_dirt_blob",
+      "beer:tree/fallen_stripped_pale_oak"
+    ]
+  ],
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:cow",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:sheep",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:pig",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {}
+}

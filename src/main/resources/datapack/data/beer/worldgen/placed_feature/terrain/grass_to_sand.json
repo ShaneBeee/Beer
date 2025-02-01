@@ -1,0 +1,34 @@
+{
+  "feature": {
+    "type": "minecraft:netherrack_replace_blobs",
+    "config": {
+      "state": {
+        "Name": "minecraft:sand"
+      },
+      "target": {
+        "Name": "minecraft:grass_block"
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 3,
+        "max_inclusive": 5
+      }
+    }
+  },
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 250
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
