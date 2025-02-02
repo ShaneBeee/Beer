@@ -1,31 +1,60 @@
 {
   "feature": {
-    "type": "minecraft:netherrack_replace_blobs",
+    "type": "minecraft:disk",
     "config": {
-      "state": {
-        "Name": "minecraft:sand"
-      },
-      "target": {
-        "Name": "minecraft:grass_block"
-      },
+      "half_height": 2,
       "radius": {
         "type": "minecraft:uniform",
-        "min_inclusive": 3,
-        "max_inclusive": 5
+        "max_inclusive": 6,
+        "min_inclusive": 2
+      },
+      "state_provider": {
+        "fallback": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:sand"
+          }
+        },
+        "rules": [
+          {
+            "if_true": {
+              "type": "minecraft:matching_blocks",
+              "blocks": "minecraft:dirt",
+              "offset": [
+                0,
+                -1,
+                0
+              ]
+            },
+            "then": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:sand"
+              }
+            }
+          }
+        ]
+      },
+      "target": {
+        "type": "minecraft:matching_blocks",
+        "blocks": [
+          "minecraft:dirt",
+          "minecraft:grass_block"
+        ]
       }
     }
   },
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 250
+      "count": 30
     },
     {
       "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR"
+      "heightmap": "WORLD_SURFACE_WG"
     },
     {
       "type": "minecraft:biome"

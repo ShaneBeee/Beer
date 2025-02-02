@@ -14,8 +14,9 @@
   "carvers": [],
   "features": [
     [
-      "beer:terrain/stone_cliff",
-      "beer:delta/swamp_delta"
+      "beer:delta/swamp_delta",
+      "beer:delta/coastal_delta",
+      "beer:terrain/stone_cliff"
     ],
     [],
     [],

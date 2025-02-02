@@ -20,7 +20,7 @@
   "carvers": [],
   "features": [
     [
-      "wythers:terrain/placed_random_patch/diorite_cliffs",
+      "beer:terrain/diorite_cliffs",
       "beer:delta/coastal_delta"
     ],
     [],

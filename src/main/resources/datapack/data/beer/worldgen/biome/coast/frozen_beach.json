@@ -1,22 +1,31 @@
 {
-  "has_precipitation": false,
-  "temperature": 2.0,
+  "has_precipitation": true,
+  "temperature": 0.1,
   "downfall": 0.0,
-  "effects": {
-    "music_volume": 1.0,
-    "sky_color": 5634012,
-    "foliage_color": 442658,
-    "grass_color": 6017902,
-    "fog_color": 16564102,
-    "water_color": 6003155,
-    "water_fog_color": 8846572
-  },
   "carvers": [],
+  "effects": {
+    "fog_color": 12638463,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    },
+    "music_volume": 1.0,
+    "sky_color": 8364543,
+    "water_color": 4020182,
+    "water_fog_color": 329011,
+    "particle": {
+      "options": {
+        "type": "minecraft:white_ash"
+      },
+      "probability": 0.2
+    }
+  },
   "features": [
     [
       "beer:terrain/diorite_cliffs",
-      "beer:terrain/grass_to_sand",
-      "beer:delta/beach_delta"
+      "beer:terrain/grass_to_sand"
     ],
     [],
     [],
@@ -34,9 +43,12 @@
     [],
     [],
     [
-      "beer:tree/palm_beach_palm",
+      "beer:tree/beachy_palm",
       "minecraft:patch_waterlily",
-      "beer:vegetation/patch_small_dripleaf"
+      "minecraft:patch_sugar_cane"
+    ],
+    [
+      "minecraft:freeze_top_layer"
     ]
   ],
   "spawners": {
