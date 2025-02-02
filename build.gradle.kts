@@ -47,14 +47,14 @@ tasks {
 
     }
     register("resourcepack", Zip::class) {
-        archiveFileName = "Beer-ResourcePack.zip"
+        archiveFileName = "Beer-ResourcePack-${projectVersion}-${minecraftVersion}.zip"
         from("src/main/resources/resource-pack") {
             exclude("**/.DS_Store")
             destinationDirectory = file("build/libs/")
         }
     }
     register("datapack", Zip::class) {
-        archiveFileName = "Beer-DataPack.zip"
+        archiveFileName = "Beer-DataPack-${projectVersion}-${minecraftVersion}.zip"
         from("src/main/resources/datapack") {
             exclude("**/.DS_Store")
             destinationDirectory = file("build/libs/")
