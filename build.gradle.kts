@@ -9,9 +9,11 @@ plugins {
 // The Minecraft version we're currently building for
 val minecraftVersion = "1.21.4"
 // Where this builds on the server
-val serverLocation = "Skript/1-21-4"
+val serverLocation = "Skript/1-21-5"
 // Version of BeerPlugin
 val projectVersion = "1.0.0"
+// Client instance
+val clientInstance = "1.21.5-Fabric"
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -51,6 +53,13 @@ tasks {
         from("src/main/resources/resource-pack") {
             exclude("**/.DS_Store")
             destinationDirectory = file("build/libs/")
+        }
+    }
+    register("resourcepack-client", Zip::class) {
+        archiveFileName = "Beer-ResourcePack-${projectVersion}-${minecraftVersion}.zip"
+        from("src/main/resources/resource-pack") {
+            exclude("**/.DS_Store")
+            destinationDirectory = file("/Users/ShaneBee/Library/Application Support/PrismLauncher/instances/$clientInstance/minecraft/resourcepacks")
         }
     }
     register("datapack", Zip::class) {
