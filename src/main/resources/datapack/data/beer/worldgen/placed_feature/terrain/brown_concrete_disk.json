@@ -1,0 +1,68 @@
+{
+  "feature": {
+    "type": "minecraft:disk",
+    "config": {
+      "half_height": 2,
+      "radius": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 6,
+        "min_inclusive": 2
+      },
+      "state_provider": {
+        "fallback": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:dead_brain_coral_block"
+          }
+        },
+        "rules": [
+          {
+            "if_true": {
+              "type": "minecraft:matching_blocks",
+              "blocks": "#minecraft:base_stone_overworld",
+              "offset": [
+                0,
+                -1,
+                0
+              ]
+            },
+            "then": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:brown_concrete_powder"
+              }
+            }
+          }
+        ]
+      },
+      "target": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "#minecraft:base_stone_overworld"
+      }
+    }
+  },
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 100
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 256
+        },
+        "min_inclusive": {
+          "above_bottom": -10
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

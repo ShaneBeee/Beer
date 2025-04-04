@@ -1,29 +1,58 @@
 {
   "feature": {
+    "type": "minecraft:waterlogged_vegetation_patch",
     "config": {
-      "contents": {
-        "Name": "minecraft:water"
+      "depth": 3,
+      "extra_bottom_block_chance": 0.8,
+      "extra_edge_column_chance": 0.7,
+      "ground_state": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "data": {
+              "Name": "minecraft:grass_block"
+            },
+            "weight": 10
+          },
+          {
+            "data": {
+              "Name": "minecraft:mud"
+            },
+            "weight": 3
+          },
+          {
+            "data": {
+              "Name": "minecraft:clay"
+            },
+            "weight": 1
+          },
+          {
+            "data": {
+              "Name": "minecraft:moss_block"
+            },
+            "weight": 3
+          }
+        ]
       },
-      "rim": {
-        "Name": "minecraft:mud"
+      "replaceable": "#minecraft:dirt",
+      "surface": "floor",
+      "vegetation_chance": 0.2,
+      "vegetation_feature": {
+        "feature": "minecraft:dripleaf",
+        "placement": []
       },
-      "size": {
+      "vertical_range": 5,
+      "xz_radius": {
         "type": "minecraft:uniform",
-        "min_inclusive": 3,
-        "max_inclusive": 7
-      },
-      "rim_size": {
-        "type": "minecraft:uniform",
-        "min_inclusive": 1,
-        "max_inclusive": 2
+        "max_inclusive": 7,
+        "min_inclusive": 4
       }
-    },
-    "type": "minecraft:delta_feature"
+    }
   },
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 64
+      "count": 1
     },
     {
       "type": "minecraft:in_square"
