@@ -32,8 +32,8 @@ public class MiddleBiomes {
 
     private static Biome getCold(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> BeerBiomes.DRY_PLAINS;
-            case 1 -> BeerBiomes.PLAINS;
+            case 0 -> BeerBiomes.PLAINS_DRY_PLAINS;
+            case 1 -> BeerBiomes.PLAINS_PLAINS;
             case 2 -> Biome.FOREST;
             case 3 -> Biome.TAIGA;
             default -> weirdness == 1 ? Biome.OLD_GROWTH_PINE_TAIGA : Biome.OLD_GROWTH_SPRUCE_TAIGA;
@@ -43,18 +43,18 @@ public class MiddleBiomes {
     private static Biome getTemperate(int humidity, int weirdness) {
         return switch (humidity) {
             case 0 -> weirdness == 1 ? Biome.SUNFLOWER_PLAINS : Biome.FLOWER_FOREST;
-            case 1 -> BeerBiomes.PLAINS;
+            case 1 -> BeerBiomes.PLAINS_PLAINS;
             case 2 -> Biome.FOREST;
             case 3 -> weirdness == 1 ? Biome.OLD_GROWTH_BIRCH_FOREST : Biome.BIRCH_FOREST;
-            default -> weirdness == 1 ? BeerBiomes.LUSH_PLAINS : Biome.DARK_FOREST;
+            default -> weirdness == 1 ? BeerBiomes.PLAINS_LUSH_PLAINS : Biome.DARK_FOREST;
         };
     }
 
     private static Biome getWarm(int humidity, int weirdness) {
         return switch (humidity) {
             case 0 -> Biome.SAVANNA;
-            case 1 -> BeerBiomes.DRY_PLAINS;
-            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS : Biome.FOREST;
+            case 1 -> BeerBiomes.PLAINS_DRY_PLAINS;
+            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS_PLAINS : Biome.FOREST;
             case 3 -> weirdness == 1 ? Biome.SPARSE_JUNGLE : Biome.JUNGLE;
             default -> weirdness == 1 ? Biome.BAMBOO_JUNGLE : Biome.JUNGLE;
         };

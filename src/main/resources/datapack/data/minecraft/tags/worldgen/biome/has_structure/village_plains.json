@@ -1,7 +1,7 @@
 {
   "values": [
-    "beer:plains",
-    "beer:lush_plains",
-    "beer:dry_plains"
+    "beer:plains/plains",
+    "beer:plains/lush_plains",
+    "beer:plains/dry_plains"
   ]
 }

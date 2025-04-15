@@ -40,7 +40,7 @@ public class ShatteredBiomes {
         int weirdness = ParamPoints.WEIRDNESS.getFixedPoint(paramPoint);
         return switch (humidity) {
             case 0, 1 -> Biome.SAVANNA;
-            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS : Biome.FOREST;
+            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS_PLAINS : Biome.FOREST;
             case 3 -> weirdness == 1 ? Biome.SPARSE_JUNGLE : Biome.JUNGLE;
             default -> weirdness == 1 ? Biome.BAMBOO_JUNGLE : Biome.JUNGLE;
         };

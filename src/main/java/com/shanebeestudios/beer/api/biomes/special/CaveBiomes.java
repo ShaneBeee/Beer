@@ -11,9 +11,9 @@ public class CaveBiomes {
         int temp = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
         int humidity = ParamPoints.HUMIDITY.getFixedPoint(paramPoint);
         if (temp <= 1) {
-            return BeerBiomes.ICE_CAVE;
+            return BeerBiomes.CAVE_ICE_CAVE;
         } else if (temp >= 3) {
-            if (humidity <= 1) return BeerBiomes.DRY_CAVE;
+            if (humidity <= 1) return BeerBiomes.CAVE_DRY_CAVE;
             else if (humidity >= 3) return Biome.LUSH_CAVES;
         }
         return null;

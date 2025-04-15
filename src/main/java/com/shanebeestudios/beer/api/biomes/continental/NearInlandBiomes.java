@@ -36,7 +36,7 @@ public class NearInlandBiomes {
             };
             default -> switch (temp) {
                 case 0 -> RiverBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomes.SWAMP;
+                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
                 default -> Biome.MANGROVE_SWAMP;
             };
         };
@@ -59,7 +59,7 @@ public class NearInlandBiomes {
             }
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomes.SWAMP;
+                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
                 default -> Biome.MANGROVE_SWAMP;
             };
         };
@@ -92,7 +92,7 @@ public class NearInlandBiomes {
             }
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomes.SWAMP;
+                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
                 default -> Biome.MANGROVE_SWAMP;
             };
         };
