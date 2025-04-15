@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "minecraft:block/white_concrete",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": 16777215
+      }
+    ]
+  }
+}

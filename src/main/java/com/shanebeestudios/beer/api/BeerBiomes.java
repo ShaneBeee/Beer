@@ -1,0 +1,44 @@
+package com.shanebeestudios.beer.api;
+
+import io.papermc.paper.registry.RegistryAccess;
+import io.papermc.paper.registry.RegistryKey;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
+import org.bukkit.block.Biome;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@SuppressWarnings({"NullableProblems"})
+public class BeerBiomes {
+
+    public static final Registry<Biome> BIOME_REGISTRY = RegistryAccess.registryAccess().getRegistry(RegistryKey.BIOME);
+    public static final List<Biome> BEER_BIOMES = new ArrayList<>();
+
+    public static Biome COAST_BEACHY_BEACH = getBiome("coast/beachy_beach");
+    public static Biome COAST_COAST = getBiome("coast/coast");
+    public static Biome COAST_DRY_COAST = getBiome("coast/dry_coast");
+    public static Biome COAST_FROZEN_BEACH = getBiome("coast/frozen_beach");
+    public static Biome COAST_LUSH_COAST = getBiome("coast/lush_coast");
+    public static Biome COAST_PALM_BEACH = getBiome("coast/palm_beach");
+    public static Biome DRY_CAVE = getBiome("dry_cave");
+    public static Biome DRY_PLAINS = getBiome("dry_plains");
+    public static Biome FOREST_MOSS_GARDEN = getBiome("forest/moss_garden");
+    public static Biome ICE_CAVE = getBiome("ice_cave");
+    public static Biome LUSH_PLAINS = getBiome("lush_plains");
+    public static Biome PLAINS = getBiome("plains");
+    public static Biome RIVER_DESERT_RIVER = getBiome("river/desert_river");
+    public static Biome RIVER_LUSH_RIVER = getBiome("river/lush_river");
+    public static Biome RIVER_TEMPERATE_RIVER = getBiome("river/temperate_river");
+    public static Biome SWAMP = getBiome("swamp");
+
+
+    private static Biome getBiome(String id) {
+        NamespacedKey key = NamespacedKey.fromString("beer:" + id);
+        assert key != null;
+        Biome biome = BIOME_REGISTRY.get(key);
+        BEER_BIOMES.add(biome);
+        return biome;
+    }
+
+}
