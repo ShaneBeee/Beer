@@ -1,6 +1,10 @@
 {
   "pack": {
     "pack_format": 71,
+    "supported_formats": [
+      71,
+      80
+    ],
     "description": "A Nonsensical Datapack of Stuff"
   }
 }

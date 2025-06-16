@@ -3,13 +3,13 @@ import io.papermc.paperweight.userdev.ReobfArtifactConfiguration
 plugins {
     id("java")
     id("io.github.goooler.shadow") version "8.1.7"
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.16" // the latest version can be found on the Gradle Plugin Portal
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.17" // the latest version can be found on the Gradle Plugin Portal
 }
 
 // The Minecraft version we're currently building for
-val minecraftVersion = "1.21.5"
+val minecraftVersion = "1.21.6"
 // Where this builds on the server
-val serverLocation = "Skript/1-21-5"
+val serverLocation = "Skript/1-21-6"
 // Version of BeerPlugin
 val projectVersion = "1.0.0"
 // Client instance
