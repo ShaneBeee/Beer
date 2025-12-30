@@ -1,4 +1,4 @@
-main: com.shanebeestudios.beer.BeerPlugin
+main: com.shanebeestudios.beer.plugin.BeerPlugin
 name: BeerPlugin
 version: '${version}'
 api-version: '1.21.4'
