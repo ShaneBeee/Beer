@@ -1,4 +1,4 @@
-package com.shanebeestudios.beer.api;
+package com.shanebeestudios.beer.plugin.biomes;
 
 import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;

@@ -1,4 +1,4 @@
-package com.shanebeestudios.beer.api.biomes.special;
+package com.shanebeestudios.beer.plugin.biomes.special;
 
 import com.shanebeestudios.beer.api.ParamPoints;
 import org.bukkit.block.Biome;

@@ -1,4 +1,4 @@
-package com.shanebeestudios.beer.api;
+package com.shanebeestudios.beer.plugin.biomes;
 
 import org.bukkit.Registry;
 import org.bukkit.block.Biome;

@@ -1,0 +1,83 @@
+package com.shanebeestudios.beer.api.utils;
+
+import com.google.common.base.Joiner;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
+import com.shanebeestudios.beer.plugin.BeerPlugin;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.RegistryOps;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class DumpRegistry<N> {
+
+    private static final RegistryOps<JsonElement> REGISTRY_OPS = RegistryOps.create(JsonOps.INSTANCE, MinecraftServer.getServer().registryAccess());
+    private static final File DATA_FOLDER = BeerPlugin.getPluginInstance().getDataFolder();
+    private static final Map<Class<?>, DumpRegistry<?>> MAP = new HashMap<>();
+    public static final String PATTERN;
+
+    static {
+        register("biomes", Registries.BIOME, Biome.DIRECT_CODEC, Biome.class);
+        register("placed_feature", Registries.PLACED_FEATURE, PlacedFeature.DIRECT_CODEC, PlacedFeature.class);
+        register("enchantments", Registries.ENCHANTMENT, Enchantment.DIRECT_CODEC, Enchantment.class);
+
+        List<String> patterns = MAP.values().stream().map(dumpRegistry -> dumpRegistry.name).toList();
+        PATTERN = Joiner.on("/").join(patterns);
+    }
+
+    private static <N> void register(String name, ResourceKey<Registry<N>> registry, Codec<N> codec, Class<N> nmsClass) {
+        MAP.put(nmsClass, new DumpRegistry<>(name, registry, codec));
+    }
+
+    public static void dumpObject(Identifier identifier, Object object) {
+        MAP.forEach((bukkitClass, dumpRegistry) -> {
+            if (bukkitClass.isAssignableFrom(object.getClass())) {
+                dumpRegistry.dump(identifier, object);
+            }
+        });
+    }
+
+    private final String name;
+    private final String registryPath;
+    private final Codec<N> codec;
+
+    public DumpRegistry(String name, ResourceKey<Registry<N>> registry, Codec<N> codec) {
+        this.name = name;
+        this.registryPath = registry.identifier().getPath();
+        this.codec = codec;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void dump(Identifier identifier, Object nmsObject) {
+        File file = new File(DATA_FOLDER, "data/" + identifier.getNamespace() + "/" + this.registryPath + "/" + identifier.getPath() + ".json");
+
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists() && !parent.mkdirs()) {
+            return;
+        }
+        DataResult<JsonElement> jsonData = this.codec.encodeStart(REGISTRY_OPS, (N) nmsObject);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try {
+            Files.writeString(file.toPath(), gson.toJson(jsonData.getOrThrow()));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+}

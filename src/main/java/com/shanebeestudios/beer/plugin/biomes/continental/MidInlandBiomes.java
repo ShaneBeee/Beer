@@ -1,12 +1,12 @@
-package com.shanebeestudios.beer.api.biomes.continental;
+package com.shanebeestudios.beer.plugin.biomes.continental;
 
-import com.shanebeestudios.beer.api.BeerBiomes;
+import com.shanebeestudios.beer.plugin.biomes.BeerBiomes;
 import com.shanebeestudios.beer.api.ParamPoints;
-import com.shanebeestudios.beer.api.biomes.special.BadlandBiomes;
-import com.shanebeestudios.beer.api.biomes.special.MiddleBiomes;
-import com.shanebeestudios.beer.api.biomes.special.PlateauBiomes;
-import com.shanebeestudios.beer.api.biomes.special.RiverBiomes;
-import com.shanebeestudios.beer.api.biomes.special.ShatteredBiomes;
+import com.shanebeestudios.beer.plugin.biomes.special.BadlandBiomes;
+import com.shanebeestudios.beer.plugin.biomes.special.MiddleBiomes;
+import com.shanebeestudios.beer.plugin.biomes.special.PlateauBiomes;
+import com.shanebeestudios.beer.plugin.biomes.special.RiverBiomes;
+import com.shanebeestudios.beer.plugin.biomes.special.ShatteredBiomes;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeParameterPoint;
 import org.jetbrains.annotations.NotNull;
