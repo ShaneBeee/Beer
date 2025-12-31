@@ -53,6 +53,7 @@ public class BiomeDefinition {
         return this.tagKeys;
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public Biome register() {
         return RegistryUtils.registerBiome(this);
     }
@@ -158,7 +159,8 @@ public class BiomeDefinition {
                 if (featureHolder != null) {
                     this.genSettings.addFeature(decoration, featureHolder);
                 } else {
-                    Utils.log("&eUnknown feature &r'&b%s&r'", identifier.toString());
+                    Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
+                        identifier.toString(), this.key.toString());
                 }
             }
         }
@@ -169,8 +171,9 @@ public class BiomeDefinition {
                 Holder<ConfiguredWorldCarver<?>> featureHolder = RegistryUtils.getCarver(identifier);
                 if (featureHolder != null) {
                     this.genSettings.addCarver(featureHolder);
-                }else {
-                    Utils.log("&eUnknown carver &r'&b%s&r'", identifier.toString());
+                } else {
+                    Utils.log("&eUnknown carver &r'&b%s&r' &efound for biome &r'&a%s&r'",
+                        identifier.toString(), this.key.toString());
                 }
             }
             return this;
