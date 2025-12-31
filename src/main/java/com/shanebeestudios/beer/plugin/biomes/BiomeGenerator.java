@@ -1,6 +1,7 @@
 package com.shanebeestudios.beer.plugin.biomes;
 
-import org.bukkit.Registry;
+import io.papermc.paper.registry.RegistryAccess;
+import io.papermc.paper.registry.RegistryKey;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeParameterPoint;
 import org.bukkit.generator.BiomeProvider;
@@ -16,7 +17,7 @@ public class BiomeGenerator extends BiomeProvider {
 
     static {
         AVAILABLE_BIOMES.addAll(BeerBiomes.BEER_BIOMES);
-        for (Biome biome : Registry.BIOME) {
+        for (Biome biome : RegistryAccess.registryAccess().getRegistry(RegistryKey.BIOME)) {
             if (biome.getKey().namespace().equals("minecraft")) {
                 AVAILABLE_BIOMES.add(biome);
             }
