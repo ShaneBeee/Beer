@@ -19,7 +19,7 @@ public class BeerPlugin extends JavaPlugin {
 
         Utils.setPrefix("&7[&bBeer&7] ");
 
-        Datapack zBeer = Bukkit.getDatapackManager().getPack("ZBeer");
+        Datapack zBeer = Bukkit.getDatapackManager().getPack("file/Z-Beer.zip");
         if (zBeer != null && zBeer.isEnabled()) {
             Utils.log("&bLoading custom world...");
             if (loadCustomWorld()) {
@@ -37,7 +37,6 @@ public class BeerPlugin extends JavaPlugin {
     private boolean loadCustomWorld() {
         WorldCreator worldCreator = new WorldCreator("world_beer");
         worldCreator.biomeProvider(new BiomeGenerator());
-        //worldCreator.generator(new DummyChunkGenerator());
 
         return worldCreator.createWorld() != null;
     }
