@@ -1,293 +1,234 @@
 {
   "feature": {
-    "type": "minecraft:waterlogged_vegetation_patch",
     "config": {
-      "depth": 3,
-      "extra_bottom_block_chance": 0.8,
-      "extra_edge_column_chance": 0.7,
+      "replaceable": "#minecraft:lush_ground_replaceable",
       "ground_state": {
-        "type": "minecraft:simple_state_provider",
         "state": {
           "Name": "minecraft:sandstone"
-        }
+        },
+        "type": "minecraft:simple_state_provider"
       },
-      "replaceable": "#minecraft:lush_ground_replaceable",
-      "surface": "floor",
-      "vegetation_chance": 0.1,
       "vegetation_feature": {
         "feature": {
-          "type": "minecraft:random_selector",
           "config": {
+            "features": [
+              {
+                "feature": {
+                  "feature": {
+                    "config": {
+                      "to_place": {
+                        "state": {
+                          "Properties": {
+                            "waterlogged": "true",
+                            "pickles": "3"
+                          },
+                          "Name": "minecraft:sea_pickle"
+                        },
+                        "type": "minecraft:simple_state_provider"
+                      }
+                    },
+                    "type": "minecraft:simple_block"
+                  },
+                  "placement": []
+                },
+                "chance": 0.05
+              },
+              {
+                "feature": {
+                  "feature": {
+                    "config": {
+                      "layers": [
+                        {
+                          "height": {
+                            "distribution": [
+                              {
+                                "data": {
+                                  "min_inclusive": 0,
+                                  "max_inclusive": 19,
+                                  "type": "minecraft:uniform"
+                                },
+                                "weight": 2
+                              },
+                              {
+                                "data": {
+                                  "min_inclusive": 0,
+                                  "max_inclusive": 2,
+                                  "type": "minecraft:uniform"
+                                },
+                                "weight": 3
+                              },
+                              {
+                                "data": {
+                                  "min_inclusive": 0,
+                                  "max_inclusive": 6,
+                                  "type": "minecraft:uniform"
+                                },
+                                "weight": 10
+                              }
+                            ],
+                            "type": "minecraft:weighted_list"
+                          },
+                          "provider": {
+                            "state": {
+                              "Properties": {
+                                "west": "none",
+                                "waterlogged": "false",
+                                "up": "true",
+                                "south": "none",
+                                "north": "none",
+                                "east": "none"
+                              },
+                              "Name": "minecraft:sandstone_wall"
+                            },
+                            "type": "minecraft:simple_state_provider"
+                          }
+                        }
+                      ],
+                      "direction": "up",
+                      "allowed_placement": {
+                        "blocks": "minecraft:air",
+                        "type": "minecraft:matching_blocks"
+                      },
+                      "prioritize_tip": true
+                    },
+                    "type": "minecraft:block_column"
+                  },
+                  "placement": [
+                    {
+                      "count": 1,
+                      "type": "minecraft:count"
+                    }
+                  ]
+                },
+                "chance": 0.8
+              }
+            ],
             "default": {
               "feature": {
-                "type": "minecraft:block_column",
                 "config": {
-                  "allowed_placement": {
-                    "type": "minecraft:matching_blocks",
-                    "blocks": "minecraft:air"
-                  },
-                  "direction": "up",
                   "layers": [
                     {
                       "height": {
-                        "type": "minecraft:weighted_list",
                         "distribution": [
                           {
                             "data": {
-                              "type": "minecraft:uniform",
+                              "min_inclusive": 0,
                               "max_inclusive": 19,
-                              "min_inclusive": 0
+                              "type": "minecraft:uniform"
                             },
                             "weight": 2
                           },
                           {
                             "data": {
-                              "type": "minecraft:uniform",
+                              "min_inclusive": 0,
                               "max_inclusive": 2,
-                              "min_inclusive": 0
+                              "type": "minecraft:uniform"
                             },
                             "weight": 3
                           },
                           {
                             "data": {
-                              "type": "minecraft:uniform",
+                              "min_inclusive": 0,
                               "max_inclusive": 6,
-                              "min_inclusive": 0
+                              "type": "minecraft:uniform"
                             },
                             "weight": 10
                           }
-                        ]
+                        ],
+                        "type": "minecraft:weighted_list"
                       },
                       "provider": {
-                        "type": "minecraft:weighted_state_provider",
-                        "entries": [
-                          {
-                            "data": {
-                              "Name": "minecraft:sandstone_wall"
-                            },
-                            "weight": 1
-                          }
-                        ]
+                        "state": {
+                          "Properties": {
+                            "west": "none",
+                            "waterlogged": "false",
+                            "up": "true",
+                            "south": "none",
+                            "north": "none",
+                            "east": "none"
+                          },
+                          "Name": "minecraft:sandstone_wall"
+                        },
+                        "type": "minecraft:simple_state_provider"
                       }
                     }
                   ],
+                  "direction": "up",
+                  "allowed_placement": {
+                    "blocks": "minecraft:air",
+                    "type": "minecraft:matching_blocks"
+                  },
                   "prioritize_tip": true
-                }
+                },
+                "type": "minecraft:block_column"
               },
               "placement": [
                 {
-                  "type": "count",
-                  "count": 1
+                  "count": 1,
+                  "type": "minecraft:count"
                 }
               ]
-            },
-            "features": [
-              {
-                "chance": 0.05,
-                "feature": {
-                  "feature": {
-                    "type": "minecraft:simple_block",
-                    "config": {
-                      "to_place": {
-                        "type": "minecraft:simple_state_provider",
-                        "state": {
-                          "Name": "minecraft:sea_pickle",
-                          "Properties": {
-                            "pickles": "3"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "placement": []
-                }
-              },
-              {
-                "chance": 0.8,
-                "feature": {
-                  "feature": {
-                    "type": "minecraft:block_column",
-                    "config": {
-                      "allowed_placement": {
-                        "type": "minecraft:matching_blocks",
-                        "blocks": "minecraft:air"
-                      },
-                      "direction": "up",
-                      "layers": [
-                        {
-                          "height": {
-                            "type": "minecraft:weighted_list",
-                            "distribution": [
-                              {
-                                "data": {
-                                  "type": "minecraft:uniform",
-                                  "max_inclusive": 19,
-                                  "min_inclusive": 0
-                                },
-                                "weight": 2
-                              },
-                              {
-                                "data": {
-                                  "type": "minecraft:uniform",
-                                  "max_inclusive": 2,
-                                  "min_inclusive": 0
-                                },
-                                "weight": 3
-                              },
-                              {
-                                "data": {
-                                  "type": "minecraft:uniform",
-                                  "max_inclusive": 6,
-                                  "min_inclusive": 0
-                                },
-                                "weight": 10
-                              }
-                            ]
-                          },
-                          "provider": {
-                            "type": "minecraft:weighted_state_provider",
-                            "entries": [
-                              {
-                                "data": {
-                                  "Name": "minecraft:sandstone_wall"
-                                },
-                                "weight": 1
-                              }
-                            ]
-                          }
-                        }
-                      ],
-                      "prioritize_tip": true
-                    }
-                  },
-                  "placement": [
-                    {
-                      "type": "count",
-                      "count": 1
-                    }
-                  ]
-                }
-              },
-              {
-                "chance": 0.15,
-                "feature": {
-                  "feature": {
-                    "type": "minecraft:block_column",
-                    "config": {
-                      "allowed_placement": {
-                        "type": "minecraft:matching_blocks",
-                        "blocks": "minecraft:air"
-                      },
-                      "direction": "up",
-                      "layers": [
-                        {
-                          "height": {
-                            "type": "minecraft:weighted_list",
-                            "distribution": [
-                              {
-                                "data": {
-                                  "type": "minecraft:uniform",
-                                  "max_inclusive": 19,
-                                  "min_inclusive": 0
-                                },
-                                "weight": 2
-                              },
-                              {
-                                "data": {
-                                  "type": "minecraft:uniform",
-                                  "max_inclusive": 2,
-                                  "min_inclusive": 0
-                                },
-                                "weight": 3
-                              },
-                              {
-                                "data": {
-                                  "type": "minecraft:uniform",
-                                  "max_inclusive": 6,
-                                  "min_inclusive": 0
-                                },
-                                "weight": 10
-                              }
-                            ]
-                          },
-                          "provider": {
-                            "type": "minecraft:weighted_state_provider",
-                            "entries": [
-                              {
-                                "data": {
-                                  "Name": "minecraft:red_sandstone_wall"
-                                },
-                                "weight": 1
-                              }
-                            ]
-                          }
-                        }
-                      ],
-                      "prioritize_tip": true
-                    }
-                  },
-                  "placement": [
-                    {
-                      "type": "count",
-                      "count": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          }
+            }
+          },
+          "type": "minecraft:random_selector"
         },
         "placement": [
           {
-            "type": "count",
-            "count": 1
+            "count": 1,
+            "type": "minecraft:count"
           }
         ]
       },
+      "surface": "floor",
+      "depth": 3,
+      "extra_bottom_block_chance": 0.8,
       "vertical_range": 5,
+      "vegetation_chance": 0.1,
       "xz_radius": {
-        "type": "minecraft:uniform",
+        "min_inclusive": 4,
         "max_inclusive": 7,
-        "min_inclusive": 4
-      }
-    }
+        "type": "minecraft:uniform"
+      },
+      "extra_edge_column_chance": 0.7
+    },
+    "type": "minecraft:waterlogged_vegetation_patch"
   },
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 62
+      "count": 62,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "above_bottom": 0
+        },
         "max_inclusive": {
           "absolute": 256
         },
-        "min_inclusive": {
-          "above_bottom": 0
-        }
-      }
+        "type": "minecraft:uniform"
+      },
+      "type": "minecraft:height_range"
     },
     {
-      "type": "minecraft:environment_scan",
-      "allowed_search_condition": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
-      },
       "direction_of_search": "down",
-      "max_steps": 12,
       "target_condition": {
         "type": "minecraft:solid"
-      }
+      },
+      "allowed_search_condition": {
+        "blocks": "minecraft:air",
+        "type": "minecraft:matching_blocks"
+      },
+      "max_steps": 12,
+      "type": "minecraft:environment_scan"
     },
     {
-      "type": "minecraft:random_offset",
       "xz_spread": 0,
-      "y_spread": 1
+      "y_spread": 1,
+      "type": "minecraft:random_offset"
     },
     {
       "type": "minecraft:biome"

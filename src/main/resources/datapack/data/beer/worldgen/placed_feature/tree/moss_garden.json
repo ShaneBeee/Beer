@@ -1,91 +1,92 @@
 {
   "feature": {
-    "type": "minecraft:tree",
     "config": {
+      "trunk_provider": {
+        "state": {
+          "Properties": {
+            "axis": "y"
+          },
+          "Name": "minecraft:warped_stem"
+        },
+        "type": "minecraft:simple_state_provider"
+      },
+      "trunk_placer": {
+        "base_height": 8,
+        "height_rand_a": 3,
+        "height_rand_b": 1,
+        "type": "minecraft:dark_oak_trunk_placer"
+      },
+      "foliage_provider": {
+        "state": {
+          "Properties": {
+            "waterlogged": "false",
+            "persistent": "false",
+            "distance": "7"
+          },
+          "Name": "minecraft:jungle_leaves"
+        },
+        "type": "minecraft:simple_state_provider"
+      },
+      "foliage_placer": {
+        "radius": 0,
+        "offset": 0,
+        "type": "minecraft:dark_oak_foliage_placer"
+      },
+      "dirt_provider": {
+        "state": {
+          "Name": "minecraft:dirt"
+        },
+        "type": "minecraft:simple_state_provider"
+      },
+      "minimum_size": {
+        "limit": 1,
+        "upper_limit": 1,
+        "lower_size": 0,
+        "middle_size": 1,
+        "upper_size": 2,
+        "min_clipped_height": 0,
+        "type": "minecraft:three_layers_feature_size"
+      },
       "decorators": [
         {
           "type": "minecraft:trunk_vine"
         }
       ],
-      "dirt_provider": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "minecraft:dirt"
-        }
-      },
-      "foliage_placer": {
-        "type": "minecraft:dark_oak_foliage_placer",
-        "offset": 0,
-        "radius": 0
-      },
-      "foliage_provider": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "minecraft:jungle_leaves",
-          "Properties": {
-            "distance": "7",
-            "persistent": "false",
-            "waterlogged": "false"
-          }
-        }
-      },
-      "force_dirt": false,
       "ignore_vines": true,
-      "minimum_size": {
-        "type": "minecraft:three_layers_feature_size",
-        "limit": 1,
-        "lower_size": 0,
-        "middle_size": 1,
-        "upper_limit": 1,
-        "upper_size": 2
-      },
-      "trunk_placer": {
-        "type": "minecraft:dark_oak_trunk_placer",
-        "base_height": 8,
-        "height_rand_a": 3,
-        "height_rand_b": 1
-      },
-      "trunk_provider": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "minecraft:warped_stem",
-          "Properties": {
-            "axis": "y"
-          }
-        }
-      }
-    }
+      "force_dirt": false
+    },
+    "type": "minecraft:tree"
   },
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 8
+      "count": 8,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:surface_water_depth_filter",
-      "max_water_depth": 0
+      "max_water_depth": 0,
+      "type": "minecraft:surface_water_depth_filter"
     },
     {
-      "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR"
+      "heightmap": "OCEAN_FLOOR",
+      "type": "minecraft:heightmap"
     },
     {
       "type": "minecraft:biome"
     },
     {
-      "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:oak_sapling",
           "Properties": {
             "stage": "0"
-          }
-        }
-      }
+          },
+          "Name": "minecraft:oak_sapling"
+        },
+        "type": "minecraft:would_survive"
+      },
+      "type": "minecraft:block_predicate_filter"
     }
   ]
 }

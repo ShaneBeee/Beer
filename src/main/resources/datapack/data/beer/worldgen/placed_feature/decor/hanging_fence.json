@@ -1,122 +1,126 @@
 {
   "feature": {
-    "type": "minecraft:block_column",
     "config": {
-      "allowed_placement": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
-      },
-      "direction": "down",
       "layers": [
         {
           "height": {
-            "type": "minecraft:weighted_list",
             "distribution": [
               {
                 "data": {
-                  "type": "minecraft:uniform",
+                  "min_inclusive": 1,
                   "max_inclusive": 10,
-                  "min_inclusive": 1
+                  "type": "minecraft:uniform"
                 },
                 "weight": 2
               },
               {
                 "data": {
-                  "type": "minecraft:uniform",
+                  "min_inclusive": 1,
                   "max_inclusive": 2,
-                  "min_inclusive": 1
+                  "type": "minecraft:uniform"
                 },
                 "weight": 3
               },
               {
                 "data": {
-                  "type": "minecraft:uniform",
+                  "min_inclusive": 1,
                   "max_inclusive": 6,
-                  "min_inclusive": 1
+                  "type": "minecraft:uniform"
                 },
                 "weight": 10
               }
-            ]
+            ],
+            "type": "minecraft:weighted_list"
           },
           "provider": {
-            "type": "minecraft:weighted_state_provider",
-            "entries": [
-              {
-                "data": {
-                  "Name": "minecraft:dark_oak_fence"
-                },
-                "weight": 4
-              }
-            ]
+            "state": {
+              "Properties": {
+                "west": "false",
+                "waterlogged": "false",
+                "south": "false",
+                "north": "false",
+                "east": "false"
+              },
+              "Name": "minecraft:dark_oak_fence"
+            },
+            "type": "minecraft:simple_state_provider"
           }
         },
         {
           "height": 1,
           "provider": {
-            "type": "minecraft:weighted_state_provider",
             "entries": [
               {
                 "data": {
-                  "Name": "minecraft:lantern",
                   "Properties": {
+                    "waterlogged": "false",
                     "hanging": "true"
-                  }
+                  },
+                  "Name": "minecraft:soul_lantern"
                 },
-                "weight": 4
+                "weight": 1
               },
               {
                 "data": {
-                  "Name": "minecraft:soul_lantern",
                   "Properties": {
+                    "waterlogged": "false",
                     "hanging": "true"
-                  }
+                  },
+                  "Name": "minecraft:lantern"
                 },
-                "weight": 1
+                "weight": 4
               }
-            ]
+            ],
+            "type": "minecraft:weighted_state_provider"
           }
         }
       ],
+      "direction": "down",
+      "allowed_placement": {
+        "blocks": "minecraft:air",
+        "type": "minecraft:matching_blocks"
+      },
       "prioritize_tip": true
-    }
+    },
+    "type": "minecraft:block_column"
   },
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 100
+      "count": 100,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "above_bottom": 0
+        },
         "max_inclusive": {
           "absolute": 256
         },
-        "min_inclusive": {
-          "above_bottom": 0
-        }
-      }
-    },
-    {
-      "type": "minecraft:environment_scan",
-      "allowed_search_condition": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
+        "type": "minecraft:uniform"
       },
-      "direction_of_search": "up",
-      "max_steps": 12,
-      "target_condition": {
-        "type": "minecraft:has_sturdy_face",
-        "direction": "down"
-      }
+      "type": "minecraft:height_range"
     },
     {
-      "type": "minecraft:random_offset",
+      "direction_of_search": "up",
+      "target_condition": {
+        "direction": "down",
+        "type": "minecraft:has_sturdy_face"
+      },
+      "allowed_search_condition": {
+        "blocks": "minecraft:air",
+        "type": "minecraft:matching_blocks"
+      },
+      "max_steps": 12,
+      "type": "minecraft:environment_scan"
+    },
+    {
       "xz_spread": 0,
-      "y_spread": -1
+      "y_spread": -1,
+      "type": "minecraft:random_offset"
     },
     {
       "type": "minecraft:biome"

@@ -1,107 +1,117 @@
 {
   "feature": {
-    "type": "minecraft:random_patch",
     "config": {
+      "tries": 100,
+      "xz_spread": 3,
+      "y_spread": 2,
       "feature": {
         "feature": {
-          "type": "minecraft:simple_block",
           "config": {
             "to_place": {
-              "type": "minecraft:simple_state_provider",
               "state": {
-                "Name": "minecraft:water",
                 "Properties": {
-                  "level": 0
-                }
-              }
+                  "level": "0"
+                },
+                "Name": "minecraft:water"
+              },
+              "type": "minecraft:simple_state_provider"
             }
-          }
+          },
+          "type": "minecraft:simple_block"
         },
         "placement": [
           {
-            "type": "minecraft:block_predicate_filter",
             "predicate": {
-              "type": "all_of",
               "predicates": [
                 {
-                  "type": "minecraft:matching_block_tag",
-                  "tag": "minecraft:dirt"
+                  "tag": "minecraft:dirt",
+                  "type": "minecraft:matching_block_tag"
                 },
                 {
-                  "type": "minecraft:matching_blocks",
                   "offset": [
-                    0,0,-1
-                  ],
-                  "blocks": [
-                    "minecraft:dirt",
-                    "minecraft:grass_block",
-                    "minecraft:water"
-                  ]
-                },
-                {
-                  "type": "minecraft:matching_blocks",
-                  "offset": [
-                    0,1,0
+                    0,
+                    1,
+                    0
                   ],
                   "blocks": [
                     "minecraft:air",
                     "minecraft:water"
-                  ]
+                  ],
+                  "type": "minecraft:matching_blocks"
                 },
                 {
-                  "type": "minecraft:matching_blocks",
                   "offset": [
-                    0,0,1
+                    0,
+                    0,
+                    -1
                   ],
                   "blocks": [
                     "minecraft:dirt",
-                    "minecraft:grass_block",
-                    "minecraft:water"
-                  ]
+                    "minecraft:water",
+                    "minecraft:grass_block"
+                  ],
+                  "type": "minecraft:matching_blocks"
                 },
                 {
-                  "type": "minecraft:matching_blocks",
                   "offset": [
-                    1,0,0
+                    0,
+                    0,
+                    1
                   ],
                   "blocks": [
                     "minecraft:dirt",
-                    "minecraft:grass_block",
-                    "minecraft:water"
-                  ]
+                    "minecraft:water",
+                    "minecraft:grass_block"
+                  ],
+                  "type": "minecraft:matching_blocks"
                 },
                 {
-                  "type": "minecraft:matching_blocks",
                   "offset": [
-                    -1,0,0
+                    1,
+                    0,
+                    0
                   ],
                   "blocks": [
                     "minecraft:dirt",
-                    "minecraft:grass_block",
-                    "minecraft:water"
-                  ]
+                    "minecraft:water",
+                    "minecraft:grass_block"
+                  ],
+                  "type": "minecraft:matching_blocks"
+                },
+                {
+                  "offset": [
+                    -1,
+                    0,
+                    0
+                  ],
+                  "blocks": [
+                    "minecraft:dirt",
+                    "minecraft:water",
+                    "minecraft:grass_block"
+                  ],
+                  "type": "minecraft:matching_blocks"
                 }
-              ]
-            }
+              ],
+              "type": "minecraft:all_of"
+            },
+            "type": "minecraft:block_predicate_filter"
           }
         ]
-      },
-      "tries": 100,
-      "xz_spread": 3,
-      "y_spread": 2
-    }
+      }
+    },
+    "type": "minecraft:random_patch"
   },
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 10
+      "count": 10,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE_WG"
+      "heightmap": "WORLD_SURFACE_WG",
+      "type": "minecraft:heightmap"
     },
     {
       "type": "minecraft:biome"

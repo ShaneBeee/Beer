@@ -2,40 +2,43 @@
   "feature": {
     "config": {
       "contents": {
+        "Properties": {
+          "level": "0"
+        },
         "Name": "minecraft:water"
       },
       "rim": {
         "Name": "minecraft:mud"
       },
       "size": {
-        "type": "minecraft:uniform",
         "min_inclusive": 3,
-        "max_inclusive": 7
+        "max_inclusive": 7,
+        "type": "minecraft:uniform"
       },
       "rim_size": {
-        "type": "minecraft:uniform",
         "min_inclusive": 1,
-        "max_inclusive": 2
+        "max_inclusive": 2,
+        "type": "minecraft:uniform"
       }
     },
     "type": "minecraft:delta_feature"
   },
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 64
+      "count": 64,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE_WG"
+      "heightmap": "WORLD_SURFACE_WG",
+      "type": "minecraft:heightmap"
     },
     {
-      "type": "minecraft:random_offset",
       "xz_spread": 0,
-      "y_spread": 0
+      "y_spread": 0,
+      "type": "minecraft:random_offset"
     },
     {
       "type": "minecraft:biome"

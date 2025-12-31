@@ -1,25 +1,17 @@
 {
   "feature": {
-    "type": "minecraft:vegetation_patch",
     "config": {
-      "depth": 1,
-      "extra_bottom_block_chance": 0.0,
-      "extra_edge_column_chance": 0.75,
+      "replaceable": "#minecraft:moss_replaceable",
       "ground_state": {
-        "type": "minecraft:simple_state_provider",
         "state": {
           "Name": "minecraft:moss_block"
-        }
+        },
+        "type": "minecraft:simple_state_provider"
       },
-      "replaceable": "#minecraft:moss_replaceable",
-      "surface": "floor",
-      "vegetation_chance": 0.3,
       "vegetation_feature": {
         "feature": {
-          "type": "minecraft:simple_block",
           "config": {
             "to_place": {
-              "type": "minecraft:weighted_state_provider",
               "entries": [
                 {
                   "data": {
@@ -35,38 +27,46 @@
                 },
                 {
                   "data": {
-                    "Name": "minecraft:tall_grass",
                     "Properties": {
                       "half": "lower"
-                    }
+                    },
+                    "Name": "minecraft:tall_grass"
                   },
                   "weight": 10
                 }
-              ]
+              ],
+              "type": "minecraft:weighted_state_provider"
             }
-          }
+          },
+          "type": "minecraft:simple_block"
         },
         "placement": []
       },
+      "surface": "floor",
+      "depth": 1,
+      "extra_bottom_block_chance": 0.0,
       "vertical_range": 5,
+      "vegetation_chance": 0.3,
       "xz_radius": {
-        "type": "minecraft:uniform",
+        "min_inclusive": 1,
         "max_inclusive": 2,
-        "min_inclusive": 1
-      }
-    }
+        "type": "minecraft:uniform"
+      },
+      "extra_edge_column_chance": 0.75
+    },
+    "type": "minecraft:vegetation_patch"
   },
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 3
+      "count": 3,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING_NO_LEAVES"
+      "heightmap": "MOTION_BLOCKING_NO_LEAVES",
+      "type": "minecraft:heightmap"
     },
     {
       "type": "minecraft:biome"

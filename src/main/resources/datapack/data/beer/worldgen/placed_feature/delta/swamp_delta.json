@@ -1,15 +1,14 @@
 {
   "feature": {
-    "type": "minecraft:waterlogged_vegetation_patch",
     "config": {
-      "depth": 3,
-      "extra_bottom_block_chance": 0.8,
-      "extra_edge_column_chance": 0.7,
+      "replaceable": "#minecraft:dirt",
       "ground_state": {
-        "type": "minecraft:weighted_state_provider",
         "entries": [
           {
             "data": {
+              "Properties": {
+                "snowy": "false"
+              },
               "Name": "minecraft:grass_block"
             },
             "weight": 10
@@ -32,39 +31,43 @@
             },
             "weight": 3
           }
-        ]
+        ],
+        "type": "minecraft:weighted_state_provider"
       },
-      "replaceable": "#minecraft:dirt",
-      "surface": "floor",
-      "vegetation_chance": 0.2,
       "vegetation_feature": {
         "feature": "minecraft:dripleaf",
         "placement": []
       },
+      "surface": "floor",
+      "depth": 3,
+      "extra_bottom_block_chance": 0.8,
       "vertical_range": 5,
+      "vegetation_chance": 0.2,
       "xz_radius": {
-        "type": "minecraft:uniform",
+        "min_inclusive": 4,
         "max_inclusive": 7,
-        "min_inclusive": 4
-      }
-    }
+        "type": "minecraft:uniform"
+      },
+      "extra_edge_column_chance": 0.7
+    },
+    "type": "minecraft:waterlogged_vegetation_patch"
   },
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 1
+      "count": 1,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE_WG"
+      "heightmap": "WORLD_SURFACE_WG",
+      "type": "minecraft:heightmap"
     },
     {
-      "type": "minecraft:random_offset",
       "xz_spread": 0,
-      "y_spread": 0
+      "y_spread": 0,
+      "type": "minecraft:random_offset"
     },
     {
       "type": "minecraft:biome"
