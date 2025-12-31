@@ -52,6 +52,9 @@
       "beer:tree/beachy_palm",
       "minecraft:patch_waterlily",
       "minecraft:patch_sugar_cane"
+    ],
+    [
+      "minecraft:freeze_top_layer"
     ]
   ],
   "spawners": {

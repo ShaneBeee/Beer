@@ -130,7 +130,7 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.AXOLOTLS, EntityType.AXOLOTL, 10, 4, 6)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
-            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1,1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 100, 4, 4)
             .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.TROPICAL_FISH, 25, 8, 8)
@@ -309,6 +309,13 @@ public class BiomeRegistration {
                     "minecraft:patch_grass_savanna"),
                 null)
 
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ILLUSIONER, 1, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 3, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 3, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 3, 1, 1)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 10, 1, 2)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.ARMADILLO, 10, 1, 2)
+
             .build();
 
         BiomeDefinition frozen_beach = BiomeDefinition.builder("beer:coast/frozen_beach")
@@ -349,7 +356,7 @@ public class BiomeRegistration {
                 List.of("beer:tree/beachy_palm",
                     "minecraft:patch_waterlily",
                     "minecraft:patch_sugar_cane"),
-                null)
+                List.of("minecraft:freeze_top_layer"))
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
             .build();
@@ -923,8 +930,8 @@ public class BiomeRegistration {
             .carvers("minecraft:cave", "minecraft:cave_extra_underground", "minecraft:canyon")
 
             .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
-            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 19, 4, 4)
-            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 1, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 1, 4, 4)

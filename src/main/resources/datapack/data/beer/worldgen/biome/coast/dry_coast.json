@@ -40,8 +40,46 @@
     ]
   ],
   "spawners": {
-    "monster": [],
-    "creature": [],
+    "monster": [
+      {
+        "type": "minecraft:illusioner",
+        "minCount": 1,
+        "maxCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:zombie",
+        "minCount": 1,
+        "maxCount": 1,
+        "weight": 3
+      },
+      {
+        "type": "minecraft:skeleton",
+        "minCount": 1,
+        "maxCount": 1,
+        "weight": 3
+      },
+      {
+        "type": "minecraft:creeper",
+        "minCount": 1,
+        "maxCount": 1,
+        "weight": 3
+      }
+    ],
+    "creature": [
+      {
+        "type": "minecraft:frog",
+        "minCount": 1,
+        "maxCount": 2,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:armadillo",
+        "minCount": 1,
+        "maxCount": 2,
+        "weight": 10
+      }
+    ],
     "ambient": [],
     "axolotls": [],
     "underground_water_creature": [],

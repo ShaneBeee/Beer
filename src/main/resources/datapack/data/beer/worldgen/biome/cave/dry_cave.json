@@ -3,6 +3,7 @@
   "temperature": 0.5,
   "downfall": 0.5,
   "attributes": {
+    "minecraft:visual/sky_color": "#7ba4ff",
     "minecraft:audio/music_volume": 1.0,
     "minecraft:visual/water_fog_color": "#041633",
     "minecraft:visual/ambient_particles": [
@@ -32,8 +33,7 @@
         "min_delay": 12000,
         "max_delay": 24000
       }
-    },
-    "minecraft:visual/sky_color": "#7ba4ff"
+    }
   },
   "effects": {
     "water_color": "#45adf2"
@@ -122,8 +122,8 @@
       },
       {
         "type": "minecraft:zombie_villager",
-        "minCount": 4,
-        "maxCount": 4,
+        "minCount": 1,
+        "maxCount": 1,
         "weight": 5
       },
       {
