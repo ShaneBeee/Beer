@@ -2,12 +2,14 @@
   "has_precipitation": true,
   "temperature": 0.8,
   "downfall": 0.2,
+  "attributes": {
+    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:visual/sky_color": "#78a7ff",
+    "minecraft:visual/water_fog_color": "#050533",
+    "minecraft:audio/music_volume": 1.0
+  },
   "effects": {
-    "music_volume": 1.0,
-    "sky_color": 7907327,
-    "fog_color": 12638463,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_color": "#3f76e4"
   },
   "carvers": [],
   "features": [
@@ -46,21 +48,21 @@
     "creature": [
       {
         "type": "minecraft:cow",
-        "weight": 10,
         "minCount": 2,
-        "maxCount": 4
+        "maxCount": 4,
+        "weight": 10
       },
       {
         "type": "minecraft:sheep",
-        "weight": 10,
         "minCount": 2,
-        "maxCount": 4
+        "maxCount": 4,
+        "weight": 10
       },
       {
         "type": "minecraft:pig",
-        "weight": 10,
         "minCount": 2,
-        "maxCount": 4
+        "maxCount": 4,
+        "weight": 10
       }
     ],
     "ambient": [],

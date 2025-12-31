@@ -2,20 +2,24 @@
   "has_precipitation": true,
   "temperature": 0.7,
   "downfall": 0.5,
+  "attributes": {
+    "minecraft:visual/fog_color": "#fcbf86",
+    "minecraft:visual/sky_color": "#55f7dc",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:cherry_leaves"
+        },
+        "probability": 5.0E-4
+      }
+    ],
+    "minecraft:visual/water_fog_color": "#86fcec",
+    "minecraft:audio/music_volume": 1.0
+  },
   "effects": {
-    "music_volume": 1.0,
-    "particle": {
-      "options": {
-        "type": "minecraft:cherry_leaves"
-      },
-      "probability": 5.0E-4
-    },
-    "sky_color": 5634012,
-    "foliage_color": 442658,
-    "grass_color": 11060330,
-    "fog_color": 16564102,
-    "water_color": 6003155,
-    "water_fog_color": 8846572
+    "water_color": "#5b99d3",
+    "foliage_color": "#06c122",
+    "grass_color": "#a8c46a"
   },
   "carvers": [],
   "features": [
@@ -56,41 +60,41 @@
     "monster": [
       {
         "type": "minecraft:illusioner",
-        "weight": 1,
         "minCount": 1,
-        "maxCount": 1
+        "maxCount": 1,
+        "weight": 1
       },
       {
         "type": "minecraft:zombie",
-        "weight": 3,
         "minCount": 1,
-        "maxCount": 1
+        "maxCount": 1,
+        "weight": 3
       },
       {
         "type": "minecraft:skeleton",
-        "weight": 3,
         "minCount": 1,
-        "maxCount": 1
+        "maxCount": 1,
+        "weight": 3
       },
       {
         "type": "minecraft:creeper",
-        "weight": 3,
         "minCount": 1,
-        "maxCount": 1
+        "maxCount": 1,
+        "weight": 3
       }
     ],
     "creature": [
       {
         "type": "minecraft:frog",
-        "weight": 10,
         "minCount": 1,
-        "maxCount": 2
+        "maxCount": 2,
+        "weight": 10
       },
       {
         "type": "minecraft:armadillo",
-        "weight": 10,
         "minCount": 1,
-        "maxCount": 2
+        "maxCount": 2,
+        "weight": 10
       }
     ],
     "ambient": [],

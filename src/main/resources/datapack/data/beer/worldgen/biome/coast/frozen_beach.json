@@ -2,26 +2,32 @@
   "has_precipitation": true,
   "temperature": 0.1,
   "downfall": 0.0,
-  "carvers": [],
-  "effects": {
-    "fog_color": 12638463,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "sound": "minecraft:ambient.cave",
+        "tick_delay": 6000,
+        "block_search_extent": 8,
+        "offset": 2.0
+      }
     },
-    "music_volume": 1.0,
-    "sky_color": 8364543,
-    "water_color": 4020182,
-    "water_fog_color": 329011,
-    "particle": {
-      "options": {
-        "type": "minecraft:white_ash"
-      },
-      "probability": 0.2
-    }
+    "minecraft:audio/music_volume": 1.0,
+    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:visual/sky_color": "#7fa1ff",
+    "minecraft:visual/water_fog_color": "#050533",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:white_ash"
+        },
+        "probability": 0.2
+      }
+    ]
   },
+  "effects": {
+    "water_color": "#3d57d6"
+  },
+  "carvers": [],
   "features": [
     [
       "beer:terrain/diorite_cliffs",
@@ -46,9 +52,6 @@
       "beer:tree/beachy_palm",
       "minecraft:patch_waterlily",
       "minecraft:patch_sugar_cane"
-    ],
-    [
-      "minecraft:freeze_top_layer"
     ]
   ],
   "spawners": {
@@ -56,9 +59,9 @@
     "creature": [
       {
         "type": "minecraft:frog",
-        "weight": 15,
         "minCount": 2,
-        "maxCount": 2
+        "maxCount": 2,
+        "weight": 15
       }
     ],
     "ambient": [],

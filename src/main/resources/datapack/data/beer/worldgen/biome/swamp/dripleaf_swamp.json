@@ -2,14 +2,16 @@
   "has_precipitation": true,
   "temperature": 0.8,
   "downfall": 0.2,
+  "attributes": {
+    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:visual/sky_color": "#78a7ff",
+    "minecraft:visual/water_fog_color": "#232317",
+    "minecraft:audio/music_volume": 1.0
+  },
   "effects": {
-    "music_volume": 1.0,
-    "grass_color_modifier": "swamp",
-    "sky_color": 7907327,
-    "foliage_color": 6975545,
-    "fog_color": 12638463,
-    "water_color": 6388580,
-    "water_fog_color": 2302743
+    "water_color": "#617b64",
+    "foliage_color": "#6a7039",
+    "grass_color_modifier": "swamp"
   },
   "carvers": [],
   "features": [
@@ -44,14 +46,7 @@
   ],
   "spawners": {
     "monster": [],
-    "creature": [
-      {
-        "type": "minecraft:frog",
-        "weight": 10,
-        "minCount": 2,
-        "maxCount": 4
-      }
-    ],
+    "creature": [],
     "ambient": [],
     "axolotls": [],
     "underground_water_creature": [],

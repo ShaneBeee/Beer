@@ -2,14 +2,15 @@
   "has_precipitation": false,
   "temperature": 2.0,
   "downfall": 0.0,
+  "attributes": {
+    "minecraft:visual/fog_color": "#fcbf86",
+    "minecraft:visual/sky_color": "#55f7dc",
+    "minecraft:visual/water_fog_color": "#86fcec"
+  },
   "effects": {
-    "music_volume": 1.0,
-    "sky_color": 5634012,
-    "foliage_color": 442658,
-    "grass_color": 6017902,
-    "fog_color": 16564102,
-    "water_color": 6003155,
-    "water_fog_color": 8846572
+    "water_color": "#5b99d3",
+    "foliage_color": "#06c122",
+    "grass_color": "#5bd36e"
   },
   "carvers": [],
   "features": [
@@ -44,9 +45,9 @@
     "creature": [
       {
         "type": "minecraft:frog",
-        "weight": 15,
         "minCount": 2,
-        "maxCount": 2
+        "maxCount": 2,
+        "weight": 15
       }
     ],
     "ambient": [],
