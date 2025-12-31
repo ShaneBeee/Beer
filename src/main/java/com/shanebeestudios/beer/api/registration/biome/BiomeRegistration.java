@@ -948,7 +948,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> swampBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition dripleaf_swamp = BiomeDefinition.builder("beer:swamp/dripleafe_swamp")
+        BiomeDefinition dripleaf_swamp = BiomeDefinition.builder("beer:swamp/dripleaf_swamp")
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.2f)
