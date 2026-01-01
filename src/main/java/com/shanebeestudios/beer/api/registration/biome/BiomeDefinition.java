@@ -125,17 +125,17 @@ public class BiomeDefinition {
             return this;
         }
 
-        public Builder features(List<String> rawGeneration,
-                                List<String> lakes,
-                                List<String> localModifications,
-                                List<String> undergroundStructures,
-                                List<String> surfaceStructures,
-                                List<String> strongholds,
-                                List<String> undergroundOres,
-                                List<String> undergroundDecoration,
-                                List<String> fluidSprings,
-                                List<String> vegetalDecoration,
-                                List<String> topLayerModification) {
+        public Builder features(List<?> rawGeneration,
+                                List<?> lakes,
+                                List<?> localModifications,
+                                List<?> undergroundStructures,
+                                List<?> surfaceStructures,
+                                List<?> strongholds,
+                                List<?> undergroundOres,
+                                List<?> undergroundDecoration,
+                                List<?> fluidSprings,
+                                List<?> vegetalDecoration,
+                                List<?> topLayerModification) {
             addFeaturesByList(rawGeneration, Decoration.RAW_GENERATION);
             addFeaturesByList(lakes, Decoration.LAKES);
             addFeaturesByList(localModifications, Decoration.LOCAL_MODIFICATIONS);
@@ -151,16 +151,24 @@ public class BiomeDefinition {
             return this;
         }
 
-        private void addFeaturesByList(@Nullable List<String> stringList, Decoration decoration) {
-            if (stringList == null) return;
-            for (String s : stringList) {
-                Identifier identifier = Identifier.parse(s);
-                Holder<PlacedFeature> featureHolder = RegistryUtils.getPlacedFeature(identifier);
-                if (featureHolder != null) {
-                    this.genSettings.addFeature(decoration, featureHolder);
+        @SuppressWarnings("unchecked")
+        private void addFeaturesByList(@Nullable List<?> list, Decoration decoration) {
+            if (list == null) return;
+            for (Object o : list) {
+                if (o instanceof String s) {
+                    Identifier identifier = Identifier.parse(s);
+                    Holder<PlacedFeature> featureHolder = RegistryUtils.getPlacedFeature(identifier);
+                    if (featureHolder != null) {
+                        this.genSettings.addFeature(decoration, featureHolder);
+                    } else {
+                        Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
+                            identifier.toString(), this.key.toString());
+                    }
+                } else if (o instanceof Holder.Reference<?> ref && ref.value() instanceof PlacedFeature) {
+                    this.genSettings.addFeature(decoration, (Holder.Reference<PlacedFeature>)ref);
                 } else {
                     Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
-                        identifier.toString(), this.key.toString());
+                        o, this.key.toString());
                 }
             }
         }

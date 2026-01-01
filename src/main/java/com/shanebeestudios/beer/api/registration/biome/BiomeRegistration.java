@@ -1,5 +1,6 @@
 package com.shanebeestudios.beer.api.registration.biome;
 
+import com.shanebeestudios.beer.api.registration.feature.PlacedFeatures;
 import com.shanebeestudios.beer.api.utils.DumpRegistry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -82,8 +83,8 @@ public class BiomeRegistration {
                 null,
                 List.of("minecraft:lake_lava_underground",
                     "minecraft:lake_lava_surface",
-                    "beer:delta/dry_cave_delta",
-                    "beer:terrain/brown_concrete_disk"),
+                    PlacedFeatures.DELTA_DRY_CAVE_DELTA,
+                    PlacedFeatures.TERRAIN_BROWN_CONCRETE_DISK),
                 List.of("minecraft:amethyst_geode"),
                 List.of("minecraft:monster_room",
                     "minecraft:monster_room_deep"),
@@ -121,7 +122,9 @@ public class BiomeRegistration {
                     "minecraft:disk_gravel"),
                 null,
                 List.of("minecraft:spring_water", "minecraft:spring_lava"),
-                List.of("minecraft:glow_lichen", "minecraft:patch_tall_grass_2", "beer:decor/hanging_fence"),
+                List.of("minecraft:glow_lichen",
+                    "minecraft:patch_tall_grass_2",
+                    PlacedFeatures.DECOR_HANGING_FENCE),
                 List.of("minecraft:freeze_top_layer")
             )
 
@@ -130,7 +133,7 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.AXOLOTLS, EntityType.AXOLOTL, 10, 4, 6)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
-            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1,1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 100, 4, 4)
             .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.TROPICAL_FISH, 25, 8, 8)
@@ -153,7 +156,7 @@ public class BiomeRegistration {
 
             .particle(ParticleTypes.ASH, 0.5f)
 
-            .features(List.of("beer:delta/coastal_delta"),
+            .features(List.of(PlacedFeatures.DELTA_COASTAL_DELTA),
                 null,
                 null,
                 null,
@@ -168,7 +171,7 @@ public class BiomeRegistration {
                 null,
                 null,
                 null,
-                List.of("beer:terrain/stone_to_ice"))
+                List.of(PlacedFeatures.TERRAIN_STONE_TO_ICE))
 
             .addMobSpawn(MobCategory.MONSTER, EntityType.ILLUSIONER, 1, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 3, 1, 1)
@@ -201,8 +204,8 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 329011)
 
-            .features(List.of("beer:terrain/diorite_cliffs",
-                    "beer:terrain/grass_to_sand"),
+            .features(List.of(PlacedFeatures.TERRAIN_DIORITE_CLIFFS,
+                    PlacedFeatures.TERRAIN_GRASS_TO_SAND),
                 null,
                 null,
                 null,
@@ -216,7 +219,7 @@ public class BiomeRegistration {
                     "minecraft:disk_gravel"),
                 null,
                 null,
-                List.of("beer:tree/beachy_palm",
+                List.of(PlacedFeatures.TREE_BEACHY_PALM,
                     "minecraft:patch_waterlily",
                     "minecraft:patch_sugar_cane"),
                 null)
@@ -240,14 +243,14 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 16564102)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 8846572)
 
-            .features(List.of("beer:terrain/diorite_cliffs",
-                    "beer:delta/coastal_delta"),
+            .features(List.of(PlacedFeatures.TERRAIN_DIORITE_CLIFFS,
+                    PlacedFeatures.DELTA_COASTAL_DELTA),
                 null,
                 null,
                 null,
                 null,
                 null,
-                List.of("beer:vegetation/patch_water_leaves",
+                List.of(PlacedFeatures.VEGETATION_PATCH_WATER_LEAVES,
                     "minecraft:ore_dirt",
                     "minecraft:ore_coal_upper",
                     "minecraft:ore_coal_lower",
@@ -256,9 +259,9 @@ public class BiomeRegistration {
                     "minecraft:disk_gravel"),
                 null,
                 null,
-                List.of("beer:tree/palm_beach_palm",
+                List.of(PlacedFeatures.TREE_PALM_BEACH_PALM,
                     "wythers:vegetation/placed_random_patch/large_ferns_dense_forests",
-                    "beer:vegetation/azalea_bush",
+                    PlacedFeatures.VEGETATION_AZALEA_BUSH,
                     "wythers:vegetation/placed_random_patch/dark_oak_roots",
                     "wythers:terrain/placed_random_patch/mossify_grass",
                     "wythers:vegetation/bushes_mediterranean",
@@ -288,7 +291,7 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 329011)
 
-            .features(List.of("beer:terrain/diorite_cliffs"),
+            .features(List.of(PlacedFeatures.TERRAIN_DIORITE_CLIFFS),
                 null,
                 null,
                 null,
@@ -302,7 +305,7 @@ public class BiomeRegistration {
                     "minecraft:disk_gravel"),
                 null,
                 null,
-                List.of("beer:tree/palm_beach_palm",
+                List.of(PlacedFeatures.TREE_PALM_BEACH_PALM,
                     "wythers:vegetation/placed_random_patch/dark_oak_roots",
                     "wythers:terrain/placed_random_patch/mossify_grass",
                     "minecraft:glow_lichen",
@@ -338,8 +341,8 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.SKY_COLOR, 8364543)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 329011)
 
-            .features(List.of("beer:terrain/diorite_cliffs",
-                    "beer:terrain/grass_to_sand"),
+            .features(List.of(PlacedFeatures.TERRAIN_DIORITE_CLIFFS,
+                    PlacedFeatures.TERRAIN_GRASS_TO_SAND),
                 null,
                 null,
                 null,
@@ -353,7 +356,7 @@ public class BiomeRegistration {
                     "minecraft:disk_gravel"),
                 null,
                 null,
-                List.of("beer:tree/beachy_palm",
+                List.of(PlacedFeatures.TREE_PALM_BEACH_PALM,
                     "minecraft:patch_waterlily",
                     "minecraft:patch_sugar_cane"),
                 List.of("minecraft:freeze_top_layer"))
@@ -376,14 +379,14 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 16564102)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 8846572)
 
-            .features(List.of("beer:terrain/diorite_cliffs",
-                    "beer:delta/coastal_delta"),
+            .features(List.of(PlacedFeatures.TERRAIN_DIORITE_CLIFFS,
+                    PlacedFeatures.DELTA_COASTAL_DELTA),
                 null,
                 null,
                 null,
                 null,
                 null,
-                List.of("beer:vegetation/patch_water_leaves",
+                List.of(PlacedFeatures.VEGETATION_PATCH_WATER_LEAVES,
                     "minecraft:ore_dirt",
                     "minecraft:ore_coal_upper",
                     "minecraft:ore_coal_lower",
@@ -392,9 +395,9 @@ public class BiomeRegistration {
                     "minecraft:disk_gravel"),
                 null,
                 null,
-                List.of("beer:tree/palm_beach_palm",
+                List.of(PlacedFeatures.TREE_PALM_BEACH_PALM,
                     "wythers:vegetation/placed_random_patch/large_ferns_dense_forests",
-                    "beer:vegetation/azalea_bush",
+                    PlacedFeatures.VEGETATION_AZALEA_BUSH,
                     "wythers:vegetation/placed_random_patch/dark_oak_roots",
                     "wythers:terrain/placed_random_patch/mossify_grass",
                     "wythers:vegetation/bushes_mediterranean",
@@ -423,10 +426,10 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.SKY_COLOR, 5634012)
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 16564102)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 8846572)
-
-            .features(List.of("beer:terrain/diorite_cliffs",
-                    "beer:terrain/grass_to_sand",
-                    "beer:delta/beach_delta"),
+            
+            .features(List.of(PlacedFeatures.TERRAIN_DIORITE_CLIFFS,
+                    PlacedFeatures.TERRAIN_GRASS_TO_SAND,
+                    PlacedFeatures.DELTA_BEACH_DELTA),
                 null,
                 null,
                 null,
@@ -440,9 +443,9 @@ public class BiomeRegistration {
                     "minecraft:disk_gravel"),
                 null,
                 null,
-                List.of("beer:tree/palm_beach_palm",
+                List.of(PlacedFeatures.TREE_PALM_BEACH_PALM,
                     "minecraft:patch_waterlily",
-                    "beer:vegetation/patch_small_dripleaf"),
+                    PlacedFeatures.VEGETATION_PATCH_SMALL_DRIPLEAF),
                 null)
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
@@ -520,9 +523,9 @@ public class BiomeRegistration {
                 List.of("minecraft:spring_water",
                     "minecraft:spring_lava"),
                 List.of("minecraft:glow_lichen",
-                    "beer:tree/moss_garden",
-                    "beer:tree/fallen_warped_stem",
-                    "beer:vegetation/moss_patch",
+                    PlacedFeatures.TREE_MOSS_GARDEN,
+                    PlacedFeatures.TREE_FALLEN_WARPED_STEM,
+                    PlacedFeatures.VEGETATION_MOSS_PATCH,
                     "minecraft:patch_grass_forest"),
                 List.of("minecraft:freeze_top_layer"))
 
@@ -560,7 +563,7 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 16379351)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 2171215)
 
-            .features(List.of("beer:terrain/stone_cliff"),
+            .features(List.of(PlacedFeatures.TERRAIN_STONE_CLIFF),
                 null,
                 null,
                 null,
@@ -579,7 +582,7 @@ public class BiomeRegistration {
                     "minecraft:patch_grass_plain",
                     "minecraft:patch_waterlily",
                     "minecraft:patch_sugar_cane",
-                    "beer:vegetation/rooted_dirt_blob"),
+                    PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB),
                 null)
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
@@ -599,7 +602,7 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 329011)
 
-            .features(List.of("beer:terrain/stone_cliff"),
+            .features(List.of(PlacedFeatures.TERRAIN_STONE_CLIFF),
                 null,
                 null,
                 null,
@@ -615,15 +618,15 @@ public class BiomeRegistration {
                 null,
                 List.of("wythers:terrain/placed_random_patch/cliff_grass",
                     "wythers:terrain/disk_sand_shore",
-                    "beer:tree/tall_stripped_pale_oak",
+                    PlacedFeatures.TREE_TALL_STRIPPED_PALE_OAK,
                     "minecraft:flower_plains",
                     "minecraft:patch_grass_plain",
                     "minecraft:patch_waterlily",
                     "minecraft:patch_sugar_cane",
-                    "beer:vegetation/patch_hay_bale",
-                    "beer:vegetation/patch_cherry_petals",
-                    "beer:vegetation/rooted_dirt_blob",
-                    "beer:tree/fallen_stripped_pale_oak"),
+                    PlacedFeatures.VEGETATION_PATCH_HAY_BALE,
+                    PlacedFeatures.VEGETATION_PATCH_CHERRY_PETALS,
+                    PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB,
+                    PlacedFeatures.TREE_FALLEN_STRIPPED_PALE_OAK),
                 null)
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
@@ -643,7 +646,7 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 329011)
 
-            .features(List.of("beer:terrain/stone_cliff"),
+            .features(List.of(PlacedFeatures.TERRAIN_STONE_CLIFF),
                 null,
                 null,
                 null,
@@ -663,9 +666,9 @@ public class BiomeRegistration {
                     "minecraft:patch_grass_plain",
                     "minecraft:patch_waterlily",
                     "minecraft:patch_sugar_cane",
-                    "beer:vegetation/patch_hay_bale",
-                    "beer:vegetation/patch_cherry_petals",
-                    "beer:vegetation/rooted_dirt_blob"),
+                    PlacedFeatures.VEGETATION_PATCH_HAY_BALE,
+                    PlacedFeatures.VEGETATION_PATCH_CHERRY_PETALS,
+                    PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB),
                 null)
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
@@ -967,9 +970,9 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.SKY_COLOR, 7907327)
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 2302743)
-            .features(List.of("beer:delta/swamp_delta",
-                    "beer:delta/coastal_delta",
-                    "beer:terrain/water_blob"),
+            .features(List.of(PlacedFeatures.DELTA_SWAMP_DELTA,
+                    PlacedFeatures.DELTA_COASTAL_DELTA,
+                    PlacedFeatures.TERRAIN_WATER_BLOB),
                 null,
                 null,
                 null,

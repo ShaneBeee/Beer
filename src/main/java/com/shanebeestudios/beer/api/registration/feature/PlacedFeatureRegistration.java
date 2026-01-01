@@ -85,11 +85,6 @@ public class PlacedFeatureRegistration {
         features.addAll(tree());
         features.addAll(vegetation());
 
-        // Register features to server
-        for (PlacedFeatureDefinition feature : features) {
-            feature.register();
-        }
-
         // Dump features to datapack files
         for (PlacedFeatureDefinition feature : features) {
             DumpRegistry.dumpObject(feature.getIdentifier(), feature.getFeature());
@@ -123,6 +118,7 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.DECOR_HANGING_FENCE = hanging_fence.register();
         features.add(hanging_fence);
 
         return features;
@@ -172,6 +168,9 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.DELTA_BEACH_DELTA = beach_delta.register();
+        features.add(beach_delta);
+
         PlacedFeatureDefinition coastal_delta = PlacedFeatureDefinition.builder("beer:delta/coastal_delta")
             .configuredFeature(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(
                 Blocks.WATER.defaultBlockState(),
@@ -184,6 +183,9 @@ public class PlacedFeatureRegistration {
                 RandomOffsetPlacement.of(ConstantInt.of(0), ConstantInt.of(0)),
                 BiomeFilter.biome())
             .build();
+
+        PlacedFeatures.DELTA_COASTAL_DELTA = coastal_delta.register();
+        features.add(coastal_delta);
 
         PlacedFeatureDefinition dry_cave_delta = PlacedFeatureDefinition.builder("beer:delta/dry_cave_delta")
             .configuredFeature(Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
@@ -206,6 +208,8 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.DELTA_DRY_CAVE_DELTA = dry_cave_delta.register();
+        features.add(dry_cave_delta);
 
         PlacedFeatureDefinition swamp_delta = PlacedFeatureDefinition.builder("beer:delta/swamp_delta")
             .configuredFeature(Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
@@ -231,6 +235,9 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.DELTA_SWAMP_DELTA = swamp_delta.register();
+        features.add(swamp_delta);
+
         PlacedFeatureDefinition swamp_delta_2 = PlacedFeatureDefinition.builder("beer:delta/swamp_delta2")
             .configuredFeature(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(
                 Blocks.WATER.defaultBlockState(),
@@ -244,10 +251,7 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
-        features.add(beach_delta);
-        features.add(coastal_delta);
-        features.add(dry_cave_delta);
-        features.add(swamp_delta);
+        PlacedFeatures.DELTA_SWAMP_DELTA_2 = swamp_delta_2.register();
         features.add(swamp_delta_2);
 
         return features;
@@ -271,6 +275,9 @@ public class PlacedFeatureRegistration {
                 HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(-10), VerticalAnchor.absolute(256)),
                 BiomeFilter.biome())
             .build();
+
+        PlacedFeatures.TERRAIN_BROWN_CONCRETE_DISK = brown_concrete_disk.register();
+        features.add(brown_concrete_disk);
 
         PlacedFeatureDefinition cliff = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
@@ -323,6 +330,9 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.TERRAIN_DIORITE_CLIFFS = diorite_cliffs.register();
+        features.add(diorite_cliffs);
+
         PlacedFeatureDefinition grass_to_sand = PlacedFeatureDefinition.builder("beer:terrain/grass_to_sand")
             .configuredFeature(Feature.DISK, new DiskConfiguration(
                 new RuleBasedBlockStateProvider(
@@ -338,6 +348,9 @@ public class PlacedFeatureRegistration {
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 BiomeFilter.biome())
             .build();
+
+        PlacedFeatures.TERRAIN_GRASS_TO_SAND = grass_to_sand.register();
+        features.add(grass_to_sand);
 
         PlacedFeatureDefinition cliffFeature = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK,
@@ -412,6 +425,9 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.TERRAIN_STONE_CLIFF = stone_cliff.register();
+        features.add(stone_cliff);
+
         PlacedFeatureDefinition stone_to_ice = PlacedFeatureDefinition.builder("beer:terrain/stone_to_ice")
             .configuredFeature(Feature.REPLACE_BLOBS, new ReplaceSphereConfiguration(
                 Blocks.STONE.defaultBlockState(),
@@ -434,6 +450,9 @@ public class PlacedFeatureRegistration {
                 ),
                 BiomeFilter.biome())
             .build();
+
+        PlacedFeatures.TERRAIN_STONE_TO_ICE = stone_to_ice.register();
+        features.add(stone_to_ice);
 
         PlacedFeatureDefinition blobFeature = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.WATER)))
@@ -460,11 +479,7 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
-        features.add(brown_concrete_disk);
-        features.add(diorite_cliffs);
-        features.add(grass_to_sand);
-        features.add(stone_cliff);
-        features.add(stone_to_ice);
+        PlacedFeatures.TERRAIN_WATER_BLOB = water_blob.register();
         features.add(water_blob);
 
         return features;
@@ -501,6 +516,9 @@ public class PlacedFeatureRegistration {
                     BlockPredicate.matchesTag(new BlockPos(4, -1, 0), BlockTags.DIRT))))
             .build();
 
+        PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_EAST = fallen_stripped_pale_oak_east.register();
+        features.add(fallen_stripped_pale_oak_east);
+
         PlacedFeatureDefinition fallen_stripped_pale_oak_north = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_stripped_pale_oak_north")
             .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(
@@ -530,6 +548,9 @@ public class PlacedFeatureRegistration {
                     BlockPredicate.matchesTag(new BlockPos(0, -1, -4), BlockTags.DIRT))))
             .build();
 
+        PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_NORTH = fallen_stripped_pale_oak_north.register();
+        features.add(fallen_stripped_pale_oak_north);
+
         PlacedFeatureDefinition fallen_stripped_warped_stem_east = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_stripped_warped_stem_east")
             .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(
@@ -557,6 +578,9 @@ public class PlacedFeatureRegistration {
                     BlockPredicate.matchesTag(new BlockPos(3, -1, 0), BlockTags.DIRT),
                     BlockPredicate.matchesTag(new BlockPos(4, -1, 0), BlockTags.DIRT))))
             .build();
+
+        PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_EAST = fallen_stripped_warped_stem_east.register();
+        features.add(fallen_stripped_warped_stem_east);
 
         PlacedFeatureDefinition fallen_stripped_warped_stem_north = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_stripped_warped_stem_north")
             .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
@@ -587,6 +611,9 @@ public class PlacedFeatureRegistration {
                     BlockPredicate.matchesTag(new BlockPos(0, -1, -4), BlockTags.DIRT))))
             .build();
 
+        PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_NORTH = fallen_stripped_warped_stem_north.register();
+        features.add(fallen_stripped_warped_stem_north);
+
         PlacedFeatureDefinition fallen_warped_stem_east = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_warped_stem_east")
             .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(
@@ -614,6 +641,9 @@ public class PlacedFeatureRegistration {
                     BlockPredicate.matchesTag(new BlockPos(3, -1, 0), BlockTags.DIRT),
                     BlockPredicate.matchesTag(new BlockPos(4, -1, 0), BlockTags.DIRT))))
             .build();
+
+        PlacedFeatures.TREE_PARTS_FALLEN_WARPED_STEM_EAST = fallen_warped_stem_east.register();
+        features.add(fallen_warped_stem_east);
 
         PlacedFeatureDefinition fallen_warped_stem_north = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_warped_stem_north")
             .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
@@ -644,13 +674,8 @@ public class PlacedFeatureRegistration {
                     BlockPredicate.matchesTag(new BlockPos(0, -1, -4), BlockTags.DIRT))))
             .build();
 
-        // Holders for later
-        Holder.Reference<PlacedFeature> pale_east = fallen_stripped_pale_oak_east.register();
-        Holder.Reference<PlacedFeature> pale_north = fallen_stripped_pale_oak_north.register();
-        Holder.Reference<PlacedFeature> stripped_stem_east = fallen_stripped_warped_stem_east.register();
-        Holder.Reference<PlacedFeature> stripped_stem_north = fallen_stripped_warped_stem_north.register();
-        Holder.Reference<PlacedFeature> stem_east = fallen_warped_stem_east.register();
-        Holder.Reference<PlacedFeature> stem_north = fallen_warped_stem_north.register();
+        PlacedFeatures.TREE_PARTS_FALLEN_WARPED_STEM_NORTH = fallen_warped_stem_north.register();
+        features.add(fallen_warped_stem_north);
 
         PlacedFeatureDefinition beachy_palm = PlacedFeatureDefinition.builder("beer:tree/beachy_palm")
             .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -676,23 +701,38 @@ public class PlacedFeatureRegistration {
                 BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.DEAD_BUSH.defaultBlockState(), BlockPos.ZERO)))
             .build();
 
+        PlacedFeatures.TREE_BEACHY_PALM = beachy_palm.register();
+        features.add(beachy_palm);
+
         PlacedFeatureDefinition fallen_stripped_pale_oak = PlacedFeatureDefinition.builder("beer:tree/fallen_stripped_pale_oak")
             .configuredFeature(Feature.SIMPLE_RANDOM_SELECTOR,
-                new SimpleRandomFeatureConfiguration(HolderSet.direct(pale_east, pale_north)))
+                new SimpleRandomFeatureConfiguration(HolderSet.direct(
+                    PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_EAST,
+                    PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_NORTH)))
             .placementModifiers(RarityFilter.onAverageOnceEvery(3),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.TREE_FALLEN_STRIPPED_PALE_OAK = fallen_stripped_pale_oak.register();
+        features.add(fallen_stripped_pale_oak);
+
         PlacedFeatureDefinition fallen_warped_stem = PlacedFeatureDefinition.builder("beer:tree/fallen_warped_stem")
             .configuredFeature(Feature.SIMPLE_RANDOM_SELECTOR,
-                new SimpleRandomFeatureConfiguration(HolderSet.direct(stem_east, stem_north, stripped_stem_east, stripped_stem_north)))
+                new SimpleRandomFeatureConfiguration(HolderSet.direct(
+                    PlacedFeatures.TREE_PARTS_FALLEN_WARPED_STEM_EAST,
+                    PlacedFeatures.TREE_PARTS_FALLEN_WARPED_STEM_NORTH,
+                    PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_EAST,
+                    PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_NORTH)))
             .placementModifiers(CountPlacement.of(5),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 BiomeFilter.biome())
             .build();
+
+        PlacedFeatures.TREE_FALLEN_WARPED_STEM = fallen_warped_stem.register();
+        features.add(fallen_warped_stem);
 
         PlacedFeatureDefinition moss_garden = PlacedFeatureDefinition.builder("beer:tree/moss_garden")
             .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -715,6 +755,9 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome(),
                 BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)))
             .build();
+
+        PlacedFeatures.TREE_MOSS_GARDEN = moss_garden.register();
+        features.add(moss_garden);
 
         PlacedFeatureDefinition palm_beach_palm = PlacedFeatureDefinition.builder("beer:tree/palm_beach_palm")
             .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -739,6 +782,9 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.TREE_PALM_BEACH_PALM = palm_beach_palm.register();
+        features.add(palm_beach_palm);
+
         PlacedFeatureDefinition tall_stripped_pale_oak = PlacedFeatureDefinition.builder("beer:tree/tall_stripped_pale_oak")
             .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.STRIPPED_PALE_OAK_LOG),
@@ -757,20 +803,7 @@ public class PlacedFeatureRegistration {
                 PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING))
             .build();
 
-        // Parts
-        features.add(fallen_stripped_pale_oak_east);
-        features.add(fallen_stripped_pale_oak_north);
-        features.add(fallen_stripped_warped_stem_east);
-        features.add(fallen_stripped_warped_stem_north);
-        features.add(fallen_warped_stem_east);
-        features.add(fallen_warped_stem_north);
-
-        // Trees
-        features.add(beachy_palm);
-        features.add(fallen_stripped_pale_oak);
-        features.add(fallen_warped_stem);
-        features.add(moss_garden);
-        features.add(palm_beach_palm);
+        PlacedFeatures.TREE_TALL_STRIPPED_PALE_OAK = tall_stripped_pale_oak.register();
         features.add(tall_stripped_pale_oak);
 
         return features;
@@ -791,6 +824,9 @@ public class PlacedFeatureRegistration {
                 )),
                 BiomeFilter.biome())
             .build();
+
+        PlacedFeatures.VEGETATION_AZALEA_BUSH = azalea_bush.register();
+        features.add(azalea_bush);
 
         PlacedFeatureDefinition patch = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
@@ -820,6 +856,9 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.VEGETATION_MOSS_PATCH = moss_patch.register();
+        features.add(moss_patch);
+
         PlacedFeatureDefinition cherry_petals = PlacedFeatureDefinition.builder("beer:vegetation/patch_cherry_petals")
             .configuredFeature(VegetationFeatures.FLOWER_CHERRY)
             .placementModifiers(NoiseThresholdCountPlacement.of(-0.8f, 15, 4),
@@ -828,6 +867,9 @@ public class PlacedFeatureRegistration {
                 HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING),
                 BiomeFilter.biome())
             .build();
+
+        PlacedFeatures.VEGETATION_PATCH_CHERRY_PETALS = cherry_petals.register();
+        features.add(cherry_petals);
 
         PlacedFeatureDefinition balePatch = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.HAY_BLOCK)))
@@ -850,6 +892,9 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.VEGETATION_PATCH_HAY_BALE = hay_bale.register();
+        features.add(hay_bale);
+
         PlacedFeatureDefinition dripleafPatch = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(SimpleStateProvider.simple(Blocks.SMALL_DRIPLEAF)))
             .placementModifiers(BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.WATER)))
@@ -866,6 +911,9 @@ public class PlacedFeatureRegistration {
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 BiomeFilter.biome())
             .build();
+
+        PlacedFeatures.VEGETATION_PATCH_SMALL_DRIPLEAF = small_dripleaf.register();
+        features.add(small_dripleaf);
 
         PlacedFeatureDefinition leavesPatch = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
@@ -899,6 +947,9 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        PlacedFeatures.VEGETATION_PATCH_WATER_LEAVES = water_leaves.register();
+        features.add(water_leaves);
+
         PlacedFeatureDefinition rooted_dirt_blob = PlacedFeatureDefinition.builder("beer:vegetation/rooted_dirt_blob")
             .configuredFeature(Feature.FOREST_ROCK, new BlockStateConfiguration(Blocks.ROOTED_DIRT.defaultBlockState()))
             .placementModifiers(CountPlacement.of(UniformInt.of(0, 1)),
@@ -907,12 +958,7 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
-        features.add(azalea_bush);
-        features.add(moss_patch);
-        features.add(cherry_petals);
-        features.add(hay_bale);
-        features.add(small_dripleaf);
-        features.add(water_leaves);
+        PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB = rooted_dirt_blob.register();
         features.add(rooted_dirt_blob);
 
         return features;
