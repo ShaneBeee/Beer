@@ -3,8 +3,8 @@
   "temperature": 0.7,
   "downfall": 0.8,
   "attributes": {
-    "minecraft:visual/sky_color": "#55f7dc",
-    "minecraft:visual/water_fog_color": "#86fcec",
+    "minecraft:audio/music_volume": 1.0,
+    "minecraft:visual/fog_color": "#fcbf86",
     "minecraft:visual/ambient_particles": [
       {
         "particle": {
@@ -13,8 +13,8 @@
         "probability": 5.0E-4
       }
     ],
-    "minecraft:visual/fog_color": "#fcbf86",
-    "minecraft:audio/music_volume": 1.0
+    "minecraft:visual/water_fog_color": "#86fcec",
+    "minecraft:visual/sky_color": "#55f7dc"
   },
   "effects": {
     "water_color": "#5b99d3",
@@ -46,7 +46,7 @@
     [
       "beer:tree/palm_beach_palm",
       "wythers:vegetation/placed_random_patch/large_ferns_dense_forests",
-      "wythers:vegetation/bushes_azaleas",
+      "beer:vegetation/azalea_bush",
       "wythers:vegetation/placed_random_patch/dark_oak_roots",
       "wythers:terrain/placed_random_patch/mossify_grass",
       "wythers:vegetation/bushes_mediterranean",
