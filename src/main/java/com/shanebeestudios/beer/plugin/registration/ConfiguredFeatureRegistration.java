@@ -14,11 +14,11 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FallenTreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.FallenTreeConfiguration.FallenTreeConfigurationBuilder;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration.TreeConfigurationBuilder;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
@@ -46,15 +46,14 @@ public class ConfiguredFeatureRegistration {
 
         // Dump features to datapack files
         DumpRegistry.dumpDefinables(features);
-
     }
 
     private static List<ConfiguredFeatureDefinition> terrain() {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
 
         ConfiguredFeatureDefinition sand_shore_disk = ConfiguredFeatureDefinition.builder("beer:terrain/sand_shore_disk")
-            .feature(Feature.DISK)
-            .config(new DiskConfiguration(
+
+            .config(Feature.DISK, new DiskConfiguration(
                 RuleBasedBlockStateProvider.simple(Blocks.SAND),
                 BlockPredicate.matchesBlocks(Blocks.GRASS_BLOCK, Blocks.DIRT),
                 UniformInt.of(3, 5),
@@ -71,8 +70,7 @@ public class ConfiguredFeatureRegistration {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
 
         ConfiguredFeatureDefinition fallen_stripped_pale_oak = ConfiguredFeatureDefinition.builder("beer:tree/fallen_stripped_pale_oak")
-            .feature(Feature.FALLEN_TREE)
-            .config(new FallenTreeConfiguration.FallenTreeConfigurationBuilder(
+            .config(Feature.FALLEN_TREE, new FallenTreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.STRIPPED_PALE_OAK_LOG),
                 UniformInt.of(4, 7))
                 .build())
@@ -82,8 +80,7 @@ public class ConfiguredFeatureRegistration {
         features.add(fallen_stripped_pale_oak);
 
         ConfiguredFeatureDefinition fallen_warped_stem = ConfiguredFeatureDefinition.builder("beer:tree/fallen_warped_stem")
-            .feature(Feature.FALLEN_TREE)
-            .config(new FallenTreeConfiguration.FallenTreeConfigurationBuilder(
+            .config(Feature.FALLEN_TREE, new FallenTreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.WARPED_STEM),
                 UniformInt.of(4, 7))
                 .build())
@@ -93,8 +90,7 @@ public class ConfiguredFeatureRegistration {
         features.add(fallen_warped_stem);
 
         ConfiguredFeatureDefinition fallen_warped_stem_stripped = ConfiguredFeatureDefinition.builder("beer:tree/fallen_stripped_warped_stem")
-            .feature(Feature.FALLEN_TREE)
-            .config(new FallenTreeConfiguration.FallenTreeConfigurationBuilder(
+            .config(Feature.FALLEN_TREE, new FallenTreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.STRIPPED_WARPED_STEM),
                 UniformInt.of(4, 7))
                 .build())
@@ -104,8 +100,7 @@ public class ConfiguredFeatureRegistration {
         features.add(fallen_warped_stem_stripped);
 
         ConfiguredFeatureDefinition palm_tree = ConfiguredFeatureDefinition.builder("beer:tree/palm_tree")
-            .feature(Feature.TREE)
-            .config(new TreeConfiguration.TreeConfigurationBuilder(
+            .config(Feature.TREE, new TreeConfigurationBuilder(
                 SimpleStateProvider.simple(Blocks.JUNGLE_WOOD),
                 new ForkingTrunkPlacer(5, 2, 3),
                 SimpleStateProvider.simple(Blocks.JUNGLE_LEAVES.defaultBlockState()
@@ -136,8 +131,7 @@ public class ConfiguredFeatureRegistration {
 
         // AZALEA SCRUB
         ConfiguredFeatureDefinition azalea_scrub = ConfiguredFeatureDefinition.builder("beer:vegetation/azalea_scrub")
-            .feature(Feature.TREE)
-            .config(new TreeConfiguration.TreeConfigurationBuilder(
+            .config(Feature.TREE, new TreeConfigurationBuilder(
                 SimpleStateProvider.simple(Blocks.MANGROVE_ROOTS),
                 new StraightTrunkPlacer(1, 1, 0),
                 SimpleStateProvider.simple(Blocks.ACACIA_LEAVES.defaultBlockState()
@@ -153,8 +147,7 @@ public class ConfiguredFeatureRegistration {
 
         // FLOWERING AZALEA SCRUB
         ConfiguredFeatureDefinition flowering_azalea_scrub = ConfiguredFeatureDefinition.builder("beer:vegetation/flowering_azalea_scrub")
-            .feature(Feature.TREE)
-            .config(new TreeConfiguration.TreeConfigurationBuilder(
+            .config(Feature.TREE, new TreeConfigurationBuilder(
                 SimpleStateProvider.simple(Blocks.MANGROVE_ROOTS),
                 new StraightTrunkPlacer(1, 1, 0),
                 new WeightedStateProvider(WeightedList.<BlockState>builder()
@@ -172,8 +165,7 @@ public class ConfiguredFeatureRegistration {
 
         // AZALEA BUSH
         ConfiguredFeatureDefinition azalea_bush = ConfiguredFeatureDefinition.builder("beer:vegetation/azalea_bush")
-            .feature(Feature.RANDOM_SELECTOR)
-            .config(new RandomFeatureConfiguration(List.of(
+            .config(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
                 new WeightedPlacedFeature(PlacedFeatureDefinition.builder()
                     .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.AZALEA)))
                     .placementModifiers(fernPredicate)
@@ -202,8 +194,7 @@ public class ConfiguredFeatureRegistration {
         features.add(azalea_bush);
 
         ConfiguredFeatureDefinition patch_cliff_grass = ConfiguredFeatureDefinition.builder("beer:vegetation/patch_cliff_grass")
-            .feature(Feature.RANDOM_PATCH)
-            .config(new RandomPatchConfiguration(
+            .config(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
                 256,
                 3,
                 3,

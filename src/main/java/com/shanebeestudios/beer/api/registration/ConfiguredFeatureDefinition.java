@@ -58,12 +58,8 @@ public class ConfiguredFeatureDefinition implements Definition<ConfiguredFeature
             this.identifier = Identifier.parse(key);
         }
 
-        public Builder feature(Feature<? extends FeatureConfiguration> feature) {
+        public <F extends FeatureConfiguration> Builder config(Feature<F> feature, F config) {
             this.feature = feature;
-            return this;
-        }
-
-        public Builder config(FeatureConfiguration config) {
             this.config = config;
             return this;
         }

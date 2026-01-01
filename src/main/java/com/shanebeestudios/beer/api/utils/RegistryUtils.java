@@ -65,6 +65,10 @@ public class RegistryUtils {
         return DIALOG_REGISTRY;
     }
 
+    public static Registry<PlacedFeature> getPlacedFeatureRegistry() {
+        return PLACED_FEATURE_REGISTRY;
+    }
+
     public static Registry<EnvironmentAttribute<?>> getEnvironmentAttributesRegistry() {
         return ENVIRONMENT_ATTRIBUTES_REGISTRY;
     }
