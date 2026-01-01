@@ -8,6 +8,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.JsonOps;
 import com.shanebeestudios.beer.plugin.BeerPlugin;
+import com.shanebeestudios.coreapi.util.Utils;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -49,6 +50,7 @@ public class DumpRegistry<N> {
     public static void dumpObject(Identifier identifier, Object object) {
         MAP.forEach((bukkitClass, dumpRegistry) -> {
             if (bukkitClass.isAssignableFrom(object.getClass())) {
+                Utils.log("Dumping - %s / %s", dumpRegistry.registryPath, identifier);
                 dumpRegistry.dump(identifier, object);
             }
         });
