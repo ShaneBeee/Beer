@@ -1,6 +1,6 @@
 package com.shanebeestudios.beer.api.registration.biome;
 
-
+import com.shanebeestudios.beer.api.registration.Definition;
 import com.shanebeestudios.beer.api.utils.RegistryUtils;
 import com.shanebeestudios.coreapi.util.Utils;
 import net.minecraft.core.Holder;
@@ -30,33 +30,35 @@ import java.util.Objects;
 /**
  * Create/Register a new Biome
  */
-public class BiomeDefinition {
+public class BiomeDefinition implements Definition<Biome> {
 
     private final Identifier identifier;
     private final Biome biome;
     private final List<TagKey<Biome>> tagKeys;
 
-    public BiomeDefinition(Identifier identifier, Biome biome, List<TagKey<Biome>> tagKeys) {
+    private BiomeDefinition(Identifier identifier, Biome biome, List<TagKey<Biome>> tagKeys) {
         this.identifier = identifier;
         this.biome = biome;
         this.tagKeys = tagKeys;
     }
 
+    @Override
     public Identifier getIdentifier() {
         return this.identifier;
-    }
-
-    public Biome getBiome() {
-        return this.biome;
     }
 
     public List<TagKey<Biome>> getTagKeys() {
         return this.tagKeys;
     }
 
-    @SuppressWarnings("UnusedReturnValue")
-    public Biome register() {
+    @Override
+    public Holder.Reference<Biome> register() {
         return RegistryUtils.registerBiome(this);
+    }
+
+    @Override
+    public Biome getValue() {
+        return this.biome;
     }
 
     public static Builder builder(String key) {

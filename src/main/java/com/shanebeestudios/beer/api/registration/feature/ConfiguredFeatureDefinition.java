@@ -1,5 +1,6 @@
 package com.shanebeestudios.beer.api.registration.feature;
 
+import com.shanebeestudios.beer.api.registration.Definition;
 import com.shanebeestudios.beer.api.utils.RegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ConfiguredFeatureDefinition {
+public class ConfiguredFeatureDefinition implements Definition<ConfiguredFeature<?, ?>> {
 
     private final Identifier identifier;
     private final ConfiguredFeature<?, ?> configuredFeature;
@@ -27,20 +28,17 @@ public class ConfiguredFeatureDefinition {
         return this.identifier;
     }
 
-    public ConfiguredFeature<?, ?> getFeature() {
+    @Override
+    public ConfiguredFeature<?, ?> getValue() {
         return this.configuredFeature;
-    }
-
-    public Holder<ConfiguredFeature<?, ?>> getFeatureHolder() {
-        return Holder.direct(this.configuredFeature);
-    }
-
-    public List<TagKey<ConfiguredFeature<?, ?>>> getTagKeys() {
-        return this.tagKeys;
     }
 
     public Holder.Reference<ConfiguredFeature<?, ?>> register() {
         return RegistryUtils.registerConfiguredFeature(this);
+    }
+
+    public List<TagKey<ConfiguredFeature<?, ?>>> getTagKeys() {
+        return this.tagKeys;
     }
 
     public static Builder builder(String key) {
@@ -71,6 +69,7 @@ public class ConfiguredFeatureDefinition {
             return this;
         }
 
+        @SuppressWarnings({"rawtypes", "unchecked"})
         public ConfiguredFeatureDefinition build() {
 
             ConfiguredFeature<?, ?> fcfConfiguredFeature = new ConfiguredFeature(this.feature, this.config);

@@ -37,10 +37,7 @@ public class BiomeRegistration {
         }
 
         // Dump biomes to datapack files
-        for (BiomeDefinition biome : biomes) {
-            DumpRegistry.dumpObject(biome.getIdentifier(), biome.getBiome());
-        }
-
+        DumpRegistry.dumpDefinables(biomes);
     }
 
     private static List<BiomeDefinition> caveBiomes() {

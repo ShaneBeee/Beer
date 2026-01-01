@@ -7,6 +7,7 @@ import com.google.gson.JsonElement;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.JsonOps;
+import com.shanebeestudios.beer.api.registration.Definition;
 import com.shanebeestudios.beer.plugin.BeerPlugin;
 import com.shanebeestudios.coreapi.util.Utils;
 import net.minecraft.core.Registry;
@@ -47,9 +48,24 @@ public class DumpRegistry<N> {
         MAP.put(nmsClass, new DumpRegistry<>(name, registry, codec));
     }
 
+    public static <N extends Definition<?>> void dumpDefinables(List<N> definitions) {
+        definitions.forEach(DumpRegistry::dumpDefinable);
+    }
+
+    public static void dumpDefinable(Definition<?> definition) {
+        MAP.forEach((objectClass, dumpRegistry) -> {
+            Object value = definition.getValue();
+            if (objectClass.isAssignableFrom(value.getClass())) {
+                Identifier identifier = definition.getIdentifier();
+                Utils.log("Dumping - %s / %s", dumpRegistry.registryPath, identifier);
+                dumpRegistry.dump(identifier, value);
+            }
+        });
+    }
+
     public static void dumpObject(Identifier identifier, Object object) {
-        MAP.forEach((bukkitClass, dumpRegistry) -> {
-            if (bukkitClass.isAssignableFrom(object.getClass())) {
+        MAP.forEach((objectClass, dumpRegistry) -> {
+            if (objectClass.isAssignableFrom(object.getClass())) {
                 Utils.log("Dumping - %s / %s", dumpRegistry.registryPath, identifier);
                 dumpRegistry.dump(identifier, object);
             }

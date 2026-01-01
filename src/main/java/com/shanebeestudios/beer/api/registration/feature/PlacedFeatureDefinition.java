@@ -1,5 +1,6 @@
 package com.shanebeestudios.beer.api.registration.feature;
 
+import com.shanebeestudios.beer.api.registration.Definition;
 import com.shanebeestudios.beer.api.utils.RegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PlacedFeatureDefinition {
+public class PlacedFeatureDefinition implements Definition<PlacedFeature> {
 
     private final Identifier identifier;
     private final PlacedFeature placedFeature;
@@ -27,12 +28,19 @@ public class PlacedFeatureDefinition {
         this.tagKeys = tagKeys;
     }
 
+    @Override
     public Identifier getIdentifier() {
         return this.identifier;
     }
 
-    public PlacedFeature getFeature() {
+    @Override
+    public PlacedFeature getValue() {
         return this.placedFeature;
+    }
+
+    @Override
+    public Holder.Reference<PlacedFeature> register() {
+        return RegistryUtils.registerPlacedFeature(this);
     }
 
     public Holder<PlacedFeature> getFeatureHolder() {
@@ -41,10 +49,6 @@ public class PlacedFeatureDefinition {
 
     public List<TagKey<PlacedFeature>> getTagKeys() {
         return this.tagKeys;
-    }
-
-    public Holder.Reference<PlacedFeature> register() {
-        return RegistryUtils.registerPlacedFeature(this);
     }
 
     public static Builder builder(String key) {

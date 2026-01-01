@@ -227,19 +227,19 @@ public class RegistryUtils {
 //        return CraftEnchantment.minecraftHolderToBukkit(intrusiveHolder);
 //    }
 
-    public static Biome registerBiome(BiomeDefinition definition) {
+    public static Holder.Reference<Biome> registerBiome(BiomeDefinition definition) {
         unfreeze(BIOME_REGISTRY);
 
         Identifier identifier = definition.getIdentifier();
         ResourceKey<Biome> resourceKey = ResourceKey.create(Registries.BIOME, identifier);
-        Biome biome = definition.getBiome();
+        Biome biome = definition.getValue();
         Holder.Reference<Biome> intrusiveHolder = BIOME_REGISTRY.createIntrusiveHolder(biome);
         Registry.register(BIOME_REGISTRY, resourceKey, biome);
 
         setupBiomeDistribution(intrusiveHolder, definition);
         freeze(BIOME_REGISTRY);
 
-        return biome;
+        return intrusiveHolder;
     }
 
     public static Holder.Reference<PlacedFeature> registerPlacedFeature(PlacedFeatureDefinition definition) {
@@ -248,7 +248,7 @@ public class RegistryUtils {
             unfreeze(PLACED_FEATURE_REGISTRY);
 
             ResourceKey<PlacedFeature> resourceKey = ResourceKey.create(Registries.PLACED_FEATURE, identifier);
-            PlacedFeature placedFeature = definition.getFeature();
+            PlacedFeature placedFeature = definition.getValue();
             Holder.Reference<PlacedFeature> intrusiveHolder = PLACED_FEATURE_REGISTRY.createIntrusiveHolder(placedFeature);
             Registry.register(PLACED_FEATURE_REGISTRY, resourceKey, placedFeature);
 
@@ -266,7 +266,7 @@ public class RegistryUtils {
             unfreeze(CONFIGURED_FEATURE_REGISTRY);
 
             ResourceKey<ConfiguredFeature<?,?>> resourceKey = ResourceKey.create(Registries.CONFIGURED_FEATURE, identifier);
-            ConfiguredFeature<?,?> feature = definition.getFeature();
+            ConfiguredFeature<?,?> feature = definition.getValue();
             Holder.Reference<ConfiguredFeature<?,?>> intrusiveHolder = CONFIGURED_FEATURE_REGISTRY.createIntrusiveHolder(feature);
             Registry.register(CONFIGURED_FEATURE_REGISTRY, resourceKey, feature);
 

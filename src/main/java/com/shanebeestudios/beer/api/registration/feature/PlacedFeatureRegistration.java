@@ -86,9 +86,7 @@ public class PlacedFeatureRegistration {
         features.addAll(vegetation());
 
         // Dump features to datapack files
-        for (PlacedFeatureDefinition feature : features) {
-            DumpRegistry.dumpObject(feature.getIdentifier(), feature.getFeature());
-        }
+        DumpRegistry.dumpDefinables(features);
     }
 
     private static List<PlacedFeatureDefinition> decor() {

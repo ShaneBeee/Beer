@@ -33,9 +33,7 @@ public class ConfiguredFeatureRegistration {
         features.addAll(vegetation());
 
         // Dump features to datapack files
-        for (ConfiguredFeatureDefinition feature : features) {
-            DumpRegistry.dumpObject(feature.getIdentifier(), feature.getFeature());
-        }
+        DumpRegistry.dumpDefinables(features);
 
     }
 
