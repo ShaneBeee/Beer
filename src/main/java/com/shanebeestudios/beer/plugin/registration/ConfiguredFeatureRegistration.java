@@ -18,10 +18,14 @@ import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureCo
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.CocoaDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 
@@ -76,6 +80,28 @@ public class ConfiguredFeatureRegistration {
 
         ConfiguredFeatures.TREE_FALLEN_STRIPPED_WARPED_STEM = fallen_warped_stem_stripped.register();
         features.add(fallen_warped_stem_stripped);
+
+        ConfiguredFeatureDefinition palm_tree = ConfiguredFeatureDefinition.builder("beer:tree/palm_tree")
+            .feature(Feature.TREE)
+            .config(new TreeConfiguration.TreeConfigurationBuilder(
+                SimpleStateProvider.simple(Blocks.JUNGLE_WOOD),
+                new ForkingTrunkPlacer(5, 2, 3),
+                SimpleStateProvider.simple(Blocks.JUNGLE_LEAVES.defaultBlockState()
+                    .setValue(BlockStateProperties.WATERLOGGED, false)
+                    .setValue(BlockStateProperties.PERSISTENT, false)
+                    .setValue(BlockStateProperties.DISTANCE, 7)),
+                new AcaciaFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(1, 0, 2))
+                .dirt(SimpleStateProvider.simple(Blocks.JUNGLE_WOOD))
+                .decorators(List.of(
+                    new CocoaDecorator(0.2f),
+                    new BeehiveDecorator(0.03f)))
+                .forceDirt()
+                .build())
+            .build();
+
+        ConfiguredFeatures.TREE_PALM_TREE = palm_tree.register();
+        features.add(palm_tree);
 
         return features;
     }

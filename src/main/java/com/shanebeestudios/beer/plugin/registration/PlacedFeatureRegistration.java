@@ -39,7 +39,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.DarkOakFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -48,10 +47,8 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockS
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
-import net.minecraft.world.level.levelgen.feature.treedecorators.CocoaDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.placement.BiomeFilter;
@@ -488,22 +485,7 @@ public class PlacedFeatureRegistration {
         List<PlacedFeatureDefinition> features = new ArrayList<>();
 
         PlacedFeatureDefinition beachy_palm = PlacedFeatureDefinition.builder("beer:tree/beachy_palm")
-            .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                SimpleStateProvider.simple(Blocks.JUNGLE_WOOD),
-                new ForkingTrunkPlacer(5, 2, 3),
-                SimpleStateProvider.simple(Blocks.JUNGLE_LEAVES.defaultBlockState()
-                    .setValue(BlockStateProperties.WATERLOGGED, false)
-                    .setValue(BlockStateProperties.PERSISTENT, false)
-                    .setValue(BlockStateProperties.DISTANCE, 7)),
-                new AcaciaFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
-                Optional.empty(),
-                new TwoLayersFeatureSize(1, 0, 2))
-                .dirt(SimpleStateProvider.simple(Blocks.JUNGLE_WOOD))
-                .decorators(List.of(
-                    new CocoaDecorator(0.2f),
-                    new BeehiveDecorator(0.03f)))
-                .forceDirt()
-                .build())
+            .configuredFeature(ConfiguredFeatures.TREE_PALM_TREE)
             .placementModifiers(CountPlacement.of(1),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
@@ -569,21 +551,7 @@ public class PlacedFeatureRegistration {
         features.add(moss_garden);
 
         PlacedFeatureDefinition palm_beach_palm = PlacedFeatureDefinition.builder("beer:tree/palm_beach_palm")
-            .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                SimpleStateProvider.simple(Blocks.JUNGLE_WOOD.defaultBlockState()
-                    .setValue(BlockStateProperties.AXIS, Direction.Axis.Y)),
-                new ForkingTrunkPlacer(5, 2, 3),
-                SimpleStateProvider.simple(Blocks.JUNGLE_LEAVES.defaultBlockState()
-                    .setValue(BlockStateProperties.DISTANCE, 7)
-                    .setValue(BlockStateProperties.PERSISTENT, false)),
-                new AcaciaFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
-                new TwoLayersFeatureSize(1, 0, 2))
-                .dirt(SimpleStateProvider.simple(Blocks.JUNGLE_WOOD.defaultBlockState()
-                    .setValue(BlockStateProperties.AXIS, Direction.Axis.Y)))
-                .forceDirt()
-                .ignoreVines()
-                .decorators(List.of(new CocoaDecorator(0.2f), new BeehiveDecorator(0.1f)))
-                .build())
+            .configuredFeature(ConfiguredFeatures.TREE_PALM_TREE)
             .placementModifiers(CountPlacement.of(2),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
