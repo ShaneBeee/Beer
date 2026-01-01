@@ -10,6 +10,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.attribute.AmbientParticle;
 import net.minecraft.world.attribute.EnvironmentAttribute;
 import net.minecraft.world.attribute.EnvironmentAttributes;
+import net.minecraft.world.attribute.modifier.AttributeModifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
@@ -75,8 +76,31 @@ public class BiomeDefinition {
             this.key = Identifier.parse(key);
         }
 
+        /**
+         * Set the environmental attribute of this biome.
+         *
+         * @param attribute Attribute to set
+         * @param value     Value to set to
+         * @param <T>       Type of value according to attribute
+         * @return This builder
+         */
         public <T> Builder setAttribute(EnvironmentAttribute<@NotNull T> attribute, T value) {
             this.biomeBuilder.setAttribute(attribute, value);
+            return this;
+        }
+
+        /**
+         * Apply a modifier to an environmental attribute of this biome.
+         *
+         * @param attribute Attribute to modify
+         * @param modifier  Modifier to apply to attribute
+         * @param parameter Value of modification
+         * @param <T>       Type of value according to attribute
+         * @param <P>       Type of modifier according to attribute
+         * @return This builder
+         */
+        public <T, P> Builder modifyAttribute(EnvironmentAttribute<T> attribute, AttributeModifier<T, P> modifier, P parameter) {
+            this.biomeBuilder.modifyAttribute(attribute, modifier, parameter);
             return this;
         }
 
@@ -165,7 +189,7 @@ public class BiomeDefinition {
                             identifier.toString(), this.key.toString());
                     }
                 } else if (o instanceof Holder.Reference<?> ref && ref.value() instanceof PlacedFeature) {
-                    this.genSettings.addFeature(decoration, (Holder.Reference<PlacedFeature>)ref);
+                    this.genSettings.addFeature(decoration, (Holder.Reference<PlacedFeature>) ref);
                 } else {
                     Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
                         o, this.key.toString());
