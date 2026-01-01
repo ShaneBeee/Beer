@@ -1,6 +1,7 @@
 package com.shanebeestudios.beer.api.utils;
 
 import com.shanebeestudios.beer.api.registration.biome.BiomeDefinition;
+import com.shanebeestudios.beer.api.registration.feature.ConfiguredFeatureDefinition;
 import com.shanebeestudios.beer.api.registration.feature.PlacedFeatureDefinition;
 import com.shanebeestudios.coreapi.util.ReflectionUtils;
 import net.minecraft.core.Holder;
@@ -251,8 +252,25 @@ public class RegistryUtils {
             Holder.Reference<PlacedFeature> intrusiveHolder = PLACED_FEATURE_REGISTRY.createIntrusiveHolder(placedFeature);
             Registry.register(PLACED_FEATURE_REGISTRY, resourceKey, placedFeature);
 
-            //setupBiomeDistribution(intrusiveHolder, definition); TODO do we need tags?!?!?
             freeze(PLACED_FEATURE_REGISTRY);
+
+            return intrusiveHolder;
+        }
+
+        return null;
+    }
+
+    public static Holder.Reference<ConfiguredFeature<?,?>> registerConfiguredFeature(ConfiguredFeatureDefinition definition) {
+        Identifier identifier = definition.getIdentifier();
+        if (!CONFIGURED_FEATURE_REGISTRY.containsKey(identifier)) {
+            unfreeze(CONFIGURED_FEATURE_REGISTRY);
+
+            ResourceKey<ConfiguredFeature<?,?>> resourceKey = ResourceKey.create(Registries.CONFIGURED_FEATURE, identifier);
+            ConfiguredFeature<?,?> feature = definition.getFeature();
+            Holder.Reference<ConfiguredFeature<?,?>> intrusiveHolder = CONFIGURED_FEATURE_REGISTRY.createIntrusiveHolder(feature);
+            Registry.register(CONFIGURED_FEATURE_REGISTRY, resourceKey, feature);
+
+            freeze(CONFIGURED_FEATURE_REGISTRY);
 
             return intrusiveHolder;
         }

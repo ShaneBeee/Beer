@@ -1,5 +1,7 @@
 package com.shanebeestudios.beer.plugin;
 
+import com.shanebeestudios.beer.api.registration.feature.ConfiguredFeatureDefinition;
+import com.shanebeestudios.beer.api.registration.feature.ConfiguredFeatureRegistration;
 import com.shanebeestudios.beer.plugin.biomes.BiomeGenerator;
 import com.shanebeestudios.beer.api.registration.biome.BiomeRegistration;
 import com.shanebeestudios.beer.api.registration.feature.PlacedFeatureRegistration;
@@ -29,6 +31,7 @@ public class BeerPlugin extends JavaPlugin {
             }
         } else {
             Utils.log("Attempting to build biomes and dump");
+            ConfiguredFeatureRegistration.registerFeatures();
             PlacedFeatureRegistration.registerFeatures();
             BiomeRegistration.generateBiomes();
         }

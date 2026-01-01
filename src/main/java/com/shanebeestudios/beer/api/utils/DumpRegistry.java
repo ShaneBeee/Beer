@@ -16,6 +16,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import java.io.File;
@@ -34,13 +35,14 @@ public class DumpRegistry<N> {
     static {
         register("biomes", Registries.BIOME, Biome.DIRECT_CODEC, Biome.class);
         register("placed_feature", Registries.PLACED_FEATURE, PlacedFeature.DIRECT_CODEC, PlacedFeature.class);
+        register("configured_feature", Registries.CONFIGURED_FEATURE, ConfiguredFeature.DIRECT_CODEC, ConfiguredFeature.class);
         register("enchantments", Registries.ENCHANTMENT, Enchantment.DIRECT_CODEC, Enchantment.class);
 
         List<String> patterns = MAP.values().stream().map(dumpRegistry -> dumpRegistry.name).toList();
         PATTERN = Joiner.on("/").join(patterns);
     }
 
-    private static <N> void register(String name, ResourceKey<Registry<N>> registry, Codec<N> codec, Class<N> nmsClass) {
+    private static <N> void register(String name, ResourceKey<Registry<N>> registry, Codec<N> codec, Class<?> nmsClass) {
         MAP.put(nmsClass, new DumpRegistry<>(name, registry, codec));
     }
 
