@@ -258,7 +258,7 @@ public class BiomeRegistration {
                 null,
                 List.of("beer:tree/palm_beach_palm",
                     "wythers:vegetation/placed_random_patch/large_ferns_dense_forests",
-                    "wythers:vegetation/bushes_azaleas",
+                    "beer:vegetation/azalea_bush",
                     "wythers:vegetation/placed_random_patch/dark_oak_roots",
                     "wythers:terrain/placed_random_patch/mossify_grass",
                     "wythers:vegetation/bushes_mediterranean",

@@ -61,6 +61,7 @@ import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
+import net.minecraft.world.level.levelgen.placement.NoiseBasedCountPlacement;
 import net.minecraft.world.level.levelgen.placement.NoiseThresholdCountPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
@@ -726,7 +727,7 @@ public class PlacedFeatureRegistration {
                 new AcaciaFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
                 new TwoLayersFeatureSize(1, 0, 2))
                 .dirt(SimpleStateProvider.simple(Blocks.JUNGLE_WOOD.defaultBlockState()
-                        .setValue(BlockStateProperties.AXIS, Direction.Axis.Y)))
+                    .setValue(BlockStateProperties.AXIS, Direction.Axis.Y)))
                 .forceDirt()
                 .ignoreVines()
                 .decorators(List.of(new CocoaDecorator(0.2f), new BeehiveDecorator(0.1f)))
@@ -777,6 +778,19 @@ public class PlacedFeatureRegistration {
 
     private static List<PlacedFeatureDefinition> vegetation() {
         List<PlacedFeatureDefinition> features = new ArrayList<>();
+
+        PlacedFeatureDefinition azalea_bush = PlacedFeatureDefinition.builder("beer:vegetation/azalea_bush")
+            .configuredFeature(ConfiguredFeatures.VEGETATION_AZALEA_BUSH)
+            .placementModifiers(NoiseBasedCountPlacement.of(25, 30, 0),
+                InSquarePlacement.spread(),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                SurfaceWaterDepthFilter.forMaxDepth(0),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                    BlockPredicate.matchesBlocks(Blocks.AIR),
+                    BlockPredicate.matchesBlocks(new BlockPos(0, -1, 0), Blocks.GRASS_BLOCK)
+                )),
+                BiomeFilter.biome())
+            .build();
 
         PlacedFeatureDefinition patch = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
@@ -893,6 +907,7 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
+        features.add(azalea_bush);
         features.add(moss_patch);
         features.add(cherry_petals);
         features.add(hay_bale);

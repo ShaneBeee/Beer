@@ -3,7 +3,10 @@
   "temperature": 0.5,
   "downfall": 0.5,
   "attributes": {
+    "minecraft:visual/sky_color": "#70c8ff",
+    "minecraft:visual/water_fog_color": "#232317",
     "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:audio/music_volume": 1.0,
     "minecraft:audio/ambient_sounds": {
       "mood": {
         "sound": "minecraft:ambient.cave",
@@ -11,10 +14,7 @@
         "block_search_extent": 8,
         "offset": 2.0
       }
-    },
-    "minecraft:visual/sky_color": "#70c8ff",
-    "minecraft:visual/water_fog_color": "#232317",
-    "minecraft:audio/music_volume": 1.0
+    }
   },
   "effects": {
     "water_color": "#617b64"

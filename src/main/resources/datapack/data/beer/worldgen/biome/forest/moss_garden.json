@@ -3,6 +3,15 @@
   "temperature": 0.7,
   "downfall": 0.8,
   "attributes": {
+    "minecraft:visual/fog_color": "#817770",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:firefly"
+        },
+        "probability": 0.01
+      }
+    ],
     "minecraft:audio/ambient_sounds": {
       "mood": {
         "sound": "minecraft:ambient.cave",
@@ -11,18 +20,9 @@
         "offset": 2.0
       }
     },
-    "minecraft:audio/music_volume": 0.0,
-    "minecraft:visual/fog_color": "#817770",
     "minecraft:visual/sky_color": "#b9b9b9",
     "minecraft:visual/water_fog_color": "#556980",
-    "minecraft:visual/ambient_particles": [
-      {
-        "particle": {
-          "type": "minecraft:firefly"
-        },
-        "probability": 0.01
-      }
-    ]
+    "minecraft:audio/music_volume": 0.0
   },
   "effects": {
     "water_color": "#76889d",
