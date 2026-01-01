@@ -1,7 +1,7 @@
 package com.shanebeestudios.beer.plugin.biomes.continental;
 
 import com.shanebeestudios.beer.plugin.biomes.BeerBiomes;
-import com.shanebeestudios.beer.api.ParamPoints;
+import com.shanebeestudios.beer.api.utils.ParamPoints;
 import com.shanebeestudios.beer.plugin.biomes.special.BadlandBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.BeachBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.MiddleBiomes;

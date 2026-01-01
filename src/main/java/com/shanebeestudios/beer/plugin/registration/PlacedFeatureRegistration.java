@@ -1,5 +1,6 @@
-package com.shanebeestudios.beer.api.registration.feature;
+package com.shanebeestudios.beer.plugin.registration;
 
+import com.shanebeestudios.beer.api.registration.PlacedFeatureDefinition;
 import com.shanebeestudios.beer.api.utils.DumpRegistry;
 import com.shanebeestudios.beer.api.utils.RegistryUtils;
 import net.minecraft.core.BlockPos;

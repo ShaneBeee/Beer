@@ -1,7 +1,7 @@
 package com.shanebeestudios.beer.plugin.biomes.special;
 
 import com.shanebeestudios.beer.plugin.biomes.BeerBiomes;
-import com.shanebeestudios.beer.api.ParamPoints;
+import com.shanebeestudios.beer.api.utils.ParamPoints;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeParameterPoint;
 import org.jetbrains.annotations.NotNull;

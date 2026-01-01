@@ -1,6 +1,6 @@
-package com.shanebeestudios.beer.api.registration.biome;
+package com.shanebeestudios.beer.plugin.registration;
 
-import com.shanebeestudios.beer.api.registration.feature.PlacedFeatures;
+import com.shanebeestudios.beer.api.registration.BiomeDefinition;
 import com.shanebeestudios.beer.api.utils.DumpRegistry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -21,7 +21,7 @@ import java.util.Optional;
 
 public class BiomeRegistration {
 
-    public static void generateBiomes() {
+    public static void registerBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
         biomes.addAll(caveBiomes());

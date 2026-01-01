@@ -1,6 +1,5 @@
-package com.shanebeestudios.beer.api.registration.feature;
+package com.shanebeestudios.beer.api.registration;
 
-import com.shanebeestudios.beer.api.registration.Definition;
 import com.shanebeestudios.beer.api.utils.RegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;

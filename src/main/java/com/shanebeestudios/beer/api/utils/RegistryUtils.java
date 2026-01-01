@@ -1,8 +1,8 @@
 package com.shanebeestudios.beer.api.utils;
 
-import com.shanebeestudios.beer.api.registration.biome.BiomeDefinition;
-import com.shanebeestudios.beer.api.registration.feature.ConfiguredFeatureDefinition;
-import com.shanebeestudios.beer.api.registration.feature.PlacedFeatureDefinition;
+import com.shanebeestudios.beer.api.registration.BiomeDefinition;
+import com.shanebeestudios.beer.api.registration.ConfiguredFeatureDefinition;
+import com.shanebeestudios.beer.api.registration.PlacedFeatureDefinition;
 import com.shanebeestudios.coreapi.util.ReflectionUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;

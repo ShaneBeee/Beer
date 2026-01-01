@@ -1,4 +1,4 @@
-package com.shanebeestudios.beer.api;
+package com.shanebeestudios.beer.api.utils;
 
 import org.bukkit.generator.BiomeParameterPoint;
 

@@ -1,6 +1,5 @@
-package com.shanebeestudios.beer.api.registration.biome;
+package com.shanebeestudios.beer.api.registration;
 
-import com.shanebeestudios.beer.api.registration.Definition;
 import com.shanebeestudios.beer.api.utils.RegistryUtils;
 import com.shanebeestudios.coreapi.util.Utils;
 import net.minecraft.core.Holder;

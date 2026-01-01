@@ -1,10 +1,9 @@
 package com.shanebeestudios.beer.plugin;
 
-import com.shanebeestudios.beer.api.registration.feature.ConfiguredFeatureDefinition;
-import com.shanebeestudios.beer.api.registration.feature.ConfiguredFeatureRegistration;
+import com.shanebeestudios.beer.plugin.registration.ConfiguredFeatureRegistration;
 import com.shanebeestudios.beer.plugin.biomes.BiomeGenerator;
-import com.shanebeestudios.beer.api.registration.biome.BiomeRegistration;
-import com.shanebeestudios.beer.api.registration.feature.PlacedFeatureRegistration;
+import com.shanebeestudios.beer.plugin.registration.BiomeRegistration;
+import com.shanebeestudios.beer.plugin.registration.PlacedFeatureRegistration;
 import com.shanebeestudios.coreapi.util.Utils;
 import io.papermc.paper.datapack.Datapack;
 import org.bukkit.Bukkit;
@@ -30,10 +29,10 @@ public class BeerPlugin extends JavaPlugin {
                 Utils.log("&cFailed to load custom world!");
             }
         } else {
-            Utils.log("Attempting to build biomes and dump");
+            Utils.log("Attempting to register definables and dump for datapacks");
             ConfiguredFeatureRegistration.registerFeatures();
             PlacedFeatureRegistration.registerFeatures();
-            BiomeRegistration.generateBiomes();
+            BiomeRegistration.registerBiomes();
         }
     }
 

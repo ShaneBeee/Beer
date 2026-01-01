@@ -1,4 +1,4 @@
-package com.shanebeestudios.beer.api.registration.feature;
+package com.shanebeestudios.beer.plugin.registration;
 
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;

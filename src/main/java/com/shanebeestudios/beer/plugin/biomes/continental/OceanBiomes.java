@@ -1,6 +1,6 @@
 package com.shanebeestudios.beer.plugin.biomes.continental;
 
-import com.shanebeestudios.beer.api.ParamPoints;
+import com.shanebeestudios.beer.api.utils.ParamPoints;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeParameterPoint;
 
