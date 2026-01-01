@@ -6,12 +6,14 @@ import com.shanebeestudios.beer.api.utils.DumpRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.FallenTreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -31,7 +33,7 @@ public class ConfiguredFeatureRegistration {
     public static void registerFeatures() {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
 
-        features.addAll(terrain());
+        features.addAll(tree());
         features.addAll(vegetation());
 
         // Dump features to datapack files
@@ -39,8 +41,41 @@ public class ConfiguredFeatureRegistration {
 
     }
 
-    private static List<ConfiguredFeatureDefinition> terrain() {
+    private static List<ConfiguredFeatureDefinition> tree() {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
+
+        ConfiguredFeatureDefinition fallen_stripped_pale_oak = ConfiguredFeatureDefinition.builder("beer:tree/fallen_stripped_pale_oak")
+            .feature(Feature.FALLEN_TREE)
+            .config(new FallenTreeConfiguration.FallenTreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.STRIPPED_PALE_OAK_LOG),
+                UniformInt.of(4, 7))
+                .build())
+            .build();
+
+        ConfiguredFeatures.TREE_FALLEN_STRIPPED_PALE_OAK = fallen_stripped_pale_oak.register();
+        features.add(fallen_stripped_pale_oak);
+
+        ConfiguredFeatureDefinition fallen_warped_stem = ConfiguredFeatureDefinition.builder("beer:tree/fallen_warped_stem")
+            .feature(Feature.FALLEN_TREE)
+            .config(new FallenTreeConfiguration.FallenTreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.WARPED_STEM),
+                UniformInt.of(4, 7))
+                .build())
+            .build();
+
+        ConfiguredFeatures.TREE_FALLEN_WARPED_STEM = fallen_warped_stem.register();
+        features.add(fallen_warped_stem);
+
+        ConfiguredFeatureDefinition fallen_warped_stem_stripped = ConfiguredFeatureDefinition.builder("beer:tree/fallen_stripped_warped_stem")
+            .feature(Feature.FALLEN_TREE)
+            .config(new FallenTreeConfiguration.FallenTreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.STRIPPED_WARPED_STEM),
+                UniformInt.of(4, 7))
+                .build())
+            .build();
+
+        ConfiguredFeatures.TREE_FALLEN_STRIPPED_WARPED_STEM = fallen_warped_stem_stripped.register();
+        features.add(fallen_warped_stem_stripped);
 
         return features;
     }

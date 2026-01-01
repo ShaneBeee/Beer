@@ -487,195 +487,6 @@ public class PlacedFeatureRegistration {
     private static List<PlacedFeatureDefinition> tree() {
         List<PlacedFeatureDefinition> features = new ArrayList<>();
 
-        PlacedFeatureDefinition fallen_stripped_pale_oak_east = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_stripped_pale_oak_east")
-            .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
-                List.of(
-                    new BlockColumnConfiguration.Layer(ConstantInt.of(5),
-                        SimpleStateProvider.simple(Blocks.STRIPPED_PALE_OAK_LOG.defaultBlockState()
-                            .setValue(BlockStateProperties.AXIS, Direction.Axis.X)))
-                ),
-                Direction.EAST,
-                BlockPredicate.matchesBlocks(Blocks.AIR),
-                false
-            ))
-            .placementModifiers(BlockPredicateFilter.forPredicate(
-                BlockPredicate.allOf(
-                    BlockPredicate.matchesBlocks(new BlockPos(-1, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(1, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(2, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(3, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(4, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(5, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesTag(new BlockPos(-1, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(1, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(2, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(3, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(4, -1, 0), BlockTags.DIRT))))
-            .build();
-
-        PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_EAST = fallen_stripped_pale_oak_east.register();
-        features.add(fallen_stripped_pale_oak_east);
-
-        PlacedFeatureDefinition fallen_stripped_pale_oak_north = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_stripped_pale_oak_north")
-            .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
-                List.of(
-                    new BlockColumnConfiguration.Layer(ConstantInt.of(5),
-                        SimpleStateProvider.simple(Blocks.STRIPPED_PALE_OAK_LOG.defaultBlockState()
-                            .setValue(BlockStateProperties.AXIS, Direction.Axis.Z)))
-                ),
-                Direction.NORTH,
-                BlockPredicate.matchesBlocks(Blocks.AIR),
-                false
-            ))
-            .placementModifiers(BlockPredicateFilter.forPredicate(
-                BlockPredicate.allOf(
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 1), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -1), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -2), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -3), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -4), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -5), Blocks.AIR),
-
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 1), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -1), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -2), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -3), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -4), BlockTags.DIRT))))
-            .build();
-
-        PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_NORTH = fallen_stripped_pale_oak_north.register();
-        features.add(fallen_stripped_pale_oak_north);
-
-        PlacedFeatureDefinition fallen_stripped_warped_stem_east = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_stripped_warped_stem_east")
-            .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
-                List.of(
-                    new BlockColumnConfiguration.Layer(UniformInt.of(4, 7),
-                        SimpleStateProvider.simple(Blocks.STRIPPED_WARPED_STEM.defaultBlockState()
-                            .setValue(BlockStateProperties.AXIS, Direction.Axis.X)))
-                ),
-                Direction.EAST,
-                BlockPredicate.matchesBlocks(Blocks.AIR),
-                false
-            ))
-            .placementModifiers(BlockPredicateFilter.forPredicate(
-                BlockPredicate.allOf(
-                    BlockPredicate.matchesBlocks(new BlockPos(-1, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(1, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(2, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(3, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(4, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(5, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesTag(new BlockPos(-1, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(1, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(2, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(3, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(4, -1, 0), BlockTags.DIRT))))
-            .build();
-
-        PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_EAST = fallen_stripped_warped_stem_east.register();
-        features.add(fallen_stripped_warped_stem_east);
-
-        PlacedFeatureDefinition fallen_stripped_warped_stem_north = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_stripped_warped_stem_north")
-            .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
-                List.of(
-                    new BlockColumnConfiguration.Layer(UniformInt.of(4, 7),
-                        SimpleStateProvider.simple(Blocks.STRIPPED_WARPED_STEM.defaultBlockState()
-                            .setValue(BlockStateProperties.AXIS, Direction.Axis.Z)))
-                ),
-                Direction.NORTH,
-                BlockPredicate.matchesBlocks(Blocks.AIR),
-                false
-            ))
-            .placementModifiers(BlockPredicateFilter.forPredicate(
-                BlockPredicate.allOf(
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 1), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -1), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -2), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -3), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -4), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -5), Blocks.AIR),
-
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 1), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -1), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -2), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -3), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -4), BlockTags.DIRT))))
-            .build();
-
-        PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_NORTH = fallen_stripped_warped_stem_north.register();
-        features.add(fallen_stripped_warped_stem_north);
-
-        PlacedFeatureDefinition fallen_warped_stem_east = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_warped_stem_east")
-            .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
-                List.of(
-                    new BlockColumnConfiguration.Layer(UniformInt.of(4, 7),
-                        SimpleStateProvider.simple(Blocks.WARPED_STEM.defaultBlockState()
-                            .setValue(BlockStateProperties.AXIS, Direction.Axis.X)))
-                ),
-                Direction.EAST,
-                BlockPredicate.matchesBlocks(Blocks.AIR),
-                false
-            ))
-            .placementModifiers(BlockPredicateFilter.forPredicate(
-                BlockPredicate.allOf(
-                    BlockPredicate.matchesBlocks(new BlockPos(-1, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(1, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(2, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(3, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(4, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(5, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesTag(new BlockPos(-1, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(1, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(2, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(3, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(4, -1, 0), BlockTags.DIRT))))
-            .build();
-
-        PlacedFeatures.TREE_PARTS_FALLEN_WARPED_STEM_EAST = fallen_warped_stem_east.register();
-        features.add(fallen_warped_stem_east);
-
-        PlacedFeatureDefinition fallen_warped_stem_north = PlacedFeatureDefinition.builder("beer:tree/parts/fallen_warped_stem_north")
-            .configuredFeature(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
-                List.of(
-                    new BlockColumnConfiguration.Layer(UniformInt.of(4, 7),
-                        SimpleStateProvider.simple(Blocks.WARPED_STEM.defaultBlockState()
-                            .setValue(BlockStateProperties.AXIS, Direction.Axis.Z)))
-                ),
-                Direction.NORTH,
-                BlockPredicate.matchesBlocks(Blocks.AIR),
-                false
-            ))
-            .placementModifiers(BlockPredicateFilter.forPredicate(
-                BlockPredicate.allOf(
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 1), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 0), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -1), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -2), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -3), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -4), Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -5), Blocks.AIR),
-
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 1), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -1), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -2), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -3), BlockTags.DIRT),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, -4), BlockTags.DIRT))))
-            .build();
-
-        PlacedFeatures.TREE_PARTS_FALLEN_WARPED_STEM_NORTH = fallen_warped_stem_north.register();
-        features.add(fallen_warped_stem_north);
-
         PlacedFeatureDefinition beachy_palm = PlacedFeatureDefinition.builder("beer:tree/beachy_palm")
             .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 SimpleStateProvider.simple(Blocks.JUNGLE_WOOD),
@@ -704,10 +515,7 @@ public class PlacedFeatureRegistration {
         features.add(beachy_palm);
 
         PlacedFeatureDefinition fallen_stripped_pale_oak = PlacedFeatureDefinition.builder("beer:tree/fallen_stripped_pale_oak")
-            .configuredFeature(Feature.SIMPLE_RANDOM_SELECTOR,
-                new SimpleRandomFeatureConfiguration(HolderSet.direct(
-                    PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_EAST,
-                    PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_NORTH)))
+            .configuredFeature(ConfiguredFeatures.TREE_FALLEN_STRIPPED_PALE_OAK)
             .placementModifiers(RarityFilter.onAverageOnceEvery(3),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
@@ -720,11 +528,13 @@ public class PlacedFeatureRegistration {
         PlacedFeatureDefinition fallen_warped_stem = PlacedFeatureDefinition.builder("beer:tree/fallen_warped_stem")
             .configuredFeature(Feature.SIMPLE_RANDOM_SELECTOR,
                 new SimpleRandomFeatureConfiguration(HolderSet.direct(
-                    PlacedFeatures.TREE_PARTS_FALLEN_WARPED_STEM_EAST,
-                    PlacedFeatures.TREE_PARTS_FALLEN_WARPED_STEM_NORTH,
-                    PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_EAST,
-                    PlacedFeatures.TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_NORTH)))
-            .placementModifiers(CountPlacement.of(5),
+                    PlacedFeatureDefinition.builder()
+                        .configuredFeature(ConfiguredFeatures.TREE_FALLEN_WARPED_STEM)
+                        .build().getFeatureHolder(),
+                    PlacedFeatureDefinition.builder()
+                        .configuredFeature(ConfiguredFeatures.TREE_FALLEN_STRIPPED_WARPED_STEM)
+                        .build().getFeatureHolder())))
+            .placementModifiers(CountPlacement.of(1),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 BiomeFilter.biome())

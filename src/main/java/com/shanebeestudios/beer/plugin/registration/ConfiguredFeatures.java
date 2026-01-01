@@ -5,6 +5,12 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 public class ConfiguredFeatures {
 
+    // TREE
+    public static Holder.Reference<ConfiguredFeature<?, ?>> TREE_FALLEN_STRIPPED_PALE_OAK;
+    public static Holder.Reference<ConfiguredFeature<?, ?>> TREE_FALLEN_STRIPPED_WARPED_STEM;
+    public static Holder.Reference<ConfiguredFeature<?, ?>> TREE_FALLEN_WARPED_STEM;
+
+    // VEGETATION
     public static Holder.Reference<ConfiguredFeature<?, ?>> VEGETATION_AZALEA_BUSH;
     public static Holder.Reference<ConfiguredFeature<?, ?>> VEGETATION_AZALEA_SCRUB;
     public static Holder.Reference<ConfiguredFeature<?, ?>> VEGETATION_FLOWERING_AZALEA_SCRUB;

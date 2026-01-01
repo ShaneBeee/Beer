@@ -2,17 +2,21 @@
   "feature": {
     "config": {
       "features": [
-        "beer:tree/parts/fallen_warped_stem_east",
-        "beer:tree/parts/fallen_warped_stem_north",
-        "beer:tree/parts/fallen_stripped_warped_stem_east",
-        "beer:tree/parts/fallen_stripped_warped_stem_north"
+        {
+          "feature": "beer:tree/fallen_warped_stem",
+          "placement": []
+        },
+        {
+          "feature": "beer:tree/fallen_stripped_warped_stem",
+          "placement": []
+        }
       ]
     },
     "type": "minecraft:simple_random_selector"
   },
   "placement": [
     {
-      "count": 5,
+      "count": 1,
       "type": "minecraft:count"
     },
     {

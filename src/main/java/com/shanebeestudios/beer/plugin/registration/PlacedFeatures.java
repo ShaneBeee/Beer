@@ -24,12 +24,6 @@ public class PlacedFeatures {
     public static Holder.Reference<PlacedFeature> TERRAIN_WATER_BLOB;
     
     // TREE
-    public static Holder.Reference<PlacedFeature> TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_EAST;
-    public static Holder.Reference<PlacedFeature> TREE_PARTS_FALLEN_STRIPPED_PALE_OAK_NORTH;
-    public static Holder.Reference<PlacedFeature> TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_EAST;
-    public static Holder.Reference<PlacedFeature> TREE_PARTS_FALLEN_STRIPPED_WARPED_STEM_NORTH;
-    public static Holder.Reference<PlacedFeature> TREE_PARTS_FALLEN_WARPED_STEM_EAST;
-    public static Holder.Reference<PlacedFeature> TREE_PARTS_FALLEN_WARPED_STEM_NORTH;
     public static Holder.Reference<PlacedFeature> TREE_BEACHY_PALM;
     public static Holder.Reference<PlacedFeature> TREE_FALLEN_STRIPPED_PALE_OAK;
     public static Holder.Reference<PlacedFeature> TREE_FALLEN_WARPED_STEM;

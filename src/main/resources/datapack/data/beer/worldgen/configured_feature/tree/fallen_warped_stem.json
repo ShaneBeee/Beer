@@ -1,0 +1,21 @@
+{
+  "config": {
+    "trunk_provider": {
+      "state": {
+        "Properties": {
+          "axis": "y"
+        },
+        "Name": "minecraft:warped_stem"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
+    "log_length": {
+      "min_inclusive": 4,
+      "max_inclusive": 7,
+      "type": "minecraft:uniform"
+    },
+    "stump_decorators": [],
+    "log_decorators": []
+  },
+  "type": "minecraft:fallen_tree"
+}
