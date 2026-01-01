@@ -3,10 +3,10 @@
   "temperature": 0.8,
   "downfall": 0.2,
   "attributes": {
-    "minecraft:visual/water_fog_color": "#050533",
-    "minecraft:audio/music_volume": 1.0,
     "minecraft:visual/sky_color": "#78a7ff",
-    "minecraft:visual/fog_color": "#c0d8ff"
+    "minecraft:visual/water_fog_color": "#050533",
+    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:audio/music_volume": 1.0
   },
   "effects": {
     "water_color": "#3f76e4"
@@ -32,8 +32,8 @@
     [],
     [],
     [
-      "wythers:terrain/placed_random_patch/cliff_grass",
-      "wythers:terrain/disk_sand_shore",
+      "beer:vegetation/patch_cliff_grass",
+      "beer:terrain/sand_shore_disk",
       "minecraft:flower_plains",
       "minecraft:patch_grass_plain",
       "minecraft:patch_waterlily",

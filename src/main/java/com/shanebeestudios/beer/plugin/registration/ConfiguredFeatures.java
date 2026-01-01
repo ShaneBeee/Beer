@@ -5,6 +5,9 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 public class ConfiguredFeatures {
 
+    // TERRAIN
+    public static Holder.Reference<ConfiguredFeature<?, ?>> TERRAIN_SAND_SHORE_DISK;
+
     // TREE
     public static Holder.Reference<ConfiguredFeature<?, ?>> TREE_FALLEN_STRIPPED_PALE_OAK;
     public static Holder.Reference<ConfiguredFeature<?, ?>> TREE_FALLEN_STRIPPED_WARPED_STEM;
@@ -15,5 +18,6 @@ public class ConfiguredFeatures {
     public static Holder.Reference<ConfiguredFeature<?, ?>> VEGETATION_AZALEA_BUSH;
     public static Holder.Reference<ConfiguredFeature<?, ?>> VEGETATION_AZALEA_SCRUB;
     public static Holder.Reference<ConfiguredFeature<?, ?>> VEGETATION_FLOWERING_AZALEA_SCRUB;
+    public static Holder.Reference<ConfiguredFeature<?, ?>> VEGETATION_PATCH_CLIFF_GRASS;
 
 }

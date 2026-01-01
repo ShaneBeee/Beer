@@ -13,14 +13,17 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.FallenTreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
@@ -37,12 +40,31 @@ public class ConfiguredFeatureRegistration {
     public static void registerFeatures() {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
 
+        features.addAll(terrain());
         features.addAll(tree());
         features.addAll(vegetation());
 
         // Dump features to datapack files
         DumpRegistry.dumpDefinables(features);
 
+    }
+
+    private static List<ConfiguredFeatureDefinition> terrain() {
+        List<ConfiguredFeatureDefinition> features = new ArrayList<>();
+
+        ConfiguredFeatureDefinition sand_shore_disk = ConfiguredFeatureDefinition.builder("beer:terrain/sand_shore_disk")
+            .feature(Feature.DISK)
+            .config(new DiskConfiguration(
+                RuleBasedBlockStateProvider.simple(Blocks.SAND),
+                BlockPredicate.matchesBlocks(Blocks.GRASS_BLOCK, Blocks.DIRT),
+                UniformInt.of(3, 5),
+                1))
+            .build();
+
+        ConfiguredFeatures.TERRAIN_SAND_SHORE_DISK = sand_shore_disk.register();
+        features.add(sand_shore_disk);
+
+        return features;
     }
 
     private static List<ConfiguredFeatureDefinition> tree() {
@@ -178,6 +200,57 @@ public class ConfiguredFeatureRegistration {
             .build();
         ConfiguredFeatures.VEGETATION_AZALEA_BUSH = azalea_bush.register();
         features.add(azalea_bush);
+
+        ConfiguredFeatureDefinition patch_cliff_grass = ConfiguredFeatureDefinition.builder("beer:vegetation/patch_cliff_grass")
+            .feature(Feature.RANDOM_PATCH)
+            .config(new RandomPatchConfiguration(
+                256,
+                3,
+                3,
+                PlacedFeatureDefinition.builder()
+                    .configuredFeature(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.GRASS_BLOCK)))
+                    .placementModifiers(BlockPredicateFilter.forPredicate(
+                        BlockPredicate.allOf(
+                            BlockPredicate.matchesBlocks(new BlockPos(0, 1, 0), Blocks.AIR),
+                            BlockPredicate.matchesBlocks(BlockPos.ZERO, Blocks.STONE, Blocks.GRANITE, Blocks.GRASS_BLOCK, Blocks.DEEPSLATE, Blocks.CALCITE),
+                            BlockPredicate.not(
+                                BlockPredicate.anyOf(
+                                    BlockPredicate.matchesBlocks(new BlockPos(1, -1, 0), Blocks.AIR),
+                                    BlockPredicate.matchesBlocks(new BlockPos(-1, -1, 0), Blocks.AIR),
+                                    BlockPredicate.matchesBlocks(new BlockPos(0, -1, 1), Blocks.AIR),
+                                    BlockPredicate.matchesBlocks(new BlockPos(0, -1, -1), Blocks.AIR)
+                                )
+                            ),
+                            BlockPredicate.anyOf(
+                                BlockPredicate.allOf(
+                                    BlockPredicate.matchesBlocks(new BlockPos(1, 1, 0), Blocks.AIR),
+                                    BlockPredicate.matchesBlocks(new BlockPos(1, 0, 0), Blocks.STONE, Blocks.GRANITE, Blocks.GRASS_BLOCK, Blocks.DEEPSLATE, Blocks.CALCITE)
+                                ),
+                                BlockPredicate.allOf(
+                                    BlockPredicate.matchesBlocks(new BlockPos(-1, 1, 0), Blocks.AIR),
+                                    BlockPredicate.matchesBlocks(new BlockPos(-1, 0, 0), Blocks.STONE, Blocks.GRANITE, Blocks.GRASS_BLOCK, Blocks.DEEPSLATE, Blocks.CALCITE)
+
+                                ),
+                                BlockPredicate.allOf(
+                                    BlockPredicate.matchesBlocks(new BlockPos(0, 1, 1), Blocks.AIR),
+                                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, 1), Blocks.STONE, Blocks.GRANITE, Blocks.GRASS_BLOCK, Blocks.DEEPSLATE, Blocks.CALCITE)
+                                ),
+                                BlockPredicate.allOf(
+                                    BlockPredicate.matchesBlocks(new BlockPos(0, 1, -1), Blocks.AIR),
+                                    BlockPredicate.matchesBlocks(new BlockPos(0, 0, -1), Blocks.STONE, Blocks.GRANITE, Blocks.GRASS_BLOCK, Blocks.DEEPSLATE, Blocks.CALCITE)
+                                )
+
+                            )
+
+                        )
+                    ))
+                    .build().getFeatureHolder()
+            ))
+            .build();
+
+        ConfiguredFeatures.VEGETATION_PATCH_CLIFF_GRASS = patch_cliff_grass.register();
+        features.add(patch_cliff_grass);
 
         // RETURN
         return features;

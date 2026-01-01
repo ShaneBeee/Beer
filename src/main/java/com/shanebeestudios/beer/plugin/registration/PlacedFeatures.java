@@ -19,6 +19,7 @@ public class PlacedFeatures {
     public static Holder.Reference<PlacedFeature> TERRAIN_BROWN_CONCRETE_DISK;
     public static Holder.Reference<PlacedFeature> TERRAIN_DIORITE_CLIFFS;
     public static Holder.Reference<PlacedFeature> TERRAIN_GRASS_TO_SAND;
+    public static Holder.Reference<PlacedFeature> TERRAIN_SAND_SHORE_DISK;
     public static Holder.Reference<PlacedFeature> TERRAIN_STONE_CLIFF;
     public static Holder.Reference<PlacedFeature> TERRAIN_STONE_TO_ICE;
     public static Holder.Reference<PlacedFeature> TERRAIN_WATER_BLOB;
@@ -35,6 +36,7 @@ public class PlacedFeatures {
     public static Holder.Reference<PlacedFeature> VEGETATION_AZALEA_BUSH;
     public static Holder.Reference<PlacedFeature> VEGETATION_MOSS_PATCH;
     public static Holder.Reference<PlacedFeature> VEGETATION_PATCH_CHERRY_PETALS;
+    public static Holder.Reference<PlacedFeature> VEGETATION_PATCH_CLIFF_GRASS;
     public static Holder.Reference<PlacedFeature> VEGETATION_PATCH_HAY_BALE;
     public static Holder.Reference<PlacedFeature> VEGETATION_PATCH_SMALL_DRIPLEAF;
     public static Holder.Reference<PlacedFeature> VEGETATION_PATCH_WATER_LEAVES;

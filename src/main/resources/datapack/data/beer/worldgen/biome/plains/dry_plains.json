@@ -3,9 +3,9 @@
   "temperature": 2.0,
   "downfall": 0.05,
   "attributes": {
+    "minecraft:visual/sky_color": "#78a7ff",
     "minecraft:visual/water_fog_color": "#21214f",
-    "minecraft:visual/fog_color": "#f9edd7",
-    "minecraft:visual/sky_color": "#78a7ff"
+    "minecraft:visual/fog_color": "#f9edd7"
   },
   "effects": {
     "water_color": "#516f90"
@@ -31,8 +31,8 @@
     [],
     [],
     [
-      "wythers:terrain/placed_random_patch/cliff_grass",
-      "wythers:terrain/disk_sand_shore",
+      "beer:vegetation/patch_cliff_grass",
+      "beer:terrain/sand_shore_disk",
       "minecraft:patch_grass_plain",
       "minecraft:patch_waterlily",
       "minecraft:patch_sugar_cane",

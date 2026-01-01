@@ -348,6 +348,18 @@ public class PlacedFeatureRegistration {
         PlacedFeatures.TERRAIN_GRASS_TO_SAND = grass_to_sand.register();
         features.add(grass_to_sand);
 
+        PlacedFeatureDefinition sand_shore_disk = PlacedFeatureDefinition.builder("beer:terrain/sand_shore_disk")
+            .configuredFeature(ConfiguredFeatures.TERRAIN_SAND_SHORE_DISK)
+            .placementModifiers(CountPlacement.of(50),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.of(ConstantHeight.of(VerticalAnchor.absolute(62))),
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),
+                BiomeFilter.biome())
+            .build();
+
+        PlacedFeatures.TERRAIN_SAND_SHORE_DISK = sand_shore_disk.register();
+        features.add(sand_shore_disk);
+
         PlacedFeatureDefinition cliffFeature = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(
@@ -647,6 +659,18 @@ public class PlacedFeatureRegistration {
 
         PlacedFeatures.VEGETATION_PATCH_CHERRY_PETALS = cherry_petals.register();
         features.add(cherry_petals);
+
+        PlacedFeatureDefinition cliff_grass = PlacedFeatureDefinition.builder("beer:vegetation/patch_cliff_grass")
+            .configuredFeature(ConfiguredFeatures.VEGETATION_PATCH_CLIFF_GRASS)
+            .placementModifiers(CountPlacement.of(50),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.of(ConstantHeight.of(VerticalAnchor.aboveBottom(256))),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                BiomeFilter.biome())
+            .build();
+
+        PlacedFeatures.VEGETATION_PATCH_CLIFF_GRASS = cliff_grass.register();
+        features.add(cliff_grass);
 
         PlacedFeatureDefinition balePatch = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.HAY_BLOCK)))
