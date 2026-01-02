@@ -218,7 +218,7 @@ public class PlacedFeatureRegistration {
                     .add(Blocks.CLAY.defaultBlockState(), 1)
                     .add(Blocks.MOSS_BLOCK.defaultBlockState(), 3)
                     .build()),
-                Holder.direct(new PlacedFeature(RegistryUtils.getConfiguredFeature(CaveFeatures.DRIPLEAF), List.of())),
+                Holder.direct(new PlacedFeature(RegistryUtils.getConfiguredFeatureReference(CaveFeatures.DRIPLEAF), List.of())),
                 CaveSurface.FLOOR,
                 ConstantInt.of(3),
                 0.8f,
