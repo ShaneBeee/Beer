@@ -30,7 +30,7 @@ public class Biomes {
     // RIVERS
     public static final ResourceKey<Biome> RIVER_DESERT_RIVER = register("river/desert_river");
     public static final ResourceKey<Biome> RIVER_LUSH_RIVER = register("river/lush_river");
-    public static final ResourceKey<Biome> RIVER_TEMPERATE_RIVER = register("river/temparate_river");
+    public static final ResourceKey<Biome> RIVER_TEMPERATE_RIVER = register("river/temperate_river");
 
     // SWAMPS
     public static final ResourceKey<Biome> SWAMP_DRIPLEAF_SWAMP = register("swamp/dripleaf_swamp");
