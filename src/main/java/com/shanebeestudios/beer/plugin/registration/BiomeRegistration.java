@@ -21,18 +21,20 @@ import java.util.Optional;
 
 public class BiomeRegistration {
 
+    private static final List<BiomeDefinition> BIOMES = new ArrayList<>();
+
     public static void registerBiomes() {
-        List<BiomeDefinition> biomes = new ArrayList<>();
+        BIOMES.addAll(caveBiomes());
+        BIOMES.addAll(coastBiomes());
+        BIOMES.addAll(forestBiomes());
+        BIOMES.addAll(plainsBiomes());
+        BIOMES.addAll(riverBiomes());
+        BIOMES.addAll(swampBiomes());
+    }
 
-        biomes.addAll(caveBiomes());
-        biomes.addAll(coastBiomes());
-        biomes.addAll(forestBiomes());
-        biomes.addAll(plainsBiomes());
-        biomes.addAll(riverBiomes());
-        biomes.addAll(swampBiomes());
-
+    public static void dumpToRegistry() {
         // Dump biomes to datapack files
-        DumpRegistry.dumpDefinables(biomes);
+        DumpRegistry.dumpDefinables(BIOMES);
     }
 
     private static List<BiomeDefinition> caveBiomes() {

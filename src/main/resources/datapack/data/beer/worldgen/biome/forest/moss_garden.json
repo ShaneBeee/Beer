@@ -11,8 +11,6 @@
         "offset": 2.0
       }
     },
-    "minecraft:visual/water_fog_color": "#556980",
-    "minecraft:visual/fog_color": "#817770",
     "minecraft:audio/music_volume": 0.0,
     "minecraft:visual/sky_color": "#b9b9b9",
     "minecraft:visual/ambient_particles": [
@@ -22,7 +20,9 @@
         },
         "probability": 0.01
       }
-    ]
+    ],
+    "minecraft:visual/water_fog_color": "#556980",
+    "minecraft:visual/fog_color": "#817770"
   },
   "effects": {
     "water_color": "#76889d",

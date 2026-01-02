@@ -74,17 +74,19 @@ import java.util.OptionalInt;
 
 public class PlacedFeatureRegistration {
 
+    private static final List<PlacedFeatureDefinition> FEATURES = new ArrayList<>();
+
     public static void registerFeatures() {
-        List<PlacedFeatureDefinition> features = new ArrayList<>();
+        FEATURES.addAll(decor());
+        FEATURES.addAll(delta());
+        FEATURES.addAll(terrain());
+        FEATURES.addAll(tree());
+        FEATURES.addAll(vegetation());
+    }
 
-        features.addAll(decor());
-        features.addAll(delta());
-        features.addAll(terrain());
-        features.addAll(tree());
-        features.addAll(vegetation());
-
+    public static void dumpToDatapack() {
         // Dump features to datapack files
-        DumpRegistry.dumpDefinables(features);
+        DumpRegistry.dumpDefinables(FEATURES);
     }
 
     private static List<PlacedFeatureDefinition> decor() {

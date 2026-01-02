@@ -30,9 +30,15 @@ public class BeerPlugin extends JavaPlugin {
             }
         } else {
             Utils.log("Attempting to register definables and dump for datapacks");
+            // Register definable objects
             ConfiguredFeatureRegistration.registerFeatures();
             PlacedFeatureRegistration.registerFeatures();
             BiomeRegistration.registerBiomes();
+
+            // Dump objects to datapack
+            ConfiguredFeatureRegistration.dumpToDatapack();
+            PlacedFeatureRegistration.dumpToDatapack();
+            BiomeRegistration.dumpToRegistry();
         }
     }
 

@@ -37,15 +37,17 @@ import java.util.List;
 
 public class ConfiguredFeatureRegistration {
 
+    private static final List<ConfiguredFeatureDefinition> FEATURES = new ArrayList<>();
+
     public static void registerFeatures() {
-        List<ConfiguredFeatureDefinition> features = new ArrayList<>();
+        FEATURES.addAll(terrain());
+        FEATURES.addAll(tree());
+        FEATURES.addAll(vegetation());
+    }
 
-        features.addAll(terrain());
-        features.addAll(tree());
-        features.addAll(vegetation());
-
+    public static void dumpToDatapack() {
         // Dump features to datapack files
-        DumpRegistry.dumpDefinables(features);
+        DumpRegistry.dumpDefinables(FEATURES);
     }
 
     private static List<ConfiguredFeatureDefinition> terrain() {

@@ -73,7 +73,7 @@ public class PlacedFeatureDefinition implements Definition<PlacedFeature> {
         }
 
         public Builder configuredFeature(ResourceKey<ConfiguredFeature<?, ?>> key) {
-            this.configuredFeature = RegistryUtils.getConfiguredFeature(key);
+            this.configuredFeature = RegistryUtils.getConfiguredFeatureReference(key);
             return this;
         }
 

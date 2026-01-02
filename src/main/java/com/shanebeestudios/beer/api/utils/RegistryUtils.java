@@ -12,18 +12,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.dialog.Dialog;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import org.bukkit.NamespacedKey;
-import org.bukkit.craftbukkit.util.CraftNamespacedKey;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,46 +34,17 @@ public class RegistryUtils {
 
     private static final MinecraftServer SERVER = MinecraftServer.getServer();
     private static final Registry<Enchantment> ENCHANT_REGISTRY = getRegistry(Registries.ENCHANTMENT);
-    private static final Registry<Item> ITEM_REGISTRY = getRegistry(Registries.ITEM);
-    private static final Registry<Block> BLOCK_REGISTRY = getRegistry(Registries.BLOCK);
     private static final Registry<Biome> BIOME_REGISTRY = getRegistry(Registries.BIOME);
     private static final Registry<PlacedFeature> PLACED_FEATURE_REGISTRY = getRegistry(Registries.PLACED_FEATURE);
     private static final Registry<ConfiguredFeature<?, ?>> CONFIGURED_FEATURE_REGISTRY = getRegistry(Registries.CONFIGURED_FEATURE);
     private static final Registry<ConfiguredWorldCarver<?>> CARVER_REGISTRY = getRegistry(Registries.CONFIGURED_CARVER);
-    private static final Registry<Dialog> DIALOG_REGISTRY = getRegistry(Registries.DIALOG);
-    private static final Registry<EnvironmentAttribute<?>> ENVIRONMENT_ATTRIBUTES_REGISTRY = getRegistry(Registries.ENVIRONMENT_ATTRIBUTE);
 
     public static Registry<Enchantment> getEnchantRegistry() {
         return ENCHANT_REGISTRY;
     }
 
-    public static Registry<Item> getItemRegistry() {
-        return ITEM_REGISTRY;
-    }
-
     public static Registry<Biome> getBiomeRegistry() {
         return BIOME_REGISTRY;
-    }
-
-    public static Registry<Dialog> getDialogRegistry() {
-        return DIALOG_REGISTRY;
-    }
-
-    public static Registry<PlacedFeature> getPlacedFeatureRegistry() {
-        return PLACED_FEATURE_REGISTRY;
-    }
-
-    public static Registry<EnvironmentAttribute<?>> getEnvironmentAttributesRegistry() {
-        return ENVIRONMENT_ATTRIBUTES_REGISTRY;
-    }
-
-    @NotNull
-    public static <T> ResourceKey<T> getResourceKey(@NotNull Registry<T> registry, @NotNull String name) {
-        return ResourceKey.create(registry.key(), Identifier.parse(name));
-    }
-
-    public static <T> Identifier getResourceLocation(@NotNull NamespacedKey namespacedKey) {
-        return CraftNamespacedKey.toMinecraft(namespacedKey);
     }
 
     public static <T> @Nullable TagKey<T> getTagKey(@NotNull Registry<T> registry, @NotNull String name) {
@@ -132,7 +97,6 @@ public class RegistryUtils {
             Object unboundTagSet = unbound.invoke(registry);
             ReflectionUtils.setField("allTags", registry, unboundTagSet);
         } catch (Exception ignore) {
-
         }
     }
 
@@ -162,74 +126,9 @@ public class RegistryUtils {
         definition.getTagKeys().forEach(tag -> addInTag(tag, reference));
     }
 
-//    private static void setupDistribution(@NotNull Holder.Reference<Enchantment> reference, EnchantmentDefinition distribution) {
-//        boolean experimentalTrades = SERVER.getWorldData().enabledFeatures().contains(FeatureFlags.TRADE_REBALANCE);
-//
-//        EnchantmentDefinition.TagData tagData = distribution.getTagData();
-//        if (tagData.isTradeable) {
-//            addInTag(EnchantmentTags.TREASURE, reference);
-//            addInTag(EnchantmentTags.DOUBLE_TRADE_PRICE, reference);
-//        } else {
-//            addInTag(EnchantmentTags.NON_TREASURE, reference);
-//        }
-//
-//        if (tagData.isOnRandomLoot) {
-//            addInTag(EnchantmentTags.ON_RANDOM_LOOT, reference);
-//        }
-//
-//        if (!tagData.isTreasure) {
-//            if (tagData.isOnMobSpawnEquipment) {
-//                addInTag(EnchantmentTags.ON_MOB_SPAWN_EQUIPMENT, reference);
-//            }
-//
-//            if (tagData.isOnTradedEquipment) {
-//                addInTag(EnchantmentTags.ON_TRADED_EQUIPMENT, reference);
-//            }
-//        }
-//
-//        if (experimentalTrades) {
-//            if (tagData.isTradeable) {
-//                addInTag(EnchantmentTags.TRADES_DESERT_COMMON, reference);
-//                addInTag(EnchantmentTags.TRADES_JUNGLE_COMMON, reference);
-//                // Add more trade tags if needed.
-//            }
-//        } else {
-//            if (tagData.isTradeable) {
-//                addInTag(EnchantmentTags.TRADEABLE, reference);
-//            } else removeFromTag(EnchantmentTags.TRADEABLE, reference);
-//        }
-//
-//        if (tagData.isCursed) {
-//            addInTag(EnchantmentTags.CURSE, reference);
-//        } else {
-//            if (!tagData.isTreasure) {
-//                if (tagData.isDiscoverable) {
-//                    addInTag(EnchantmentTags.IN_ENCHANTING_TABLE, reference);
-//                } else {
-//                    removeFromTag(EnchantmentTags.IN_ENCHANTING_TABLE, reference);
-//                }
-//            }
-//        }
-//    }
-
     public static <T> Registry<T> getRegistry(ResourceKey<Registry<T>> key) {
         return MinecraftServer.getServer().registryAccess().lookup(key).orElseThrow();
     }
-
-//    public static org.bukkit.enchantments.Enchantment registerEnchantment(EnchantmentDefinition definition) {
-//        unfreeze(ENCHANT_REGISTRY);
-//
-//        Identifier key = CraftNamespacedKey.toMinecraft(definition.getId());
-//        ResourceKey<Enchantment> resourceKey = ResourceKey.create(Registries.ENCHANTMENT, key);
-//        Enchantment enchantment = definition.getEnchantment();
-//        Holder.Reference<Enchantment> intrusiveHolder = ENCHANT_REGISTRY.createIntrusiveHolder(enchantment);
-//        Registry.register(ENCHANT_REGISTRY, resourceKey, enchantment);
-//
-//        setupDistribution(intrusiveHolder, definition);
-//        freeze(ENCHANT_REGISTRY);
-//
-//        return CraftEnchantment.minecraftHolderToBukkit(intrusiveHolder);
-//    }
 
     public static Holder.Reference<Biome> registerBiome(BiomeDefinition definition) {
         unfreeze(BIOME_REGISTRY);
@@ -261,13 +160,13 @@ public class RegistryUtils {
         return null;
     }
 
-    public static Holder.Reference<ConfiguredFeature<?,?>> registerConfiguredFeature(ConfiguredFeatureDefinition definition) {
+    public static Holder.Reference<ConfiguredFeature<?, ?>> registerConfiguredFeature(ConfiguredFeatureDefinition definition) {
         ResourceKey<ConfiguredFeature<?, ?>> resourceKey = definition.getResourceKey();
         if (!CONFIGURED_FEATURE_REGISTRY.containsKey(resourceKey)) {
             unfreeze(CONFIGURED_FEATURE_REGISTRY);
 
-            ConfiguredFeature<?,?> feature = definition.getValue();
-            Holder.Reference<ConfiguredFeature<?,?>> intrusiveHolder = CONFIGURED_FEATURE_REGISTRY.createIntrusiveHolder(feature);
+            ConfiguredFeature<?, ?> feature = definition.getValue();
+            Holder.Reference<ConfiguredFeature<?, ?>> intrusiveHolder = CONFIGURED_FEATURE_REGISTRY.createIntrusiveHolder(feature);
             Registry.register(CONFIGURED_FEATURE_REGISTRY, resourceKey, feature);
 
             freeze(CONFIGURED_FEATURE_REGISTRY);
@@ -278,27 +177,21 @@ public class RegistryUtils {
         return null;
     }
 
-    public static void registerDialog(Dialog dialog, NamespacedKey dialogKey) {
-        Identifier identifier = CraftNamespacedKey.toMinecraft(dialogKey);
-        ResourceKey<Dialog> resourceKey = ResourceKey.create(Registries.DIALOG, identifier);
-        if (DIALOG_REGISTRY.containsKey(resourceKey)) {
-            // Already registered
-            return;
-        }
-
-        unfreeze(DIALOG_REGISTRY);
-        Holder.Reference<Dialog> intrusiveHolder = DIALOG_REGISTRY.createIntrusiveHolder(dialog);
-        Registry.register(DIALOG_REGISTRY, resourceKey, dialog);
-        freeze(DIALOG_REGISTRY);
-    }
-
     @Nullable
     public static Holder<PlacedFeature> getPlacedFeature(Identifier identifier) {
         return PLACED_FEATURE_REGISTRY.get(identifier).orElse(null);
     }
 
+    public static Holder.Reference<PlacedFeature> getPlacedFeatureReference(ResourceKey<PlacedFeature> key) {
+        return Holder.Reference.createStandAlone(PLACED_FEATURE_REGISTRY, key);
+    }
+
     public static Holder<ConfiguredFeature<?, ?>> getConfiguredFeature(ResourceKey<ConfiguredFeature<?, ?>> key) {
         return CONFIGURED_FEATURE_REGISTRY.getOrThrow(key);
+    }
+
+    public static Holder.Reference<ConfiguredFeature<?, ?>> getConfiguredFeatureReference(ResourceKey<ConfiguredFeature<?, ?>> key) {
+        return Holder.Reference.createStandAlone(CONFIGURED_FEATURE_REGISTRY, key);
     }
 
     @Nullable

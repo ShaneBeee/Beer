@@ -196,7 +196,7 @@ public class BiomeDefinition implements Definition<Biome> {
                     case Holder.Reference<?> ref when ref.value() instanceof PlacedFeature ->
                         this.genSettings.addFeature(decoration, (Holder.Reference<PlacedFeature>) ref);
                     case ResourceKey<?> key -> {
-                        Holder.Reference<PlacedFeature> orThrow = RegistryUtils.getPlacedFeatureRegistry().getOrThrow((ResourceKey<PlacedFeature>) key);
+                        Holder.Reference<PlacedFeature> orThrow = RegistryUtils.getPlacedFeatureReference((ResourceKey<PlacedFeature>) key);
                         this.genSettings.addFeature(decoration, orThrow);
                     }
                     case null, default -> Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
