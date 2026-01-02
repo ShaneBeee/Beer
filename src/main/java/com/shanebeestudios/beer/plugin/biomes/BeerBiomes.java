@@ -5,11 +5,11 @@ import io.papermc.paper.registry.RegistryKey;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
 import org.bukkit.block.Biome;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"NullableProblems"})
 public class BeerBiomes {
 
     public static final Registry<Biome> BIOME_REGISTRY = RegistryAccess.registryAccess().getRegistry(RegistryKey.BIOME);
@@ -43,10 +43,14 @@ public class BeerBiomes {
     // SWAMP
     public static Biome SWAMP_DRIPLEAF_SWAMP = getBiome("swamp/dripleaf_swamp");
 
+    @NotNull
     private static Biome getBiome(String id) {
         NamespacedKey key = NamespacedKey.fromString("beer:" + id);
         assert key != null;
         Biome biome = BIOME_REGISTRY.get(key);
+        if (biome == null) {
+            throw new IllegalArgumentException("Missing biome: " + key);
+        }
         BEER_BIOMES.add(biome);
         return biome;
     }
