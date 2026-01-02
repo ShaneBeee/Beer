@@ -2,7 +2,6 @@ package com.shanebeestudios.beer.api.registration;
 
 import com.shanebeestudios.beer.api.utils.RegistryUtils;
 import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -17,19 +16,19 @@ import java.util.List;
 
 public class PlacedFeatureDefinition implements Definition<PlacedFeature> {
 
-    private final Identifier identifier;
     private final PlacedFeature placedFeature;
     private final List<TagKey<PlacedFeature>> tagKeys;
+    private final ResourceKey<PlacedFeature> resourceKey;
 
-    private PlacedFeatureDefinition(Identifier identifier, PlacedFeature placedFeature, List<TagKey<PlacedFeature>> tagKeys) {
-        this.identifier = identifier;
+    private PlacedFeatureDefinition(ResourceKey<PlacedFeature> resourceKey, PlacedFeature placedFeature, List<TagKey<PlacedFeature>> tagKeys) {
+        this.resourceKey = resourceKey;
         this.placedFeature = placedFeature;
         this.tagKeys = tagKeys;
     }
 
     @Override
-    public Identifier getIdentifier() {
-        return this.identifier;
+    public ResourceKey<PlacedFeature> getResourceKey() {
+        return this.resourceKey;
     }
 
     @Override
@@ -50,22 +49,22 @@ public class PlacedFeatureDefinition implements Definition<PlacedFeature> {
         return this.tagKeys;
     }
 
-    public static Builder builder(String key) {
+    public static Builder builder(ResourceKey<PlacedFeature> key) {
         return new Builder(key);
     }
 
     public static Builder builder() {
-        return new Builder("holder");
+        return new Builder(null);
     }
 
     public static class Builder {
 
-        private final Identifier identifier;
+        private final ResourceKey<PlacedFeature> resourceKey;
         private Holder<ConfiguredFeature<?, ?>> configuredFeature;
         private final List<PlacementModifier> placementModifiers = new ArrayList<>();
 
-        public Builder(String key) {
-            this.identifier = Identifier.parse(key);
+        public Builder(ResourceKey<PlacedFeature> resourceKey) {
+            this.resourceKey = resourceKey;
         }
 
         public <F extends FeatureConfiguration> Builder configuredFeature(Feature<F> feature, F config) {
@@ -92,7 +91,7 @@ public class PlacedFeatureDefinition implements Definition<PlacedFeature> {
 
             PlacedFeature placedFeature = new PlacedFeature(this.configuredFeature, this.placementModifiers);
 
-            return new PlacedFeatureDefinition(this.identifier, placedFeature, null);
+            return new PlacedFeatureDefinition(this.resourceKey, placedFeature, null);
         }
 
     }

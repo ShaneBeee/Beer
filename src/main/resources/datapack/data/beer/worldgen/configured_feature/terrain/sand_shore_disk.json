@@ -1,0 +1,27 @@
+{
+  "config": {
+    "state_provider": {
+      "fallback": {
+        "state": {
+          "Name": "minecraft:sand"
+        },
+        "type": "minecraft:simple_state_provider"
+      },
+      "rules": []
+    },
+    "target": {
+      "blocks": [
+        "minecraft:grass_block",
+        "minecraft:dirt"
+      ],
+      "type": "minecraft:matching_blocks"
+    },
+    "radius": {
+      "min_inclusive": 3,
+      "max_inclusive": 5,
+      "type": "minecraft:uniform"
+    },
+    "half_height": 1
+  },
+  "type": "minecraft:disk"
+}

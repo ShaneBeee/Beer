@@ -51,7 +51,7 @@ public class ConfiguredFeatureRegistration {
     private static List<ConfiguredFeatureDefinition> terrain() {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
 
-        ConfiguredFeatureDefinition sand_shore_disk = ConfiguredFeatureDefinition.builder("beer:terrain/sand_shore_disk")
+        ConfiguredFeatureDefinition sand_shore_disk = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TERRAIN_SAND_SHORE_DISK)
 
             .config(Feature.DISK, new DiskConfiguration(
                 RuleBasedBlockStateProvider.simple(Blocks.SAND),
@@ -60,7 +60,7 @@ public class ConfiguredFeatureRegistration {
                 1))
             .build();
 
-        ConfiguredFeatures.TERRAIN_SAND_SHORE_DISK = sand_shore_disk.register();
+        sand_shore_disk.register();
         features.add(sand_shore_disk);
 
         return features;
@@ -69,37 +69,37 @@ public class ConfiguredFeatureRegistration {
     private static List<ConfiguredFeatureDefinition> tree() {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
 
-        ConfiguredFeatureDefinition fallen_stripped_pale_oak = ConfiguredFeatureDefinition.builder("beer:tree/fallen_stripped_pale_oak")
+        ConfiguredFeatureDefinition fallen_stripped_pale_oak = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_FALLEN_STRIPPED_PALE_OAK)
             .config(Feature.FALLEN_TREE, new FallenTreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.STRIPPED_PALE_OAK_LOG),
                 UniformInt.of(4, 7))
                 .build())
             .build();
 
-        ConfiguredFeatures.TREE_FALLEN_STRIPPED_PALE_OAK = fallen_stripped_pale_oak.register();
+        fallen_stripped_pale_oak.register();
         features.add(fallen_stripped_pale_oak);
 
-        ConfiguredFeatureDefinition fallen_warped_stem = ConfiguredFeatureDefinition.builder("beer:tree/fallen_warped_stem")
+        ConfiguredFeatureDefinition fallen_warped_stem = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_FALLEN_WARPED_STEM)
             .config(Feature.FALLEN_TREE, new FallenTreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.WARPED_STEM),
                 UniformInt.of(4, 7))
                 .build())
             .build();
 
-        ConfiguredFeatures.TREE_FALLEN_WARPED_STEM = fallen_warped_stem.register();
+        fallen_warped_stem.register();
         features.add(fallen_warped_stem);
 
-        ConfiguredFeatureDefinition fallen_warped_stem_stripped = ConfiguredFeatureDefinition.builder("beer:tree/fallen_stripped_warped_stem")
+        ConfiguredFeatureDefinition fallen_warped_stem_stripped = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_FALLEN_STRIPPED_WARPED_STEM)
             .config(Feature.FALLEN_TREE, new FallenTreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.STRIPPED_WARPED_STEM),
                 UniformInt.of(4, 7))
                 .build())
             .build();
 
-        ConfiguredFeatures.TREE_FALLEN_STRIPPED_WARPED_STEM = fallen_warped_stem_stripped.register();
+        fallen_warped_stem_stripped.register();
         features.add(fallen_warped_stem_stripped);
 
-        ConfiguredFeatureDefinition palm_tree = ConfiguredFeatureDefinition.builder("beer:tree/palm_tree")
+        ConfiguredFeatureDefinition palm_tree = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_PALM_TREE)
             .config(Feature.TREE, new TreeConfigurationBuilder(
                 SimpleStateProvider.simple(Blocks.JUNGLE_WOOD),
                 new ForkingTrunkPlacer(5, 2, 3),
@@ -117,7 +117,7 @@ public class ConfiguredFeatureRegistration {
                 .build())
             .build();
 
-        ConfiguredFeatures.TREE_PALM_TREE = palm_tree.register();
+        palm_tree.register();
         features.add(palm_tree);
 
         return features;
@@ -130,7 +130,7 @@ public class ConfiguredFeatureRegistration {
         BlockPredicateFilter fernPredicate = BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.FERN.defaultBlockState(), BlockPos.ZERO));
 
         // AZALEA SCRUB
-        ConfiguredFeatureDefinition azalea_scrub = ConfiguredFeatureDefinition.builder("beer:vegetation/azalea_scrub")
+        ConfiguredFeatureDefinition azalea_scrub = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.VEGETATION_AZALEA_SCRUB)
             .config(Feature.TREE, new TreeConfigurationBuilder(
                 SimpleStateProvider.simple(Blocks.MANGROVE_ROOTS),
                 new StraightTrunkPlacer(1, 1, 0),
@@ -142,11 +142,11 @@ public class ConfiguredFeatureRegistration {
                 .build())
             .build();
 
-        ConfiguredFeatures.VEGETATION_AZALEA_SCRUB = azalea_scrub.register();
+        azalea_scrub.register();
         features.add(azalea_scrub);
 
         // FLOWERING AZALEA SCRUB
-        ConfiguredFeatureDefinition flowering_azalea_scrub = ConfiguredFeatureDefinition.builder("beer:vegetation/flowering_azalea_scrub")
+        ConfiguredFeatureDefinition flowering_azalea_scrub = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.VEGETATION_FLOWERING_AZALEA_SCRUB)
             .config(Feature.TREE, new TreeConfigurationBuilder(
                 SimpleStateProvider.simple(Blocks.MANGROVE_ROOTS),
                 new StraightTrunkPlacer(1, 1, 0),
@@ -160,11 +160,11 @@ public class ConfiguredFeatureRegistration {
                 .build())
             .build();
 
-        ConfiguredFeatures.VEGETATION_FLOWERING_AZALEA_SCRUB = flowering_azalea_scrub.register();
+        flowering_azalea_scrub.register();
         features.add(flowering_azalea_scrub);
 
         // AZALEA BUSH
-        ConfiguredFeatureDefinition azalea_bush = ConfiguredFeatureDefinition.builder("beer:vegetation/azalea_bush")
+        ConfiguredFeatureDefinition azalea_bush = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.VEGETATION_AZALEA_BUSH)
             .config(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
                 new WeightedPlacedFeature(PlacedFeatureDefinition.builder()
                     .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.AZALEA)))
@@ -190,10 +190,10 @@ public class ConfiguredFeatureRegistration {
                     .build()
                     .getFeatureHolder()))
             .build();
-        ConfiguredFeatures.VEGETATION_AZALEA_BUSH = azalea_bush.register();
+        azalea_bush.register();
         features.add(azalea_bush);
 
-        ConfiguredFeatureDefinition patch_cliff_grass = ConfiguredFeatureDefinition.builder("beer:vegetation/patch_cliff_grass")
+        ConfiguredFeatureDefinition patch_cliff_grass = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.VEGETATION_PATCH_CLIFF_GRASS)
             .config(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
                 256,
                 3,
@@ -240,7 +240,7 @@ public class ConfiguredFeatureRegistration {
             ))
             .build();
 
-        ConfiguredFeatures.VEGETATION_PATCH_CLIFF_GRASS = patch_cliff_grass.register();
+        patch_cliff_grass.register();
         features.add(patch_cliff_grass);
 
         // RETURN

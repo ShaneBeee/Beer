@@ -56,7 +56,7 @@ public class DumpRegistry<N> {
         MAP.forEach((objectClass, dumpRegistry) -> {
             Object value = definition.getValue();
             if (objectClass.isAssignableFrom(value.getClass())) {
-                Identifier identifier = definition.getIdentifier();
+                Identifier identifier = definition.getResourceKey().identifier();
                 Utils.log("Dumping - %s / %s", dumpRegistry.registryPath, identifier);
                 dumpRegistry.dump(identifier, value);
             }

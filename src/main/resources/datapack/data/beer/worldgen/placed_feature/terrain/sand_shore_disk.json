@@ -1,0 +1,28 @@
+{
+  "feature": "beer:terrain/sand_shore_disk",
+  "placement": [
+    {
+      "count": 50,
+      "type": "minecraft:count"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "height": {
+        "absolute": 62
+      },
+      "type": "minecraft:height_range"
+    },
+    {
+      "predicate": {
+        "fluids": "minecraft:water",
+        "type": "minecraft:matching_fluids"
+      },
+      "type": "minecraft:block_predicate_filter"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

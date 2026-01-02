@@ -3,6 +3,8 @@
   "temperature": 0.7,
   "downfall": 0.5,
   "attributes": {
+    "minecraft:visual/water_fog_color": "#86fcec",
+    "minecraft:audio/music_volume": 1.0,
     "minecraft:visual/ambient_particles": [
       {
         "particle": {
@@ -12,9 +14,7 @@
       }
     ],
     "minecraft:visual/sky_color": "#55f7dc",
-    "minecraft:visual/fog_color": "#fcbf86",
-    "minecraft:visual/water_fog_color": "#86fcec",
-    "minecraft:audio/music_volume": 1.0
+    "minecraft:visual/fog_color": "#fcbf86"
   },
   "effects": {
     "water_color": "#5b99d3",

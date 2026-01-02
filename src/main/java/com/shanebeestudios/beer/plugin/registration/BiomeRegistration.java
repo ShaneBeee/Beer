@@ -31,11 +31,6 @@ public class BiomeRegistration {
         biomes.addAll(riverBiomes());
         biomes.addAll(swampBiomes());
 
-        // Register biomes to server
-        for (BiomeDefinition biomeDefinition : biomes) {
-            biomeDefinition.register();
-        }
-
         // Dump biomes to datapack files
         DumpRegistry.dumpDefinables(biomes);
     }
@@ -43,7 +38,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> caveBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition dry_cave = BiomeDefinition.builder("beer:cave/dry_cave")
+        BiomeDefinition dry_cave = BiomeDefinition.builder(Biomes.CAVE_DRY_CAVE)
             .temperature(0.5f)
             .downfall(0.5f)
             .hasPrecipitation(true)
@@ -136,8 +131,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.TROPICAL_FISH, 25, 8, 8)
 
             .build();
+        dry_cave.register();
+        biomes.add(dry_cave);
 
-        BiomeDefinition ice_cave = BiomeDefinition.builder("beer:cave/ice_cave")
+        BiomeDefinition ice_cave = BiomeDefinition.builder(Biomes.CAVE_ICE_CAVE)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.8f)
@@ -178,9 +175,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.ARMADILLO, 10, 1, 2)
 
             .build();
-
+        ice_cave.register();
         biomes.add(ice_cave);
-        biomes.add(dry_cave);
 
         return biomes;
 
@@ -189,7 +185,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> coastBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition beachy_beach = BiomeDefinition.builder("beer:coast/beachy_beach")
+        BiomeDefinition beachy_beach = BiomeDefinition.builder(Biomes.COAST_BEACHY_COAST)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.4f)
@@ -224,8 +220,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
 
             .build();
+        beachy_beach.register();
+        biomes.add(beachy_beach);
 
-        BiomeDefinition coast = BiomeDefinition.builder("beer:coast/coast")
+        BiomeDefinition coast = BiomeDefinition.builder(Biomes.COAST_COAST)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.5f)
@@ -276,8 +274,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.ARMADILLO, 10, 1, 2)
 
             .build();
+        coast.register();
+        biomes.add(coast);
 
-        BiomeDefinition dry_coast = BiomeDefinition.builder("beer:coast/dry_coast")
+        BiomeDefinition dry_coast = BiomeDefinition.builder(Biomes.COAST_DRY_COAST)
             .hasPrecipitation(true)
             .temperature(2.0f)
             .downfall(0.05f)
@@ -317,8 +317,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.ARMADILLO, 10, 1, 2)
 
             .build();
+        dry_coast.register();
+        biomes.add(dry_coast);
 
-        BiomeDefinition frozen_beach = BiomeDefinition.builder("beer:coast/frozen_beach")
+        BiomeDefinition frozen_beach = BiomeDefinition.builder(Biomes.COAST_FROZEN_BEACH)
             .hasPrecipitation(true)
             .temperature(0.1f)
             .downfall(0.0f)
@@ -360,8 +362,10 @@ public class BiomeRegistration {
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
             .build();
+        frozen_beach.register();
+        biomes.add(frozen_beach);
 
-        BiomeDefinition lush_coast = BiomeDefinition.builder("beer:coast/lush_coast")
+        BiomeDefinition lush_coast = BiomeDefinition.builder(Biomes.COAST_LUSH_COAST)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.8f)
@@ -411,8 +415,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 10, 1, 2)
 
             .build();
+        lush_coast.register();
+        biomes.add(lush_coast);
 
-        BiomeDefinition palm_beach = BiomeDefinition.builder("beer:coast/palm_beach")
+        BiomeDefinition palm_beach = BiomeDefinition.builder(Biomes.COAST_PALM_BEACH)
             .hasPrecipitation(false)
             .temperature(2.0f)
             .downfall(0.0f)
@@ -448,11 +454,7 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
             .build();
 
-        biomes.add(beachy_beach);
-        biomes.add(coast);
-        biomes.add(dry_coast);
-        biomes.add(frozen_beach);
-        biomes.add(lush_coast);
+        palm_beach.register();
         biomes.add(palm_beach);
 
         return biomes;
@@ -461,7 +463,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> forestBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition moss_garden = BiomeDefinition.builder("beer:forest/moss_garden")
+        BiomeDefinition moss_garden = BiomeDefinition.builder(Biomes.FOREST_MOSS_GARDEN)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.8f)
@@ -541,7 +543,7 @@ public class BiomeRegistration {
                 "minecraft:cave_extra_underground",
                 "minecraft:canyon")
             .build();
-
+        moss_garden.register();
         biomes.add(moss_garden);
 
         return biomes;
@@ -550,7 +552,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> plainsBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition dry_plains = BiomeDefinition.builder("beer:plains/dry_plains")
+        BiomeDefinition dry_plains = BiomeDefinition.builder(Biomes.PLAINS_DRY_PLAINS)
             .hasPrecipitation(true)
             .temperature(2.0f)
             .downfall(0.05f)
@@ -587,8 +589,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.PIG, 10, 2, 4)
 
             .build();
+        dry_plains.register();
+        biomes.add(dry_plains);
 
-        BiomeDefinition lush_plains = BiomeDefinition.builder("beer:plains/lush_plains")
+        BiomeDefinition lush_plains = BiomeDefinition.builder(Biomes.PLAINS_LUSH_PLAINS)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.5f)
@@ -631,8 +635,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.PIG, 10, 2, 4)
 
             .build();
+        lush_plains.register();
+        biomes.add(lush_plains);
 
-        BiomeDefinition plains = BiomeDefinition.builder("beer:plains/plains")
+        BiomeDefinition plains = BiomeDefinition.builder(Biomes.PLAINS_PLAINS)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.2f)
@@ -673,9 +679,7 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.PIG, 10, 2, 4)
 
             .build();
-
-        biomes.add(dry_plains);
-        biomes.add(lush_plains);
+        plains.register();
         biomes.add(plains);
 
         return biomes;
@@ -684,7 +688,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> riverBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition desert_river = BiomeDefinition.builder("beer:river/desert_river")
+        BiomeDefinition desert_river = BiomeDefinition.builder(Biomes.RIVER_DESERT_RIVER)
             .hasPrecipitation(false)
             .temperature(0.9f)
             .downfall(0.5f)
@@ -764,8 +768,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.GLOW_SQUID, 10, 4, 6)
 
             .build();
+        desert_river.register();
+        biomes.add(desert_river);
 
-        BiomeDefinition lush_river = BiomeDefinition.builder("beer:river/lush_river")
+        BiomeDefinition lush_river = BiomeDefinition.builder(Biomes.RIVER_LUSH_RIVER)
             .hasPrecipitation(true)
             .temperature(2f)
             .downfall(0.2f)
@@ -858,8 +864,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.WATER_AMBIENT, EntityType.COD, 25, 8, 8)
 
             .build();
+        lush_river.register();
+        biomes.add(lush_river);
 
-        BiomeDefinition temperate_river = BiomeDefinition.builder("beer:river/temperate_river")
+        BiomeDefinition temperate_river = BiomeDefinition.builder(Biomes.RIVER_TEMPERATE_RIVER)
             .hasPrecipitation(true)
             .temperature(0.5f)
             .downfall(0.5f)
@@ -944,9 +952,7 @@ public class BiomeRegistration {
 
 
             .build();
-
-        biomes.add(desert_river);
-        biomes.add(lush_river);
+        temperate_river.register();
         biomes.add(temperate_river);
 
         return biomes;
@@ -955,7 +961,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> swampBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition dripleaf_swamp = BiomeDefinition.builder("beer:swamp/dripleaf_swamp")
+        BiomeDefinition dripleaf_swamp = BiomeDefinition.builder(Biomes.SWAMP_DRIPLEAF_SWAMP)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.2f)
@@ -993,6 +999,7 @@ public class BiomeRegistration {
 
             .build();
 
+        dripleaf_swamp.register();
         biomes.add(dripleaf_swamp);
 
         return biomes;

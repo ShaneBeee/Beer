@@ -234,11 +234,9 @@ public class RegistryUtils {
     public static Holder.Reference<Biome> registerBiome(BiomeDefinition definition) {
         unfreeze(BIOME_REGISTRY);
 
-        Identifier identifier = definition.getIdentifier();
-        ResourceKey<Biome> resourceKey = ResourceKey.create(Registries.BIOME, identifier);
         Biome biome = definition.getValue();
         Holder.Reference<Biome> intrusiveHolder = BIOME_REGISTRY.createIntrusiveHolder(biome);
-        Registry.register(BIOME_REGISTRY, resourceKey, biome);
+        Registry.register(BIOME_REGISTRY, definition.getResourceKey(), biome);
 
         setupBiomeDistribution(intrusiveHolder, definition);
         freeze(BIOME_REGISTRY);
@@ -247,11 +245,10 @@ public class RegistryUtils {
     }
 
     public static Holder.Reference<PlacedFeature> registerPlacedFeature(PlacedFeatureDefinition definition) {
-        Identifier identifier = definition.getIdentifier();
-        if (!PLACED_FEATURE_REGISTRY.containsKey(identifier)) {
+        ResourceKey<PlacedFeature> resourceKey = definition.getResourceKey();
+        if (!PLACED_FEATURE_REGISTRY.containsKey(resourceKey.identifier())) {
             unfreeze(PLACED_FEATURE_REGISTRY);
 
-            ResourceKey<PlacedFeature> resourceKey = ResourceKey.create(Registries.PLACED_FEATURE, identifier);
             PlacedFeature placedFeature = definition.getValue();
             Holder.Reference<PlacedFeature> intrusiveHolder = PLACED_FEATURE_REGISTRY.createIntrusiveHolder(placedFeature);
             Registry.register(PLACED_FEATURE_REGISTRY, resourceKey, placedFeature);
@@ -265,11 +262,10 @@ public class RegistryUtils {
     }
 
     public static Holder.Reference<ConfiguredFeature<?,?>> registerConfiguredFeature(ConfiguredFeatureDefinition definition) {
-        Identifier identifier = definition.getIdentifier();
-        if (!CONFIGURED_FEATURE_REGISTRY.containsKey(identifier)) {
+        ResourceKey<ConfiguredFeature<?, ?>> resourceKey = definition.getResourceKey();
+        if (!CONFIGURED_FEATURE_REGISTRY.containsKey(resourceKey)) {
             unfreeze(CONFIGURED_FEATURE_REGISTRY);
 
-            ResourceKey<ConfiguredFeature<?,?>> resourceKey = ResourceKey.create(Registries.CONFIGURED_FEATURE, identifier);
             ConfiguredFeature<?,?> feature = definition.getValue();
             Holder.Reference<ConfiguredFeature<?,?>> intrusiveHolder = CONFIGURED_FEATURE_REGISTRY.createIntrusiveHolder(feature);
             Registry.register(CONFIGURED_FEATURE_REGISTRY, resourceKey, feature);

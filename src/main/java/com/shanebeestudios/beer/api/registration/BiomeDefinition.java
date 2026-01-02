@@ -5,6 +5,7 @@ import com.shanebeestudios.coreapi.util.Utils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.attribute.AmbientParticle;
 import net.minecraft.world.attribute.EnvironmentAttribute;
@@ -31,19 +32,19 @@ import java.util.Objects;
  */
 public class BiomeDefinition implements Definition<Biome> {
 
-    private final Identifier identifier;
+    private final ResourceKey<Biome> resourceKey;
     private final Biome biome;
     private final List<TagKey<Biome>> tagKeys;
 
-    private BiomeDefinition(Identifier identifier, Biome biome, List<TagKey<Biome>> tagKeys) {
-        this.identifier = identifier;
+    private BiomeDefinition(ResourceKey<Biome> resourceKey, Biome biome, List<TagKey<Biome>> tagKeys) {
+        this.resourceKey = resourceKey;
         this.biome = biome;
         this.tagKeys = tagKeys;
     }
 
     @Override
-    public Identifier getIdentifier() {
-        return this.identifier;
+    public ResourceKey<Biome> getResourceKey() {
+        return this.resourceKey;
     }
 
     public List<TagKey<Biome>> getTagKeys() {
@@ -60,21 +61,22 @@ public class BiomeDefinition implements Definition<Biome> {
         return this.biome;
     }
 
-    public static Builder builder(String key) {
-        return new Builder(key);
+    public static Builder builder(ResourceKey<Biome> resourceKey) {
+        return new Builder(resourceKey);
     }
 
+    @SuppressWarnings("unused")
     public static class Builder {
 
-        private final Identifier key;
+        private final ResourceKey<Biome> resourceKey;
         private final Biome.BiomeBuilder biomeBuilder = new Biome.BiomeBuilder();
         private BiomeSpecialEffects.Builder specialEffects = null;
         private final BiomeGenerationSettings.PlainBuilder genSettings = new BiomeGenerationSettings.PlainBuilder();
         private final MobSpawnSettings.Builder mobSpawnSettings = new MobSpawnSettings.Builder();
         private final List<TagKey<Biome>> tagKeys = new ArrayList<>();
 
-        private Builder(String key) {
-            this.key = Identifier.parse(key);
+        private Builder(ResourceKey<Biome> resourceKey) {
+            this.resourceKey = resourceKey;
         }
 
         /**
@@ -130,7 +132,7 @@ public class BiomeDefinition implements Definition<Biome> {
             return this;
         }
 
-        public Builder dryFoliageColorrOverride(int dryFoliageColor) {
+        public Builder dryFoliageColorOverride(int dryFoliageColor) {
             this.specialEffectsBuilder().dryFoliageColorOverride(dryFoliageColor);
             return this;
         }
@@ -180,20 +182,25 @@ public class BiomeDefinition implements Definition<Biome> {
         private void addFeaturesByList(@Nullable List<?> list, Decoration decoration) {
             if (list == null) return;
             for (Object o : list) {
-                if (o instanceof String s) {
-                    Identifier identifier = Identifier.parse(s);
-                    Holder<PlacedFeature> featureHolder = RegistryUtils.getPlacedFeature(identifier);
-                    if (featureHolder != null) {
-                        this.genSettings.addFeature(decoration, featureHolder);
-                    } else {
-                        Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
-                            identifier.toString(), this.key.toString());
+                switch (o) {
+                    case String s -> {
+                        Identifier identifier = Identifier.parse(s);
+                        Holder<PlacedFeature> featureHolder = RegistryUtils.getPlacedFeature(identifier);
+                        if (featureHolder != null) {
+                            this.genSettings.addFeature(decoration, featureHolder);
+                        } else {
+                            Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
+                                identifier.toString(), this.resourceKey.identifier().toString());
+                        }
                     }
-                } else if (o instanceof Holder.Reference<?> ref && ref.value() instanceof PlacedFeature) {
-                    this.genSettings.addFeature(decoration, (Holder.Reference<PlacedFeature>) ref);
-                } else {
-                    Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
-                        o, this.key.toString());
+                    case Holder.Reference<?> ref when ref.value() instanceof PlacedFeature ->
+                        this.genSettings.addFeature(decoration, (Holder.Reference<PlacedFeature>) ref);
+                    case ResourceKey<?> key -> {
+                        Holder.Reference<PlacedFeature> orThrow = RegistryUtils.getPlacedFeatureRegistry().getOrThrow((ResourceKey<PlacedFeature>) key);
+                        this.genSettings.addFeature(decoration, orThrow);
+                    }
+                    case null, default -> Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
+                        o, this.resourceKey.identifier().toString());
                 }
             }
         }
@@ -206,7 +213,7 @@ public class BiomeDefinition implements Definition<Biome> {
                     this.genSettings.addCarver(featureHolder);
                 } else {
                     Utils.log("&eUnknown carver &r'&b%s&r' &efound for biome &r'&a%s&r'",
-                        identifier.toString(), this.key.toString());
+                        identifier.toString(), this.resourceKey.identifier().toString());
                 }
             }
             return this;
@@ -244,7 +251,7 @@ public class BiomeDefinition implements Definition<Biome> {
                 .generationSettings(this.genSettings.build())
                 .mobSpawnSettings(this.mobSpawnSettings.build());
 
-            return new BiomeDefinition(this.key, this.biomeBuilder.build(), this.tagKeys);
+            return new BiomeDefinition(this.resourceKey, this.biomeBuilder.build(), this.tagKeys);
         }
     }
 
