@@ -209,7 +209,7 @@ public class PlacedFeatureRegistration {
         dry_cave_delta.register();
         features.add(dry_cave_delta);
 
-        PlacedFeatureDefinition swamp_delta = PlacedFeatureDefinition.builder(PlacedFeatures.DELTA_SWAMP_DELTA)
+        PlacedFeatureDefinition dripleaf_swamp_delta = PlacedFeatureDefinition.builder(PlacedFeatures.DELTA_DRIPLEAF_SWAMP_DELTA)
             .configuredFeature(Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
                 BlockTags.DIRT,
                 new WeightedStateProvider(WeightedList.<BlockState>builder()
@@ -233,10 +233,10 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
-        swamp_delta.register();
-        features.add(swamp_delta);
+        dripleaf_swamp_delta.register();
+        features.add(dripleaf_swamp_delta);
 
-        PlacedFeatureDefinition swamp_delta_2 = PlacedFeatureDefinition.builder(PlacedFeatures.DELTA_SWAMP_DELTA_2)
+        PlacedFeatureDefinition swamp_delta = PlacedFeatureDefinition.builder(PlacedFeatures.DELTA_SWAMP_DELTA)
             .configuredFeature(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(
                 Blocks.WATER.defaultBlockState(),
                 Blocks.MUD.defaultBlockState(),
@@ -249,8 +249,8 @@ public class PlacedFeatureRegistration {
                 BiomeFilter.biome())
             .build();
 
-        swamp_delta_2.register();
-        features.add(swamp_delta_2);
+        swamp_delta.register();
+        features.add(swamp_delta);
 
         return features;
     }

@@ -975,7 +975,7 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.SKY_COLOR, 7907327)
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 2302743)
-            .features(List.of(PlacedFeatures.DELTA_SWAMP_DELTA,
+            .features(List.of(PlacedFeatures.DELTA_DRIPLEAF_SWAMP_DELTA,
                     PlacedFeatures.DELTA_COASTAL_DELTA,
                     PlacedFeatures.TERRAIN_WATER_BLOB),
                 null,
