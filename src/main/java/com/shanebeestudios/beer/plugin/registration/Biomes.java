@@ -25,6 +25,7 @@ public class Biomes {
 
     // FOREST
     public static final ResourceKey<Biome> FOREST_MOSS_GARDEN = register("forest/moss_garden");
+    public static final ResourceKey<Biome> FOREST_TALL_OAK = register("forest/tall_oak");
 
     // PLAINS
     public static final ResourceKey<Biome> PLAINS_DRY_PLAINS = register("plains/dry_plains");

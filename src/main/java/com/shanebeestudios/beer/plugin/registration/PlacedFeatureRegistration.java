@@ -521,6 +521,17 @@ public class PlacedFeatureRegistration {
         fallen_stripped_pale_oak.register();
         features.add(fallen_stripped_pale_oak);
 
+        PlacedFeatureDefinition fallen_tall_oak = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_FALLEN_TALL_OAK)
+            .configuredFeature(ConfiguredFeatures.TREE_FALLEN_TALL_OAK)
+            .placementModifiers(RarityFilter.onAverageOnceEvery(5),
+                InSquarePlacement.spread(),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                BiomeFilter.biome())
+            .build();
+
+        fallen_tall_oak.register();
+        features.add(fallen_tall_oak);
+
         PlacedFeatureDefinition fallen_warped_stem = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_FALLEN_WARPED_STEM)
             .configuredFeature(Feature.SIMPLE_RANDOM_SELECTOR,
                 new SimpleRandomFeatureConfiguration(HolderSet.direct(
@@ -588,6 +599,20 @@ public class PlacedFeatureRegistration {
         lush_desert_palm.register();
         features.add(lush_desert_palm);
 
+        PlacedFeatureDefinition tall_oak = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_TALL_OAK_WITH_LITTER)
+            .configuredFeature(ConfiguredFeatures.TREE_TALL_OAK_WITH_LITTER)
+            .placementModifiers(CountPlacement.of(5),
+                InSquarePlacement.spread(),
+                SurfaceWaterDepthFilter.forMaxDepth(0),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                BiomeFilter.biome(),
+                BlockPredicateFilter.forPredicate(
+                BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)))
+            .build();
+
+        tall_oak.register();
+        features.add(tall_oak);
+
         PlacedFeatureDefinition tall_stripped_pale_oak = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_TALL_STRIPPED_PALE_OAK)
             .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.STRIPPED_PALE_OAK_LOG),
@@ -623,7 +648,7 @@ public class PlacedFeatureRegistration {
                 SurfaceWaterDepthFilter.forMaxDepth(0),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
                     BlockPredicate.matchesBlocks(Blocks.AIR),
-                    BlockPredicate.wouldSurvive( Blocks.AZALEA.defaultBlockState(), BlockPos.ZERO)
+                    BlockPredicate.wouldSurvive(Blocks.AZALEA.defaultBlockState(), BlockPos.ZERO)
                 )),
                 BiomeFilter.biome())
             .build();

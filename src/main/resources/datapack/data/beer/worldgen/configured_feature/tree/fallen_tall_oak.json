@@ -1,0 +1,21 @@
+{
+  "config": {
+    "trunk_provider": {
+      "state": {
+        "Properties": {
+          "axis": "y"
+        },
+        "Name": "minecraft:oak_log"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
+    "log_length": {
+      "min_inclusive": 6,
+      "max_inclusive": 8,
+      "type": "minecraft:uniform"
+    },
+    "stump_decorators": [],
+    "log_decorators": []
+  },
+  "type": "minecraft:fallen_tree"
+}

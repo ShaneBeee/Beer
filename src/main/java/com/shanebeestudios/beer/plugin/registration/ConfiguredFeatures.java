@@ -13,8 +13,10 @@ public class ConfiguredFeatures {
     // TREE
     public static final ResourceKey<ConfiguredFeature<?,?>> TREE_FALLEN_STRIPPED_PALE_OAK = register("tree/fallen_stripped_pale_oak");
     public static final ResourceKey<ConfiguredFeature<?,?>> TREE_FALLEN_STRIPPED_WARPED_STEM = register("tree/fallen_stripped_warped_stem");
+    public static final ResourceKey<ConfiguredFeature<?,?>> TREE_FALLEN_TALL_OAK = register("tree/fallen_tall_oak");
     public static final ResourceKey<ConfiguredFeature<?,?>> TREE_FALLEN_WARPED_STEM = register("tree/fallen_warped_stem");
     public static final ResourceKey<ConfiguredFeature<?,?>> TREE_PALM_TREE = register("tree/palm_tree");
+    public static final ResourceKey<ConfiguredFeature<?,?>> TREE_TALL_OAK_WITH_LITTER = register("tree/tall_oak_with_litter");
 
     // VEGETATION
     public static final ResourceKey<ConfiguredFeature<?,?>> VEGETATION_AZALEA_BUSH_OR_SCRUB = register("vegetation/azalea_bush_or_scrub");

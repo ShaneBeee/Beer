@@ -4,6 +4,7 @@ import com.shanebeestudios.beer.api.registration.ConfiguredFeatureDefinition;
 import com.shanebeestudios.beer.api.registration.PlacedFeatureDefinition;
 import com.shanebeestudios.beer.api.utils.DumpRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration.TreeConfigurationBuilder;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
@@ -28,6 +30,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.CocoaDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.PlaceOnGroundDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
@@ -101,6 +104,16 @@ public class ConfiguredFeatureRegistration {
         fallen_warped_stem_stripped.register();
         features.add(fallen_warped_stem_stripped);
 
+        ConfiguredFeatureDefinition fallen_tall_oak = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_FALLEN_TALL_OAK)
+            .config(Feature.FALLEN_TREE, new FallenTreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OAK_LOG),
+                UniformInt.of(6, 8))
+                .build())
+            .build();
+
+        fallen_tall_oak.register();
+        features.add(fallen_tall_oak);
+
         ConfiguredFeatureDefinition palm_tree = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_PALM_TREE)
             .config(Feature.TREE, new TreeConfigurationBuilder(
                 SimpleStateProvider.simple(Blocks.JUNGLE_WOOD),
@@ -121,6 +134,43 @@ public class ConfiguredFeatureRegistration {
 
         palm_tree.register();
         features.add(palm_tree);
+
+        Direction[] directions = new Direction[]{Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
+        WeightedList.Builder<BlockState> a1 = WeightedList.builder();
+        WeightedList.Builder<BlockState> a2 = WeightedList.builder();
+
+        BlockState litter = Blocks.LEAF_LITTER.defaultBlockState();
+        for (int i = 1; i < 5; i++) {
+            for (Direction direction : directions) {
+                BlockState blockState = litter
+                    .setValue(BlockStateProperties.SEGMENT_AMOUNT, i)
+                    .setValue(BlockStateProperties.HORIZONTAL_FACING, direction);
+                if (i < 4) {
+                    a1.add(blockState, 1);
+                }
+                a2.add(blockState, 1);
+            }
+        }
+
+        ConfiguredFeatureDefinition tall_oak = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_TALL_OAK_WITH_LITTER)
+            .config(Feature.TREE, new TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OAK_LOG),
+                new StraightTrunkPlacer(7, 3, 2),
+                BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState()
+                    .setValue(BlockStateProperties.DISTANCE, 7)),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.ZERO, 3),
+                new TwoLayersFeatureSize(1, 0, 1))
+                .dirt(BlockStateProvider.simple(Blocks.OAK_LOG))
+                .forceDirt()
+                .decorators(List.of(new PlaceOnGroundDecorator(96, 4, 2,
+                    new WeightedStateProvider(a1.build())),
+                    new PlaceOnGroundDecorator(150, 2, 2,
+                        new WeightedStateProvider(a2.build()))))
+                .build())
+            .build();
+
+        tall_oak.register();
+        features.add(tall_oak);
 
         return features;
     }

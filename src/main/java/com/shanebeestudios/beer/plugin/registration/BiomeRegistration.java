@@ -744,6 +744,70 @@ public class BiomeRegistration {
         moss_garden.register();
         biomes.add(moss_garden);
 
+        BiomeDefinition tall_oak = BiomeDefinition.builder(Biomes.FOREST_TALL_OAK)
+            .hasPrecipitation(true)
+            .temperature(0.7f)
+            .downfall(0.8f)
+
+            .features(null,
+                List.of("minecraft:lake_lava_underground",
+                    "minecraft:lake_lava_surface"),
+                List.of("minecraft:amethyst_geode"),
+                List.of("minecraft:monster_room",
+                    "minecraft:monster_room_deep"),
+                null,
+                null,
+                List.of("minecraft:ore_dirt",
+                    "minecraft:ore_gravel",
+                    "minecraft:ore_granite_upper",
+                    "minecraft:ore_granite_lower",
+                    "minecraft:ore_diorite_upper",
+                    "minecraft:ore_diorite_lower",
+                    "minecraft:ore_andesite_upper",
+                    "minecraft:ore_andesite_lower",
+                    "minecraft:ore_tuff",
+                    "minecraft:ore_coal_upper",
+                    "minecraft:ore_coal_lower",
+                    "minecraft:ore_iron_upper",
+                    "minecraft:ore_iron_middle",
+                    "minecraft:ore_iron_small",
+                    "minecraft:ore_gold",
+                    "minecraft:ore_gold_lower",
+                    "minecraft:ore_redstone",
+                    "minecraft:ore_redstone_lower",
+                    "minecraft:ore_diamond",
+                    "minecraft:ore_diamond_medium",
+                    "minecraft:ore_diamond_large",
+                    "minecraft:ore_diamond_buried",
+                    "minecraft:ore_lapis",
+                    "minecraft:ore_lapis_buried",
+                    "minecraft:ore_copper",
+                    "minecraft:underwater_magma",
+                    "minecraft:disk_sand",
+                    "minecraft:disk_clay",
+                    "minecraft:disk_gravel"),
+                null,
+                List.of("minecraft:spring_water",
+                    "minecraft:spring_lava"),
+                List.of("minecraft:glow_lichen",
+                    "minecraft:forest_flowers",
+                    PlacedFeatures.TREE_TALL_OAK_WITH_LITTER,
+                    PlacedFeatures.TREE_FALLEN_TALL_OAK,
+                    "minecraft:patch_bush",
+                    "minecraft:flower_default",
+                    "minecraft:patch_grass_forest",
+                    "minecraft:brown_mushroom_normal",
+                    "minecraft:red_mushroom_normal",
+                    "minecraft:patch_pumpkin",
+                    "minecraft:patch_sugar_cane",
+                    "minecraft:patch_firefly_bush_near_water"),
+                List.of("minecraft:freeze_top_layer"))
+            .addDefaultOverworldCarvers()
+            .build();
+
+        tall_oak.register();
+        biomes.add(tall_oak);
+
         return biomes;
     }
 
