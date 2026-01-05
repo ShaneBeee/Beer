@@ -94,7 +94,7 @@ public class DumpRegistry<N> {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try {
-            Files.writeString(file.toPath(), gson.toJson(jsonData.getOrThrow()));
+            Files.writeString(file.toPath(), gson.toJson(jsonData.getOrThrow()) + "\n");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
