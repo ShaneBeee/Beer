@@ -803,8 +803,8 @@ public class BiomeRegistration {
 
         BiomeDefinition desert_river = BiomeDefinition.builder(Biomes.RIVER_DESERT_RIVER)
             .hasPrecipitation(false)
-            .temperature(0.9f)
-            .downfall(0.5f)
+            .temperature(2.0f)
+            .downfall(0.0f)
             .waterColor(4112789)
             .foliageColorOverride(9285927)
 

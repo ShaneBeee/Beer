@@ -1,7 +1,7 @@
 {
   "has_precipitation": false,
-  "temperature": 0.9,
-  "downfall": 0.5,
+  "temperature": 2.0,
+  "downfall": 0.0,
   "attributes": {
     "minecraft:visual/water_fog_color": "#238061",
     "minecraft:visual/fog_color": "#d3cb97",
