@@ -2,6 +2,7 @@ package com.shanebeestudios.beer.api.registration;
 
 import com.shanebeestudios.beer.api.utils.RegistryUtils;
 import com.shanebeestudios.coreapi.util.Utils;
+import net.minecraft.IdentifierException;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.data.worldgen.Carvers;
@@ -185,7 +186,14 @@ public class BiomeDefinition implements Definition<Biome> {
             for (Object o : list) {
                 switch (o) {
                     case String s -> {
-                        Identifier identifier = Identifier.parse(s);
+                        Identifier identifier;
+                        try {
+                            identifier = Identifier.parse(s);
+                        } catch (IdentifierException ignore) {
+                            Utils.log("&eUnknown feature identifier &r'&b%s&r' &efound for biome &r'&a%s&r'",
+                                s, this.resourceKey.identifier().toString());
+                            continue;
+                        }
                         Holder<PlacedFeature> featureHolder = RegistryUtils.getPlacedFeature(identifier);
                         if (featureHolder != null) {
                             this.genSettings.addFeature(decoration, featureHolder);
