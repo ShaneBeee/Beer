@@ -1,11 +1,35 @@
 {
   "feature": {
     "config": {
-      "state": {
-        "Name": "minecraft:rooted_dirt"
+      "features": [
+        {
+          "feature": {
+            "feature": {
+              "config": {
+                "state": {
+                  "Name": "minecraft:coarse_dirt"
+                }
+              },
+              "type": "minecraft:forest_rock"
+            },
+            "placement": []
+          },
+          "chance": 0.5
+        }
+      ],
+      "default": {
+        "feature": {
+          "config": {
+            "state": {
+              "Name": "minecraft:rooted_dirt"
+            }
+          },
+          "type": "minecraft:forest_rock"
+        },
+        "placement": []
       }
     },
-    "type": "minecraft:forest_rock"
+    "type": "minecraft:random_selector"
   },
   "placement": [
     {

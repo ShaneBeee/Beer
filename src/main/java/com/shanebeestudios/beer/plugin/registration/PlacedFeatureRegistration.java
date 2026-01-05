@@ -754,7 +754,13 @@ public class PlacedFeatureRegistration {
         features.add(water_leaves);
 
         PlacedFeatureDefinition rooted_dirt_blob = PlacedFeatureDefinition.builder(PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB)
-            .configuredFeature(Feature.FOREST_ROCK, new BlockStateConfiguration(Blocks.ROOTED_DIRT.defaultBlockState()))
+            .configuredFeature(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+                List.of(new WeightedPlacedFeature(PlacedFeatureDefinition.builder()
+                    .configuredFeature(Feature.FOREST_ROCK, new BlockStateConfiguration(Blocks.COARSE_DIRT.defaultBlockState()))
+                    .build().getFeatureHolder(), 0.5f)),
+                PlacedFeatureDefinition.builder()
+                    .configuredFeature(Feature.FOREST_ROCK, new BlockStateConfiguration(Blocks.ROOTED_DIRT.defaultBlockState()))
+                    .build().getFeatureHolder()))
             .placementModifiers(CountPlacement.of(UniformInt.of(0, 1)),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING),
