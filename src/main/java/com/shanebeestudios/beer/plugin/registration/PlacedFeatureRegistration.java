@@ -576,6 +576,18 @@ public class PlacedFeatureRegistration {
         palm_beach_palm.register();
         features.add(palm_beach_palm);
 
+        PlacedFeatureDefinition lush_desert_palm = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_LUSH_DESERT_PALM)
+            .configuredFeature(ConfiguredFeatures.TREE_PALM_TREE)
+            .placementModifiers(RarityFilter.onAverageOnceEvery(2),
+                InSquarePlacement.spread(),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.DEAD_BUSH.defaultBlockState(), BlockPos.ZERO)),
+                BiomeFilter.biome())
+            .build();
+
+        lush_desert_palm.register();
+        features.add(lush_desert_palm);
+
         PlacedFeatureDefinition tall_stripped_pale_oak = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_TALL_STRIPPED_PALE_OAK)
             .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.STRIPPED_PALE_OAK_LOG),
@@ -611,13 +623,29 @@ public class PlacedFeatureRegistration {
                 SurfaceWaterDepthFilter.forMaxDepth(0),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
                     BlockPredicate.matchesBlocks(Blocks.AIR),
-                    BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.AZALEA_GROWS_ON)
+                    BlockPredicate.wouldSurvive( Blocks.AZALEA.defaultBlockState(), BlockPos.ZERO)
                 )),
                 BiomeFilter.biome())
             .build();
 
         azalea_bush_or_scrub.register();
         features.add(azalea_bush_or_scrub);
+
+        PlacedFeatureDefinition desert_azalea_scrub = PlacedFeatureDefinition.builder(PlacedFeatures.VEGETATION_LUSH_DESERT_AZALEA_SCRUB)
+            .configuredFeature(ConfiguredFeatures.VEGETATION_AZALEA_SCRUB)
+            .placementModifiers(CountPlacement.of(1),
+                InSquarePlacement.spread(),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                SurfaceWaterDepthFilter.forMaxDepth(0),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
+                    BlockPredicate.matchesBlocks(Blocks.AIR),
+                    BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.AZALEA_GROWS_ON)
+                )),
+                BiomeFilter.biome())
+            .build();
+
+        desert_azalea_scrub.register();
+        features.add(desert_azalea_scrub);
 
         PlacedFeatureDefinition patch = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(

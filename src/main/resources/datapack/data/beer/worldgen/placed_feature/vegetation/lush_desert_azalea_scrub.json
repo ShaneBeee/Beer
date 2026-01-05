@@ -1,11 +1,9 @@
 {
-  "feature": "beer:vegetation/azalea_bush_or_scrub",
+  "feature": "beer:vegetation/azalea_scrub",
   "placement": [
     {
-      "noise_to_count_ratio": 25,
-      "noise_factor": 30.0,
-      "noise_offset": 0.0,
-      "type": "minecraft:noise_based_count"
+      "count": 1,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"
@@ -26,10 +24,13 @@
             "type": "minecraft:matching_blocks"
           },
           {
-            "state": {
-              "Name": "minecraft:azalea"
-            },
-            "type": "minecraft:would_survive"
+            "offset": [
+              0,
+              -1,
+              0
+            ],
+            "tag": "minecraft:azalea_grows_on",
+            "type": "minecraft:matching_block_tag"
           }
         ],
         "type": "minecraft:all_of"

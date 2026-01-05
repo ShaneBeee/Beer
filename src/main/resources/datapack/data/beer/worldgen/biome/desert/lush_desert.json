@@ -84,7 +84,8 @@
       "minecraft:spring_lava"
     ],
     [
-      "beer:tree/palm_beach_palm",
+      "beer:tree/lush_desert_palm",
+      "beer:vegetation/lush_desert_azalea_scrub",
       "wythers:vegetation/placed_random_patch/dark_oak_roots",
       "wythers:terrain/placed_random_patch/mossify_grass",
       "minecraft:glow_lichen",
