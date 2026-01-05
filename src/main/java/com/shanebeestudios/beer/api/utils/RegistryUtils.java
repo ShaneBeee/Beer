@@ -15,6 +15,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.carver.CarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -197,6 +198,10 @@ public class RegistryUtils {
     @Nullable
     public static Holder<ConfiguredWorldCarver<?>> getCarver(Identifier identifier) {
         return CARVER_REGISTRY.get(identifier).orElse(null);
+    }
+
+    public static Holder.Reference<ConfiguredWorldCarver<?>> getCarverReference(ResourceKey<ConfiguredWorldCarver<?>> key) {
+        return Holder.Reference.createStandAlone(CARVER_REGISTRY, key);
     }
 
 }

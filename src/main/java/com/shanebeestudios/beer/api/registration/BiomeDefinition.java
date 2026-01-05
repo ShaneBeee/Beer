@@ -4,6 +4,7 @@ import com.shanebeestudios.beer.api.utils.RegistryUtils;
 import com.shanebeestudios.coreapi.util.Utils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
@@ -196,8 +197,8 @@ public class BiomeDefinition implements Definition<Biome> {
                     case Holder.Reference<?> ref when ref.value() instanceof PlacedFeature ->
                         this.genSettings.addFeature(decoration, (Holder.Reference<PlacedFeature>) ref);
                     case ResourceKey<?> key -> {
-                        Holder.Reference<PlacedFeature> orThrow = RegistryUtils.getPlacedFeatureReference((ResourceKey<PlacedFeature>) key);
-                        this.genSettings.addFeature(decoration, orThrow);
+                        Holder.Reference<PlacedFeature> ref = RegistryUtils.getPlacedFeatureReference((ResourceKey<PlacedFeature>) key);
+                        this.genSettings.addFeature(decoration, ref);
                     }
                     case null, default -> Utils.log("&eUnknown feature &r'&b%s&r' &efound for biome &r'&a%s&r'",
                         o, this.resourceKey.identifier().toString());
@@ -205,18 +206,35 @@ public class BiomeDefinition implements Definition<Biome> {
             }
         }
 
-        public Builder carvers(@NotNull String... carvers) {
-            for (String s : carvers) {
-                Identifier identifier = Identifier.parse(s);
-                Holder<ConfiguredWorldCarver<?>> featureHolder = RegistryUtils.getCarver(identifier);
-                if (featureHolder != null) {
-                    this.genSettings.addCarver(featureHolder);
-                } else {
-                    Utils.log("&eUnknown carver &r'&b%s&r' &efound for biome &r'&a%s&r'",
-                        identifier.toString(), this.resourceKey.identifier().toString());
+        @SuppressWarnings("unchecked")
+        public Builder carvers(@NotNull Object... carvers) {
+            for (Object o : carvers) {
+                switch (o) {
+                    case String s -> {
+                        Identifier identifier = Identifier.parse(s);
+                        Holder<ConfiguredWorldCarver<?>> featureHolder = RegistryUtils.getCarver(identifier);
+                        if (featureHolder != null) {
+                            this.genSettings.addCarver(featureHolder);
+                        } else {
+                            Utils.log("&eUnknown carver &r'&b%s&r' &efound for biome &r'&a%s&r'",
+                                identifier.toString(), this.resourceKey.identifier().toString());
+                        }
+                    }
+                    case Holder.Reference<?> ref when ref.value() instanceof ConfiguredWorldCarver<?> ->
+                        this.genSettings.addCarver((Holder.Reference<ConfiguredWorldCarver<?>>) ref);
+                    case ResourceKey<?> key -> {
+                        Holder.Reference<ConfiguredWorldCarver<?>> ref = RegistryUtils.getCarverReference((ResourceKey<ConfiguredWorldCarver<?>>) key);
+                        this.genSettings.addCarver(ref);
+                    }
+                    default -> Utils.log("&eUnknown carver &r'&b%s&r' &efound for biome &r'&a%s&r'",
+                        o, this.resourceKey.identifier().toString());
                 }
             }
             return this;
+        }
+
+        public Builder addDefaultOverworldCarvers() {
+            return carvers(Carvers.CAVE, Carvers.CAVE_EXTRA_UNDERGROUND, Carvers.CANYON);
         }
 
         public Builder addTag(Identifier key) {
