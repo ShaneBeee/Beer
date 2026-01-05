@@ -4,9 +4,9 @@
   "downfall": 0.5,
   "attributes": {
     "minecraft:visual/water_fog_color": "#238061",
+    "minecraft:visual/fog_color": "#d3cb97",
     "minecraft:audio/music_volume": 1.0,
-    "minecraft:visual/sky_color": "#76d6cb",
-    "minecraft:visual/fog_color": "#d3cb97"
+    "minecraft:visual/sky_color": "#76d6cb"
   },
   "effects": {
     "water_color": "#3ec195",

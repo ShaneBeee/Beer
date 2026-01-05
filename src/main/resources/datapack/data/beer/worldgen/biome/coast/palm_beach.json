@@ -3,16 +3,20 @@
   "temperature": 2.0,
   "downfall": 0.0,
   "attributes": {
+    "minecraft:visual/fog_color": "#fcbf86",
     "minecraft:visual/sky_color": "#55f7dc",
-    "minecraft:visual/water_fog_color": "#86fcec",
-    "minecraft:visual/fog_color": "#fcbf86"
+    "minecraft:visual/water_fog_color": "#86fcec"
   },
   "effects": {
     "water_color": "#5b99d3",
     "foliage_color": "#06c122",
     "grass_color": "#5bd36e"
   },
-  "carvers": [],
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "features": [
     [
       "beer:terrain/diorite_cliffs",

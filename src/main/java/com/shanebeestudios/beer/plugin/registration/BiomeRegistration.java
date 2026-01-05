@@ -68,9 +68,7 @@ public class BiomeRegistration {
             .particle(new BlockParticleOption(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()), 0.005f)
 
             // Carvers
-            .carvers("minecraft:cave",
-                "minecraft:cave_extra_underground",
-                "minecraft:canyon")
+            .addDefaultOverworldCarvers()
 
             // Features
             .features(
@@ -219,6 +217,8 @@ public class BiomeRegistration {
                     "minecraft:patch_sugar_cane"),
                 null)
 
+            .addDefaultOverworldCarvers()
+
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
 
             .build();
@@ -268,6 +268,8 @@ public class BiomeRegistration {
                     "minecraft:seagrass_normal"),
                 null)
 
+            .addDefaultOverworldCarvers()
+
             .addMobSpawn(MobCategory.MONSTER, EntityType.ILLUSIONER, 1, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 3, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 3, 1, 1)
@@ -310,6 +312,8 @@ public class BiomeRegistration {
                     "minecraft:glow_lichen",
                     "minecraft:patch_grass_savanna"),
                 null)
+
+            .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.MONSTER, EntityType.ILLUSIONER, 1, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 3, 1, 1)
@@ -362,6 +366,8 @@ public class BiomeRegistration {
                     "minecraft:patch_sugar_cane"),
                 List.of("minecraft:freeze_top_layer"))
 
+            .addDefaultOverworldCarvers()
+
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
             .build();
         frozen_beach.register();
@@ -411,6 +417,8 @@ public class BiomeRegistration {
                     "minecraft:seagrass_normal"),
                 null)
 
+            .addDefaultOverworldCarvers()
+
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 3, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 3, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 3, 1, 1)
@@ -452,6 +460,8 @@ public class BiomeRegistration {
                     "minecraft:patch_waterlily",
                     PlacedFeatures.VEGETATION_PATCH_SMALL_DRIPLEAF),
                 null)
+
+            .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
             .build();
@@ -530,6 +540,8 @@ public class BiomeRegistration {
                     "minecraft:patch_grass_forest"),
                 List.of("minecraft:freeze_top_layer"))
 
+            .addDefaultOverworldCarvers()
+
             .addMobSpawn(MobCategory.AMBIENT, EntityType.BAT, 10, 8, 8)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
@@ -541,9 +553,6 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
             .addMobSpawn(MobCategory.WATER_CREATURE, EntityType.GLOW_SQUID, 10, 4, 6)
 
-            .carvers("minecraft:cave",
-                "minecraft:cave_extra_underground",
-                "minecraft:canyon")
             .build();
         moss_garden.register();
         biomes.add(moss_garden);
@@ -585,6 +594,8 @@ public class BiomeRegistration {
                     "minecraft:patch_sugar_cane",
                     PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB),
                 null)
+
+            .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.SHEEP, 10, 2, 4)
@@ -632,6 +643,8 @@ public class BiomeRegistration {
                     PlacedFeatures.TREE_FALLEN_STRIPPED_PALE_OAK),
                 null)
 
+            .addDefaultOverworldCarvers()
+
             .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.SHEEP, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.PIG, 10, 2, 4)
@@ -675,6 +688,8 @@ public class BiomeRegistration {
                     PlacedFeatures.VEGETATION_PATCH_CHERRY_PETALS,
                     PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB),
                 null)
+
+            .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.SHEEP, 10, 2, 4)
@@ -755,7 +770,7 @@ public class BiomeRegistration {
                     "minecraft:patch_sugar_cane_desert"),
                 List.of("minecraft:freeze_top_layer"))
 
-            .carvers("minecraft:cave", "minecraft:cave_extra_underground", "minecraft:canyon")
+            .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 19, 4, 4)
@@ -847,7 +862,7 @@ public class BiomeRegistration {
                     "minecraft:seagrass_swamp"),
                 List.of("minecraft:freeze_top_layer"))
 
-            .carvers("minecraft:cave", "minecraft:cave_extra_underground", "minecraft:canyon")
+            .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 19, 4, 4)
@@ -937,7 +952,7 @@ public class BiomeRegistration {
                     "minecraft:seagrass_river"),
                 List.of("minecraft:freeze_top_layer"))
 
-            .carvers("minecraft:cave", "minecraft:cave_extra_underground", "minecraft:canyon")
+            .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
@@ -998,6 +1013,8 @@ public class BiomeRegistration {
                     "minecraft:patch_waterlily",
                     "minecraft:seagrass_swamp"),
                 null)
+
+            .addDefaultOverworldCarvers()
 
             .build();
 

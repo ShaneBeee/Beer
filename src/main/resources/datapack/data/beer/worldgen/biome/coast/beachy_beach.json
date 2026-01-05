@@ -4,14 +4,18 @@
   "downfall": 0.4,
   "attributes": {
     "minecraft:visual/water_fog_color": "#050533",
+    "minecraft:visual/fog_color": "#c0d8ff",
     "minecraft:audio/music_volume": 1.0,
-    "minecraft:visual/sky_color": "#78a7ff",
-    "minecraft:visual/fog_color": "#c0d8ff"
+    "minecraft:visual/sky_color": "#78a7ff"
   },
   "effects": {
     "water_color": "#3f76e4"
   },
-  "carvers": [],
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "features": [
     [
       "beer:terrain/diorite_cliffs",

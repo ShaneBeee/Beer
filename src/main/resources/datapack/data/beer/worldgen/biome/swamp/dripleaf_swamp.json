@@ -4,16 +4,20 @@
   "downfall": 0.2,
   "attributes": {
     "minecraft:visual/water_fog_color": "#232317",
+    "minecraft:visual/fog_color": "#c0d8ff",
     "minecraft:audio/music_volume": 1.0,
-    "minecraft:visual/sky_color": "#78a7ff",
-    "minecraft:visual/fog_color": "#c0d8ff"
+    "minecraft:visual/sky_color": "#78a7ff"
   },
   "effects": {
     "water_color": "#617b64",
     "foliage_color": "#6a7039",
     "grass_color_modifier": "swamp"
   },
-  "carvers": [],
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "features": [
     [
       "beer:delta/dripleaf_swamp_delta",

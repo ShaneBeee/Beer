@@ -3,10 +3,6 @@
   "temperature": 0.7,
   "downfall": 0.8,
   "attributes": {
-    "minecraft:visual/water_fog_color": "#86fcec",
-    "minecraft:visual/sky_color": "#55f7dc",
-    "minecraft:audio/music_volume": 1.0,
-    "minecraft:visual/fog_color": "#fcbf86",
     "minecraft:visual/ambient_particles": [
       {
         "particle": {
@@ -14,14 +10,22 @@
         },
         "probability": 5.0E-4
       }
-    ]
+    ],
+    "minecraft:visual/sky_color": "#55f7dc",
+    "minecraft:audio/music_volume": 1.0,
+    "minecraft:visual/fog_color": "#fcbf86",
+    "minecraft:visual/water_fog_color": "#86fcec"
   },
   "effects": {
     "water_color": "#5b99d3",
     "foliage_color": "#06c122",
     "grass_color": "#5bd36e"
   },
-  "carvers": [],
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
   "features": [
     [
       "beer:terrain/diorite_cliffs",
