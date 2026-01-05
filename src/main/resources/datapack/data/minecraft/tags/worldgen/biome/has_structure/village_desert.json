@@ -1,5 +1,6 @@
 {
     "values": [
-        "beer:desert/plain_desert"
+        "beer:desert/dry_desert",
+        "beer:desert/lush_desert"
     ]
 }
