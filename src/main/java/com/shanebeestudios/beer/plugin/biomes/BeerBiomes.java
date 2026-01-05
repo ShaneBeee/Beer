@@ -28,7 +28,8 @@ public class BeerBiomes {
     public static Biome COAST_PALM_BEACH = getBiome("coast/palm_beach");
 
     // DESERT
-    public static Biome DESERT_PLAIN_DESERT = getBiome("desert/plain_desert");
+    public static Biome DESERT_DRY_DESERT = getBiome("desert/dry_desert");
+    public static Biome DESERT_LUSH_DESERT = getBiome("desert/lush_desert");
 
     // FOREST
     public static Biome FOREST_MOSS_GARDEN = getBiome("forest/moss_garden");

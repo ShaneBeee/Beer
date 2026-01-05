@@ -2,7 +2,6 @@ package com.shanebeestudios.beer.plugin.biomes.special;
 
 import com.shanebeestudios.beer.plugin.biomes.BeerBiomes;
 import com.shanebeestudios.beer.api.utils.ParamPoints;
-import com.shanebeestudios.beer.plugin.registration.Biomes;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeParameterPoint;
 import org.jetbrains.annotations.NotNull;
@@ -48,7 +47,8 @@ public class ShatteredBiomes {
     }
 
     private static @NotNull Biome getHot(@NotNull BiomeParameterPoint paramPoint) {
-        return BeerBiomes.DESERT_PLAIN_DESERT;
+        int humidity = ParamPoints.HUMIDITY.getFixedPoint(paramPoint);
+        return humidity <= 2 ? BeerBiomes.DESERT_DRY_DESERT : BeerBiomes.DESERT_LUSH_DESERT;
     }
 
 }

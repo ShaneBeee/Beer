@@ -61,7 +61,7 @@ public class MiddleBiomes {
     }
 
     private static Biome getHot(int humidity, int weirdness) {
-        return BeerBiomes.DESERT_PLAIN_DESERT;
+        return humidity <= 2 ? BeerBiomes.DESERT_DRY_DESERT : BeerBiomes.DESERT_LUSH_DESERT;
     }
 
 }

@@ -1,11 +1,12 @@
 {
   "has_precipitation": false,
-  "temperature": 2.0,
-  "downfall": 0.0,
+  "temperature": 0.7,
+  "downfall": 0.8,
   "attributes": {
-    "minecraft:audio/music_volume": 1.0,
+    "minecraft:visual/water_fog_color": "#238061",
+    "minecraft:visual/sky_color": "#76d6cb",
     "minecraft:visual/fog_color": "#d3cb97",
-    "minecraft:gameplay/snow_golem_melts": true,
+    "minecraft:audio/music_volume": 1.0,
     "minecraft:audio/background_music": {
       "default": {
         "sound": "minecraft:music.overworld.desert",
@@ -13,12 +14,12 @@
         "max_delay": 24000
       }
     },
-    "minecraft:visual/sky_color": "#76d6cb",
-    "minecraft:visual/water_fog_color": "#238061"
+    "minecraft:gameplay/snow_golem_melts": true
   },
   "effects": {
-    "water_color": "#3ec195",
-    "foliage_color": "#8db127"
+    "water_color": "#5b99d3",
+    "foliage_color": "#06c122",
+    "grass_color": "#5bd36e"
   },
   "carvers": [
     "minecraft:cave",
@@ -83,6 +84,9 @@
       "minecraft:spring_lava"
     ],
     [
+      "beer:tree/palm_beach_palm",
+      "wythers:vegetation/placed_random_patch/dark_oak_roots",
+      "wythers:terrain/placed_random_patch/mossify_grass",
       "minecraft:glow_lichen",
       "minecraft:flower_default",
       "minecraft:patch_grass_badlands",

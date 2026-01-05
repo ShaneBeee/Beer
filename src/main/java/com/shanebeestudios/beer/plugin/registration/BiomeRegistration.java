@@ -476,13 +476,101 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> desertBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition plain_desert = BiomeDefinition.builder(Biomes.DESERT_PLAIN_DESERT)
+        BiomeDefinition dry_desert = BiomeDefinition.builder(Biomes.DESERT_DRY_DESERT)
             .hasPrecipitation(false)
             .temperature(2.0f)
             .downfall(0.0f)
 
             .waterColor(4112789)
             .foliageColorOverride(9285927)
+
+            .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 1.0f)
+            .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DESERT))
+            .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, 7788235)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 13880215)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 2326625)
+
+            .features(List.of(PlacedFeatures.TERRAIN_GRASS_TO_SAND),
+                List.of("minecraft:lake_lava_underground"),
+                List.of("minecraft:amethyst_geode"),
+                List.of("minecraft:fossil_upper",
+                    "minecraft:fossil_lower",
+                    "minecraft:monster_room",
+                    "minecraft:monster_room_deep"),
+                List.of("minecraft:desert_well"),
+                null,
+                List.of("minecraft:ore_dirt",
+                    "minecraft:ore_gravel",
+                    "minecraft:ore_granite_upper",
+                    "minecraft:ore_granite_lower",
+                    "minecraft:ore_diorite_upper",
+                    "minecraft:ore_diorite_lower",
+                    "minecraft:ore_andesite_upper",
+                    "minecraft:ore_andesite_lower",
+                    "minecraft:ore_tuff",
+                    "minecraft:ore_coal_upper",
+                    "minecraft:ore_coal_lower",
+                    "minecraft:ore_iron_upper",
+                    "minecraft:ore_iron_middle",
+                    "minecraft:ore_iron_small",
+                    "minecraft:ore_gold",
+                    "minecraft:ore_gold_lower",
+                    "minecraft:ore_redstone",
+                    "minecraft:ore_redstone_lower",
+                    "minecraft:ore_diamond",
+                    "minecraft:ore_diamond_medium",
+                    "minecraft:ore_diamond_large",
+                    "minecraft:ore_diamond_buried",
+                    "minecraft:ore_lapis",
+                    "minecraft:ore_lapis_buried",
+                    "minecraft:ore_copper",
+                    "minecraft:underwater_magma",
+                    "minecraft:disk_sand",
+                    "minecraft:disk_clay",
+                    "minecraft:disk_gravel"),
+                null,
+                List.of("minecraft:spring_water",
+                    "minecraft:spring_lava"),
+                List.of("minecraft:glow_lichen",
+                    "minecraft:flower_default",
+                    "minecraft:patch_grass_badlands",
+                    "minecraft:patch_dry_grass_desert",
+                    "minecraft:patch_dead_bush_2",
+                    "minecraft:brown_mushroom_normal",
+                    "minecraft:red_mushroom_normal",
+                    "minecraft:patch_sugar_cane_desert",
+                    "minecraft:patch_pumpkin",
+                    "minecraft:patch_cactus_desert"),
+                List.of("minecraft:freeze_top_layer"))
+
+            .addDefaultOverworldCarvers()
+
+            .addMobSpawn(MobCategory.AMBIENT, EntityType.BAT, 10, 8, 8)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.RABBIT, 12, 2, 3)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.CAMEL, 1, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 19, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 1, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 50, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.HUSK, 80, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.PARCHED, 50, 4, 4)
+
+            .build();
+        biomes.add(dry_desert);
+
+        BiomeDefinition lush_desert = BiomeDefinition.builder(Biomes.DESERT_LUSH_DESERT)
+            .hasPrecipitation(false)
+            .temperature(0.7f)
+            .downfall(0.8f)
+
+            .waterColor(6003155)
+            .foliageColorOverride(442658)
+            .grassColorOverride(6017902)
 
             .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 1.0f)
             .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DESERT))
@@ -533,7 +621,9 @@ public class BiomeRegistration {
                 null,
                 List.of("minecraft:spring_water",
                     "minecraft:spring_lava"),
-                List.of(
+                List.of(PlacedFeatures.TREE_PALM_BEACH_PALM,
+                    "wythers:vegetation/placed_random_patch/dark_oak_roots",
+                    "wythers:terrain/placed_random_patch/mossify_grass",
                     "minecraft:glow_lichen",
                     "minecraft:flower_default",
                     "minecraft:patch_grass_badlands",
@@ -550,10 +640,10 @@ public class BiomeRegistration {
 
             .addMobSpawn(MobCategory.AMBIENT, EntityType.BAT, 10, 8, 8)
             .addMobSpawn(MobCategory.CREATURE, EntityType.RABBIT, 12, 2, 3)
-            .addMobSpawn(MobCategory.CREATURE, EntityType.CAMEL, 1,1,1)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.CAMEL, 1, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 19, 4, 4)
-            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 1,1 ,1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 1, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 50, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
@@ -563,7 +653,7 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.PARCHED, 50, 4, 4)
 
             .build();
-        biomes.add(plain_desert);
+        biomes.add(lush_desert);
 
         return biomes;
     }

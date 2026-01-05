@@ -20,7 +20,8 @@ public class Biomes {
     public static final ResourceKey<Biome> COAST_PALM_BEACH = register("coast/palm_beach");
 
     // DESERT
-    public static final ResourceKey<Biome> DESERT_PLAIN_DESERT = register("desert/plain_desert");
+    public static final ResourceKey<Biome> DESERT_DRY_DESERT = register("desert/dry_desert");
+    public static final ResourceKey<Biome> DESERT_LUSH_DESERT = register("desert/lush_desert");
 
     // FOREST
     public static final ResourceKey<Biome> FOREST_MOSS_GARDEN = register("forest/moss_garden");
