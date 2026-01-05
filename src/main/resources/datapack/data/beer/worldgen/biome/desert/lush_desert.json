@@ -3,10 +3,6 @@
   "temperature": 0.7,
   "downfall": 0.8,
   "attributes": {
-    "minecraft:visual/water_fog_color": "#238061",
-    "minecraft:visual/sky_color": "#76d6cb",
-    "minecraft:visual/fog_color": "#d3cb97",
-    "minecraft:audio/music_volume": 1.0,
     "minecraft:audio/background_music": {
       "default": {
         "sound": "minecraft:music.overworld.desert",
@@ -14,7 +10,11 @@
         "max_delay": 24000
       }
     },
-    "minecraft:gameplay/snow_golem_melts": true
+    "minecraft:visual/fog_color": "#d3cb97",
+    "minecraft:gameplay/snow_golem_melts": true,
+    "minecraft:visual/water_fog_color": "#238061",
+    "minecraft:visual/sky_color": "#76d6cb",
+    "minecraft:audio/music_volume": 1.0
   },
   "effects": {
     "water_color": "#5b99d3",

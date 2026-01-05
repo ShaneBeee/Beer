@@ -35,7 +35,7 @@ public class PlacedFeatures {
     public static final ResourceKey<PlacedFeature> TREE_TALL_STRIPPED_PALE_OAK = register("tree/tall_stripped_pale_oak");
 
     // VEGETATION
-    public static final ResourceKey<PlacedFeature> VEGETATION_AZALEA_BUSH = register("vegetation/azalea_bush");
+    public static final ResourceKey<PlacedFeature> VEGETATION_AZALEA_BUSH_OR_SCRUB = register("vegetation/azalea_bush_or_scrub");
     public static final ResourceKey<PlacedFeature> VEGETATION_MOSS_PATCH = register("vegetation/moss_patch");
     public static final ResourceKey<PlacedFeature> VEGETATION_PATCH_CHERRY_PETALS = register("vegetation/patch_cherry_petals");
     public static final ResourceKey<PlacedFeature> VEGETATION_PATCH_CLIFF_GRASS = register("vegetation/patch_cliff_grass");

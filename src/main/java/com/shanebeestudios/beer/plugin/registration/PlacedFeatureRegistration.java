@@ -603,21 +603,21 @@ public class PlacedFeatureRegistration {
     private static List<PlacedFeatureDefinition> vegetation() {
         List<PlacedFeatureDefinition> features = new ArrayList<>();
 
-        PlacedFeatureDefinition azalea_bush = PlacedFeatureDefinition.builder(PlacedFeatures.VEGETATION_AZALEA_BUSH)
-            .configuredFeature(ConfiguredFeatures.VEGETATION_AZALEA_BUSH)
+        PlacedFeatureDefinition azalea_bush_or_scrub = PlacedFeatureDefinition.builder(PlacedFeatures.VEGETATION_AZALEA_BUSH_OR_SCRUB)
+            .configuredFeature(ConfiguredFeatures.VEGETATION_AZALEA_BUSH_OR_SCRUB)
             .placementModifiers(NoiseBasedCountPlacement.of(25, 30, 0),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 SurfaceWaterDepthFilter.forMaxDepth(0),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(
                     BlockPredicate.matchesBlocks(Blocks.AIR),
-                    BlockPredicate.matchesBlocks(new BlockPos(0, -1, 0), Blocks.GRASS_BLOCK)
+                    BlockPredicate.matchesTag(new BlockPos(0, -1, 0), BlockTags.AZALEA_GROWS_ON)
                 )),
                 BiomeFilter.biome())
             .build();
 
-        azalea_bush.register();
-        features.add(azalea_bush);
+        azalea_bush_or_scrub.register();
+        features.add(azalea_bush_or_scrub);
 
         PlacedFeatureDefinition patch = PlacedFeatureDefinition.builder()
             .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
