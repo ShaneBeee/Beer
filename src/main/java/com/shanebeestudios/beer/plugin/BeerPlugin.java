@@ -1,8 +1,9 @@
 package com.shanebeestudios.beer.plugin;
 
-import com.shanebeestudios.beer.plugin.registration.ConfiguredFeatureRegistration;
 import com.shanebeestudios.beer.plugin.biomes.BiomeGenerator;
 import com.shanebeestudios.beer.plugin.registration.BiomeRegistration;
+import com.shanebeestudios.beer.plugin.registration.ConfiguredFeatureRegistration;
+import com.shanebeestudios.beer.plugin.registration.DimensionRegistration;
 import com.shanebeestudios.beer.plugin.registration.PlacedFeatureRegistration;
 import com.shanebeestudios.coreapi.util.Utils;
 import io.papermc.paper.datapack.Datapack;
@@ -34,11 +35,13 @@ public class BeerPlugin extends JavaPlugin {
             ConfiguredFeatureRegistration.registerFeatures();
             PlacedFeatureRegistration.registerFeatures();
             BiomeRegistration.registerBiomes();
+            DimensionRegistration dimensionRegistration = new DimensionRegistration();
 
             // Dump objects to datapack
             ConfiguredFeatureRegistration.dumpToDatapack();
             PlacedFeatureRegistration.dumpToDatapack();
             BiomeRegistration.dumpToRegistry();
+            dimensionRegistration.dumpToRegistry();
         }
     }
 

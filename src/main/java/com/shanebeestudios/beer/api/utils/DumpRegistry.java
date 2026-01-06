@@ -7,6 +7,7 @@ import com.google.gson.JsonElement;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
 import com.shanebeestudios.beer.api.registration.Definition;
 import com.shanebeestudios.beer.plugin.BeerPlugin;
 import com.shanebeestudios.coreapi.util.Utils;
@@ -22,6 +23,8 @@ import net.minecraft.tags.TagFile;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeSource;
+import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
@@ -42,6 +45,7 @@ public class DumpRegistry<N> {
 
     static {
         register("biomes", Registries.BIOME, Biome.DIRECT_CODEC, Biome.class);
+        register("dimension", Registries.LEVEL_STEM, LevelStem.CODEC, LevelStem.class);
         register("placed_feature", Registries.PLACED_FEATURE, PlacedFeature.DIRECT_CODEC, PlacedFeature.class);
         register("configured_feature", Registries.CONFIGURED_FEATURE, ConfiguredFeature.DIRECT_CODEC, ConfiguredFeature.class);
         register("enchantments", Registries.ENCHANTMENT, Enchantment.DIRECT_CODEC, Enchantment.class);
@@ -69,7 +73,7 @@ public class DumpRegistry<N> {
         });
     }
 
-    public static <T,N extends Definition<T>> void dumpDefinablesTags(List<N> definitions) {
+    public static <T, N extends Definition<T>> void dumpDefinablesTags(List<N> definitions) {
         definitions.forEach(DumpRegistry::dumpDefinableTags);
     }
 
@@ -106,6 +110,26 @@ public class DumpRegistry<N> {
                 dumpRegistry.dump(identifier, object);
             }
         });
+    }
+
+    public static void dumpBiomeSource(Identifier identifier, BiomeSource biomeSource) {
+        ResourceKey<MapCodec<? extends BiomeSource>> key = ResourceKey.create(Registries.BIOME_SOURCE, identifier);
+        File file = new File(DATA_FOLDER, "data/" + identifier.getNamespace() + "/" + key.registry().getPath() + "/" + identifier.getPath() + ".json");
+
+
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists() && !parent.mkdirs()) {
+            return;
+        }
+
+        DataResult<JsonElement> jsonData = BiomeSource.CODEC.encodeStart(REGISTRY_OPS, biomeSource);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try {
+            Files.writeString(file.toPath(), gson.toJson(jsonData.getOrThrow()) + "\n");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private final String name;

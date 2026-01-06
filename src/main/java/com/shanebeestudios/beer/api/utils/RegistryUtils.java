@@ -188,6 +188,10 @@ public class RegistryUtils {
         return null;
     }
 
+    public static Holder.Reference<Biome> getBiomeReference(ResourceKey<Biome> key) {
+        return Holder.Reference.createStandAlone(BIOME_REGISTRY, key);
+    }
+
     @Nullable
     public static Holder<PlacedFeature> getPlacedFeature(Identifier identifier) {
         return PLACED_FEATURE_REGISTRY.get(identifier).orElse(null);
