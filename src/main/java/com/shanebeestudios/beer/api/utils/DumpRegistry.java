@@ -120,7 +120,7 @@ public class DumpRegistry<N> {
 
     @SuppressWarnings("unchecked")
     private void dump(Identifier identifier, Object nmsObject) {
-        File file = new File(DATA_FOLDER, "data/" + this.registryPath + "/" + identifier.getPath() + ".json");
+        File file = new File(DATA_FOLDER, "data/" + identifier.getNamespace() + "/" + this.registryPath + "/" + identifier.getPath() + ".json");
 
         File parent = file.getParentFile();
         if (parent != null && !parent.exists() && !parent.mkdirs()) {
