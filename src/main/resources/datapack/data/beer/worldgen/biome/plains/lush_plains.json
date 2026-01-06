@@ -3,9 +3,9 @@
   "temperature": 0.8,
   "downfall": 0.5,
   "attributes": {
-    "minecraft:audio/music_volume": 1.0,
     "minecraft:visual/fog_color": "#c0d8ff",
     "minecraft:visual/water_fog_color": "#050533",
+    "minecraft:audio/music_volume": 1.0,
     "minecraft:visual/sky_color": "#78a7ff"
   },
   "effects": {
@@ -50,7 +50,50 @@
     ]
   ],
   "spawners": {
-    "monster": [],
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "minCount": 4,
+        "maxCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "minecraft:zombie",
+        "minCount": 4,
+        "maxCount": 4,
+        "weight": 95
+      },
+      {
+        "type": "minecraft:zombie_villager",
+        "minCount": 1,
+        "maxCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "minecraft:skeleton",
+        "minCount": 2,
+        "maxCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "minecraft:slime",
+        "minCount": 4,
+        "maxCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "minecraft:enderman",
+        "minCount": 1,
+        "maxCount": 4,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:witch",
+        "minCount": 1,
+        "maxCount": 1,
+        "weight": 5
+      }
+    ],
     "creature": [
       {
         "type": "minecraft:cow",

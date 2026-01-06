@@ -3,9 +3,21 @@
   "temperature": 0.5,
   "downfall": 0.5,
   "attributes": {
+    "minecraft:audio/music_volume": 1.0,
     "minecraft:visual/fog_color": "#c0d8ff",
-    "minecraft:visual/water_fog_color": "#041633",
     "minecraft:visual/sky_color": "#7ba4ff",
+    "minecraft:visual/water_fog_color": "#041633",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "block_state": {
+            "Name": "minecraft:sand"
+          },
+          "type": "minecraft:falling_dust"
+        },
+        "probability": 0.005
+      }
+    ],
     "minecraft:audio/background_music": {
       "default": {
         "sound": "minecraft:music.overworld.lush_caves",
@@ -21,19 +33,7 @@
         "block_search_extent": 8,
         "offset": 2.0
       }
-    },
-    "minecraft:visual/ambient_particles": [
-      {
-        "particle": {
-          "block_state": {
-            "Name": "minecraft:sand"
-          },
-          "type": "minecraft:falling_dust"
-        },
-        "probability": 0.005
-      }
-    ],
-    "minecraft:audio/music_volume": 1.0
+    }
   },
   "effects": {
     "water_color": "#45adf2"

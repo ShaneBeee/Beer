@@ -803,6 +803,22 @@ public class BiomeRegistration {
                     "minecraft:patch_firefly_bush_near_water"),
                 List.of("minecraft:freeze_top_layer"))
             .addDefaultOverworldCarvers()
+
+            .addMobSpawn(MobCategory.AMBIENT, EntityType.BAT, 10, 8, 8)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.SHEEP, 12, 4, 4)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.PIG, 10, 4, 4)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.CHICKEN, 10, 4, 4)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 8, 4, 4)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.WOLF, 5, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
+            .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.GLOW_SQUID, 10, 4, 6)
+
             .build();
 
         tall_oak.register();
@@ -851,6 +867,13 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.SHEEP, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.PIG, 10, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
 
             .build();
         dry_plains.register();
@@ -899,6 +922,13 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.SHEEP, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.PIG, 10, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
 
             .build();
         lush_plains.register();
@@ -945,6 +975,13 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.SHEEP, 10, 2, 4)
             .addMobSpawn(MobCategory.CREATURE, EntityType.PIG, 10, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
 
             .build();
         plains.register();
@@ -1218,7 +1255,6 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.GLOW_SQUID, 10, 4, 6)
             .addMobSpawn(MobCategory.WATER_AMBIENT, EntityType.SALMON, 5, 1, 5)
 
-
             .build();
         temperate_river.register();
         biomes.add(temperate_river);
@@ -1266,6 +1302,16 @@ public class BiomeRegistration {
                 null)
 
             .addDefaultOverworldCarvers()
+
+            .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 10, 2, 5)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
+            .addMobSpawn(MobCategory.WATER_CREATURE, EntityType.DROWNED, 2, 1, 2)
 
             .build();
 

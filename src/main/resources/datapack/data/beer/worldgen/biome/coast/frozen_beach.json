@@ -4,6 +4,7 @@
   "downfall": 0.0,
   "attributes": {
     "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:visual/sky_color": "#7fa1ff",
     "minecraft:visual/ambient_particles": [
       {
         "particle": {
@@ -13,7 +14,6 @@
       }
     ],
     "minecraft:visual/water_fog_color": "#050533",
-    "minecraft:visual/sky_color": "#7fa1ff",
     "minecraft:audio/ambient_sounds": {
       "mood": {
         "sound": "minecraft:ambient.cave",
