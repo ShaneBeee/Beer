@@ -24,7 +24,8 @@
   "carvers": [],
   "features": [
     [
-      "beer:delta/coastal_delta"
+      "beer:delta/coastal_delta",
+      "beer:terrain/stone_to_ice"
     ],
     [],
     [],
@@ -43,7 +44,7 @@
     [],
     [],
     [
-      "beer:terrain/stone_to_ice"
+      "minecraft:freeze_top_layer"
     ]
   ],
   "spawners": {

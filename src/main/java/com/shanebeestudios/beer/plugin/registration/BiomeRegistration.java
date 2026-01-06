@@ -151,7 +151,8 @@ public class BiomeRegistration {
 
             .particle(ParticleTypes.ASH, 0.5f)
 
-            .features(List.of(PlacedFeatures.DELTA_COASTAL_DELTA),
+            .features(List.of(PlacedFeatures.DELTA_COASTAL_DELTA,
+                    PlacedFeatures.TERRAIN_STONE_TO_ICE),
                 null,
                 null,
                 null,
@@ -166,7 +167,7 @@ public class BiomeRegistration {
                 null,
                 null,
                 null,
-                List.of(PlacedFeatures.TERRAIN_STONE_TO_ICE))
+                List.of("minecraft:freeze_top_layer"))
 
             .addMobSpawn(MobCategory.MONSTER, EntityType.ILLUSIONER, 1, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 3, 1, 1)
