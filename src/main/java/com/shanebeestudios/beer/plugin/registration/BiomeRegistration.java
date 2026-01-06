@@ -825,6 +825,68 @@ public class BiomeRegistration {
         tall_oak.register();
         biomes.add(tall_oak);
 
+        BiomeDefinition lush_forest = BiomeDefinition.builder(Biomes.FOREST_LUSH_FOREST)
+            .hasPrecipitation(true)
+            .temperature(2f)
+            .downfall(0.2f)
+            .waterColor(3832426)
+            .foliageColorOverride(9285927)
+
+            .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
+                Optional.empty(),
+                Optional.of(new AmbientMoodSettings(
+                    SoundEvents.AMBIENT_CAVE,
+                    6000,
+                    8,
+                    2.0)),
+                List.of()
+            ))
+
+            .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 1.0f)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, 7782102)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 13880215)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 5077600)
+
+            .addDefaultUndergroundOreFeatures()
+            .features(null,
+                List.of("minecraft:lake_lava_underground",
+                    "minecraft:lake_lava_surface"),
+                List.of("minecraft:amethyst_geode"),
+                List.of("minecraft:fossil_upper",
+                    "minecraft:fossil_lower",
+                    "minecraft:monster_room",
+                    "minecraft:monster_room_deep"),
+                null,
+                null,
+                null,
+                null,
+                List.of("minecraft:spring_water",
+                    "minecraft:spring_lava"),
+                List.of("wythers:vegetation/placed_random_patch/flooded_savanna_water_plants",
+                    "wythers:vegetation/placed_random_patch/flowers_tropical_forest",
+                    "wythers:vegetation/trees_tropical_forest",
+                    "minecraft:glow_lichen",
+                    "minecraft:patch_tall_grass",
+                    "minecraft:patch_grass_savanna",
+                    "minecraft:brown_mushroom_normal",
+                    "minecraft:red_mushroom_normal",
+                    "minecraft:patch_sugar_cane",
+                    "minecraft:seagrass_swamp"),
+                List.of("minecraft:freeze_top_layer"))
+
+            .addDefaultOverworldCarvers()
+
+            .addDefaultMonsterSpawns(true)
+            .addDefaultFarmAnimalsSpawns()
+            .addDefaultCaveSpawns()
+            .addMobSpawn(MobCategory.MONSTER, EntityType.OCELOT, 2, 1, 3)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.WOLF, 10, 2, 5)
+
+            .build();
+
+        lush_forest.register();
+        biomes.add(lush_forest);
+
         return biomes;
     }
 

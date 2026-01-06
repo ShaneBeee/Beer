@@ -1,10 +1,13 @@
 package com.shanebeestudios.beer.plugin.biomes;
 
+import com.shanebeestudios.beer.plugin.registration.Biomes;
 import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
+import net.minecraft.resources.ResourceKey;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
 import org.bukkit.block.Biome;
+import org.bukkit.craftbukkit.util.CraftNamespacedKey;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -32,6 +35,7 @@ public class BeerBiomes {
     public static Biome DESERT_LUSH_DESERT = getBiome("desert/lush_desert");
 
     // FOREST
+    public static Biome FOREST_LUSH_FOREST = getBiome(Biomes.FOREST_LUSH_FOREST);
     public static Biome FOREST_MOSS_GARDEN = getBiome("forest/moss_garden");
     public static Biome FOREST_TALL_OAK = getBiome("forest/tall_oak");
 
@@ -52,6 +56,17 @@ public class BeerBiomes {
     private static Biome getBiome(String id) {
         NamespacedKey key = NamespacedKey.fromString("beer:" + id);
         assert key != null;
+        Biome biome = BIOME_REGISTRY.get(key);
+        if (biome == null) {
+            throw new IllegalArgumentException("Missing biome: " + key);
+        }
+        BEER_BIOMES.add(biome);
+        return biome;
+    }
+
+    @NotNull
+    private static Biome getBiome(ResourceKey<net.minecraft.world.level.biome.Biome> resourceKey) {
+        NamespacedKey key = CraftNamespacedKey.fromResourceKey(resourceKey);
         Biome biome = BIOME_REGISTRY.get(key);
         if (biome == null) {
             throw new IllegalArgumentException("Missing biome: " + key);

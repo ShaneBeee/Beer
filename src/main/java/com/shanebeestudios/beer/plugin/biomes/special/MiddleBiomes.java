@@ -54,7 +54,7 @@ public class MiddleBiomes {
         return switch (humidity) {
             case 0 -> Biome.SAVANNA;
             case 1 -> BeerBiomes.PLAINS_DRY_PLAINS;
-            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS_PLAINS : Biome.FOREST;
+            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS_PLAINS : BeerBiomes.FOREST_LUSH_FOREST;
             case 3 -> weirdness == 1 ? Biome.SPARSE_JUNGLE : Biome.JUNGLE;
             default -> weirdness == 1 ? Biome.BAMBOO_JUNGLE : Biome.JUNGLE;
         };
