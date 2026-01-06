@@ -7,6 +7,9 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 public class ConfiguredFeatures {
 
+    // DELTA
+    public static final ResourceKey<ConfiguredFeature<?,?>> DELTA_MOSS_DELTA = register("delta/moss_delta");
+
     // TERRAIN
     public static final ResourceKey<ConfiguredFeature<?,?>> TERRAIN_SAND_SHORE_DISK = register("terrain/sand_shore_disk");
 

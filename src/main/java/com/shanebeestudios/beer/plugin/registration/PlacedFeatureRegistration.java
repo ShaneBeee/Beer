@@ -170,11 +170,7 @@ public class PlacedFeatureRegistration {
         features.add(beach_delta);
 
         PlacedFeatureDefinition coastal_delta = PlacedFeatureDefinition.builder(PlacedFeatures.DELTA_COASTAL_DELTA)
-            .configuredFeature(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(
-                Blocks.WATER.defaultBlockState(),
-                Blocks.MOSS_BLOCK.defaultBlockState(),
-                UniformInt.of(3, 7),
-                UniformInt.of(1, 2)))
+            .configuredFeature(ConfiguredFeatures.DELTA_MOSS_DELTA)
             .placementModifiers(CountPlacement.of(64),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
@@ -186,12 +182,8 @@ public class PlacedFeatureRegistration {
         features.add(coastal_delta);
 
         PlacedFeatureDefinition lush_desert_delta = PlacedFeatureDefinition.builder(PlacedFeatures.DELTA_LUSH_DESERT_DELTA)
-            .configuredFeature(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(
-                Blocks.WATER.defaultBlockState(),
-                Blocks.MOSS_BLOCK.defaultBlockState(),
-                UniformInt.of(3, 7),
-                UniformInt.of(1, 2)))
-            .placementModifiers(CountPlacement.of(20),
+            .configuredFeature(ConfiguredFeatures.DELTA_MOSS_DELTA)
+            .placementModifiers(CountPlacement.of(2),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 RandomOffsetPlacement.of(ConstantInt.of(0), ConstantInt.of(0)),

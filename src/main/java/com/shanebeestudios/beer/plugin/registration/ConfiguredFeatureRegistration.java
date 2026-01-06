@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.FallenTreeConfiguration.FallenTreeConfigurationBuilder;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
@@ -43,6 +44,7 @@ public class ConfiguredFeatureRegistration {
     private static final List<ConfiguredFeatureDefinition> FEATURES = new ArrayList<>();
 
     public static void registerFeatures() {
+        FEATURES.addAll(delta());
         FEATURES.addAll(terrain());
         FEATURES.addAll(tree());
         FEATURES.addAll(vegetation());
@@ -53,11 +55,27 @@ public class ConfiguredFeatureRegistration {
         DumpRegistry.dumpDefinables(FEATURES);
     }
 
+    private static List<ConfiguredFeatureDefinition> delta() {
+        List<ConfiguredFeatureDefinition> features = new ArrayList<>();
+
+        ConfiguredFeatureDefinition moss_delta = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.DELTA_MOSS_DELTA)
+            .config(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(
+                Blocks.WATER.defaultBlockState(),
+                Blocks.MOSS_BLOCK.defaultBlockState(),
+                UniformInt.of(3, 7),
+                UniformInt.of(1, 2)))
+            .build();
+
+        moss_delta.register();
+        features.add(moss_delta);
+
+        return features;
+    }
+
     private static List<ConfiguredFeatureDefinition> terrain() {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
 
         ConfiguredFeatureDefinition sand_shore_disk = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TERRAIN_SAND_SHORE_DISK)
-
             .config(Feature.DISK, new DiskConfiguration(
                 RuleBasedBlockStateProvider.simple(Blocks.SAND),
                 BlockPredicate.matchesBlocks(Blocks.GRASS_BLOCK, Blocks.DIRT),

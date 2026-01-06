@@ -1,28 +1,5 @@
 {
-  "feature": {
-    "config": {
-      "contents": {
-        "Properties": {
-          "level": "0"
-        },
-        "Name": "minecraft:water"
-      },
-      "rim": {
-        "Name": "minecraft:moss_block"
-      },
-      "size": {
-        "min_inclusive": 3,
-        "max_inclusive": 7,
-        "type": "minecraft:uniform"
-      },
-      "rim_size": {
-        "min_inclusive": 1,
-        "max_inclusive": 2,
-        "type": "minecraft:uniform"
-      }
-    },
-    "type": "minecraft:delta_feature"
-  },
+  "feature": "beer:delta/moss_delta",
   "placement": [
     {
       "count": 64,
