@@ -34,7 +34,7 @@ public class MiddleBiomes {
         return switch (humidity) {
             case 0 -> BeerBiomes.PLAINS_DRY_PLAINS;
             case 1 -> BeerBiomes.PLAINS_PLAINS;
-            case 2 -> Biome.FOREST;
+            case 2 -> BeerBiomes.FOREST_TALL_OAK;
             case 3 -> Biome.TAIGA;
             default -> weirdness == 1 ? Biome.OLD_GROWTH_PINE_TAIGA : Biome.OLD_GROWTH_SPRUCE_TAIGA;
         };

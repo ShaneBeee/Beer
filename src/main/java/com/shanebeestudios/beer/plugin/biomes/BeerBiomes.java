@@ -33,6 +33,7 @@ public class BeerBiomes {
 
     // FOREST
     public static Biome FOREST_MOSS_GARDEN = getBiome("forest/moss_garden");
+    public static Biome FOREST_TALL_OAK = getBiome("forest/tall_oak");
 
     // PLAINS
     public static Biome PLAINS_DRY_PLAINS = getBiome("plains/dry_plains");
