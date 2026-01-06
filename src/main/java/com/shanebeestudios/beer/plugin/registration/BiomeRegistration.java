@@ -251,7 +251,7 @@ public class BiomeRegistration {
         biomes.add(coast);
 
         BiomeDefinition dry_coast = BiomeDefinition.builder(Biomes.COAST_DRY_COAST)
-            .hasPrecipitation(true)
+            .hasPrecipitation(false)
             .temperature(2.0f)
             .downfall(0.05f)
             .waterColor(4159204)
@@ -752,7 +752,7 @@ public class BiomeRegistration {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
         BiomeDefinition dry_plains = BiomeDefinition.builder(Biomes.PLAINS_DRY_PLAINS)
-            .hasPrecipitation(true)
+            .hasPrecipitation(false)
             .temperature(2.0f)
             .downfall(0.05f)
             .waterColor(5336976)
