@@ -264,11 +264,14 @@ public class BiomeDefinition implements Definition<Biome> {
             return carvers(Carvers.CAVE, Carvers.CAVE_EXTRA_UNDERGROUND, Carvers.CANYON);
         }
 
-        public Builder addTag(Identifier key) {
-            TagKey<Biome> tagKey = RegistryUtils.getTagKey(RegistryUtils.getBiomeRegistry(), key.toString());
-            if (tagKey != null) {
-                this.tagKeys.add(tagKey);
-            }
+        /**
+         * Add this biome to a specific tag
+         *
+         * @param tagKey Key of tag to add to
+         * @return This builder
+         */
+        public Builder addToTag(TagKey<Biome> tagKey) {
+            this.tagKeys.add(tagKey);
             return this;
         }
 
