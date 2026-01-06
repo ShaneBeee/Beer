@@ -3,17 +3,8 @@
   "temperature": 0.1,
   "downfall": 0.0,
   "attributes": {
-    "minecraft:visual/fog_color": "#c0d8ff",
-    "minecraft:visual/sky_color": "#7fa1ff",
-    "minecraft:visual/ambient_particles": [
-      {
-        "particle": {
-          "type": "minecraft:white_ash"
-        },
-        "probability": 0.2
-      }
-    ],
     "minecraft:visual/water_fog_color": "#050533",
+    "minecraft:visual/sky_color": "#7fa1ff",
     "minecraft:audio/ambient_sounds": {
       "mood": {
         "sound": "minecraft:ambient.cave",
@@ -22,7 +13,16 @@
         "offset": 2.0
       }
     },
-    "minecraft:audio/music_volume": 1.0
+    "minecraft:audio/music_volume": 1.0,
+    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:white_ash"
+        },
+        "probability": 0.2
+      }
+    ]
   },
   "effects": {
     "water_color": "#3d57d6"
@@ -44,8 +44,31 @@
     [],
     [
       "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:ore_tuff",
       "minecraft:ore_coal_upper",
       "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_upper",
+      "minecraft:ore_iron_middle",
+      "minecraft:ore_iron_small",
+      "minecraft:ore_gold",
+      "minecraft:ore_gold_lower",
+      "minecraft:ore_redstone",
+      "minecraft:ore_redstone_lower",
+      "minecraft:ore_diamond",
+      "minecraft:ore_diamond_medium",
+      "minecraft:ore_diamond_large",
+      "minecraft:ore_diamond_buried",
+      "minecraft:ore_lapis",
+      "minecraft:ore_lapis_buried",
+      "minecraft:ore_copper",
+      "minecraft:underwater_magma",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
@@ -53,6 +76,7 @@
     [],
     [],
     [
+      "minecraft:glow_lichen",
       "beer:tree/palm_beach_palm",
       "minecraft:patch_waterlily",
       "minecraft:patch_sugar_cane"

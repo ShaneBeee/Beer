@@ -3,9 +3,6 @@
   "temperature": 2.0,
   "downfall": 0.2,
   "attributes": {
-    "minecraft:visual/water_fog_color": "#4d7a60",
-    "minecraft:audio/music_volume": 1.0,
-    "minecraft:visual/fog_color": "#d3cb97",
     "minecraft:visual/sky_color": "#76bed6",
     "minecraft:audio/ambient_sounds": {
       "mood": {
@@ -14,7 +11,10 @@
         "block_search_extent": 8,
         "offset": 2.0
       }
-    }
+    },
+    "minecraft:visual/water_fog_color": "#4d7a60",
+    "minecraft:visual/fog_color": "#d3cb97",
+    "minecraft:audio/music_volume": 1.0
   },
   "effects": {
     "water_color": "#3a7a6a",
@@ -62,14 +62,16 @@
       "minecraft:ore_redstone",
       "minecraft:ore_redstone_lower",
       "minecraft:ore_diamond",
+      "minecraft:ore_diamond_medium",
       "minecraft:ore_diamond_large",
       "minecraft:ore_diamond_buried",
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
-      "minecraft:disk_grass",
-      "minecraft:disk_clay"
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
     ],
     [],
     [
@@ -77,10 +79,10 @@
       "minecraft:spring_lava"
     ],
     [
+      "minecraft:glow_lichen",
       "wythers:vegetation/placed_random_patch/flooded_savanna_water_plants",
       "wythers:vegetation/placed_random_patch/flowers_tropical_forest",
       "wythers:vegetation/trees_tropical_forest",
-      "minecraft:glow_lichen",
       "minecraft:patch_tall_grass",
       "minecraft:patch_grass_savanna",
       "minecraft:brown_mushroom_normal",

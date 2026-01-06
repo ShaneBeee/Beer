@@ -3,9 +3,9 @@
   "temperature": 0.7,
   "downfall": 0.8,
   "attributes": {
-    "minecraft:visual/fog_color": "#d3cb97",
     "minecraft:visual/water_fog_color": "#238061",
     "minecraft:visual/sky_color": "#76d6cb",
+    "minecraft:audio/music_volume": 1.0,
     "minecraft:audio/background_music": {
       "default": {
         "sound": "minecraft:music.overworld.desert",
@@ -13,7 +13,7 @@
         "max_delay": 24000
       }
     },
-    "minecraft:audio/music_volume": 1.0,
+    "minecraft:visual/fog_color": "#d3cb97",
     "minecraft:gameplay/snow_golem_melts": true
   },
   "effects": {
@@ -84,11 +84,11 @@
       "minecraft:spring_lava"
     ],
     [
+      "minecraft:glow_lichen",
       "beer:tree/lush_desert_palm",
       "beer:vegetation/lush_desert_azalea_scrub",
       "wythers:vegetation/placed_random_patch/dark_oak_roots",
       "wythers:terrain/placed_random_patch/mossify_grass",
-      "minecraft:glow_lichen",
       "minecraft:flower_default",
       "minecraft:patch_grass_badlands",
       "minecraft:patch_dry_grass_desert",

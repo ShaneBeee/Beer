@@ -3,9 +3,6 @@
   "temperature": 0.5,
   "downfall": 0.5,
   "attributes": {
-    "minecraft:visual/water_fog_color": "#232317",
-    "minecraft:audio/music_volume": 1.0,
-    "minecraft:visual/fog_color": "#c0d8ff",
     "minecraft:visual/sky_color": "#70c8ff",
     "minecraft:audio/ambient_sounds": {
       "mood": {
@@ -14,7 +11,10 @@
         "block_search_extent": 8,
         "offset": 2.0
       }
-    }
+    },
+    "minecraft:visual/water_fog_color": "#232317",
+    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:audio/music_volume": 1.0
   },
   "effects": {
     "water_color": "#617b64"
@@ -59,6 +59,7 @@
       "minecraft:ore_redstone",
       "minecraft:ore_redstone_lower",
       "minecraft:ore_diamond",
+      "minecraft:ore_diamond_medium",
       "minecraft:ore_diamond_large",
       "minecraft:ore_diamond_buried",
       "minecraft:ore_lapis",
