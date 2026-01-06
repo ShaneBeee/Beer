@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -265,13 +266,14 @@ public class BiomeDefinition implements Definition<Biome> {
         }
 
         /**
-         * Add this biome to a specific tag
+         * Add this biome to specific tags
          *
-         * @param tagKey Key of tag to add to
+         * @param tagKeys Keys of tags to add to
          * @return This builder
          */
-        public Builder addToTag(TagKey<Biome> tagKey) {
-            this.tagKeys.add(tagKey);
+        @SafeVarargs
+        public final Builder addToTag(TagKey<Biome>... tagKeys) {
+            Collections.addAll(this.tagKeys, tagKeys);
             return this;
         }
 

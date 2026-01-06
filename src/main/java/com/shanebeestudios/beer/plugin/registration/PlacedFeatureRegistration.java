@@ -185,6 +185,22 @@ public class PlacedFeatureRegistration {
         coastal_delta.register();
         features.add(coastal_delta);
 
+        PlacedFeatureDefinition lush_desert_delta = PlacedFeatureDefinition.builder(PlacedFeatures.DELTA_LUSH_DESERT_DELTA)
+            .configuredFeature(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(
+                Blocks.WATER.defaultBlockState(),
+                Blocks.MOSS_BLOCK.defaultBlockState(),
+                UniformInt.of(3, 7),
+                UniformInt.of(1, 2)))
+            .placementModifiers(CountPlacement.of(20),
+                InSquarePlacement.spread(),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                RandomOffsetPlacement.of(ConstantInt.of(0), ConstantInt.of(0)),
+                BiomeFilter.biome())
+            .build();
+
+        lush_desert_delta.register();
+        features.add(lush_desert_delta);
+
         PlacedFeatureDefinition dry_cave_delta = PlacedFeatureDefinition.builder(PlacedFeatures.DELTA_DRY_CAVE_DELTA)
             .configuredFeature(Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
                 BlockTags.LUSH_GROUND_REPLACEABLE,

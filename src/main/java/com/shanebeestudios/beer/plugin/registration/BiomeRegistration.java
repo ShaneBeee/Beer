@@ -515,7 +515,8 @@ public class BiomeRegistration {
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 2326625)
 
             .addDefaultUndergroundOreFeatures()
-            .features(List.of(PlacedFeatures.TERRAIN_GRASS_TO_SAND),
+            .features(List.of(PlacedFeatures.TERRAIN_GRASS_TO_SAND,
+                    PlacedFeatures.DELTA_LUSH_DESERT_DELTA),
                 List.of("minecraft:lake_lava_underground",
                     "minecraft:lake_lava_surface"),
                 List.of("minecraft:amethyst_geode"),
@@ -531,6 +532,7 @@ public class BiomeRegistration {
                     "minecraft:spring_lava"),
                 List.of(PlacedFeatures.TREE_LUSH_DESERT_PALM,
                     PlacedFeatures.VEGETATION_LUSH_DESERT_AZALEA_SCRUB,
+                    PlacedFeatures.VEGETATION_AZALEA_BUSH_OR_SCRUB,
                     "wythers:vegetation/placed_random_patch/dark_oak_roots",
                     "wythers:terrain/placed_random_patch/mossify_grass",
                     "minecraft:flower_default",
