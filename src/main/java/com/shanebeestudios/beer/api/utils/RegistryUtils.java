@@ -15,7 +15,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.carver.CarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -33,12 +32,11 @@ import java.util.function.BiConsumer;
 @SuppressWarnings({"DataFlowIssue", "unchecked"})
 public class RegistryUtils {
 
-    private static final MinecraftServer SERVER = MinecraftServer.getServer();
     private static final Registry<Enchantment> ENCHANT_REGISTRY = getRegistry(Registries.ENCHANTMENT);
     private static final Registry<Biome> BIOME_REGISTRY = getRegistry(Registries.BIOME);
     private static final Registry<PlacedFeature> PLACED_FEATURE_REGISTRY = getRegistry(Registries.PLACED_FEATURE);
     private static final Registry<ConfiguredFeature<?, ?>> CONFIGURED_FEATURE_REGISTRY = getRegistry(Registries.CONFIGURED_FEATURE);
-    private static final Registry<ConfiguredWorldCarver<?>> CARVER_REGISTRY = getRegistry(Registries.CONFIGURED_CARVER);
+    private static final Registry<ConfiguredWorldCarver<?>> CONFIGURED_CARVER_REGISTRY = getRegistry(Registries.CONFIGURED_CARVER);
 
     public static Registry<Enchantment> getEnchantRegistry() {
         return ENCHANT_REGISTRY;
@@ -46,6 +44,18 @@ public class RegistryUtils {
 
     public static Registry<Biome> getBiomeRegistry() {
         return BIOME_REGISTRY;
+    }
+
+    public static Registry<PlacedFeature> getPlacedFeatureRegistry() {
+        return PLACED_FEATURE_REGISTRY;
+    }
+
+    public static Registry<ConfiguredFeature<?, ?>> getConfiguredFeatureRegistry() {
+        return CONFIGURED_FEATURE_REGISTRY;
+    }
+
+    public static Registry<ConfiguredWorldCarver<?>> getConfiguredCarverRegistry() {
+        return CONFIGURED_CARVER_REGISTRY;
     }
 
     public static <T> @Nullable TagKey<T> getTagKey(@NotNull Registry<T> registry, @NotNull String name) {
@@ -183,6 +193,10 @@ public class RegistryUtils {
         return PLACED_FEATURE_REGISTRY.get(identifier).orElse(null);
     }
 
+    public static ResourceKey<PlacedFeature> getPlacedFeatureKey(Identifier identifier) {
+        return ResourceKey.create(Registries.PLACED_FEATURE, identifier);
+    }
+
     public static Holder.Reference<PlacedFeature> getPlacedFeatureReference(ResourceKey<PlacedFeature> key) {
         return Holder.Reference.createStandAlone(PLACED_FEATURE_REGISTRY, key);
     }
@@ -191,17 +205,26 @@ public class RegistryUtils {
         return CONFIGURED_FEATURE_REGISTRY.getOrThrow(key);
     }
 
+    public static ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeatureKey(Identifier identifier) {
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, identifier);
+    }
+
     public static Holder.Reference<ConfiguredFeature<?, ?>> getConfiguredFeatureReference(ResourceKey<ConfiguredFeature<?, ?>> key) {
         return Holder.Reference.createStandAlone(CONFIGURED_FEATURE_REGISTRY, key);
     }
 
     @Nullable
-    public static Holder<ConfiguredWorldCarver<?>> getCarver(Identifier identifier) {
-        return CARVER_REGISTRY.get(identifier).orElse(null);
+    public static Holder<ConfiguredWorldCarver<?>> getConfiguredCarver(Identifier identifier) {
+        return CONFIGURED_CARVER_REGISTRY.get(identifier).orElse(null);
     }
 
-    public static Holder.Reference<ConfiguredWorldCarver<?>> getCarverReference(ResourceKey<ConfiguredWorldCarver<?>> key) {
-        return Holder.Reference.createStandAlone(CARVER_REGISTRY, key);
+    public static ResourceKey<ConfiguredWorldCarver<?>> getConfiguredCarverKey(Identifier identifier) {
+        return ResourceKey.create(Registries.CONFIGURED_CARVER, identifier);
+    }
+
+
+    public static Holder.Reference<ConfiguredWorldCarver<?>> getConfiguredCarverReference(ResourceKey<ConfiguredWorldCarver<?>> key) {
+        return Holder.Reference.createStandAlone(CONFIGURED_CARVER_REGISTRY, key);
     }
 
 }
