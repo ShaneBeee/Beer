@@ -6,6 +6,7 @@ import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.attribute.AmbientMoodSettings;
 import net.minecraft.world.attribute.AmbientSounds;
 import net.minecraft.world.attribute.BackgroundMusic;
@@ -36,6 +37,7 @@ public class BiomeRegistration {
     public static void dumpToRegistry() {
         // Dump biomes to datapack files
         DumpRegistry.dumpDefinables(BIOMES);
+        DumpRegistry.dumpDefinablesTags(BIOMES);
     }
 
     private static List<BiomeDefinition> caveBiomes() {
@@ -101,6 +103,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 100, 4, 4)
             .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.TROPICAL_FISH, 25, 8, 8)
 
+            .addToTag(BiomeTags.IS_OVERWORLD)
+
             .build();
         dry_cave.register();
         biomes.add(dry_cave);
@@ -141,6 +145,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 3, 1, 1)
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 10, 1, 2)
             .addMobSpawn(MobCategory.CREATURE, EntityType.ARMADILLO, 10, 1, 2)
+
+            .addToTag(BiomeTags.SPAWNS_COLD_VARIANT_FROGS, BiomeTags.IS_OVERWORLD)
 
             .build();
         ice_cave.register();
@@ -184,6 +190,8 @@ public class BiomeRegistration {
             .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
+
+            .addToTag(BiomeTags.IS_BEACH, BiomeTags.HAS_SHIPWRECK_BEACHED, BiomeTags.IS_OVERWORLD)
 
             .build();
         beachy_beach.register();
@@ -236,6 +244,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 10, 1, 2)
             .addMobSpawn(MobCategory.CREATURE, EntityType.ARMADILLO, 10, 1, 2)
 
+            .addToTag(BiomeTags.IS_BEACH, BiomeTags.HAS_SHIPWRECK_BEACHED, BiomeTags.IS_OVERWORLD)
+
             .build();
         coast.register();
         biomes.add(coast);
@@ -275,6 +285,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 3, 1, 1)
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 10, 1, 2)
             .addMobSpawn(MobCategory.CREATURE, EntityType.ARMADILLO, 10, 1, 2)
+
+            .addToTag(BiomeTags.IS_BEACH, BiomeTags.HAS_SHIPWRECK_BEACHED, BiomeTags.IS_OVERWORLD)
 
             .build();
         dry_coast.register();
@@ -319,6 +331,9 @@ public class BiomeRegistration {
             .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
+
+            .addToTag(BiomeTags.IS_BEACH, BiomeTags.HAS_SHIPWRECK_BEACHED, BiomeTags.SPAWNS_COLD_VARIANT_FROGS, BiomeTags.IS_OVERWORLD)
+
             .build();
         frozen_beach.register();
         biomes.add(frozen_beach);
@@ -369,6 +384,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.CREEPER, 3, 1, 1)
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 10, 1, 2)
 
+            .addToTag(BiomeTags.IS_BEACH, BiomeTags.HAS_SHIPWRECK_BEACHED, BiomeTags.SPAWNS_WARM_VARIANT_FROGS, BiomeTags.IS_OVERWORLD)
+
             .build();
         lush_coast.register();
         biomes.add(lush_coast);
@@ -405,6 +422,9 @@ public class BiomeRegistration {
             .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 15, 2, 2)
+
+            .addToTag(BiomeTags.IS_BEACH, BiomeTags.HAS_SHIPWRECK_BEACHED, BiomeTags.SPAWNS_WARM_VARIANT_FROGS, BiomeTags.IS_OVERWORLD)
+
             .build();
 
         palm_beach.register();
@@ -472,7 +492,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.HUSK, 80, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.PARCHED, 50, 4, 4)
 
+            .addToTag(BiomeTags.HAS_VILLAGE_DESERT, BiomeTags.HAS_DESERT_PYRAMID, BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS, BiomeTags.IS_OVERWORLD)
+
             .build();
+        dry_desert.register();
         biomes.add(dry_desert);
 
         BiomeDefinition lush_desert = BiomeDefinition.builder(Biomes.DESERT_LUSH_DESERT)
@@ -537,7 +560,10 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.HUSK, 80, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.PARCHED, 50, 4, 4)
 
+            .addToTag(BiomeTags.HAS_VILLAGE_DESERT, BiomeTags.HAS_DESERT_PYRAMID, BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS, BiomeTags.IS_OVERWORLD)
+
             .build();
+        lush_desert.register();
         biomes.add(lush_desert);
 
         return biomes;
@@ -596,6 +622,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
             .addMobSpawn(MobCategory.WATER_CREATURE, EntityType.GLOW_SQUID, 10, 4, 6)
 
+            .addToTag(BiomeTags.IS_FOREST, BiomeTags.IS_OVERWORLD)
+
             .build();
         moss_garden.register();
         biomes.add(moss_garden);
@@ -646,6 +674,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
             .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.GLOW_SQUID, 10, 4, 6)
+
+            .addToTag(BiomeTags.IS_FOREST, BiomeTags.IS_OVERWORLD)
 
             .build();
 
@@ -708,6 +738,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.OCELOT, 2, 1, 3)
             .addMobSpawn(MobCategory.CREATURE, EntityType.WOLF, 10, 2, 5)
 
+            .addToTag(BiomeTags.IS_FOREST, BiomeTags.IS_OVERWORLD)
+
             .build();
 
         lush_forest.register();
@@ -760,6 +792,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
 
+            .addToTag(BiomeTags.HAS_VILLAGE_PLAINS, BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS, BiomeTags.IS_OVERWORLD)
+
             .build();
         dry_plains.register();
         biomes.add(dry_plains);
@@ -811,6 +845,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
 
+            .addToTag(BiomeTags.HAS_VILLAGE_PLAINS, BiomeTags.IS_OVERWORLD)
+
             .build();
         lush_plains.register();
         biomes.add(lush_plains);
@@ -859,6 +895,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
+
+            .addToTag(BiomeTags.HAS_VILLAGE_PLAINS, BiomeTags.IS_OVERWORLD)
 
             .build();
         plains.register();
@@ -919,6 +957,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.CREATURE, EntityType.RABBIT, 4, 2, 3)
             .addMobSpawn(MobCategory.AMBIENT, EntityType.BAT, 10, 8, 8)
             .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.GLOW_SQUID, 10, 4, 6)
+
+            .addToTag(BiomeTags.IS_RIVER, BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS, BiomeTags.IS_OVERWORLD)
 
             .build();
         desert_river.register();
@@ -990,6 +1030,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.WATER_AMBIENT, EntityType.PUFFERFISH, 15, 1, 3)
             .addMobSpawn(MobCategory.WATER_AMBIENT, EntityType.COD, 25, 8, 8)
 
+            .addToTag(BiomeTags.IS_RIVER, BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS, BiomeTags.IS_OVERWORLD)
+
             .build();
         lush_river.register();
         biomes.add(lush_river);
@@ -1050,6 +1092,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, EntityType.GLOW_SQUID, 10, 4, 6)
             .addMobSpawn(MobCategory.WATER_AMBIENT, EntityType.SALMON, 5, 1, 5)
 
+            .addToTag(BiomeTags.IS_RIVER, BiomeTags.IS_OVERWORLD)
+
             .build();
         temperate_river.register();
         biomes.add(temperate_river);
@@ -1104,6 +1148,8 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
             .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
             .addMobSpawn(MobCategory.WATER_CREATURE, EntityType.DROWNED, 2, 1, 2)
+
+            .addToTag(BiomeTags.HAS_SWAMP_HUT, BiomeTags.IS_OVERWORLD)
 
             .build();
 
