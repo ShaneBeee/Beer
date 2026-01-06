@@ -499,7 +499,7 @@ public class BiomeRegistration {
         biomes.add(dry_desert);
 
         BiomeDefinition lush_desert = BiomeDefinition.builder(Biomes.DESERT_LUSH_DESERT)
-            .hasPrecipitation(false)
+            .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.8f)
 
