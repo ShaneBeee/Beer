@@ -42,7 +42,7 @@ public class DimensionRegistration {
                 if (biomeKey == null) continue;
 
                 builder.addPoint(biomeKey, BiomeDefaults.FULL_RANGE, temp, humidity, BiomeDefaults.FULL_RANGE,
-                    Climate.Parameter.span(0.2f, 0.9f), BiomeDefaults.FULL_RANGE, 0);
+                    Climate.Parameter.span(0.078125f, 0.9f), BiomeDefaults.FULL_RANGE, 0);
             }
         }
 
@@ -87,7 +87,7 @@ public class DimensionRegistration {
         DumpRegistry.dumpDefinable(this.definition);
     }
 
-    public static @NotNull ResourceKey<Biome> getBiome(int continent, int temp, int humidity, int weirdness, int pv, int erosion) {
+    private @NotNull ResourceKey<Biome> getBiome(int continent, int temp, int humidity, int weirdness, int pv, int erosion) {
         return switch (continent) {
             case 0 -> Biomes.MUSHROOM_FIELDS;
             case 1 -> DeepOceanBiomes.getBiome(temp, humidity, weirdness);
