@@ -1,130 +1,120 @@
 package com.shanebeestudios.beer.plugin.biomes.continental;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
-import com.shanebeestudios.beer.api.utils.ParamPoints;
 import com.shanebeestudios.beer.plugin.biomes.special.BadlandBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.MiddleBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.PlateauBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.RiverBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.ShatteredBiomes;
-import org.bukkit.block.Biome;
-import org.bukkit.generator.BiomeParameterPoint;
+import com.shanebeestudios.beer.plugin.registration.BeerBiomes;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import org.jetbrains.annotations.NotNull;
 
 public class MidInlandBiomes {
 
-    public static @NotNull Biome getBiome(BiomeParameterPoint paramPoint) {
-        int pv = ParamPoints.PEAKS_AND_VALLEYS.getFixedPoint(paramPoint);
+    public static @NotNull ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness, int erosion, int pv) {
         return switch (pv) {
-            case 0 -> getValley(paramPoint);
-            case 1 -> getLow(paramPoint);
-            case 2 -> getMid(paramPoint);
-            case 3 -> getHigh(paramPoint);
-            default -> getPeaks(paramPoint);
+            case 0 -> getValley(temp, humidity, weirdness, erosion);
+            case 1 -> getLow(temp, humidity, weirdness, erosion);
+            case 2 -> getMid(temp, humidity, weirdness, erosion);
+            case 3 -> getHigh(temp, humidity, weirdness, erosion);
+            default -> getPeaks(temp, humidity, weirdness, erosion);
         };
     }
 
-    public static @NotNull Biome getValley(BiomeParameterPoint paramPoint) {
-        int erosion = ParamPoints.EROSION.getFixedPoint(paramPoint);
-        int temp = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
+    public static @NotNull ResourceKey<Biome> getValley(int temp, int humidity, int weirdness, int erosion) {
         return switch (erosion) {
-            case 0, 1 -> temp == 4 ? BadlandBiomes.getBiome(paramPoint) : MiddleBiomes.getBiome(paramPoint);
-            case 2, 3, 4, 5 -> RiverBiomes.getBiome(paramPoint);
+            case 0, 1 ->
+                temp == 4 ? BadlandBiomes.getBiome(temp, humidity, weirdness) : MiddleBiomes.getBiome(temp, humidity, weirdness);
+            case 2, 3, 4, 5 -> RiverBiomes.getBiome(temp, humidity, weirdness);
             default -> switch (temp) {
-                case 0 -> RiverBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomesOld.SWAMP_DRIPLEAF_SWAMP;
-                default -> Biome.MANGROVE_SWAMP;
+                case 0 -> RiverBiomes.getBiome(temp, humidity, weirdness);
+                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+                default -> Biomes.MANGROVE_SWAMP;
             };
         };
     }
 
-    public static @NotNull Biome getLow(BiomeParameterPoint paramPoint) {
-        int erosion = ParamPoints.EROSION.getFixedPoint(paramPoint);
-        int temp = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
-        int humidity = ParamPoints.HUMIDITY.getFixedPoint(paramPoint);
+    public static @NotNull ResourceKey<Biome> getLow(int temp, int humidity, int weirdness, int erosion) {
         return switch (erosion) {
             case 0, 1 -> switch (temp) {
                 case 0 -> switch (humidity) {
-                    case 0, 1 -> Biome.SNOWY_SLOPES;
-                    default -> Biome.GROVE;
+                    case 0, 1 -> Biomes.SNOWY_SLOPES;
+                    default -> Biomes.GROVE;
                 };
-                case 1, 2, 3 -> MiddleBiomes.getBiome(paramPoint);
-                default -> BadlandBiomes.getBiome(paramPoint);
+                case 1, 2, 3 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
+                default -> BadlandBiomes.getBiome(temp, humidity, weirdness);
             };
-            case 2, 3 -> temp == 4 ? BadlandBiomes.getBiome(paramPoint) : MiddleBiomes.getBiome(paramPoint);
-            case 4, 5 -> MiddleBiomes.getBiome(paramPoint);
+            case 2, 3 ->
+                temp == 4 ? BadlandBiomes.getBiome(temp, humidity, weirdness) : MiddleBiomes.getBiome(temp, humidity, weirdness);
+            case 4, 5 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
             default -> switch (temp) {
-                case 0 -> MiddleBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomesOld.SWAMP_DRIPLEAF_SWAMP;
-                default -> Biome.MANGROVE_SWAMP;
+                case 0 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
+                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+                default -> Biomes.MANGROVE_SWAMP;
             };
         };
     }
 
-    public static @NotNull Biome getMid(BiomeParameterPoint paramPoint) {
-        int erosion = ParamPoints.EROSION.getFixedPoint(paramPoint);
-        int temp = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
-        int humidity = ParamPoints.HUMIDITY.getFixedPoint(paramPoint);
+    public static @NotNull ResourceKey<Biome> getMid(int temp, int humidity, int weirdness, int erosion) {
         return switch (erosion) {
-            case 0 -> temp < 3 ? humidity < 2 ? Biome.SNOWY_SLOPES : Biome.GROVE : PlateauBiomes.getBiome(paramPoint);
+            case 0 ->
+                temp < 3 ? humidity < 2 ? Biomes.SNOWY_SLOPES : Biomes.GROVE : PlateauBiomes.getBiome(temp, humidity, weirdness);
             case 1 -> {
                 if (temp == 0) {
-                    yield humidity <= 1 ? Biome.SNOWY_SLOPES : Biome.GROVE;
+                    yield humidity <= 1 ? Biomes.SNOWY_SLOPES : Biomes.GROVE;
                 } else if (temp < 4) {
-                    yield MiddleBiomes.getBiome(paramPoint);
+                    yield MiddleBiomes.getBiome(temp, humidity, weirdness);
                 } else {
-                    yield BadlandBiomes.getBiome(paramPoint);
+                    yield BadlandBiomes.getBiome(temp, humidity, weirdness);
                 }
             }
-            case 2, 3 -> temp < 4 ? MiddleBiomes.getBiome(paramPoint) : BadlandBiomes.getBiome(paramPoint);
-            case 4 -> MiddleBiomes.getBiome(paramPoint);
-            case 5 -> ShatteredBiomes.getBiome(paramPoint);
+            case 2, 3 ->
+                temp < 4 ? MiddleBiomes.getBiome(temp, humidity, weirdness) : BadlandBiomes.getBiome(temp, humidity, weirdness);
+            case 4 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
+            case 5 -> ShatteredBiomes.getBiome(temp, humidity, weirdness);
             default -> switch (temp) {
-                case 0 -> MiddleBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomesOld.SWAMP_DRIPLEAF_SWAMP;
-                default -> Biome.MANGROVE_SWAMP;
+                case 0 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
+                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+                default -> Biomes.MANGROVE_SWAMP;
             };
         };
     }
 
-    public static @NotNull Biome getHigh(BiomeParameterPoint paramPoint) {
-        int erosion = ParamPoints.EROSION.getFixedPoint(paramPoint);
-        int temp = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
-        int humidity = ParamPoints.HUMIDITY.getFixedPoint(paramPoint);
-        int weirdness = ParamPoints.WEIRDNESS.getFixedPoint(paramPoint);
+    public static @NotNull ResourceKey<Biome> getHigh(int temp, int humidity, int weirdness, int erosion) {
         return switch (erosion) {
             case 0 -> switch (temp) {
-                case 0, 1, 2 -> weirdness == 1 ? Biome.FROZEN_PEAKS : Biome.JAGGED_PEAKS;
-                case 3 -> Biome.STONY_PEAKS;
-                default -> BadlandBiomes.getBiome(paramPoint);
+                case 0, 1, 2 -> weirdness == 1 ? Biomes.FROZEN_PEAKS : Biomes.JAGGED_PEAKS;
+                case 3 -> Biomes.STONY_PEAKS;
+                default -> BadlandBiomes.getBiome(temp, humidity, weirdness);
             };
             case 1 -> switch (temp) {
-                case 0, 1, 2 -> humidity <= 1 ? Biome.SNOWY_SLOPES : Biome.GROVE;
-                default -> PlateauBiomes.getBiome(paramPoint);
+                case 0, 1, 2 -> humidity <= 1 ? Biomes.SNOWY_SLOPES : Biomes.GROVE;
+                default -> PlateauBiomes.getBiome(temp, humidity, weirdness);
             };
-            case 2 -> PlateauBiomes.getBiome(paramPoint);
-            case 3 -> temp < 4 ? MiddleBiomes.getBiome(paramPoint) : BadlandBiomes.getBiome(paramPoint);
-            case 4 -> MiddleBiomes.getBiome(paramPoint);
-            case 5 -> ShatteredBiomes.getBiome(paramPoint);
-            default -> MiddleBiomes.getBiome(paramPoint);
+            case 2 -> PlateauBiomes.getBiome(temp, humidity, weirdness);
+            case 3 ->
+                temp < 4 ? MiddleBiomes.getBiome(temp, humidity, weirdness) : BadlandBiomes.getBiome(temp, humidity, weirdness);
+            case 4 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
+            case 5 -> ShatteredBiomes.getBiome(temp, humidity, weirdness);
+            default -> MiddleBiomes.getBiome(temp, humidity, weirdness);
         };
     }
 
-    public static @NotNull Biome getPeaks(BiomeParameterPoint paramPoint) {
-        int erosion = ParamPoints.EROSION.getFixedPoint(paramPoint);
-        int temp = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
-        int weirdness = ParamPoints.WEIRDNESS.getFixedPoint(paramPoint);
+    public static @NotNull ResourceKey<Biome> getPeaks(int temp, int humidity, int weirdness, int erosion) {
         return switch (erosion) {
-            case 0,1 -> switch (temp) {
-                case 0, 1, 2 -> weirdness == 1 ? Biome.FROZEN_PEAKS : Biome.JAGGED_PEAKS;
-                case 3 -> Biome.STONY_PEAKS;
-                default -> BadlandBiomes.getBiome(paramPoint);
+            case 0, 1 -> switch (temp) {
+                case 0, 1, 2 -> weirdness == 1 ? Biomes.FROZEN_PEAKS : Biomes.JAGGED_PEAKS;
+                case 3 -> Biomes.STONY_PEAKS;
+                default -> BadlandBiomes.getBiome(temp, humidity, weirdness);
             };
-            case 2 -> PlateauBiomes.getBiome(paramPoint);
-            case 3 -> temp < 4 ? MiddleBiomes.getBiome(paramPoint) : BadlandBiomes.getBiome(paramPoint);
-            case 4 -> MiddleBiomes.getBiome(paramPoint);
-            case 5 -> ShatteredBiomes.getBiome(paramPoint);
-            default -> MiddleBiomes.getBiome(paramPoint);
+            case 2 -> PlateauBiomes.getBiome(temp, humidity, weirdness);
+            case 3 ->
+                temp < 4 ? MiddleBiomes.getBiome(temp, humidity, weirdness) : BadlandBiomes.getBiome(temp, humidity, weirdness);
+            case 4 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
+            case 5 -> ShatteredBiomes.getBiome(temp, humidity, weirdness);
+            default -> MiddleBiomes.getBiome(temp, humidity, weirdness);
         };
     }
 

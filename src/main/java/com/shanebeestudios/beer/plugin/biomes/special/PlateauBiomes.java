@@ -1,63 +1,60 @@
 package com.shanebeestudios.beer.plugin.biomes.special;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
-import com.shanebeestudios.beer.api.utils.ParamPoints;
-import org.bukkit.block.Biome;
-import org.bukkit.generator.BiomeParameterPoint;
+import com.shanebeestudios.beer.plugin.registration.BeerBiomes;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import org.jetbrains.annotations.NotNull;
 
 public class PlateauBiomes {
 
-    public static @NotNull Biome getBiome(BiomeParameterPoint paramPoint) {
-        int humidity = ParamPoints.HUMIDITY.getFixedPoint(paramPoint);
-        int temperature = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
-        int weirdness = ParamPoints.WEIRDNESS.getFixedPoint(paramPoint);
-        return switch (temperature) {
+    public static @NotNull ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness) {
+        return switch (temp) {
             case 0 -> getFrozen(humidity, weirdness);
             case 1 -> getCold(humidity, weirdness);
             case 2 -> getTemperate(humidity, weirdness);
             case 3 -> getWarm(humidity, weirdness);
-            default -> getHot(paramPoint);
+            default -> getHot(temp, humidity, weirdness);
         };
     }
 
-    private static @NotNull Biome getFrozen(int humidity, int weirdness) {
+    private static @NotNull ResourceKey<Biome> getFrozen(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> weirdness == 1 ? Biome.ICE_SPIKES : Biome.SNOWY_PLAINS;
-            case 1, 2 -> Biome.SNOWY_PLAINS;
-            default -> Biome.SNOWY_TAIGA;
+            case 0 -> weirdness == 1 ? Biomes.ICE_SPIKES : Biomes.SNOWY_PLAINS;
+            case 1, 2 -> Biomes.SNOWY_PLAINS;
+            default -> Biomes.SNOWY_TAIGA;
         };
     }
 
-    private static @NotNull Biome getCold(int humidity, int weirdness) {
+    private static @NotNull ResourceKey<Biome> getCold(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> weirdness == 1 ? Biome.CHERRY_GROVE : Biome.MEADOW;
-            case 1 -> Biome.MEADOW;
-            case 2 -> weirdness == 1 ? Biome.MEADOW : Biome.FOREST;
-            case 3 -> weirdness == 1 ? Biome.MEADOW : Biome.TAIGA;
-            default -> weirdness == 1 ? Biome.OLD_GROWTH_PINE_TAIGA : Biome.OLD_GROWTH_SPRUCE_TAIGA;
+            case 0 -> weirdness == 1 ? Biomes.CHERRY_GROVE : Biomes.MEADOW;
+            case 1 -> Biomes.MEADOW;
+            case 2 -> weirdness == 1 ? Biomes.MEADOW : Biomes.FOREST;
+            case 3 -> weirdness == 1 ? Biomes.MEADOW : Biomes.TAIGA;
+            default -> weirdness == 1 ? Biomes.OLD_GROWTH_PINE_TAIGA : Biomes.OLD_GROWTH_SPRUCE_TAIGA;
         };
     }
 
-    private static @NotNull Biome getTemperate(int humidity, int weirdness) {
+    private static @NotNull ResourceKey<Biome> getTemperate(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0, 1 -> weirdness == 1 ? Biome.CHERRY_GROVE : Biome.MEADOW;
-            case 2 -> weirdness == 1 ? Biome.FOREST : BeerBiomesOld.FOREST_MOSS_GARDEN;
-            case 3 -> weirdness == 1 ? Biome.BIRCH_FOREST : Biome.MEADOW;
-            default -> weirdness == 1 ? Biome.PALE_GARDEN : Biome.DARK_FOREST;
+            case 0, 1 -> weirdness == 1 ? Biomes.CHERRY_GROVE : Biomes.MEADOW;
+            case 2 -> weirdness == 1 ? Biomes.FOREST : BeerBiomes.FOREST_MOSS_GARDEN;
+            case 3 -> weirdness == 1 ? Biomes.BIRCH_FOREST : Biomes.MEADOW;
+            default -> weirdness == 1 ? Biomes.PALE_GARDEN : Biomes.DARK_FOREST;
         };
     }
 
-    private static @NotNull Biome getWarm(int humidity, int weirdness) {
+    private static @NotNull ResourceKey<Biome> getWarm(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0, 1 -> Biome.SAVANNA_PLATEAU;
-            case 2, 3 -> Biome.FOREST;
-            default -> Biome.JUNGLE;
+            case 0, 1 -> Biomes.SAVANNA_PLATEAU;
+            case 2, 3 -> Biomes.FOREST;
+            default -> Biomes.JUNGLE;
         };
     }
 
-    private static @NotNull Biome getHot(BiomeParameterPoint paramPoint) {
-        return BadlandBiomes.getBiome(paramPoint);
+    private static @NotNull ResourceKey<Biome> getHot(int temp, int humidity, int weirdness) {
+        return BadlandBiomes.getBiome(temp, humidity, weirdness);
     }
 
 }

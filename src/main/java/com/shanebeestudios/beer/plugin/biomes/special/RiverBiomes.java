@@ -1,19 +1,18 @@
 package com.shanebeestudios.beer.plugin.biomes.special;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
-import com.shanebeestudios.beer.api.utils.ParamPoints;
-import org.bukkit.block.Biome;
-import org.bukkit.generator.BiomeParameterPoint;
+import com.shanebeestudios.beer.plugin.registration.BeerBiomes;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 
 public class RiverBiomes {
 
-    public static Biome getBiome(BiomeParameterPoint paramPoint) {
-        int temp = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
+    public static ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness) {
         return switch (temp) {
-            case 0 -> Biome.FROZEN_RIVER;
-            case 3 -> BeerBiomesOld.RIVER_LUSH_RIVER;
-            case 4 -> BeerBiomesOld.RIVER_DESERT_RIVER;
-            default -> BeerBiomesOld.RIVER_TEMPERATE_RIVER;
+            case 0 -> Biomes.FROZEN_RIVER;
+            case 3 -> BeerBiomes.RIVER_LUSH_RIVER;
+            case 4 -> BeerBiomes.RIVER_DESERT_RIVER;
+            default -> BeerBiomes.RIVER_TEMPERATE_RIVER;
         };
     }
 

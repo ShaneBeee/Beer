@@ -1,17 +1,14 @@
 package com.shanebeestudios.beer.plugin.biomes.special;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
-import com.shanebeestudios.beer.api.utils.ParamPoints;
-import org.bukkit.block.Biome;
-import org.bukkit.generator.BiomeParameterPoint;
+import com.shanebeestudios.beer.plugin.registration.BeerBiomes;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 
 public class MiddleBiomes {
 
-    public static Biome getBiome(BiomeParameterPoint paramPoint) {
-        int humidity = ParamPoints.HUMIDITY.getFixedPoint(paramPoint);
-        int temperature = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
-        int weirdness = ParamPoints.WEIRDNESS.getFixedPoint(paramPoint);
-        return switch (temperature) {
+    public static ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness) {
+        return switch (temp) {
             case 0 -> getFrozen(humidity, weirdness);
             case 1 -> getCold(humidity, weirdness);
             case 2 -> getTemperate(humidity, weirdness);
@@ -20,48 +17,48 @@ public class MiddleBiomes {
         };
     }
 
-    private static Biome getFrozen(int humidity, int weirdness) {
+    private static ResourceKey<Biome> getFrozen(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> weirdness == 1 ? Biome.ICE_SPIKES : Biome.SNOWY_PLAINS;
-            case 1 -> Biome.SNOWY_PLAINS;
-            case 2 -> weirdness == 1 ? Biome.SNOWY_TAIGA : Biome.SNOWY_PLAINS;
-            case 3 -> Biome.SNOWY_TAIGA;
-            default -> Biome.TAIGA;
+            case 0 -> weirdness == 1 ? Biomes.ICE_SPIKES : Biomes.SNOWY_PLAINS;
+            case 1 -> Biomes.SNOWY_PLAINS;
+            case 2 -> weirdness == 1 ? Biomes.SNOWY_TAIGA : Biomes.SNOWY_PLAINS;
+            case 3 -> Biomes.SNOWY_TAIGA;
+            default -> Biomes.TAIGA;
         };
     }
 
-    private static Biome getCold(int humidity, int weirdness) {
+    private static ResourceKey<Biome> getCold(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> BeerBiomesOld.PLAINS_DRY_PLAINS;
-            case 1 -> BeerBiomesOld.PLAINS_PLAINS;
-            case 2 -> BeerBiomesOld.FOREST_TALL_OAK;
-            case 3 -> Biome.TAIGA;
-            default -> weirdness == 1 ? Biome.OLD_GROWTH_PINE_TAIGA : Biome.OLD_GROWTH_SPRUCE_TAIGA;
+            case 0 -> BeerBiomes.PLAINS_DRY_PLAINS;
+            case 1 -> BeerBiomes.PLAINS_PLAINS;
+            case 2 -> BeerBiomes.FOREST_TALL_OAK;
+            case 3 -> Biomes.TAIGA;
+            default -> weirdness == 1 ? Biomes.OLD_GROWTH_PINE_TAIGA : Biomes.OLD_GROWTH_SPRUCE_TAIGA;
         };
     }
 
-    private static Biome getTemperate(int humidity, int weirdness) {
+    private static ResourceKey<Biome> getTemperate(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> weirdness == 1 ? Biome.SUNFLOWER_PLAINS : Biome.FLOWER_FOREST;
-            case 1 -> BeerBiomesOld.PLAINS_PLAINS;
-            case 2 -> Biome.FOREST;
-            case 3 -> weirdness == 1 ? Biome.OLD_GROWTH_BIRCH_FOREST : Biome.BIRCH_FOREST;
-            default -> weirdness == 1 ? BeerBiomesOld.PLAINS_LUSH_PLAINS : Biome.DARK_FOREST;
+            case 0 -> weirdness == 1 ? Biomes.SUNFLOWER_PLAINS : Biomes.FLOWER_FOREST;
+            case 1 -> BeerBiomes.PLAINS_PLAINS;
+            case 2 -> Biomes.FOREST;
+            case 3 -> weirdness == 1 ? Biomes.OLD_GROWTH_BIRCH_FOREST : Biomes.BIRCH_FOREST;
+            default -> weirdness == 1 ? BeerBiomes.PLAINS_LUSH_PLAINS : Biomes.DARK_FOREST;
         };
     }
 
-    private static Biome getWarm(int humidity, int weirdness) {
+    private static ResourceKey<Biome> getWarm(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> Biome.SAVANNA;
-            case 1 -> BeerBiomesOld.PLAINS_DRY_PLAINS;
-            case 2 -> weirdness == 1 ? BeerBiomesOld.PLAINS_PLAINS : BeerBiomesOld.FOREST_LUSH_FOREST;
-            case 3 -> weirdness == 1 ? Biome.SPARSE_JUNGLE : Biome.JUNGLE;
-            default -> weirdness == 1 ? Biome.BAMBOO_JUNGLE : Biome.JUNGLE;
+            case 0 -> Biomes.SAVANNA;
+            case 1 -> BeerBiomes.PLAINS_DRY_PLAINS;
+            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS_PLAINS : BeerBiomes.FOREST_LUSH_FOREST;
+            case 3 -> weirdness == 1 ? Biomes.SPARSE_JUNGLE : Biomes.JUNGLE;
+            default -> weirdness == 1 ? Biomes.BAMBOO_JUNGLE : Biomes.JUNGLE;
         };
     }
 
-    private static Biome getHot(int humidity, int weirdness) {
-        return humidity <= 2 ? BeerBiomesOld.DESERT_DRY_DESERT : BeerBiomesOld.DESERT_LUSH_DESERT;
+    private static ResourceKey<Biome> getHot(int humidity, int weirdness) {
+        return humidity <= 2 ? BeerBiomes.DESERT_DRY_DESERT : BeerBiomes.DESERT_LUSH_DESERT;
     }
 
 }

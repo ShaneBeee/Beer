@@ -1,17 +1,9 @@
 package com.shanebeestudios.beer.api.utils;
 
-import org.bukkit.generator.BiomeParameterPoint;
-
 public enum ParamPoints {
     CONTINENTALNESS() {
         @Override
-        public double getPoint(BiomeParameterPoint point) {
-            return point.getContinentalness();
-        }
-
-        @Override
-        public int getFixedPoint(BiomeParameterPoint point) {
-            double continentalness = point.getContinentalness();
+        public int getFixedPoint(double continentalness) {
             if (continentalness <= -1.05) return 0; // Mushroom Fields
             else if (continentalness <= -0.455) return 1; // Deep ocean
             else if (continentalness <= -0.19) return 2; // Ocean
@@ -24,26 +16,15 @@ public enum ParamPoints {
     },
     DEPTH() {
         @Override
-        public double getPoint(BiomeParameterPoint point) {
-            return point.getDepth();
-        }
-
-        @Override
-        public int getFixedPoint(BiomeParameterPoint point) {
+        public int getFixedPoint(double point) {
             // Depth doesn't have a fixed point
             // So let's just do some math
-            return (int) (point.getDepth() * 128);
+            return (int) (point * 128);
         }
     },
     EROSION() {
         @Override
-        public double getPoint(BiomeParameterPoint point) {
-            return point.getErosion();
-        }
-
-        @Override
-        public int getFixedPoint(BiomeParameterPoint point) {
-            double erosion = point.getErosion();
+        public int getFixedPoint(double erosion) {
             if (erosion <= -0.78) return 0;
             else if (erosion <= -0.375) return 1;
             else if (erosion <= -0.2225) return 2;
@@ -56,13 +37,7 @@ public enum ParamPoints {
     },
     HUMIDITY() {
         @Override
-        public double getPoint(BiomeParameterPoint point) {
-            return point.getHumidity();
-        }
-
-        @Override
-        public int getFixedPoint(BiomeParameterPoint point) {
-            double humidity = point.getHumidity();
+        public int getFixedPoint(double humidity) {
             if (humidity <= -0.35) return 0;
             else if (humidity <= -0.1) return 1;
             else if (humidity <= 0.1) return 2;
@@ -72,14 +47,13 @@ public enum ParamPoints {
         }
     },
     PEAKS_AND_VALLEYS() {
-        @Override
-        public double getPoint(BiomeParameterPoint point) {
-            return -(Math.abs(Math.abs(point.getWeirdness()) - 0.6666667F) - 0.33333334F) * 3.0F;
+        private double getPoint(double weirdness) {
+            return -(Math.abs(Math.abs(weirdness) - 0.6666667F) - 0.33333334F) * 3.0F;
         }
 
         @Override
-        public int getFixedPoint(BiomeParameterPoint point) {
-            double peaksAndValleys = getPoint(point);
+        public int getFixedPoint(double weirdness) {
+            double peaksAndValleys = getPoint(weirdness);
             if (peaksAndValleys <= -0.85) return 0; // Valleys
             else if (peaksAndValleys <= -0.6) return 1; // Low
             else if (peaksAndValleys <= 0.2) return 2; // Mid
@@ -90,40 +64,27 @@ public enum ParamPoints {
     },
     TEMPERATURE() {
         @Override
-        public double getPoint(BiomeParameterPoint point) {
-            return point.getTemperature();
-        }
-
-        @Override
-        public int getFixedPoint(BiomeParameterPoint point) {
-            double temperature = point.getTemperature();
-            if (temperature <= -0.45) return 0;
-            else if (temperature <= -0.15) return 1;
-            else if (temperature <= 0.2) return 2;
-            else if (temperature <= 0.55) return 3;
-            else if (temperature <= 1.0) return 4;
+        public int getFixedPoint(double point) {
+            if (point <= -0.45) return 0;
+            else if (point <= -0.15) return 1;
+            else if (point <= 0.2) return 2;
+            else if (point <= 0.55) return 3;
+            else if (point <= 1.0) return 4;
             else return 5; // This shouldn't happen, but safety measure
         }
     },
     WEIRDNESS() {
         @Override
-        public double getPoint(BiomeParameterPoint point) {
-            return point.getWeirdness();
-        }
-
-        @Override
-        public int getFixedPoint(BiomeParameterPoint point) {
+        public int getFixedPoint(double point) {
             // I couldn't find great data on this one
             // This is all I could find
-            return point.getWeirdness() <= 0 ? 0 : 1;
+            return point <= 0 ? 0 : 1;
         }
     };
 
     ParamPoints() {
     }
 
-    public abstract double getPoint(BiomeParameterPoint point);
-
-    public abstract int getFixedPoint(BiomeParameterPoint point);
+    public abstract int getFixedPoint(double point);
 
 }

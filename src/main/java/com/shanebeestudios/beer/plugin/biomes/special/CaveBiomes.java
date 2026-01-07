@@ -1,20 +1,20 @@
 package com.shanebeestudios.beer.plugin.biomes.special;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
-import com.shanebeestudios.beer.api.utils.ParamPoints;
-import org.bukkit.block.Biome;
-import org.bukkit.generator.BiomeParameterPoint;
+import com.shanebeestudios.beer.plugin.registration.BeerBiomes;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import org.jetbrains.annotations.Nullable;
 
 public class CaveBiomes {
 
-    public static Biome getBiome(BiomeParameterPoint paramPoint) {
-        int temp = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
-        int humidity = ParamPoints.HUMIDITY.getFixedPoint(paramPoint);
+    @Nullable
+    public static ResourceKey<Biome> getBiome(int temp, int humidity) {
         if (temp <= 1) {
-            return BeerBiomesOld.CAVE_ICE_CAVE;
+            return BeerBiomes.CAVE_ICE_CAVE;
         } else if (temp >= 3) {
-            if (humidity <= 1) return BeerBiomesOld.CAVE_DRY_CAVE;
-            else if (humidity >= 3) return Biome.LUSH_CAVES;
+            if (humidity <= 1) return BeerBiomes.CAVE_DRY_CAVE;
+            else if (humidity >= 3) return Biomes.LUSH_CAVES;
         }
         return null;
     }

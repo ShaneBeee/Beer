@@ -1,18 +1,16 @@
 package com.shanebeestudios.beer.plugin.biomes.special;
 
-import com.shanebeestudios.beer.api.utils.ParamPoints;
-import org.bukkit.block.Biome;
-import org.bukkit.generator.BiomeParameterPoint;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 
 public class BadlandBiomes {
 
-    public static Biome getBiome(BiomeParameterPoint point) {
-        int humidity = ParamPoints.HUMIDITY.getFixedPoint(point);
-        int weirdness = ParamPoints.WEIRDNESS.getFixedPoint(point);
+    public static ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness) {
         return switch (humidity) {
-            case 0,1 -> weirdness == 1 ? Biome.ERODED_BADLANDS : Biome.BADLANDS;
-            case 2 -> Biome.BADLANDS;
-            default -> Biome.WOODED_BADLANDS;
+            case 0, 1 -> weirdness == 1 ? Biomes.ERODED_BADLANDS : Biomes.BADLANDS;
+            case 2 -> Biomes.BADLANDS;
+            default -> Biomes.WOODED_BADLANDS;
         };
     }
 

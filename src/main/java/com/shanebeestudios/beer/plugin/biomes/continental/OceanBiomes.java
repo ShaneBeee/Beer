@@ -1,19 +1,18 @@
 package com.shanebeestudios.beer.plugin.biomes.continental;
 
-import com.shanebeestudios.beer.api.utils.ParamPoints;
-import org.bukkit.block.Biome;
-import org.bukkit.generator.BiomeParameterPoint;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 
 public class OceanBiomes {
 
-    public static Biome getBiome(BiomeParameterPoint paramPoint) {
-        int temp = ParamPoints.TEMPERATURE.getFixedPoint(paramPoint);
+    public static ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness) {
         return switch (temp) {
-            case 0 -> Biome.FROZEN_OCEAN;
-            case 1 -> Biome.COLD_OCEAN;
-            case 2 -> Biome.OCEAN;
-            case 3 -> Biome.LUKEWARM_OCEAN;
-            default -> Biome.WARM_OCEAN;
+            case 0 -> Biomes.FROZEN_OCEAN;
+            case 1 -> Biomes.COLD_OCEAN;
+            case 2 -> Biomes.OCEAN;
+            case 3 -> Biomes.LUKEWARM_OCEAN;
+            default -> Biomes.WARM_OCEAN;
         };
     }
 

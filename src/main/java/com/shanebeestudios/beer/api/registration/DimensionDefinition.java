@@ -17,6 +17,7 @@ import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +75,7 @@ public class DimensionDefinition implements Definition<LevelStem> {
         }
 
         @SuppressWarnings("UnusedReturnValue")
-        public Builder addPoint(ResourceKey<Biome> biomeKey, Parameter continentalness, Parameter temperature, Parameter humidity, Parameter erosion, Parameter depth, Parameter weirdness, long offset) {
+        public Builder addPoint(@NotNull ResourceKey<Biome> biomeKey, Parameter continentalness, Parameter temperature, Parameter humidity, Parameter erosion, Parameter depth, Parameter weirdness, long offset) {
             ParameterPoint parameterPoint = new ParameterPoint(temperature, humidity, continentalness, erosion, depth, weirdness, offset);
             Holder.Reference<Biome> biomeReference = RegistryUtils.getBiomeReference(biomeKey);
             this.paramList.add(new Pair<>(parameterPoint, biomeReference));
