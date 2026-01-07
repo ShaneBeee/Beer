@@ -16,7 +16,7 @@ public class BiomeGenerator extends BiomeProvider {
     private static final List<Biome> AVAILABLE_BIOMES = new ArrayList<>();
 
     static {
-        AVAILABLE_BIOMES.addAll(BeerBiomes.BEER_BIOMES);
+        AVAILABLE_BIOMES.addAll(BeerBiomesOld.BEER_BIOMES);
         for (Biome biome : RegistryAccess.registryAccess().getRegistry(RegistryKey.BIOME)) {
             if (biome.getKey().namespace().equals("minecraft")) {
                 AVAILABLE_BIOMES.add(biome);

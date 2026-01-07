@@ -1,6 +1,6 @@
 package com.shanebeestudios.beer.plugin.biomes.continental;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomes;
+import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
 import com.shanebeestudios.beer.api.utils.ParamPoints;
 import com.shanebeestudios.beer.plugin.biomes.special.BadlandBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.BeachBiomes;
@@ -29,8 +29,8 @@ public class CoastalBiomes {
         int humidity = ParamPoints.HUMIDITY.getFixedPoint(paramPoint);
         return switch (temp) {
             case 0, 1 -> RiverBiomes.getBiome(paramPoint);
-            case 2 -> BeerBiomes.RIVER_TEMPERATE_RIVER;
-            default -> humidity > 3 ? BeerBiomes.RIVER_LUSH_RIVER : BeerBiomes.RIVER_DESERT_RIVER;
+            case 2 -> BeerBiomesOld.RIVER_TEMPERATE_RIVER;
+            default -> humidity > 3 ? BeerBiomesOld.RIVER_LUSH_RIVER : BeerBiomesOld.RIVER_DESERT_RIVER;
         };
     }
 

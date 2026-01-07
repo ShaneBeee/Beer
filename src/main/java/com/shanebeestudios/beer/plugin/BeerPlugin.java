@@ -23,12 +23,12 @@ public class BeerPlugin extends JavaPlugin {
 
         Datapack zBeer = Bukkit.getDatapackManager().getPack("file/Z-Beer.zip");
         if (zBeer != null && zBeer.isEnabled()) {
-            Utils.log("&bLoading custom world...");
-            if (loadCustomWorld()) {
-                Utils.log("&aCustom world loaded!");
-            } else {
-                Utils.log("&cFailed to load custom world!");
-            }
+//            Utils.log("&bLoading custom world...");
+//            if (loadCustomWorld()) {
+//                Utils.log("&aCustom world loaded!");
+//            } else {
+//                Utils.log("&cFailed to load custom world!");
+//            }
         } else {
             Utils.log("Attempting to register definables and dump for datapacks");
             // Register definable objects

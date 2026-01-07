@@ -21,19 +21,19 @@ public class DimensionRegistration {
 
     @SuppressWarnings("unchecked")
     public DimensionRegistration() {
-        Builder builder = DimensionDefinition.overworldBuilder(Dimensions.BEER_TEST_WORLD);
+        Builder builder = DimensionDefinition.overworldBuilder(Dimensions.BEER_WORLD);
         this.MIDDLE_BIOMES = new ResourceKey[][]{
             {Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.TAIGA},
-            {Biomes.PLAINS, Biomes.PLAINS, Biomes.FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA},
-            {Biomes.FLOWER_FOREST, Biomes.PLAINS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST},
+            {BeerBiomes.PLAINS_PLAINS, BeerBiomes.PLAINS_PLAINS, Biomes.FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA},
+            {Biomes.FLOWER_FOREST, BeerBiomes.PLAINS_LUSH_PLAINS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST},
             {Biomes.SAVANNA, Biomes.SAVANNA, Biomes.FOREST, Biomes.JUNGLE, Biomes.JUNGLE},
-            {Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, Biomes.DESERT}
+            {Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, BeerBiomes.DESERT_LUSH_DESERT, BeerBiomes.DESERT_LUSH_DESERT}
         };
         this.MIDDLE_BIOMES_VARIANT = new ResourceKey[][]{
             {Biomes.ICE_SPIKES, null, Biomes.SNOWY_TAIGA, null, null},
             {null, null, null, null, Biomes.OLD_GROWTH_PINE_TAIGA},
             {Biomes.SUNFLOWER_PLAINS, null, null, Biomes.OLD_GROWTH_BIRCH_FOREST, null},
-            {null, null, Biomes.PLAINS, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE},
+            {null, null, BeerBiomes.PLAINS_LUSH_PLAINS, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE},
             {null, null, null, null, null}
         };
         this.PLATEAU_BIOMES = new ResourceKey[][]{
@@ -46,7 +46,7 @@ public class DimensionRegistration {
         this.PLATEAU_BIOMES_VARIANT = new ResourceKey[][]{
             {Biomes.ICE_SPIKES, null, null, null, null},
             {Biomes.CHERRY_GROVE, null, Biomes.MEADOW, Biomes.MEADOW, Biomes.OLD_GROWTH_PINE_TAIGA},
-            {Biomes.CHERRY_GROVE, Biomes.CHERRY_GROVE, Biomes.FOREST, Biomes.BIRCH_FOREST, null},
+            {Biomes.CHERRY_GROVE, Biomes.CHERRY_GROVE, Biomes.FOREST, BeerBiomes.FOREST_LUSH_FOREST, BeerBiomes.FOREST_MOSS_GARDEN},
             {null, null, null, null, null},
             {Biomes.ERODED_BADLANDS, Biomes.ERODED_BADLANDS, null, null, null}
         };
@@ -151,7 +151,6 @@ public class DimensionRegistration {
                 addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.COAST_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, pickMiddleBiome);
             }
         }
-
     }
 
     private void addHighSlice(Builder builder, Parameter weirdness) {
@@ -184,13 +183,10 @@ public class DimensionRegistration {
                 addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.COAST_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, resourcekey);
             }
         }
-
     }
 
     private void addMidSlice(Builder builder, Parameter weirdness) {
         addSurfaceBiome(builder, BiomeDefaults.FULL_RANGE, BiomeDefaults.FULL_RANGE, BiomeDefaults.COAST_CONTINENTALNESS, Parameter.span(BiomeDefaults.EROSIONS[0], BiomeDefaults.EROSIONS[2]), weirdness, 0, Biomes.STONY_SHORE);
-        addSurfaceBiome(builder, Parameter.span(BiomeDefaults.TEMPERATURES[1], BiomeDefaults.TEMPERATURES[2]), BiomeDefaults.FULL_RANGE, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, Biomes.SWAMP);
-        addSurfaceBiome(builder, Parameter.span(BiomeDefaults.TEMPERATURES[3], BiomeDefaults.TEMPERATURES[4]), BiomeDefaults.FULL_RANGE, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, Biomes.MANGROVE_SWAMP);
 
         for (int tempIndex = 0; tempIndex < BiomeDefaults.TEMPERATURES.length; ++tempIndex) {
             Parameter temp = BiomeDefaults.TEMPERATURES[tempIndex];
@@ -202,14 +198,16 @@ public class DimensionRegistration {
                 ResourceKey<Biome> middleBiomeOrBadlandsIfHotOrSlopeIfCold = getMiddleBiomeOrBadlandsIfHotOrSlopeIfCold(tempIndex, humidityIndex, weirdness);
                 ResourceKey<Biome> shatteredBiome = getShattered(tempIndex, humidityIndex, weirdness);
                 ResourceKey<Biome> plateauBiome = getPlateau(tempIndex, humidityIndex, weirdness);
-                ResourceKey<Biome> beachBiome = getBeach(tempIndex, humidityIndex);
+                ResourceKey<Biome> beachBiome = getBeach(tempIndex, humidityIndex, weirdness);
                 ResourceKey<Biome> windsweptSavannaBiome = getWindsweptSavanna(tempIndex, humidityIndex, weirdness, middleBiome);
-                ResourceKey<Biome> resourcekey7 = getShatteredCoast(tempIndex, humidityIndex, weirdness);
-                ResourceKey<Biome> resourcekey8 = getSlope(tempIndex, humidityIndex, weirdness);
+                ResourceKey<Biome> shatteredCoastBiome = getShatteredCoast(tempIndex, humidityIndex, weirdness);
+                ResourceKey<Biome> slopeBiome = getSlope(tempIndex, humidityIndex, weirdness);
+                ResourceKey<Biome> swampBiome = getSwampBiome(tempIndex, humidityIndex, weirdness);
 
-                addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[0], weirdness, 0, resourcekey8);
+
+                addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[0], weirdness, 0, slopeBiome);
                 addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.MID_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[1], weirdness, 0, middleBiomeOrBadlandsIfHotOrSlopeIfCold);
-                addSurfaceBiome(builder, temp, humidity, BiomeDefaults.FAR_INLAND_CONTINENTALNESS, BiomeDefaults.EROSIONS[1], weirdness, 0, tempIndex == 0 ? resourcekey8 : plateauBiome);
+                addSurfaceBiome(builder, temp, humidity, BiomeDefaults.FAR_INLAND_CONTINENTALNESS, BiomeDefaults.EROSIONS[1], weirdness, 0, tempIndex == 0 ? slopeBiome : plateauBiome);
                 addSurfaceBiome(builder, temp, humidity, BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.EROSIONS[2], weirdness, 0, middleBiome);
                 addSurfaceBiome(builder, temp, humidity, BiomeDefaults.MID_INLAND_CONTINENTALNESS, BiomeDefaults.EROSIONS[2], weirdness, 0, middleBiomeOrBadlandsIfHot);
                 addSurfaceBiome(builder, temp, humidity, BiomeDefaults.FAR_INLAND_CONTINENTALNESS, BiomeDefaults.EROSIONS[2], weirdness, 0, plateauBiome);
@@ -222,7 +220,7 @@ public class DimensionRegistration {
                     addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.COAST_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[4], weirdness, 0, middleBiome);
                 }
 
-                addSurfaceBiome(builder, temp, humidity, BiomeDefaults.COAST_CONTINENTALNESS, BiomeDefaults.EROSIONS[5], weirdness, 0, resourcekey7);
+                addSurfaceBiome(builder, temp, humidity, BiomeDefaults.COAST_CONTINENTALNESS, BiomeDefaults.EROSIONS[5], weirdness, 0, shatteredCoastBiome);
                 addSurfaceBiome(builder, temp, humidity, BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.EROSIONS[5], weirdness, 0, windsweptSavannaBiome);
                 addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.MID_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[5], weirdness, 0, shatteredBiome);
                 if (weirdness.max() < 0L) {
@@ -234,14 +232,14 @@ public class DimensionRegistration {
                 if (tempIndex == 0) {
                     addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, middleBiome);
                 }
+
+                addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, swampBiome);
             }
         }
     }
 
     private void addLowSlice(Builder builder, Parameter weirdness) {
         addSurfaceBiome(builder, BiomeDefaults.FULL_RANGE, BiomeDefaults.FULL_RANGE, BiomeDefaults.COAST_CONTINENTALNESS, Parameter.span(BiomeDefaults.EROSIONS[0], BiomeDefaults.EROSIONS[2]), weirdness, 0, Biomes.STONY_SHORE);
-        addSurfaceBiome(builder, Parameter.span(BiomeDefaults.TEMPERATURES[1], BiomeDefaults.TEMPERATURES[2]), BiomeDefaults.FULL_RANGE, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, Biomes.SWAMP);
-        addSurfaceBiome(builder, Parameter.span(BiomeDefaults.TEMPERATURES[3], BiomeDefaults.TEMPERATURES[4]), BiomeDefaults.FULL_RANGE, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, Biomes.MANGROVE_SWAMP);
 
         for (int tempIndex = 0; tempIndex < BiomeDefaults.TEMPERATURES.length; ++tempIndex) {
             Parameter temp = BiomeDefaults.TEMPERATURES[tempIndex];
@@ -251,9 +249,10 @@ public class DimensionRegistration {
                 ResourceKey<Biome> resourcekey = getMiddle(tempIndex, humidityIndex, weirdness);
                 ResourceKey<Biome> resourcekey1 = getMiddleBiomeOrBadlandsIfHot(tempIndex, humidityIndex, weirdness);
                 ResourceKey<Biome> resourcekey2 = getMiddleBiomeOrBadlandsIfHotOrSlopeIfCold(tempIndex, humidityIndex, weirdness);
-                ResourceKey<Biome> resourcekey3 = getBeach(tempIndex, humidityIndex);
+                ResourceKey<Biome> resourcekey3 = getBeach(tempIndex, humidityIndex, weirdness);
                 ResourceKey<Biome> resourcekey4 = getWindsweptSavanna(tempIndex, humidityIndex, weirdness, resourcekey);
                 ResourceKey<Biome> resourcekey5 = getShatteredCoast(tempIndex, humidityIndex, weirdness);
+                ResourceKey<Biome> swampBiome = getSwampBiome(tempIndex, humidityIndex, weirdness);
 
                 addSurfaceBiome(builder, temp, humidity, BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, Parameter.span(BiomeDefaults.EROSIONS[0], BiomeDefaults.EROSIONS[1]), weirdness, 0, resourcekey1);
                 addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.MID_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), Parameter.span(BiomeDefaults.EROSIONS[0], BiomeDefaults.EROSIONS[1]), weirdness, 0, resourcekey2);
@@ -268,6 +267,7 @@ public class DimensionRegistration {
                 if (tempIndex == 0) {
                     addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, resourcekey);
                 }
+                addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.NEAR_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, swampBiome);
             }
         }
     }
@@ -281,18 +281,19 @@ public class DimensionRegistration {
         addSurfaceBiome(builder, BiomeDefaults.UNFROZEN_RANGE, BiomeDefaults.FULL_RANGE, Parameter.span(BiomeDefaults.COAST_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), Parameter.span(BiomeDefaults.EROSIONS[2], BiomeDefaults.EROSIONS[5]), weirdness, 0, Biomes.RIVER);
         addSurfaceBiome(builder, BiomeDefaults.TEMPERATURES[0], BiomeDefaults.FULL_RANGE, BiomeDefaults.COAST_CONTINENTALNESS, BiomeDefaults.EROSIONS[6], weirdness, 0, Biomes.FROZEN_RIVER);
         addSurfaceBiome(builder, BiomeDefaults.UNFROZEN_RANGE, BiomeDefaults.FULL_RANGE, BiomeDefaults.COAST_CONTINENTALNESS, BiomeDefaults.EROSIONS[6], weirdness, 0, Biomes.RIVER);
-        addSurfaceBiome(builder, Parameter.span(BiomeDefaults.TEMPERATURES[1], BiomeDefaults.TEMPERATURES[2]), BiomeDefaults.FULL_RANGE, Parameter.span(BiomeDefaults.INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, Biomes.SWAMP);
-        addSurfaceBiome(builder, Parameter.span(BiomeDefaults.TEMPERATURES[3], BiomeDefaults.TEMPERATURES[4]), BiomeDefaults.FULL_RANGE, Parameter.span(BiomeDefaults.INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, Biomes.MANGROVE_SWAMP);
+
         addSurfaceBiome(builder, BiomeDefaults.TEMPERATURES[0], BiomeDefaults.FULL_RANGE, Parameter.span(BiomeDefaults.INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, Biomes.FROZEN_RIVER);
 
-        for (int i = 0; i < BiomeDefaults.TEMPERATURES.length; ++i) {
-            Parameter climate_parameter = BiomeDefaults.TEMPERATURES[i];
+        for (int tempIndex = 0; tempIndex < BiomeDefaults.TEMPERATURES.length; ++tempIndex) {
+            Parameter temp = BiomeDefaults.TEMPERATURES[tempIndex];
 
-            for (int j = 0; j < BiomeDefaults.HUMIDITIES.length; ++j) {
-                Parameter climate_parameter1 = BiomeDefaults.HUMIDITIES[j];
-                ResourceKey<Biome> resourcekey = getMiddleBiomeOrBadlandsIfHot(i, j, weirdness);
+            for (int humidityIndex = 0; humidityIndex < BiomeDefaults.HUMIDITIES.length; ++humidityIndex) {
+                Parameter humidity = BiomeDefaults.HUMIDITIES[humidityIndex];
+                ResourceKey<Biome> middleBiomeKey = getMiddleBiomeOrBadlandsIfHot(tempIndex, humidityIndex, weirdness);
+                ResourceKey<Biome> swampBiomeKey = getSwampBiome(tempIndex, humidityIndex, weirdness);
 
-                addSurfaceBiome(builder, climate_parameter, climate_parameter1, Parameter.span(BiomeDefaults.MID_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), Parameter.span(BiomeDefaults.EROSIONS[0], BiomeDefaults.EROSIONS[1]), weirdness, 0, resourcekey);
+                addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.MID_INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), Parameter.span(BiomeDefaults.EROSIONS[0], BiomeDefaults.EROSIONS[1]), weirdness, 0, middleBiomeKey);
+                addSurfaceBiome(builder, temp, humidity, Parameter.span(BiomeDefaults.INLAND_CONTINENTALNESS, BiomeDefaults.FAR_INLAND_CONTINENTALNESS), BiomeDefaults.EROSIONS[6], weirdness, 0, swampBiomeKey);
             }
         }
     }
@@ -301,6 +302,16 @@ public class DimensionRegistration {
         addUndergroundBiome(builder, BiomeDefaults.FULL_RANGE, BiomeDefaults.FULL_RANGE, Parameter.span(0.8F, 1.0F), BiomeDefaults.FULL_RANGE, BiomeDefaults.FULL_RANGE, 0, Biomes.DRIPSTONE_CAVES);
         addUndergroundBiome(builder, BiomeDefaults.FULL_RANGE, Parameter.span(0.7F, 1.0F), BiomeDefaults.FULL_RANGE, BiomeDefaults.FULL_RANGE, BiomeDefaults.FULL_RANGE, 0, Biomes.LUSH_CAVES);
         addBottomBiome(builder, BiomeDefaults.FULL_RANGE, BiomeDefaults.FULL_RANGE, BiomeDefaults.FULL_RANGE, Parameter.span(BiomeDefaults.EROSIONS[0], BiomeDefaults.EROSIONS[1]), BiomeDefaults.FULL_RANGE, 0, Biomes.DEEP_DARK);
+    }
+
+    private ResourceKey<Biome> getSwampBiome(int tempIndex, int humityIndex, Parameter weirdness) {
+        if (tempIndex <= 2) {
+            return Biomes.SWAMP;
+        }
+        if (humityIndex <= 2) {
+            return Biomes.MANGROVE_SWAMP;
+        }
+        return BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
     }
 
     private ResourceKey<Biome> getMiddleBiomeOrBadlandsIfHot(int temperatureIndex, int humidityIndex, Parameter weirdness) {
@@ -316,13 +327,18 @@ public class DimensionRegistration {
     }
 
     private ResourceKey<Biome> getShatteredCoast(int temperatureIndex, int humidityIndex, Parameter weirdness) {
-        ResourceKey<Biome> resourcekey = weirdness.max() >= 0L ? getMiddle(temperatureIndex, humidityIndex, weirdness) : getBeach(temperatureIndex, humidityIndex);
+        ResourceKey<Biome> resourcekey = weirdness.max() >= 0L ? getMiddle(temperatureIndex, humidityIndex, weirdness) : getBeach(temperatureIndex, humidityIndex, weirdness);
 
         return getWindsweptSavanna(temperatureIndex, humidityIndex, weirdness, resourcekey);
     }
 
-    private ResourceKey<Biome> getBeach(int temperatureIndex, int humidityIndex) {
-        return temperatureIndex == 0 ? Biomes.SNOWY_BEACH : (temperatureIndex == 4 ? Biomes.DESERT : Biomes.BEACH);
+    private ResourceKey<Biome> getBeach(int temperatureIndex, int humidityIndex, Parameter weirdness) {
+        return switch (temperatureIndex) {
+            case 0, 1 -> BeerBiomes.COAST_FROZEN_BEACH;
+            case 2 -> weirdness.max() < 0 ? BeerBiomes.COAST_COAST : BeerBiomes.COAST_BEACHY_COAST;
+            case 3 -> humidityIndex <= 2 ? BeerBiomes.COAST_PALM_BEACH : BeerBiomes.COAST_LUSH_COAST;
+            default -> humidityIndex <= 2 ? BeerBiomes.COAST_DRY_COAST : BeerBiomes.COAST_LUSH_COAST;
+        };
     }
 
     private ResourceKey<Biome> getBadland(int humidityIndex, Parameter weirdness) {

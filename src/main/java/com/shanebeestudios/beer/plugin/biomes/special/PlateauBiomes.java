@@ -1,6 +1,6 @@
 package com.shanebeestudios.beer.plugin.biomes.special;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomes;
+import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
 import com.shanebeestudios.beer.api.utils.ParamPoints;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeParameterPoint;
@@ -42,7 +42,7 @@ public class PlateauBiomes {
     private static @NotNull Biome getTemperate(int humidity, int weirdness) {
         return switch (humidity) {
             case 0, 1 -> weirdness == 1 ? Biome.CHERRY_GROVE : Biome.MEADOW;
-            case 2 -> weirdness == 1 ? Biome.FOREST : BeerBiomes.FOREST_MOSS_GARDEN;
+            case 2 -> weirdness == 1 ? Biome.FOREST : BeerBiomesOld.FOREST_MOSS_GARDEN;
             case 3 -> weirdness == 1 ? Biome.BIRCH_FOREST : Biome.MEADOW;
             default -> weirdness == 1 ? Biome.PALE_GARDEN : Biome.DARK_FOREST;
         };

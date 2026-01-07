@@ -1,6 +1,6 @@
 package com.shanebeestudios.beer.plugin.biomes.continental;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomes;
+import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
 import com.shanebeestudios.beer.api.utils.ParamPoints;
 import com.shanebeestudios.beer.plugin.biomes.special.BadlandBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.MiddleBiomes;
@@ -31,12 +31,12 @@ public class NearInlandBiomes {
         return switch (erosion) {
             case 0, 1, 2, 3, 4, 5 -> switch (temp) {
                 case 0, 1 -> RiverBiomes.getBiome(paramPoint);
-                case 2 -> BeerBiomes.RIVER_TEMPERATE_RIVER;
-                default -> humidity > 3 ? BeerBiomes.RIVER_LUSH_RIVER : BeerBiomes.RIVER_DESERT_RIVER;
+                case 2 -> BeerBiomesOld.RIVER_TEMPERATE_RIVER;
+                default -> humidity > 3 ? BeerBiomesOld.RIVER_LUSH_RIVER : BeerBiomesOld.RIVER_DESERT_RIVER;
             };
             default -> switch (temp) {
                 case 0 -> RiverBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+                case 1, 2 -> BeerBiomesOld.SWAMP_DRIPLEAF_SWAMP;
                 default -> Biome.MANGROVE_SWAMP;
             };
         };
@@ -59,7 +59,7 @@ public class NearInlandBiomes {
             }
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+                case 1, 2 -> BeerBiomesOld.SWAMP_DRIPLEAF_SWAMP;
                 default -> Biome.MANGROVE_SWAMP;
             };
         };
@@ -92,7 +92,7 @@ public class NearInlandBiomes {
             }
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+                case 1, 2 -> BeerBiomesOld.SWAMP_DRIPLEAF_SWAMP;
                 default -> Biome.MANGROVE_SWAMP;
             };
         };

@@ -1,6 +1,6 @@
 package com.shanebeestudios.beer.plugin.biomes.continental;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomes;
+import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
 import com.shanebeestudios.beer.api.utils.ParamPoints;
 import com.shanebeestudios.beer.plugin.biomes.special.BadlandBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.MiddleBiomes;
@@ -32,7 +32,7 @@ public class FarInlandBiomes {
             case 2, 3, 4, 5 -> RiverBiomes.getBiome(paramPoint);
             default -> switch (temp) {
                 case 0 -> RiverBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+                case 1, 2 -> BeerBiomesOld.SWAMP_DRIPLEAF_SWAMP;
                 default -> Biome.MANGROVE_SWAMP;
             };
         };
@@ -55,7 +55,7 @@ public class FarInlandBiomes {
             case 4, 5 -> MiddleBiomes.getBiome(paramPoint);
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+                case 1, 2 -> BeerBiomesOld.SWAMP_DRIPLEAF_SWAMP;
                 default -> Biome.MANGROVE_SWAMP;
             };
         };
@@ -82,7 +82,7 @@ public class FarInlandBiomes {
             case 5 -> ShatteredBiomes.getBiome(paramPoint);
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(paramPoint);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+                case 1, 2 -> BeerBiomesOld.SWAMP_DRIPLEAF_SWAMP;
                 default -> Biome.MANGROVE_SWAMP;
             };
         };

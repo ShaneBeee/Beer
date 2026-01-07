@@ -7,7 +7,7 @@ import net.minecraft.world.level.dimension.LevelStem;
 
 public class Dimensions {
 
-    public static ResourceKey<LevelStem> BEER_TEST_WORLD = registerDimensions("test_world");
+    public static ResourceKey<LevelStem> BEER_WORLD = registerDimensions("world");
 
     private static ResourceKey<LevelStem> registerDimensions(String key) {
         return ResourceKey.create(Registries.LEVEL_STEM, Identifier.parse("beer:" + key));

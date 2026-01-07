@@ -43,7 +43,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> caveBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition dry_cave = BiomeDefinition.builder(Biomes.CAVE_DRY_CAVE)
+        BiomeDefinition dry_cave = BiomeDefinition.builder(BeerBiomes.CAVE_DRY_CAVE)
             .temperature(0.5f)
             .downfall(0.5f)
             .hasPrecipitation(true)
@@ -109,7 +109,7 @@ public class BiomeRegistration {
         dry_cave.register();
         biomes.add(dry_cave);
 
-        BiomeDefinition ice_cave = BiomeDefinition.builder(Biomes.CAVE_ICE_CAVE)
+        BiomeDefinition ice_cave = BiomeDefinition.builder(BeerBiomes.CAVE_ICE_CAVE)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.8f)
@@ -159,7 +159,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> coastBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition beachy_beach = BiomeDefinition.builder(Biomes.COAST_BEACHY_COAST)
+        BiomeDefinition beachy_beach = BiomeDefinition.builder(BeerBiomes.COAST_BEACHY_COAST)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.4f)
@@ -197,7 +197,7 @@ public class BiomeRegistration {
         beachy_beach.register();
         biomes.add(beachy_beach);
 
-        BiomeDefinition coast = BiomeDefinition.builder(Biomes.COAST_COAST)
+        BiomeDefinition coast = BiomeDefinition.builder(BeerBiomes.COAST_COAST)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.5f)
@@ -250,7 +250,7 @@ public class BiomeRegistration {
         coast.register();
         biomes.add(coast);
 
-        BiomeDefinition dry_coast = BiomeDefinition.builder(Biomes.COAST_DRY_COAST)
+        BiomeDefinition dry_coast = BiomeDefinition.builder(BeerBiomes.COAST_DRY_COAST)
             .hasPrecipitation(false)
             .temperature(2.0f)
             .downfall(0.05f)
@@ -292,7 +292,7 @@ public class BiomeRegistration {
         dry_coast.register();
         biomes.add(dry_coast);
 
-        BiomeDefinition frozen_beach = BiomeDefinition.builder(Biomes.COAST_FROZEN_BEACH)
+        BiomeDefinition frozen_beach = BiomeDefinition.builder(BeerBiomes.COAST_FROZEN_BEACH)
             .hasPrecipitation(true)
             .temperature(0.1f)
             .downfall(0.0f)
@@ -338,7 +338,7 @@ public class BiomeRegistration {
         frozen_beach.register();
         biomes.add(frozen_beach);
 
-        BiomeDefinition lush_coast = BiomeDefinition.builder(Biomes.COAST_LUSH_COAST)
+        BiomeDefinition lush_coast = BiomeDefinition.builder(BeerBiomes.COAST_LUSH_COAST)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.8f)
@@ -390,7 +390,7 @@ public class BiomeRegistration {
         lush_coast.register();
         biomes.add(lush_coast);
 
-        BiomeDefinition palm_beach = BiomeDefinition.builder(Biomes.COAST_PALM_BEACH)
+        BiomeDefinition palm_beach = BiomeDefinition.builder(BeerBiomes.COAST_PALM_BEACH)
             .hasPrecipitation(false)
             .temperature(2.0f)
             .downfall(0.0f)
@@ -436,7 +436,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> desertBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition dry_desert = BiomeDefinition.builder(Biomes.DESERT_DRY_DESERT)
+        BiomeDefinition dry_desert = BiomeDefinition.builder(BeerBiomes.DESERT_DRY_DESERT)
             .hasPrecipitation(false)
             .temperature(2.0f)
             .downfall(0.0f)
@@ -498,7 +498,7 @@ public class BiomeRegistration {
         dry_desert.register();
         biomes.add(dry_desert);
 
-        BiomeDefinition lush_desert = BiomeDefinition.builder(Biomes.DESERT_LUSH_DESERT)
+        BiomeDefinition lush_desert = BiomeDefinition.builder(BeerBiomes.DESERT_LUSH_DESERT)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.8f)
@@ -574,7 +574,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> forestBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition moss_garden = BiomeDefinition.builder(Biomes.FOREST_MOSS_GARDEN)
+        BiomeDefinition moss_garden = BiomeDefinition.builder(BeerBiomes.FOREST_MOSS_GARDEN)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.8f)
@@ -630,7 +630,7 @@ public class BiomeRegistration {
         moss_garden.register();
         biomes.add(moss_garden);
 
-        BiomeDefinition tall_oak = BiomeDefinition.builder(Biomes.FOREST_TALL_OAK)
+        BiomeDefinition tall_oak = BiomeDefinition.builder(BeerBiomes.FOREST_TALL_OAK)
             .hasPrecipitation(true)
             .temperature(0.7f)
             .downfall(0.8f)
@@ -684,7 +684,7 @@ public class BiomeRegistration {
         tall_oak.register();
         biomes.add(tall_oak);
 
-        BiomeDefinition lush_forest = BiomeDefinition.builder(Biomes.FOREST_LUSH_FOREST)
+        BiomeDefinition lush_forest = BiomeDefinition.builder(BeerBiomes.FOREST_LUSH_FOREST)
             .hasPrecipitation(true)
             .temperature(2f)
             .downfall(0.2f)
@@ -753,7 +753,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> plainsBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition dry_plains = BiomeDefinition.builder(Biomes.PLAINS_DRY_PLAINS)
+        BiomeDefinition dry_plains = BiomeDefinition.builder(BeerBiomes.PLAINS_DRY_PLAINS)
             .hasPrecipitation(false)
             .temperature(2.0f)
             .downfall(0.05f)
@@ -800,7 +800,7 @@ public class BiomeRegistration {
         dry_plains.register();
         biomes.add(dry_plains);
 
-        BiomeDefinition lush_plains = BiomeDefinition.builder(Biomes.PLAINS_LUSH_PLAINS)
+        BiomeDefinition lush_plains = BiomeDefinition.builder(BeerBiomes.PLAINS_LUSH_PLAINS)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.5f)
@@ -853,7 +853,7 @@ public class BiomeRegistration {
         lush_plains.register();
         biomes.add(lush_plains);
 
-        BiomeDefinition plains = BiomeDefinition.builder(Biomes.PLAINS_PLAINS)
+        BiomeDefinition plains = BiomeDefinition.builder(BeerBiomes.PLAINS_PLAINS)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.2f)
@@ -910,7 +910,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> riverBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition desert_river = BiomeDefinition.builder(Biomes.RIVER_DESERT_RIVER)
+        BiomeDefinition desert_river = BiomeDefinition.builder(BeerBiomes.RIVER_DESERT_RIVER)
             .hasPrecipitation(false)
             .temperature(2.0f)
             .downfall(0.0f)
@@ -966,7 +966,7 @@ public class BiomeRegistration {
         desert_river.register();
         biomes.add(desert_river);
 
-        BiomeDefinition lush_river = BiomeDefinition.builder(Biomes.RIVER_LUSH_RIVER)
+        BiomeDefinition lush_river = BiomeDefinition.builder(BeerBiomes.RIVER_LUSH_RIVER)
             .hasPrecipitation(true)
             .temperature(2f)
             .downfall(0.2f)
@@ -1038,7 +1038,7 @@ public class BiomeRegistration {
         lush_river.register();
         biomes.add(lush_river);
 
-        BiomeDefinition temperate_river = BiomeDefinition.builder(Biomes.RIVER_TEMPERATE_RIVER)
+        BiomeDefinition temperate_river = BiomeDefinition.builder(BeerBiomes.RIVER_TEMPERATE_RIVER)
             .hasPrecipitation(true)
             .temperature(0.5f)
             .downfall(0.5f)
@@ -1106,7 +1106,7 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> swampBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
-        BiomeDefinition dripleaf_swamp = BiomeDefinition.builder(Biomes.SWAMP_DRIPLEAF_SWAMP)
+        BiomeDefinition dripleaf_swamp = BiomeDefinition.builder(BeerBiomes.SWAMP_DRIPLEAF_SWAMP)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.2f)

@@ -5,7 +5,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 
-public class Biomes {
+public class BeerBiomes {
 
     // CAVE
     public static final ResourceKey<Biome> CAVE_DRY_CAVE = register("cave/dry_cave");

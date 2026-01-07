@@ -1,6 +1,6 @@
 package com.shanebeestudios.beer.plugin.biomes;
 
-import com.shanebeestudios.beer.plugin.registration.Biomes;
+import com.shanebeestudios.beer.plugin.registration.BeerBiomes;
 import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
 import net.minecraft.resources.ResourceKey;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BeerBiomes {
+public class BeerBiomesOld {
 
     public static final Registry<Biome> BIOME_REGISTRY = RegistryAccess.registryAccess().getRegistry(RegistryKey.BIOME);
     public static final List<Biome> BEER_BIOMES = new ArrayList<>();
@@ -35,7 +35,7 @@ public class BeerBiomes {
     public static Biome DESERT_LUSH_DESERT = getBiome("desert/lush_desert");
 
     // FOREST
-    public static Biome FOREST_LUSH_FOREST = getBiome(Biomes.FOREST_LUSH_FOREST);
+    public static Biome FOREST_LUSH_FOREST = getBiome(BeerBiomes.FOREST_LUSH_FOREST);
     public static Biome FOREST_MOSS_GARDEN = getBiome("forest/moss_garden");
     public static Biome FOREST_TALL_OAK = getBiome("forest/tall_oak");
 

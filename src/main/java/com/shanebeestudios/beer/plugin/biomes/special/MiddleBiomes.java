@@ -1,6 +1,6 @@
 package com.shanebeestudios.beer.plugin.biomes.special;
 
-import com.shanebeestudios.beer.plugin.biomes.BeerBiomes;
+import com.shanebeestudios.beer.plugin.biomes.BeerBiomesOld;
 import com.shanebeestudios.beer.api.utils.ParamPoints;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeParameterPoint;
@@ -32,9 +32,9 @@ public class MiddleBiomes {
 
     private static Biome getCold(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> BeerBiomes.PLAINS_DRY_PLAINS;
-            case 1 -> BeerBiomes.PLAINS_PLAINS;
-            case 2 -> BeerBiomes.FOREST_TALL_OAK;
+            case 0 -> BeerBiomesOld.PLAINS_DRY_PLAINS;
+            case 1 -> BeerBiomesOld.PLAINS_PLAINS;
+            case 2 -> BeerBiomesOld.FOREST_TALL_OAK;
             case 3 -> Biome.TAIGA;
             default -> weirdness == 1 ? Biome.OLD_GROWTH_PINE_TAIGA : Biome.OLD_GROWTH_SPRUCE_TAIGA;
         };
@@ -43,25 +43,25 @@ public class MiddleBiomes {
     private static Biome getTemperate(int humidity, int weirdness) {
         return switch (humidity) {
             case 0 -> weirdness == 1 ? Biome.SUNFLOWER_PLAINS : Biome.FLOWER_FOREST;
-            case 1 -> BeerBiomes.PLAINS_PLAINS;
+            case 1 -> BeerBiomesOld.PLAINS_PLAINS;
             case 2 -> Biome.FOREST;
             case 3 -> weirdness == 1 ? Biome.OLD_GROWTH_BIRCH_FOREST : Biome.BIRCH_FOREST;
-            default -> weirdness == 1 ? BeerBiomes.PLAINS_LUSH_PLAINS : Biome.DARK_FOREST;
+            default -> weirdness == 1 ? BeerBiomesOld.PLAINS_LUSH_PLAINS : Biome.DARK_FOREST;
         };
     }
 
     private static Biome getWarm(int humidity, int weirdness) {
         return switch (humidity) {
             case 0 -> Biome.SAVANNA;
-            case 1 -> BeerBiomes.PLAINS_DRY_PLAINS;
-            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS_PLAINS : BeerBiomes.FOREST_LUSH_FOREST;
+            case 1 -> BeerBiomesOld.PLAINS_DRY_PLAINS;
+            case 2 -> weirdness == 1 ? BeerBiomesOld.PLAINS_PLAINS : BeerBiomesOld.FOREST_LUSH_FOREST;
             case 3 -> weirdness == 1 ? Biome.SPARSE_JUNGLE : Biome.JUNGLE;
             default -> weirdness == 1 ? Biome.BAMBOO_JUNGLE : Biome.JUNGLE;
         };
     }
 
     private static Biome getHot(int humidity, int weirdness) {
-        return humidity <= 2 ? BeerBiomes.DESERT_DRY_DESERT : BeerBiomes.DESERT_LUSH_DESERT;
+        return humidity <= 2 ? BeerBiomesOld.DESERT_DRY_DESERT : BeerBiomesOld.DESERT_LUSH_DESERT;
     }
 
 }
