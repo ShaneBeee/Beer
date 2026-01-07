@@ -2,7 +2,7 @@
   "feature": "beer:delta/moss_delta",
   "placement": [
     {
-      "count": 64,
+      "count": 1,
       "type": "minecraft:count"
     },
     {

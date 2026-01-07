@@ -5,6 +5,8 @@ import com.shanebeestudios.beer.api.registration.PlacedFeatureDefinition;
 import com.shanebeestudios.beer.api.utils.DumpRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderSet;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -14,13 +16,14 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.FallenTreeConfiguration.FallenTreeConfigurationBuilder;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration.TreeConfigurationBuilder;
+import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
@@ -35,6 +38,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.PlaceOnGroundDe
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.CaveSurface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,11 +63,28 @@ public class ConfiguredFeatureRegistration {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
 
         ConfiguredFeatureDefinition moss_delta = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.DELTA_MOSS_DELTA)
-            .config(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(
-                Blocks.WATER.defaultBlockState(),
-                Blocks.MOSS_BLOCK.defaultBlockState(),
-                UniformInt.of(3, 7),
-                UniformInt.of(1, 2)))
+            .config(Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
+                BlockTags.DIRT,
+                BlockStateProvider.simple(Blocks.MOSS_BLOCK),
+                PlacedFeatureDefinition.builder()
+                    .configuredFeature(Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfiguration(
+                        HolderSet.direct(
+                            PlacedFeatureDefinition.builder()
+                                .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                                    BlockStateProvider.simple(Blocks.SMALL_DRIPLEAF)))
+                                .build().getFeatureHolder(),
+                            PlacedFeatureDefinition.builder()
+                                .configuredFeature(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                                    BlockStateProvider.simple(Blocks.SEAGRASS)))
+                                .build().getFeatureHolder())))
+                    .build().getFeatureHolder(),
+                CaveSurface.FLOOR,
+                ConstantInt.of(1),
+                0f,
+                1,
+                0.1f,
+                ConstantInt.of(5),
+                0.1f))
             .build();
 
         moss_delta.register();
@@ -181,7 +202,7 @@ public class ConfiguredFeatureRegistration {
                 .dirt(BlockStateProvider.simple(Blocks.OAK_LOG))
                 .forceDirt()
                 .decorators(List.of(new PlaceOnGroundDecorator(96, 4, 2,
-                    new WeightedStateProvider(a1.build())),
+                        new WeightedStateProvider(a1.build())),
                     new PlaceOnGroundDecorator(150, 2, 2,
                         new WeightedStateProvider(a2.build()))))
                 .build())

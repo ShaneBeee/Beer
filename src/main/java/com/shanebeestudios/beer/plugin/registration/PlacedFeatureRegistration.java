@@ -171,7 +171,7 @@ public class PlacedFeatureRegistration {
 
         PlacedFeatureDefinition coastal_delta = PlacedFeatureDefinition.builder(PlacedFeatures.DELTA_COASTAL_DELTA)
             .configuredFeature(ConfiguredFeatures.DELTA_MOSS_DELTA)
-            .placementModifiers(CountPlacement.of(64),
+            .placementModifiers(CountPlacement.of(1),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 RandomOffsetPlacement.of(ConstantInt.of(0), ConstantInt.of(0)),
