@@ -7,6 +7,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.attribute.AmbientAdditionsSettings;
 import net.minecraft.world.attribute.AmbientMoodSettings;
 import net.minecraft.world.attribute.AmbientSounds;
 import net.minecraft.world.attribute.BackgroundMusic;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.BiomeSpecialEffects.GrassColorModifier;
 import net.minecraft.world.level.block.Blocks;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -53,19 +55,21 @@ public class BiomeRegistration {
 
             // Attributes
             // Colors
-            .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 16244363)
+            .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, -500.0f)
+            .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 500.0f)
             .setAttribute(EnvironmentAttributes.SKY_COLOR, 8103167)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 267827)
 
             // Sounds
             .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-                Optional.of(SoundEvents.AMBIENT_CAVE),
-                Optional.of(AmbientMoodSettings.LEGACY_CAVE_SETTINGS),
-                List.of()
+                Optional.empty(),
+                Optional.of(new AmbientMoodSettings(SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, 6000, 8, 2.0F)),
+                List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, 0.0011f))
             ))
             .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(
-                new Music(SoundEvents.MUSIC_BIOME_LUSH_CAVES, 12000, 24000, false)))
-            .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 1.0f)
+                new Music(SoundEvents.MUSIC_BIOME_LUSH_CAVES, 12000, 24000, true)))
+            .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 0.5f)
 
             // Particles
             .particle(new BlockParticleOption(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()), 0.005f)
