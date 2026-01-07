@@ -5,17 +5,16 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 
+@SuppressWarnings("unused")
 public class SwampBiomes {
 
-    public static ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness, int erosion, int pv) {
-        if (pv <= 1 && erosion == 6) {
-            if (temp == 1 || temp == 2) {
-                return BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
-            } else if (temp == 3 || temp == 4) {
-                return Biomes.MANGROVE_SWAMP;
-            }
-        }
-        return null;
+    public static ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness) {
+        return switch (temp) {
+            // TODO cold swamp?!?!
+            case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+            case 3, 4 -> Biomes.MANGROVE_SWAMP;
+            default -> Biomes.SWAMP;
+        };
     }
 
 }

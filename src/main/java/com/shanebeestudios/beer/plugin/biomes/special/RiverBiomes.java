@@ -11,7 +11,7 @@ public class RiverBiomes {
         return switch (temp) {
             case 0 -> Biomes.FROZEN_RIVER;
             case 3 -> BeerBiomes.RIVER_LUSH_RIVER;
-            case 4 -> BeerBiomes.RIVER_DESERT_RIVER;
+            case 4 -> humidity > 3 ? BeerBiomes.RIVER_LUSH_RIVER : BeerBiomes.RIVER_DESERT_RIVER;
             default -> BeerBiomes.RIVER_TEMPERATE_RIVER;
         };
     }

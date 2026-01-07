@@ -5,12 +5,13 @@ import com.shanebeestudios.beer.plugin.biomes.special.MiddleBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.PlateauBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.RiverBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.ShatteredBiomes;
-import com.shanebeestudios.beer.plugin.registration.BeerBiomes;
+import com.shanebeestudios.beer.plugin.biomes.special.SwampBiomes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("SwitchStatementWithTooFewBranches")
 public class NearInlandBiomes {
 
     public static @NotNull ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness, int pv, int erosion) {
@@ -24,18 +25,8 @@ public class NearInlandBiomes {
     }
 
     public static @NotNull ResourceKey<Biome> getValley(int temp, int humidity, int weirdness, int pv, int erosion) {
-        return switch (erosion) {
-            case 0, 1, 2, 3, 4, 5 -> switch (temp) {
-                case 0, 1 -> RiverBiomes.getBiome(temp, humidity, weirdness);
-                case 2 -> BeerBiomes.RIVER_TEMPERATE_RIVER;
-                default -> humidity > 3 ? BeerBiomes.RIVER_LUSH_RIVER : BeerBiomes.RIVER_DESERT_RIVER;
-            };
-            default -> switch (temp) {
-                case 0 -> RiverBiomes.getBiome(temp, humidity, weirdness);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
-                default -> Biomes.MANGROVE_SWAMP;
-            };
-        };
+        if (erosion == 6 && temp > 0) return SwampBiomes.getBiome(temp, humidity, weirdness);
+        return RiverBiomes.getBiome(temp, humidity, weirdness);
     }
 
     public static @NotNull ResourceKey<Biome> getLow(int temp, int humidity, int weirdness, int pv, int erosion) {
@@ -52,8 +43,7 @@ public class NearInlandBiomes {
             }
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
-                default -> Biomes.MANGROVE_SWAMP;
+                default -> SwampBiomes.getBiome(temp, humidity, weirdness);
             };
         };
 
@@ -62,8 +52,7 @@ public class NearInlandBiomes {
     public static @NotNull ResourceKey<Biome> getMid(int temp, int humidity, int weirdness, int pv, int erosion) {
         return switch (erosion) {
             case 0 ->
-                temp < 3 ? humidity < 2 ? Biomes.SNOWY_SLOPES : Biomes.GROVE : PlateauBiomes.getBiome(temp, humidity, weirdness)
-                ;
+                temp < 3 ? (humidity < 2 ? Biomes.SNOWY_SLOPES : Biomes.GROVE) : PlateauBiomes.getBiome(temp, humidity, weirdness);
             case 1 -> {
                 if (temp == 0) {
                     yield humidity <= 1 ? Biomes.SNOWY_SLOPES : Biomes.GROVE;
@@ -83,8 +72,7 @@ public class NearInlandBiomes {
             }
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
-                default -> Biomes.MANGROVE_SWAMP;
+                default -> SwampBiomes.getBiome(temp, humidity, weirdness);
             };
         };
     }

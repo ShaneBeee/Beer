@@ -5,12 +5,14 @@ import com.shanebeestudios.beer.plugin.biomes.special.MiddleBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.PlateauBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.RiverBiomes;
 import com.shanebeestudios.beer.plugin.biomes.special.ShatteredBiomes;
+import com.shanebeestudios.beer.plugin.biomes.special.SwampBiomes;
 import com.shanebeestudios.beer.plugin.registration.BeerBiomes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("SwitchStatementWithTooFewBranches")
 public class MidInlandBiomes {
 
     public static @NotNull ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness, int erosion, int pv) {
@@ -30,8 +32,7 @@ public class MidInlandBiomes {
             case 2, 3, 4, 5 -> RiverBiomes.getBiome(temp, humidity, weirdness);
             default -> switch (temp) {
                 case 0 -> RiverBiomes.getBiome(temp, humidity, weirdness);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
-                default -> Biomes.MANGROVE_SWAMP;
+                default -> SwampBiomes.getBiome(temp, humidity, weirdness);
             };
         };
     }
@@ -51,8 +52,7 @@ public class MidInlandBiomes {
             case 4, 5 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
-                default -> Biomes.MANGROVE_SWAMP;
+                default -> SwampBiomes.getBiome(temp, humidity, weirdness);
             };
         };
     }
@@ -76,8 +76,7 @@ public class MidInlandBiomes {
             case 5 -> ShatteredBiomes.getBiome(temp, humidity, weirdness);
             default -> switch (temp) {
                 case 0 -> MiddleBiomes.getBiome(temp, humidity, weirdness);
-                case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
-                default -> Biomes.MANGROVE_SWAMP;
+                default -> SwampBiomes.getBiome(temp, humidity, weirdness);
             };
         };
     }
