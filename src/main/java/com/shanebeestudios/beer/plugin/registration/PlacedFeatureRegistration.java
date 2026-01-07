@@ -447,25 +447,26 @@ public class PlacedFeatureRegistration {
         features.add(stone_cliff);
 
         PlacedFeatureDefinition stone_to_ice = PlacedFeatureDefinition.builder(PlacedFeatures.TERRAIN_STONE_TO_ICE)
-            .configuredFeature(Feature.REPLACE_BLOBS, new ReplaceSphereConfiguration(
-                Blocks.STONE.defaultBlockState(),
-                Blocks.BLUE_ICE.defaultBlockState(),
-                UniformInt.of(7, 12)))
-            .placementModifiers(CountPlacement.of(2),
-                CountPlacement.of(1),
+            .configuredFeature(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
+                256, 2, 2,
+                PlacedFeatureDefinition.builder()
+                    .configuredFeature(Feature.REPLACE_BLOBS, new ReplaceSphereConfiguration(
+                        Blocks.STONE.defaultBlockState(),
+                        Blocks.BLUE_ICE.defaultBlockState(),
+                        UniformInt.of(1, 2)))
+                    .placementModifiers(BlockPredicateFilter.forPredicate(
+                        BlockPredicate.allOf(
+                            BlockPredicate.anyOf(
+                                BlockPredicate.matchesBlocks(new BlockPos(1, 0, 0), Blocks.AIR),
+                                BlockPredicate.matchesBlocks(new BlockPos(-1, 0, 0), Blocks.AIR),
+                                BlockPredicate.matchesBlocks(new BlockPos(0, 0, 1), Blocks.AIR),
+                                BlockPredicate.matchesBlocks(new BlockPos(0, 0, -1), Blocks.AIR)),
+                            BlockPredicate.matchesTag(BlockTags.BATS_SPAWNABLE_ON),
+                            BlockPredicate.not(BlockPredicate.matchesBlocks(new BlockPos(0, 1, 0), Blocks.AIR)))))
+                    .build().getFeatureHolder()))
+            .placementModifiers(CountPlacement.of(256),
                 InSquarePlacement.spread(),
-                HeightRangePlacement.uniform(
-                    VerticalAnchor.absolute(0),
-                    VerticalAnchor.absolute(100)
-                ),
-                BlockPredicateFilter.forPredicate(
-                    BlockPredicate.anyOf(
-                        BlockPredicate.matchesBlocks(new BlockPos(1, 0, 0), Blocks.AIR),
-                        BlockPredicate.matchesBlocks(new BlockPos(-1, 0, 0), Blocks.AIR),
-                        BlockPredicate.matchesBlocks(new BlockPos(0, 0, 1), Blocks.AIR),
-                        BlockPredicate.matchesBlocks(new BlockPos(0, 0, -1), Blocks.AIR)
-                    )
-                ),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(70)),
                 BiomeFilter.biome())
             .build();
 
@@ -615,7 +616,7 @@ public class PlacedFeatureRegistration {
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 BiomeFilter.biome(),
                 BlockPredicateFilter.forPredicate(
-                BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)))
+                    BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)))
             .build();
 
         tall_oak.register();

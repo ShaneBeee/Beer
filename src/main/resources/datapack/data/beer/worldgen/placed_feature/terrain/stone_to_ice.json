@@ -1,27 +1,100 @@
 {
   "feature": {
     "config": {
-      "target": {
-        "Name": "minecraft:stone"
-      },
-      "state": {
-        "Name": "minecraft:blue_ice"
-      },
-      "radius": {
-        "min_inclusive": 7,
-        "max_inclusive": 12,
-        "type": "minecraft:uniform"
+      "tries": 256,
+      "xz_spread": 2,
+      "y_spread": 2,
+      "feature": {
+        "feature": {
+          "config": {
+            "target": {
+              "Name": "minecraft:stone"
+            },
+            "state": {
+              "Name": "minecraft:blue_ice"
+            },
+            "radius": {
+              "min_inclusive": 1,
+              "max_inclusive": 2,
+              "type": "minecraft:uniform"
+            }
+          },
+          "type": "minecraft:netherrack_replace_blobs"
+        },
+        "placement": [
+          {
+            "predicate": {
+              "predicates": [
+                {
+                  "predicates": [
+                    {
+                      "offset": [
+                        1,
+                        0,
+                        0
+                      ],
+                      "blocks": "minecraft:air",
+                      "type": "minecraft:matching_blocks"
+                    },
+                    {
+                      "offset": [
+                        -1,
+                        0,
+                        0
+                      ],
+                      "blocks": "minecraft:air",
+                      "type": "minecraft:matching_blocks"
+                    },
+                    {
+                      "offset": [
+                        0,
+                        0,
+                        1
+                      ],
+                      "blocks": "minecraft:air",
+                      "type": "minecraft:matching_blocks"
+                    },
+                    {
+                      "offset": [
+                        0,
+                        0,
+                        -1
+                      ],
+                      "blocks": "minecraft:air",
+                      "type": "minecraft:matching_blocks"
+                    }
+                  ],
+                  "type": "minecraft:any_of"
+                },
+                {
+                  "tag": "minecraft:bats_spawnable_on",
+                  "type": "minecraft:matching_block_tag"
+                },
+                {
+                  "predicate": {
+                    "offset": [
+                      0,
+                      1,
+                      0
+                    ],
+                    "blocks": "minecraft:air",
+                    "type": "minecraft:matching_blocks"
+                  },
+                  "type": "minecraft:not"
+                }
+              ],
+              "type": "minecraft:all_of"
+            },
+            "type": "minecraft:block_predicate_filter"
+          }
+        ]
       }
     },
-    "type": "minecraft:netherrack_replace_blobs"
+    "type": "minecraft:random_patch"
   },
   "placement": [
     {
-      "count": 2,
-      "type": "minecraft:count"
-    },
-    {
-      "count": 1,
+      "count": 256,
       "type": "minecraft:count"
     },
     {
@@ -33,55 +106,11 @@
           "absolute": 0
         },
         "max_inclusive": {
-          "absolute": 100
+          "absolute": 70
         },
         "type": "minecraft:uniform"
       },
       "type": "minecraft:height_range"
-    },
-    {
-      "predicate": {
-        "predicates": [
-          {
-            "offset": [
-              1,
-              0,
-              0
-            ],
-            "blocks": "minecraft:air",
-            "type": "minecraft:matching_blocks"
-          },
-          {
-            "offset": [
-              -1,
-              0,
-              0
-            ],
-            "blocks": "minecraft:air",
-            "type": "minecraft:matching_blocks"
-          },
-          {
-            "offset": [
-              0,
-              0,
-              1
-            ],
-            "blocks": "minecraft:air",
-            "type": "minecraft:matching_blocks"
-          },
-          {
-            "offset": [
-              0,
-              0,
-              -1
-            ],
-            "blocks": "minecraft:air",
-            "type": "minecraft:matching_blocks"
-          }
-        ],
-        "type": "minecraft:any_of"
-      },
-      "type": "minecraft:block_predicate_filter"
     },
     {
       "type": "minecraft:biome"
