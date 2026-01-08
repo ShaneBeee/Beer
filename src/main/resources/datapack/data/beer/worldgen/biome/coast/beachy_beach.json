@@ -3,10 +3,10 @@
   "temperature": 0.8,
   "downfall": 0.4,
   "attributes": {
-    "minecraft:visual/fog_color": "#c0d8ff",
-    "minecraft:visual/water_fog_color": "#050533",
     "minecraft:visual/sky_color": "#78a7ff",
-    "minecraft:audio/music_volume": 1.0
+    "minecraft:visual/fog_color": "#c0d8ff",
+    "minecraft:audio/music_volume": 1.0,
+    "minecraft:visual/water_fog_color": "#050533"
   },
   "effects": {
     "water_color": "#3f76e4"
@@ -64,6 +64,9 @@
       "beer:tree/beachy_palm",
       "minecraft:patch_waterlily",
       "minecraft:patch_sugar_cane"
+    ],
+    [
+      "minecraft:freeze_top_layer"
     ]
   ],
   "spawners": {

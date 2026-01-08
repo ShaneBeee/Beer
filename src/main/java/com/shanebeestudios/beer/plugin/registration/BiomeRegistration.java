@@ -4,6 +4,7 @@ import com.shanebeestudios.beer.api.registration.BiomeDefinition;
 import com.shanebeestudios.beer.api.utils.DumpRegistry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BiomeTags;
@@ -93,8 +94,7 @@ public class BiomeRegistration {
                 List.of("minecraft:spring_water", "minecraft:spring_lava"),
                 List.of("minecraft:patch_tall_grass_2",
                     PlacedFeatures.DECOR_HANGING_FENCE),
-                List.of("minecraft:freeze_top_layer")
-            )
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             // Spawners
             .addMobSpawn(MobCategory.AMBIENT, EntityType.BAT, 10, 8, 8)
@@ -140,7 +140,7 @@ public class BiomeRegistration {
                 null,
                 null,
                 null,
-                List.of("minecraft:freeze_top_layer"))
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addMobSpawn(MobCategory.MONSTER, EntityType.ILLUSIONER, 1, 1, 1)
             .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 3, 1, 1)
@@ -189,7 +189,7 @@ public class BiomeRegistration {
                 List.of(PlacedFeatures.TREE_BEACHY_PALM,
                     "minecraft:patch_waterlily",
                     "minecraft:patch_sugar_cane"),
-                null)
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -237,7 +237,7 @@ public class BiomeRegistration {
                     "wythers:vegetation/placed_random_patch/mediterranean_lilacs",
                     "minecraft:patch_grass_savanna",
                     "minecraft:seagrass_normal"),
-                null)
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -279,7 +279,7 @@ public class BiomeRegistration {
                     "wythers:vegetation/placed_random_patch/dark_oak_roots",
                     "wythers:terrain/placed_random_patch/mossify_grass",
                     "minecraft:patch_grass_savanna"),
-                null)
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -330,7 +330,7 @@ public class BiomeRegistration {
                 List.of(PlacedFeatures.TREE_PALM_BEACH_PALM,
                     "minecraft:patch_waterlily",
                     "minecraft:patch_sugar_cane"),
-                List.of("minecraft:freeze_top_layer"))
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -380,7 +380,7 @@ public class BiomeRegistration {
                     "wythers:vegetation/placed_random_patch/dripleaves_bayou",
                     "minecraft:patch_grass_savanna",
                     "minecraft:seagrass_normal"),
-                null)
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -422,7 +422,7 @@ public class BiomeRegistration {
                 List.of(PlacedFeatures.TREE_PALM_BEACH_PALM,
                     "minecraft:patch_waterlily",
                     PlacedFeatures.VEGETATION_PATCH_SMALL_DRIPLEAF),
-                null)
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -479,7 +479,7 @@ public class BiomeRegistration {
                     "minecraft:patch_sugar_cane_desert",
                     "minecraft:patch_pumpkin",
                     "minecraft:patch_cactus_desert"),
-                List.of("minecraft:freeze_top_layer"))
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -553,7 +553,7 @@ public class BiomeRegistration {
                     "minecraft:patch_sugar_cane_desert",
                     "minecraft:patch_pumpkin",
                     "minecraft:patch_cactus_desert"),
-                List.of("minecraft:freeze_top_layer"))
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -622,7 +622,7 @@ public class BiomeRegistration {
                     PlacedFeatures.TREE_FALLEN_WARPED_STEM,
                     PlacedFeatures.VEGETATION_MOSS_PATCH,
                     "minecraft:patch_grass_forest"),
-                List.of("minecraft:freeze_top_layer"))
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -671,7 +671,7 @@ public class BiomeRegistration {
                     "minecraft:patch_pumpkin",
                     "minecraft:patch_sugar_cane",
                     "minecraft:patch_firefly_bush_near_water"),
-                List.of("minecraft:freeze_top_layer"))
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
             .addDefaultOverworldCarvers()
 
             .addMobSpawn(MobCategory.AMBIENT, EntityType.BAT, 10, 8, 8)
@@ -742,7 +742,7 @@ public class BiomeRegistration {
                     "minecraft:red_mushroom_normal",
                     "minecraft:patch_sugar_cane",
                     "minecraft:seagrass_swamp"),
-                List.of("minecraft:freeze_top_layer"))
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -791,7 +791,7 @@ public class BiomeRegistration {
                     "minecraft:patch_waterlily",
                     "minecraft:patch_sugar_cane",
                     PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB),
-                null)
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -846,7 +846,7 @@ public class BiomeRegistration {
                     PlacedFeatures.VEGETATION_PATCH_CHERRY_PETALS,
                     PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB,
                     PlacedFeatures.TREE_FALLEN_STRIPPED_PALE_OAK),
-                null)
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -899,7 +899,7 @@ public class BiomeRegistration {
                     PlacedFeatures.VEGETATION_PATCH_HAY_BALE,
                     PlacedFeatures.VEGETATION_PATCH_CHERRY_PETALS,
                     PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB),
-                null)
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -1167,7 +1167,7 @@ public class BiomeRegistration {
                     "minecraft:seagrass_swamp",
                     "minecraft:patch_firefly_bush_near_water",
                     "minecraft:patch_berry_rare"),
-                List.of("minecraft:freeze_top_layer"))
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 
@@ -1221,7 +1221,7 @@ public class BiomeRegistration {
                     "minecraft:patch_dead_bush",
                     "minecraft:patch_waterlily",
                     "minecraft:seagrass_swamp"),
-                null)
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
 
             .addDefaultOverworldCarvers()
 

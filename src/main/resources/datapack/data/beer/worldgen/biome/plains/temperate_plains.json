@@ -5,8 +5,8 @@
   "attributes": {
     "minecraft:visual/sky_color": "#78a7ff",
     "minecraft:visual/fog_color": "#c0d8ff",
-    "minecraft:visual/water_fog_color": "#050533",
-    "minecraft:audio/music_volume": 1.0
+    "minecraft:audio/music_volume": 1.0,
+    "minecraft:visual/water_fog_color": "#050533"
   },
   "effects": {
     "water_color": "#3f76e4"
@@ -69,6 +69,9 @@
       "beer:vegetation/patch_hay_bale",
       "beer:vegetation/patch_cherry_petals",
       "beer:vegetation/rooted_dirt_blob"
+    ],
+    [
+      "minecraft:freeze_top_layer"
     ]
   ],
   "spawners": {

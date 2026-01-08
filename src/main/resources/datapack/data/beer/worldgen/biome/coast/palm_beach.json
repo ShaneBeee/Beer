@@ -3,9 +3,9 @@
   "temperature": 2.0,
   "downfall": 0.0,
   "attributes": {
-    "minecraft:visual/fog_color": "#fcbf86",
+    "minecraft:visual/sky_color": "#55f7dc",
     "minecraft:visual/water_fog_color": "#86fcec",
-    "minecraft:visual/sky_color": "#55f7dc"
+    "minecraft:visual/fog_color": "#fcbf86"
   },
   "effects": {
     "water_color": "#5b99d3",
@@ -66,6 +66,9 @@
       "beer:tree/palm_beach_palm",
       "minecraft:patch_waterlily",
       "beer:vegetation/patch_small_dripleaf"
+    ],
+    [
+      "minecraft:freeze_top_layer"
     ]
   ],
   "spawners": {
