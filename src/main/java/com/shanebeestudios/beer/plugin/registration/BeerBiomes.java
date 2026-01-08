@@ -39,6 +39,7 @@ public class BeerBiomes {
     public static final ResourceKey<Biome> RIVER_TEMPERATE_RIVER = register("river/temperate_river");
 
     // SWAMPS
+    public static final ResourceKey<Biome> SWAMP_COLD_SWAMP = register("swamp/cold_swamp");
     public static final ResourceKey<Biome> SWAMP_DRIPLEAF_SWAMP = register("swamp/dripleaf_swamp");
 
     private static ResourceKey<Biome> register(String key) {

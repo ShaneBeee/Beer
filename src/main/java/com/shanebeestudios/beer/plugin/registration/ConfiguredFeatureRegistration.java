@@ -22,6 +22,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureCo
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration.TreeConfigurationBuilder;
 import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
@@ -34,6 +35,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.CocoaDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.PlaceOnGroundDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
@@ -112,6 +114,40 @@ public class ConfiguredFeatureRegistration {
 
     private static List<ConfiguredFeatureDefinition> tree() {
         List<ConfiguredFeatureDefinition> features = new ArrayList<>();
+
+        ConfiguredFeatureDefinition cold_swamp_oak = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_COLD_SWAMP_OAK)
+            .config(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OAK_LOG),
+                new StraightTrunkPlacer(5, 3, 2),
+                BlockStateProvider.simple(Blocks.SPRUCE_LEAVES.defaultBlockState()
+                    .setValue(BlockStateProperties.DISTANCE, 7)
+                    .setValue(BlockStateProperties.PERSISTENT, false)),
+                new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1))
+                .decorators(List.of(new LeaveVineDecorator(0.25f)))
+                .dirt(BlockStateProvider.simple(Blocks.OAK_LOG))
+                .build())
+            .build();
+
+        cold_swamp_oak.register();
+        features.add(cold_swamp_oak);
+
+        ConfiguredFeatureDefinition cold_swamp_pale = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_COLD_SWAMP_PALE)
+            .config(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.PALE_OAK_LOG),
+                new StraightTrunkPlacer(6, 4, 2),
+                BlockStateProvider.simple(Blocks.PALE_OAK_LEAVES.defaultBlockState()
+                    .setValue(BlockStateProperties.DISTANCE, 7)
+                    .setValue(BlockStateProperties.PERSISTENT, false)),
+                new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1))
+                .decorators(List.of(new LeaveVineDecorator(0.25f)))
+                .dirt(BlockStateProvider.simple(Blocks.PALE_OAK_LOG))
+                .build())
+            .build();
+
+        cold_swamp_pale.register();
+        features.add(cold_swamp_pale);
 
         ConfiguredFeatureDefinition fallen_stripped_pale_oak = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_FALLEN_STRIPPED_PALE_OAK)
             .config(Feature.FALLEN_TREE, new FallenTreeConfigurationBuilder(

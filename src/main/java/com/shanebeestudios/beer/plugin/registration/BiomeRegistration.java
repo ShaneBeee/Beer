@@ -17,7 +17,6 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.BiomeSpecialEffects.GrassColorModifier;
 import net.minecraft.world.level.block.Blocks;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -1110,6 +1109,68 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> swampBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
+        BiomeDefinition cold_swamp = BiomeDefinition.builder(BeerBiomes.SWAMP_COLD_SWAMP)
+            .hasPrecipitation(true)
+            .temperature(0.4f)
+            .downfall(0.4f)
+            .waterColor(-12757034)
+            .foliageColorOverride(6975545)
+            .grassColorModifier(GrassColorModifier.SWAMP)
+
+            .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 1.0f)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, -8151297)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, -4339216)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 2302743)
+
+            .addDefaultUndergroundOreFeatures()
+            .features(null,
+                List.of("minecraft:lake_lava_underground",
+                    "minecraft:lake_lava_surface"),
+                List.of("minecraft:amethyst_geode"),
+                List.of("minecraft:monster_room",
+                    "minecraft:monster_room_deep"),
+                null,
+                null,
+                null,
+                null,
+                List.of("minecraft:spring_water",
+                    "minecraft:spring_lava"),
+                List.of(
+                    "minecraft:glow_lichen",
+                    "minecraft:patch_large_fern",
+                    PlacedFeatures.TREE_COLD_SWAMP_TREE,
+                    "minecraft:flower_swamp",
+                    "minecraft:flower_default",
+                    "minecraft:patch_grass_normal",
+                    "minecraft:patch_grass_taiga_2",
+                    "minecraft:patch_dead_bush",
+                    "minecraft:patch_waterlily",
+                    "minecraft:brown_mushroom_taiga",
+                    "minecraft:red_mushroom_taiga",
+                    "minecraft:seagrass_swamp",
+                    "minecraft:patch_firefly_bush_near_water",
+                    "minecraft:patch_berry_rare"),
+                List.of("minecraft:freeze_top_layer"))
+
+            .addDefaultOverworldCarvers()
+
+            .addMobSpawn(MobCategory.CREATURE, EntityType.FROG, 10, 2, 5)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
+            .addMobSpawn(MobCategory.WATER_CREATURE, EntityType.DROWNED, 2, 1, 2)
+
+            .addToTag(BiomeTags.HAS_SWAMP_HUT, BiomeTags.IS_OVERWORLD, BiomeTags.SPAWNS_COLD_VARIANT_FROGS)
+
+            .build();
+
+        cold_swamp.register();
+        biomes.add(cold_swamp);
+
         BiomeDefinition dripleaf_swamp = BiomeDefinition.builder(BeerBiomes.SWAMP_DRIPLEAF_SWAMP)
             .hasPrecipitation(true)
             .temperature(0.8f)
@@ -1155,7 +1216,7 @@ public class BiomeRegistration {
             .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
             .addMobSpawn(MobCategory.WATER_CREATURE, EntityType.DROWNED, 2, 1, 2)
 
-            .addToTag(BiomeTags.HAS_SWAMP_HUT, BiomeTags.IS_OVERWORLD)
+            .addToTag(BiomeTags.HAS_SWAMP_HUT, BiomeTags.IS_OVERWORLD, BiomeTags.SPAWNS_WARM_VARIANT_FROGS)
 
             .build();
 

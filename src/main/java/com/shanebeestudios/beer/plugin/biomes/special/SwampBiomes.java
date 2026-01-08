@@ -10,9 +10,9 @@ public class SwampBiomes {
 
     public static ResourceKey<Biome> getBiome(int temp, int humidity, int weirdness) {
         return switch (temp) {
-            // TODO cold swamp?!?!
-            case 1, 2 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
-            case 3, 4 -> Biomes.MANGROVE_SWAMP;
+            case 0, 1 -> BeerBiomes.SWAMP_COLD_SWAMP;
+            case 3 -> BeerBiomes.SWAMP_DRIPLEAF_SWAMP;
+            case 4 -> Biomes.MANGROVE_SWAMP;
             default -> Biomes.SWAMP;
         };
     }

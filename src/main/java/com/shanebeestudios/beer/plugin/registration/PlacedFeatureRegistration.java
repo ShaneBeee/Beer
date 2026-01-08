@@ -11,6 +11,7 @@ import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.random.Weighted;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -506,6 +507,29 @@ public class PlacedFeatureRegistration {
 
     private static List<PlacedFeatureDefinition> tree() {
         List<PlacedFeatureDefinition> features = new ArrayList<>();
+
+        PlacedFeatureDefinition cold_swamp_tree = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_COLD_SWAMP_TREE)
+            .configuredFeature(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+                List.of(
+                    new WeightedPlacedFeature(
+                        PlacedFeatureDefinition.builder().configuredFeature(ConfiguredFeatures.TREE_COLD_SWAMP_OAK).build().getFeatureHolder(),
+                        1),
+                    new WeightedPlacedFeature(
+                        PlacedFeatureDefinition.builder().configuredFeature(ConfiguredFeatures.TREE_COLD_SWAMP_PALE).build().getFeatureHolder(),
+                        1)),
+                PlacedFeatureDefinition.builder().configuredFeature(ConfiguredFeatures.TREE_COLD_SWAMP_OAK).build().getFeatureHolder()))
+            .placementModifiers(CountPlacement.of(new WeightedListInt(
+                    WeightedList.of(new Weighted<>(ConstantInt.of(2), 9),
+                        new Weighted<>(ConstantInt.of(3), 1)))),
+                InSquarePlacement.spread(),
+                SurfaceWaterDepthFilter.forMaxDepth(2),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                BiomeFilter.biome(),
+                BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)))
+            .build();
+
+        cold_swamp_tree.register();
+        features.add(cold_swamp_tree);
 
         PlacedFeatureDefinition beachy_palm = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_BEACHY_PALM)
             .configuredFeature(ConfiguredFeatures.TREE_PALM_TREE)

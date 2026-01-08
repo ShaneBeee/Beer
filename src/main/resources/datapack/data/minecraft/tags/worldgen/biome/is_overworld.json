@@ -19,6 +19,7 @@
     "beer:river/desert_river",
     "beer:river/lush_river",
     "beer:river/temperate_river",
+    "beer:swamp/cold_swamp",
     "beer:swamp/dripleaf_swamp"
   ]
 }

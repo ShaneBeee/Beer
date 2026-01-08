@@ -14,6 +14,8 @@ public class ConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?,?>> TERRAIN_SAND_SHORE_DISK = register("terrain/sand_shore_disk");
 
     // TREE
+    public static final ResourceKey<ConfiguredFeature<?,?>> TREE_COLD_SWAMP_OAK = register("tree/cold_swamp_oak");
+    public static final ResourceKey<ConfiguredFeature<?,?>> TREE_COLD_SWAMP_PALE = register("tree/cold_swamp_pale");
     public static final ResourceKey<ConfiguredFeature<?,?>> TREE_FALLEN_STRIPPED_PALE_OAK = register("tree/fallen_stripped_pale_oak");
     public static final ResourceKey<ConfiguredFeature<?,?>> TREE_FALLEN_STRIPPED_WARPED_STEM = register("tree/fallen_stripped_warped_stem");
     public static final ResourceKey<ConfiguredFeature<?,?>> TREE_FALLEN_TALL_OAK = register("tree/fallen_tall_oak");

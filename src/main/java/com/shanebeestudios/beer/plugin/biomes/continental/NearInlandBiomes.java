@@ -25,7 +25,7 @@ public class NearInlandBiomes {
     }
 
     public static @NotNull ResourceKey<Biome> getValley(int temp, int humidity, int weirdness, int pv, int erosion) {
-        if (erosion == 6 && temp > 0) return SwampBiomes.getBiome(temp, humidity, weirdness);
+        if (erosion == 6) return SwampBiomes.getBiome(temp, humidity, weirdness);
         return RiverBiomes.getBiome(temp, humidity, weirdness);
     }
 
