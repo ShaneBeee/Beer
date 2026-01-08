@@ -2,24 +2,6 @@
   "feature": "beer:tree/tall_oak_with_litter",
   "placement": [
     {
-      "count": 5,
-      "type": "minecraft:count"
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "max_water_depth": 0,
-      "type": "minecraft:surface_water_depth_filter"
-    },
-    {
-      "heightmap": "WORLD_SURFACE_WG",
-      "type": "minecraft:heightmap"
-    },
-    {
-      "type": "minecraft:biome"
-    },
-    {
       "predicate": {
         "state": {
           "Properties": {

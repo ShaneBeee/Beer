@@ -230,13 +230,12 @@ public class ConfiguredFeatureRegistration {
         ConfiguredFeatureDefinition tall_oak = ConfiguredFeatureDefinition.builder(ConfiguredFeatures.TREE_TALL_OAK_WITH_LITTER)
             .config(Feature.TREE, new TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.OAK_LOG),
-                new StraightTrunkPlacer(7, 3, 2),
-                BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState()
-                    .setValue(BlockStateProperties.DISTANCE, 7)),
+                new StraightTrunkPlacer(7, 3, 0),
+                BlockStateProvider.simple(Blocks.OAK_LEAVES.defaultBlockState().setValue(BlockStateProperties.DISTANCE, 7)),
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.ZERO, 3),
                 new TwoLayersFeatureSize(1, 0, 1))
                 .dirt(BlockStateProvider.simple(Blocks.OAK_LOG))
-                .forceDirt()
+                .ignoreVines()
                 .decorators(List.of(new PlaceOnGroundDecorator(96, 4, 2,
                         new WeightedStateProvider(a1.build())),
                     new PlaceOnGroundDecorator(150, 2, 2,

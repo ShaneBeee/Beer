@@ -513,10 +513,10 @@ public class PlacedFeatureRegistration {
                 List.of(
                     new WeightedPlacedFeature(
                         PlacedFeatureDefinition.builder().configuredFeature(ConfiguredFeatures.TREE_COLD_SWAMP_OAK).build().getFeatureHolder(),
-                        1),
+                        0.5f),
                     new WeightedPlacedFeature(
                         PlacedFeatureDefinition.builder().configuredFeature(ConfiguredFeatures.TREE_COLD_SWAMP_PALE).build().getFeatureHolder(),
-                        1)),
+                        0.5f)),
                 PlacedFeatureDefinition.builder().configuredFeature(ConfiguredFeatures.TREE_COLD_SWAMP_OAK).build().getFeatureHolder()))
             .placementModifiers(CountPlacement.of(new WeightedListInt(
                     WeightedList.of(new Weighted<>(ConstantInt.of(2), 9),
@@ -554,16 +554,16 @@ public class PlacedFeatureRegistration {
         fallen_stripped_pale_oak.register();
         features.add(fallen_stripped_pale_oak);
 
-        PlacedFeatureDefinition fallen_tall_oak = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_FALLEN_TALL_OAK)
-            .configuredFeature(ConfiguredFeatures.TREE_FALLEN_TALL_OAK)
-            .placementModifiers(RarityFilter.onAverageOnceEvery(5),
-                InSquarePlacement.spread(),
-                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
-                BiomeFilter.biome())
-            .build();
-
-        fallen_tall_oak.register();
-        features.add(fallen_tall_oak);
+//        PlacedFeatureDefinition fallen_tall_oak = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_FALLEN_TALL_OAK)
+//            .configuredFeature(ConfiguredFeatures.TREE_FALLEN_TALL_OAK)
+//            .placementModifiers(RarityFilter.onAverageOnceEvery(5),
+//                InSquarePlacement.spread(),
+//                HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+//                BiomeFilter.biome())
+//            .build();
+//
+//        fallen_tall_oak.register();
+//        features.add(fallen_tall_oak);
 
         PlacedFeatureDefinition fallen_warped_stem = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_FALLEN_WARPED_STEM)
             .configuredFeature(Feature.SIMPLE_RANDOM_SELECTOR,
@@ -632,19 +632,41 @@ public class PlacedFeatureRegistration {
         lush_desert_palm.register();
         features.add(lush_desert_palm);
 
-        PlacedFeatureDefinition tall_oak = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_TALL_OAK_WITH_LITTER)
+        PlacedFeatureDefinition tall_oak_with_litter = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_TALL_OAK_WITH_LITTER)
             .configuredFeature(ConfiguredFeatures.TREE_TALL_OAK_WITH_LITTER)
-            .placementModifiers(CountPlacement.of(5),
+            .placementModifiers(BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)))
+            .build();
+
+        Holder.Reference<PlacedFeature> tall_oak_ref = tall_oak_with_litter.register();
+        features.add(tall_oak_with_litter);
+
+        PlacedFeatureDefinition fallen_tall_oak = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_TALL_FALLEN_TALL_OAK)
+            .configuredFeature(ConfiguredFeatures.TREE_FALLEN_TALL_OAK)
+            .placementModifiers(BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)))
+            .build();
+
+        Holder.Reference<PlacedFeature> fallen_tall_oak_ref = fallen_tall_oak.register();
+        features.add(fallen_tall_oak);
+
+        PlacedFeatureDefinition tall_oaks = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_TALL_OAK_TREES)
+            .configuredFeature(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+                List.of(new WeightedPlacedFeature(tall_oak_ref, 0.5f),
+                    new WeightedPlacedFeature(fallen_tall_oak_ref, 0.0125f)),
+                tall_oak_ref))
+            .placementModifiers(CountPlacement.of(new WeightedListInt(
+                    WeightedList.<IntProvider>builder()
+                        .add(ConstantInt.of(10), 9)
+                        .add(ConstantInt.of(11), 1)
+                        .build())),
                 InSquarePlacement.spread(),
                 SurfaceWaterDepthFilter.forMaxDepth(0),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
-                BiomeFilter.biome(),
-                BlockPredicateFilter.forPredicate(
-                    BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)))
+                BiomeFilter.biome()
+            )
             .build();
 
-        tall_oak.register();
-        features.add(tall_oak);
+        tall_oaks.register();
+        features.add(tall_oaks);
 
         PlacedFeatureDefinition tall_stripped_pale_oak = PlacedFeatureDefinition.builder(PlacedFeatures.TREE_TALL_STRIPPED_PALE_OAK)
             .configuredFeature(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
