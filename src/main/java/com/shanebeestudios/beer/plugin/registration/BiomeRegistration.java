@@ -855,7 +855,7 @@ public class BiomeRegistration {
         lush_plains.register();
         biomes.add(lush_plains);
 
-        BiomeDefinition plains = BiomeDefinition.builder(BeerBiomes.PLAINS_PLAINS)
+        BiomeDefinition plains = BiomeDefinition.builder(BeerBiomes.PLAINS_TEMPERATE_PLAINS)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.2f)

@@ -35,7 +35,7 @@ public class ShatteredBiomes {
     private static @NotNull ResourceKey<Biome> getWarm(int temp, int humidity, int weirdness) {
         return switch (humidity) {
             case 0, 1 -> Biomes.SAVANNA;
-            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS_PLAINS : Biomes.FOREST;
+            case 2 -> weirdness == 1 ? BeerBiomes.PLAINS_TEMPERATE_PLAINS : Biomes.FOREST;
             case 3 -> weirdness == 1 ? Biomes.SPARSE_JUNGLE : Biomes.JUNGLE;
             default -> weirdness == 1 ? Biomes.BAMBOO_JUNGLE : Biomes.JUNGLE;
         };
