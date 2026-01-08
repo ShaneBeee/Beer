@@ -1,0 +1,14 @@
+{
+  "values": [
+    "beer:cave/dry_cave",
+    "beer:cave/ice_cave",
+    "beer:desert/dry_desert",
+    "beer:desert/lush_desert",
+    "beer:forest/moss_garden",
+    "beer:forest/tall_oak",
+    "beer:forest/lush_forest",
+    "beer:plains/dry_plains",
+    "beer:plains/lush_plains",
+    "beer:plains/temperate_plains"
+  ]
+}

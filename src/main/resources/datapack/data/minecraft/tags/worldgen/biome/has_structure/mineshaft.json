@@ -1,0 +1,13 @@
+{
+  "values": [
+    "beer:cave/dry_cave",
+    "beer:cave/ice_cave",
+    "beer:desert/dry_desert",
+    "beer:desert/lush_desert",
+    "beer:plains/dry_plains",
+    "beer:plains/lush_plains",
+    "beer:plains/temperate_plains",
+    "beer:swamp/cold_swamp",
+    "beer:swamp/dripleaf_swamp"
+  ]
+}

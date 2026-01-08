@@ -1,0 +1,23 @@
+{
+  "values": [
+    "beer:cave/dry_cave",
+    "beer:cave/ice_cave",
+    "beer:coast/beachy_beach",
+    "beer:coast/coast",
+    "beer:coast/dry_coast",
+    "beer:coast/frozen_beach",
+    "beer:desert/dry_desert",
+    "beer:desert/lush_desert",
+    "beer:forest/moss_garden",
+    "beer:forest/tall_oak",
+    "beer:forest/lush_forest",
+    "beer:plains/dry_plains",
+    "beer:plains/lush_plains",
+    "beer:plains/temperate_plains",
+    "beer:river/desert_river",
+    "beer:river/lush_river",
+    "beer:river/temperate_river",
+    "beer:swamp/cold_swamp",
+    "beer:swamp/dripleaf_swamp"
+  ]
+}
