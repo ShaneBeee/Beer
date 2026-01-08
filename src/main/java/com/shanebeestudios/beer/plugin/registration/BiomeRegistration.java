@@ -816,7 +816,7 @@ public class BiomeRegistration {
 
         BiomeDefinition lush_plains = BiomeDefinition.builder(BeerBiomes.PLAINS_LUSH_PLAINS)
             .hasPrecipitation(true)
-            .temperature(0.8f)
+            .temperature(0.95f)
             .downfall(0.5f)
             .waterColor(4159204)
 
@@ -869,7 +869,7 @@ public class BiomeRegistration {
         lush_plains.register();
         biomes.add(lush_plains);
 
-        BiomeDefinition plains = BiomeDefinition.builder(BeerBiomes.PLAINS_TEMPERATE_PLAINS)
+        BiomeDefinition temperate_plains = BiomeDefinition.builder(BeerBiomes.PLAINS_TEMPERATE_PLAINS)
             .hasPrecipitation(true)
             .temperature(0.8f)
             .downfall(0.2f)
@@ -919,8 +919,60 @@ public class BiomeRegistration {
                 BiomeTags.HAS_TRIAL_CHAMBERS, BiomeTags.STRONGHOLD_BIASED_TO)
 
             .build();
-        plains.register();
-        biomes.add(plains);
+        temperate_plains.register();
+        biomes.add(temperate_plains);
+
+        BiomeDefinition cold_plains = BiomeDefinition.builder(BeerBiomes.PLAINS_COLD_PLAINS)
+            .hasPrecipitation(true)
+            .temperature(0.25f)
+            .downfall(0.8f)
+            .waterColor(4159204)
+
+            .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 1.0f)
+            .setAttribute(EnvironmentAttributes.SKY_COLOR, -8543233)
+            .setAttribute(EnvironmentAttributes.FOG_COLOR, 12638463)
+            .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 329011)
+
+            .addDefaultUndergroundOreFeatures()
+            .features(List.of(PlacedFeatures.TERRAIN_STONE_CLIFF),
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                List.of(PlacedFeatures.VEGETATION_PATCH_CLIFF_GRASS,
+                    PlacedFeatures.TERRAIN_SAND_SHORE_DISK,
+                    "minecraft:flower_plains",
+                    "minecraft:patch_grass_plain",
+                    "minecraft:patch_waterlily",
+                    "minecraft:patch_sugar_cane",
+                    PlacedFeatures.VEGETATION_PATCH_HAY_BALE,
+                    PlacedFeatures.VEGETATION_ROOT_DIRT_BLOB),
+                List.of(MiscOverworldPlacements.FREEZE_TOP_LAYER))
+
+            .addDefaultOverworldCarvers()
+
+            .addMobSpawn(MobCategory.CREATURE, EntityType.COW, 10, 2, 4)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.SHEEP, 10, 2, 4)
+            .addMobSpawn(MobCategory.CREATURE, EntityType.PIG, 10, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SPIDER, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE, 95, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ZOMBIE_VILLAGER, 5, 1, 1)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SKELETON, 100, 2, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.SLIME, 100, 4, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.ENDERMAN, 10, 1, 4)
+            .addMobSpawn(MobCategory.MONSTER, EntityType.WITCH, 5, 1, 1)
+
+            .addToTag(BiomeTags.HAS_VILLAGE_PLAINS, BiomeTags.IS_OVERWORLD, BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS,
+                BiomeTags.HAS_RUINED_PORTAL_STANDARD, BiomeTags.HAS_MINESHAFT, BiomeTags.HAS_PILLAGER_OUTPOST,
+                BiomeTags.HAS_TRIAL_CHAMBERS, BiomeTags.STRONGHOLD_BIASED_TO)
+
+            .build();
+        cold_plains.register();
+        biomes.add(cold_plains);
 
         return biomes;
     }

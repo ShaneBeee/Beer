@@ -29,8 +29,7 @@ public class MiddleBiomes {
 
     private static ResourceKey<Biome> getCold(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> BeerBiomes.PLAINS_DRY_PLAINS;
-            case 1 -> BeerBiomes.PLAINS_TEMPERATE_PLAINS;
+            case 0, 1 -> BeerBiomes.PLAINS_COLD_PLAINS;
             case 2 -> BeerBiomes.FOREST_TALL_OAK;
             case 3 -> Biomes.TAIGA;
             default -> weirdness == 1 ? Biomes.OLD_GROWTH_PINE_TAIGA : Biomes.OLD_GROWTH_SPRUCE_TAIGA;
