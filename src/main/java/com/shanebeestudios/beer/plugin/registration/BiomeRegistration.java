@@ -1152,9 +1152,7 @@ public class BiomeRegistration {
                 null,
                 List.of("minecraft:spring_water",
                     "minecraft:spring_lava"),
-                List.of(
-                    "minecraft:glow_lichen",
-                    "minecraft:patch_large_fern",
+                List.of("minecraft:patch_large_fern",
                     PlacedFeatures.TREE_COLD_SWAMP_TREE,
                     "minecraft:flower_swamp",
                     "minecraft:flower_default",
