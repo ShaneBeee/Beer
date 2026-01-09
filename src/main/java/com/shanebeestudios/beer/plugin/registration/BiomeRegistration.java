@@ -698,8 +698,8 @@ public class BiomeRegistration {
 
         BiomeDefinition lush_forest = BiomeDefinition.builder(BeerBiomes.FOREST_LUSH_FOREST)
             .hasPrecipitation(true)
-            .temperature(2f)
-            .downfall(0.2f)
+            .temperature(0.8f)
+            .downfall(0.5f)
             .waterColor(3832426)
             .foliageColorOverride(9285927)
 
@@ -710,8 +710,7 @@ public class BiomeRegistration {
                     6000,
                     8,
                     2.0)),
-                List.of()
-            ))
+                List.of()))
 
             .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 1.0f)
             .setAttribute(EnvironmentAttributes.SKY_COLOR, 7782102)

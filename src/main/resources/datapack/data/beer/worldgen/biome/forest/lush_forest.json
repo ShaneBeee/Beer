@@ -1,7 +1,7 @@
 {
   "has_precipitation": true,
-  "temperature": 2.0,
-  "downfall": 0.2,
+  "temperature": 0.8,
+  "downfall": 0.5,
   "attributes": {
     "minecraft:visual/sky_color": "#76bed6",
     "minecraft:audio/ambient_sounds": {
