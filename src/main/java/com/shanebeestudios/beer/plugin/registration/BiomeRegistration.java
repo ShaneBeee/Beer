@@ -1182,7 +1182,7 @@ public class BiomeRegistration {
             .hasPrecipitation(true)
             .temperature(0.4f)
             .downfall(0.4f)
-            .waterColor(-12757034)
+            .waterColor(-10388622)
             .foliageColorOverride(6975545)
             .grassColorModifier(GrassColorModifier.SWAMP)
 
