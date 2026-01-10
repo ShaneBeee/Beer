@@ -56,8 +56,8 @@ public class BiomeRegistration {
             // Attributes
             // Colors
             .setAttribute(EnvironmentAttributes.FOG_COLOR, 16244363)
-            .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, -500.0f)
-            .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 500.0f)
+            .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, -50.0f)
+            .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 32.0f)
             .setAttribute(EnvironmentAttributes.SKY_COLOR, 8103167)
             .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 267827)
 
