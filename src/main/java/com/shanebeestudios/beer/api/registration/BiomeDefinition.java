@@ -230,6 +230,39 @@ public class BiomeDefinition implements Definition<Biome> {
             return this;
         }
 
+        /**
+         * Add default monster room features that are found in most biomes
+         * This is part of UNDERGROUND_STRUCTURES
+         *
+         * @return This builder
+         */
+        public Builder addDefaultMonsterRoomFeatures() {
+            BiomeDefaultFeatures.addDefaultMonsterRoom(this.genSettings);
+            return this;
+        }
+
+        /**
+         * Add default top level freezing features that are found in most biomes
+         * This is part of TOP_LAYER_MODIFICATION
+         *
+         * @return This builder
+         */
+        public Builder addDefaultSurfaceFreezingFeatures() {
+            BiomeDefaultFeatures.addSurfaceFreezing(this.genSettings);
+            return this;
+        }
+
+        /**
+         * Add default spring features
+         * This is part of FLUID_SPRINGS
+         *
+         * @return This builder
+         */
+        public Builder addDefaultSpringsFeatures() {
+            BiomeDefaultFeatures.addDefaultSprings(this.genSettings);
+            return this;
+        }
+
         @SuppressWarnings("unchecked")
         public Builder carvers(@NotNull Object... carvers) {
             for (Object o : carvers) {
