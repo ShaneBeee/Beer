@@ -70,7 +70,7 @@ tasks {
         }
     }
     register("datapack-server", Zip::class) {
-        archiveFileName = "Z-Beer.zip"
+        archiveFileName = "Beer.zip"
         from("src/main/resources/datapack") {
             exclude("**/.DS_Store")
             destinationDirectory = file("/Users/ShaneBee/Desktop/Server/${serverLocation}/worlds/world/datapacks/")
