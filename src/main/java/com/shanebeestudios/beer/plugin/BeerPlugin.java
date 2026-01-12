@@ -19,7 +19,7 @@ public class BeerPlugin extends JavaPlugin {
 
         Utils.setPrefix("&7[&bBeer&7] ");
 
-        Datapack zBeer = Bukkit.getDatapackManager().getPack("file/Z-Beer.zip");
+        Datapack zBeer = Bukkit.getDatapackManager().getPack("file/Beer.zip");
         if (zBeer == null || !zBeer.isEnabled()) {
             Utils.log("Attempting to register definables and dump for datapacks");
             // Register definable objects
