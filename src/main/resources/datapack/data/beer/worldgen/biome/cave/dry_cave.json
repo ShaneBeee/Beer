@@ -4,6 +4,9 @@
   "downfall": 0.5,
   "attributes": {
     "minecraft:audio/music_volume": 0.5,
+    "minecraft:visual/fog_color": "#f7de8b",
+    "minecraft:visual/water_fog_color": "#041633",
+    "minecraft:visual/sky_color": "#7ba4ff",
     "minecraft:audio/background_music": {
       "default": {
         "sound": "minecraft:music.overworld.lush_caves",
@@ -12,8 +15,8 @@
         "replace_current_music": true
       }
     },
+    "minecraft:visual/fog_start_distance": -50.0,
     "minecraft:visual/fog_end_distance": 32.0,
-    "minecraft:visual/sky_color": "#7ba4ff",
     "minecraft:visual/ambient_particles": [
       {
         "particle": {
@@ -25,9 +28,6 @@
         "probability": 0.005
       }
     ],
-    "minecraft:visual/fog_start_distance": -50.0,
-    "minecraft:visual/water_fog_color": "#041633",
-    "minecraft:visual/fog_color": "#f7de8b",
     "minecraft:audio/ambient_sounds": {
       "mood": {
         "sound": "minecraft:ambient.basalt_deltas.mood",

@@ -4,8 +4,6 @@
   "downfall": 0.8,
   "attributes": {
     "minecraft:visual/fog_color": "#fcbf86",
-    "minecraft:visual/water_fog_color": "#86fcec",
-    "minecraft:visual/sky_color": "#55f7dc",
     "minecraft:visual/ambient_particles": [
       {
         "particle": {
@@ -14,6 +12,8 @@
         "probability": 5.0E-4
       }
     ],
+    "minecraft:visual/sky_color": "#55f7dc",
+    "minecraft:visual/water_fog_color": "#86fcec",
     "minecraft:audio/music_volume": 1.0
   },
   "effects": {

@@ -38,7 +38,8 @@ public class MiddleBiomes {
 
     private static ResourceKey<Biome> getTemperate(int humidity, int weirdness) {
         return switch (humidity) {
-            case 0 -> weirdness == 1 ? Biomes.SUNFLOWER_PLAINS : Biomes.FLOWER_FOREST;
+            case 0 -> weirdness == 1 ? Biomes.SUNFLOWER_PLAINS : BeerBiomes.FOREST_DRY_FOREST;
+            //case 0 -> weirdness == 1 ? Biomes.SUNFLOWER_PLAINS : Biomes.FLOWER_FOREST;
             case 1 -> BeerBiomes.PLAINS_TEMPERATE_PLAINS;
             case 2 -> Biomes.FOREST;
             case 3 -> weirdness == 1 ? Biomes.OLD_GROWTH_BIRCH_FOREST : Biomes.BIRCH_FOREST;

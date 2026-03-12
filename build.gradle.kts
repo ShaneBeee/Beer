@@ -44,7 +44,7 @@ tasks {
         dependsOn("shadowJar")
         from("build/libs") {
             include("BeerPlugin-*.jar")
-            destinationDir = file("/Users/ShaneBee/Desktop/Server/${serverLocation}/plugins/")
+            destinationDir = file("/Users/ShaneBee/Desktop/Server/Minecraft/${serverLocation}/plugins/")
         }
 
     }
@@ -73,7 +73,7 @@ tasks {
         archiveFileName = "Beer.zip"
         from("src/main/resources/datapack") {
             exclude("**/.DS_Store")
-            destinationDirectory = file("/Users/ShaneBee/Desktop/Server/${serverLocation}/worlds/world/datapacks/")
+            destinationDirectory = file("/Users/ShaneBee/Desktop/Server/Minecraft/${serverLocation}/worlds/world/datapacks/")
         }
     }
     processResources {

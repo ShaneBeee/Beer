@@ -587,6 +587,53 @@ public class BiomeRegistration {
     private static List<BiomeDefinition> forestBiomes() {
         List<BiomeDefinition> biomes = new ArrayList<>();
 
+        BiomeDefinition dry_forest = BiomeDefinition.builder(BeerBiomes.FOREST_DRY_FOREST)
+            .hasPrecipitation(false)
+            .temperature(0.7f)
+            .downfall(0.0f)
+            .waterColor(7768221)
+            .foliageColorOverride(-7250899)
+
+            .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 0.0f)
+            .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+
+            .addDefaultUndergroundOreFeatures()
+            .addDefaultMonsterRoomFeatures()
+            .addDefaultSpringsFeatures()
+            .addDefaultSurfaceFreezingFeatures()
+            .features(null,
+                List.of("minecraft:lake_lava_underground",
+                    "minecraft:lake_lava_surface"),
+                List.of("minecraft:amethyst_geode"),
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                List.of("minecraft:forest_flowers",
+                    "minecraft:trees_birch_and_oak_leaf_litter",
+                    "minecraft:patch_bush",
+                    "minecraft:flower_default",
+                    "minecraft:patch_grass_forest",
+                    "minecraft:brown_mushroom_normal",
+                    "minecraft:red_mushroom_normal",
+                    "minecraft:patch_pumpkin",
+                    "minecraft:patch_sugar_cane",
+                    "minecraft:patch_firefly_bush_near_water"),
+                null
+            )
+
+            .addDefaultOverworldCarvers()
+
+            .addDefaultPlainsSpawns()// TODO
+
+            .build();
+
+
+        dry_forest.register();
+        biomes.add(dry_forest);
+
         BiomeDefinition moss_garden = BiomeDefinition.builder(BeerBiomes.FOREST_MOSS_GARDEN)
             .hasPrecipitation(true)
             .temperature(0.7f)

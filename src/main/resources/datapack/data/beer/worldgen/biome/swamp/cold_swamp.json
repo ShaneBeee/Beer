@@ -5,11 +5,11 @@
   "attributes": {
     "minecraft:audio/music_volume": 1.0,
     "minecraft:visual/fog_color": "#bdc9f0",
-    "minecraft:visual/sky_color": "#839eff",
-    "minecraft:visual/water_fog_color": "#232317"
+    "minecraft:visual/water_fog_color": "#232317",
+    "minecraft:visual/sky_color": "#839eff"
   },
   "effects": {
-    "water_color": "#617B72",
+    "water_color": "#617b72",
     "foliage_color": "#6a7039",
     "grass_color_modifier": "swamp"
   },
