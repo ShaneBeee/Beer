@@ -4,6 +4,7 @@ import com.shanebeestudios.beer.plugin.registration.BiomeRegistration;
 import com.shanebeestudios.beer.plugin.registration.ConfiguredFeatureRegistration;
 import com.shanebeestudios.beer.plugin.registration.DimensionRegistration;
 import com.shanebeestudios.beer.plugin.registration.PlacedFeatureRegistration;
+import com.shanebeestudios.beer.plugin.registration.TimelineRegistration;
 import com.shanebeestudios.coreapi.util.Utils;
 import io.papermc.paper.datapack.Datapack;
 import org.bukkit.Bukkit;
@@ -26,12 +27,14 @@ public class BeerPlugin extends JavaPlugin {
             ConfiguredFeatureRegistration.registerFeatures();
             PlacedFeatureRegistration.registerFeatures();
             BiomeRegistration.registerBiomes();
+            TimelineRegistration.registerTimelines();
             DimensionRegistration dimensionRegistration = new DimensionRegistration();
 
             // Dump objects to datapack
             ConfiguredFeatureRegistration.dumpToDatapack();
             PlacedFeatureRegistration.dumpToDatapack();
             BiomeRegistration.dumpToRegistry();
+            TimelineRegistration.dumpToRegistry();
             dimensionRegistration.dumpToRegistry();
         }
     }

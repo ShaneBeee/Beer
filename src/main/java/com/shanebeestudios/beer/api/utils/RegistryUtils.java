@@ -2,7 +2,9 @@ package com.shanebeestudios.beer.api.utils;
 
 import com.shanebeestudios.beer.api.registration.BiomeDefinition;
 import com.shanebeestudios.beer.api.registration.ConfiguredFeatureDefinition;
+import com.shanebeestudios.beer.api.registration.Definition;
 import com.shanebeestudios.beer.api.registration.PlacedFeatureDefinition;
+import com.shanebeestudios.beer.api.registration.TimelineDefinition;
 import com.shanebeestudios.coreapi.util.ReflectionUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -18,6 +20,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.timeline.Timeline;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,6 +37,7 @@ public class RegistryUtils {
 
     private static final Registry<Enchantment> ENCHANT_REGISTRY = getRegistry(Registries.ENCHANTMENT);
     private static final Registry<Biome> BIOME_REGISTRY = getRegistry(Registries.BIOME);
+    private static final Registry<Timeline> TIMELINE_REGISTRY = getRegistry(Registries.TIMELINE);
     private static final Registry<PlacedFeature> PLACED_FEATURE_REGISTRY = getRegistry(Registries.PLACED_FEATURE);
     private static final Registry<ConfiguredFeature<?, ?>> CONFIGURED_FEATURE_REGISTRY = getRegistry(Registries.CONFIGURED_FEATURE);
     private static final Registry<ConfiguredWorldCarver<?>> CONFIGURED_CARVER_REGISTRY = getRegistry(Registries.CONFIGURED_CARVER);
@@ -123,7 +127,9 @@ public class RegistryUtils {
 
     private static <T> void modifyTag(@NotNull Registry<T> registry, @NotNull TagKey<T> tagKey, @NotNull Holder.Reference<T> reference, @NotNull BiConsumer<List<Holder<T>>, Holder.Reference<T>> consumer) {
         HolderSet.Named<T> holders = registry.get(tagKey).orElse(null);
-        if (holders == null) return;
+        if (holders == null) {
+            return;
+        }
 
         List<Holder<T>> contents = new ArrayList<>(holders.stream().toList());
         consumer.accept(contents, reference);
@@ -133,7 +139,7 @@ public class RegistryUtils {
         }
     }
 
-    private static void setupBiomeDistribution(@NotNull Holder.Reference<Biome> reference, BiomeDefinition definition) {
+    private static <T> void setupTagDistribution(@NotNull Holder.Reference<T> reference, Definition<T> definition) {
         definition.getTagKeys().forEach(tag -> addInTag(tag, reference));
     }
 
@@ -148,10 +154,28 @@ public class RegistryUtils {
         Holder.Reference<Biome> intrusiveHolder = BIOME_REGISTRY.createIntrusiveHolder(biome);
         Registry.register(BIOME_REGISTRY, definition.getResourceKey(), biome);
 
-        setupBiomeDistribution(intrusiveHolder, definition);
+        setupTagDistribution(intrusiveHolder, definition);
         freeze(BIOME_REGISTRY);
 
         return intrusiveHolder;
+    }
+
+    public static Holder.Reference<Timeline> registerTimeline(TimelineDefinition definition) {
+        ResourceKey<Timeline> resourceKey = definition.getResourceKey();
+        if (!TIMELINE_REGISTRY.containsKey(resourceKey.identifier())) {
+            unfreeze(TIMELINE_REGISTRY);
+
+            Timeline timeline = definition.getValue();
+            Holder.Reference<Timeline> intrusiveHolder = TIMELINE_REGISTRY.createIntrusiveHolder(timeline);
+            Registry.register(TIMELINE_REGISTRY, resourceKey, timeline);
+
+            setupTagDistribution(intrusiveHolder, definition);
+            freeze(TIMELINE_REGISTRY);
+
+            return intrusiveHolder;
+        }
+
+        return null;
     }
 
     public static Holder.Reference<PlacedFeature> registerPlacedFeature(PlacedFeatureDefinition definition) {

@@ -27,6 +27,7 @@ import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.timeline.Timeline;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -49,6 +50,7 @@ public class DumpRegistry<N> {
         register("placed_feature", Registries.PLACED_FEATURE, PlacedFeature.DIRECT_CODEC, PlacedFeature.class);
         register("configured_feature", Registries.CONFIGURED_FEATURE, ConfiguredFeature.DIRECT_CODEC, ConfiguredFeature.class);
         register("enchantments", Registries.ENCHANTMENT, Enchantment.DIRECT_CODEC, Enchantment.class);
+        register("timelines", Registries.TIMELINE, Timeline.DIRECT_CODEC, Timeline.class);
 
         List<String> patterns = MAP.values().stream().map(dumpRegistry -> dumpRegistry.name).toList();
         PATTERN = Joiner.on("/").join(patterns);
@@ -77,13 +79,12 @@ public class DumpRegistry<N> {
         definitions.forEach(DumpRegistry::dumpDefinableTags);
     }
 
-    @SuppressWarnings("unchecked")
     public static <T> void dumpDefinableTags(Definition<T> definition) {
         MAP.forEach((objectClass, dumpRegistry) -> {
-            if (objectClass.isAssignableFrom(Biome.class)) {
-                for (TagKey<?> tagKey : definition.getTagKeys()) {
+            if (objectClass.isAssignableFrom(definition.getValue().getClass())) {
+                for (TagKey<T> tagKey : definition.getTagKeys()) {
                     List<TagEntry> tagEntries = new ArrayList<>();
-                    for (Holder<?> holder : RegistryUtils.getRegistry(definition.getResourceKey().registryKey()).getTagOrEmpty((TagKey<T>) tagKey)) {
+                    for (Holder<?> holder : RegistryUtils.getRegistry(definition.getResourceKey().registryKey()).getTagOrEmpty(tagKey)) {
                         Optional<? extends ResourceKey<?>> resourceKey = holder.unwrapKey();
                         if (resourceKey.isPresent()) {
                             Identifier identifier = resourceKey.get().identifier();
@@ -91,13 +92,10 @@ public class DumpRegistry<N> {
 
                             TagEntry tagEntry = TagEntry.element(identifier);
                             tagEntries.add(tagEntry);
-
-
                         }
                         TagFile tagFile = new TagFile(tagEntries, false);
                         dumpRegistry.dumpTags(tagKey.location(), tagFile);
                     }
-
                 }
             }
         });
