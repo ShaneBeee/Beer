@@ -79,7 +79,7 @@ public class DimensionRegistration {
         }
 
         // REGISTER
-        DimensionDefinition definition = builder.build();
+        DimensionDefinition definition = builder.consolidate().build();
         definition.register();
         this.definition = definition;
     }
